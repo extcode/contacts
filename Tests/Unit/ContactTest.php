@@ -3,6 +3,34 @@
 namespace Extcode\Contacts\Tests;
 
 class ContactTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
+
+	/**
+	 * Salutation
+	 *
+	 * @var string
+	 */
+	protected $salutation;
+
+	/**
+	 * Title
+	 *
+	 * @var string
+	 */
+	protected $title;
+
+	/**
+	 * First Name
+	 *
+	 * @var string
+	 */
+	protected $firstName;
+	/**
+	 * Last Name
+	 *
+	 * @var string
+	 */
+	protected $lastName;
+
 	/**
 	 * @var \Tx_Contacts_Domain_Model_Contact
 	 */
@@ -12,7 +40,11 @@ class ContactTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 *
 	 */
 	public function setUp() {
-		$this->fixture = new \Extcode\Contacts\Domain\Model\Contact('Firstname', 'Lastname');
+		$this->salutation = 'Salutation';
+		$this->title = 'Title';
+		$this->firstName = 'FirstName';
+		$this->lastName = 'LastName';
+		$this->fixture = new \Extcode\Contacts\Domain\Model\Contact($this->salutation, $this->title, $this->firstName, $this->lastName);
 	}
 
 	/**
@@ -25,9 +57,53 @@ class ContactTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	/**
 	 * @test
 	 */
+	public function getSalutationInitiallyReturnsSalutation() {
+		$this->assertSame(
+			$this->salutation,
+			$this->fixture->getSalutation()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setSalutationSetsSalutation() {
+		$this->fixture->setSalutation('Salutation new');
+
+		$this->assertSame(
+			'Salutation new',
+			$this->fixture->getSalutation()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function getTitleInitiallyReturnsTitle() {
+		$this->assertSame(
+			$this->title,
+			$this->fixture->getTitle()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setTitleSetsTitle() {
+		$this->fixture->setTitle('Title new');
+
+		$this->assertSame(
+			'Title new',
+			$this->fixture->getTitle()
+		);
+	}
+
+	/**
+	 * @test
+	 */
 	public function getFirstNameInitiallyReturnsFirstName() {
 		$this->assertSame(
-			'Firstname',
+			$this->firstName,
 			$this->fixture->getFirstName()
 		);
 	}
@@ -62,7 +138,7 @@ class ContactTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 	 */
 	public function getLastNameInitiallyReturnsLastName() {
 		$this->assertSame(
-			'Lastname',
+			$this->lastName,
 			$this->fixture->getLastName()
 		);
 	}

@@ -2,7 +2,21 @@
 
 namespace Extcode\Contacts\Domain\Model;
 
-class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {#
+class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+
+	/**
+	 * Salutation
+	 *
+	 * @var string
+	 */
+	protected $salutation;
+
+	/**
+	 * Title
+	 *
+	 * @var string
+	 */
+	protected $title;
 
 	/**
 	 * First Name
@@ -20,12 +34,44 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {#
 	protected $lastName;
 
 	/**
+	 * @param $salutation
+	 * @param $title
 	 * @param $firstName
 	 * @param $lastName
 	 */
-	public function __construct($firstName, $lastName) {
+	public function __construct($salutation, $title, $firstName, $lastName) {
+		$this->salutation = $salutation;
+		$this->title = $title;
 		$this->firstName = $firstName;
 		$this->lastName = $lastName;
+	}
+
+	/**
+	 * @param string $salutation
+	 */
+	public function setSalutation($salutation) {
+		$this->salutation = $salutation;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getSalutation() {
+		return $this->salutation;
+	}
+
+	/**
+	 * @param string $title
+	 */
+	public function setTitle($title) {
+		$this->title = $title;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTitle() {
+		return $this->title;
 	}
 
 	/**

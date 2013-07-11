@@ -2,6 +2,10 @@
 
 namespace Extcode\Contacts\Domain\Model;
 
+/**
+ * Class Contact
+ * @package Extcode\Contacts\Domain\Model
+ */
 class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**

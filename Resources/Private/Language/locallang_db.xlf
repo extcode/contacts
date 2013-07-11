@@ -4,6 +4,71 @@
 		<header/>
 		<body>
 
+            <trans-unit id="tx_contacts_domain_model_contact">
+                    <source>Contact</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.salutation">
+                    <source>Salutation</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.title">
+                    <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.first_name">
+                    <source>First Name</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.last_name">
+                    <source>Last Name</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.birthday">
+                    <source>Birthday</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.addresses">
+                    <source>Addresses</source>
+            </trans-unit>
+
+            <trans-unit id="tx_contacts_domain_model_address">
+                    <source>Address</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.type">
+                    <source>Type</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.type.DOM">
+                    <source>DOM</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.type.INTL">
+                    <source>INTL</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.type.POSTAL">
+                    <source>POSTAL</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.type.PARCEL">
+                    <source>PARCEL</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.type.HOME">
+                    <source>HOME</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.type.WORK">
+                    <source>WORK</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.street">
+                    <source>Street</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.street_number">
+                    <source>Street Number</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.zip">
+                    <source>Zip</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.city">
+                    <source>City</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.country">
+                    <source>Country</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.post_box">
+                    <source>Post Box</source>
+            </trans-unit>
+
 		</body>
 	</file>
 </xliff>

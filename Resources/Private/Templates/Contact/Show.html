@@ -1,0 +1,23 @@
+<f:layout name="Default" />
+
+This Template is responsible for displaying a single view for a domain object
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+Resources:
+Private:
+Templates:
+Show.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+    <f:flashMessages />
+    <f:render partial="Contact/Properties" arguments="{contact:contact}" />
+
+    <f:for each="{contact.addresses}" as="address" key="key">
+        <f:render partial="Address/Properties" arguments="{address:address}" />
+    </f:for>
+
+    <f:link.action action="list">Back to list</f:link.action><br />
+</f:section>

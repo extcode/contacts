@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-07-11T08:15:06Z" product-name="contacts">
+	<file source-language="en" target-language="fr" datatype="plaintext" original="messages" date="2013-07-11T08:15:06Z" product-name="contacts">
 		<header/>
         <body>
 
             <trans-unit id="tx_contacts_domain_model_contact">
-                    <source>Contact</source>
+                    <target>Contactez</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.salutation">
-                    <source>Salutation</source>
+                    <target>Civilité</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.title">
-                    <source>Title</source>
+                    <target>Civilité</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.first_name">
-                    <source>First Name</source>
+                    <target>Prénom</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.last_name">
-                    <source>Last Name</source>
+                    <target>Nom</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.addresses">
-                    <source>Addresses</source>
+                    <target>Adresses</target>
             </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_address">
-                    <source>Address</source>
+                    <target>Adresse</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.street">
-                    <source>Street</source>
+                    <target>Rue</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.street_number">
-                    <source>Street Number</source>
+                    <target>Numéro de Rue</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.zip">
-                    <source>Zip</source>
+                    <target>Code Postal</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.city">
-                    <source>City</source>
+                    <target>Ville</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.country">
-                    <source>Country</source>
+                    <target>Pays</target>
             </trans-unit>
 
         </body>

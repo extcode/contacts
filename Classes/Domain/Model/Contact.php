@@ -29,6 +29,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @validate NotEmpty
 	 */
 	protected $firstName;
+
 	/**
 	 * Last Name
 	 *
@@ -36,6 +37,13 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @validate NotEmpty
 	 */
 	protected $lastName;
+
+	/**
+	 * Birthday
+	 *
+	 * @var integer
+	 */
+	protected $birthday = 0;
 
 	/**
 	 * @param $salutation
@@ -120,5 +128,19 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function getLastName() {
 		return $this->lastName;
+	}
+
+	/**
+	 * @param int $birthday
+	 */
+	public function setBirthday($birthday) {
+		$this->birthday = $birthday;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getBirthday() {
+		return $this->birthday;
 	}
 }

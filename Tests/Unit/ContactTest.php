@@ -167,6 +167,28 @@ class ContactTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 
 		$this->fixture->setLastName('');
 	}
+	
+	/**
+	 * @test
+	 */
+	public function getBirthdayInitiallyReturnsZero() {
+		$this->assertSame(
+			0,
+			$this->fixture->getBirthday()
+		);
+	}
+	
+	/**
+	 * @test
+	 */
+	public function setBirthdaySetsBirthday() {
+		$this->fixture->setBirthday(123456);
+	
+		$this->assertSame(
+			123456,
+			$this->fixture->getBirthday()
+		);
+	}
 
 
 }

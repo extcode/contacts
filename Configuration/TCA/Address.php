@@ -172,5 +172,10 @@ $TCA['tx_contacts_domain_model_address'] = array(
 				'type' => 'passthrough',
 			),
 		),
+		'company' => array(
+			'config' => array(
+				'type' => 'passthrough',
+			),
+		),
 	),
 );

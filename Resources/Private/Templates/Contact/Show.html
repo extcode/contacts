@@ -19,5 +19,9 @@ Otherwise your changes will be overwritten the next time you save the extension 
         <f:render partial="Address/Properties" arguments="{address:address}" />
     </f:for>
 
+    <f:for each="{contact.phoneNumbers}" as="phone_number" key="key">
+        <f:render partial="Phone/Properties" arguments="{phone:phone_number}" />
+    </f:for>
+
     <f:link.action action="list">Back to list</f:link.action><br />
 </f:section>

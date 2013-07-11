@@ -25,6 +25,22 @@
             <trans-unit id="tx_contacts_domain_model_contact.addresses">
                     <source>Addresses</source>
             </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.phone_numbers">
+                    <source>Phone Numbers</source>
+            </trans-unit>
+
+            <trans-unit id="tx_contacts_domain_model_company">
+                    <source>Company</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.name">
+                    <source>Company Name</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.addresses">
+                    <source>Addresses</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.phone_numbers">
+                    <source>Phone Numbers</source>
+            </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_address">
                     <source>Address</source>
@@ -69,6 +85,54 @@
                     <source>Post Box</source>
             </trans-unit>
 
+            <trans-unit id="tx_contacts_domain_model_phone">
+                    <source>Phone</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.type">
+                    <source>Type</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.type.PREF">
+                    <source>PREF</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.type.WORK">
+                    <source>WORK</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.type.HOME">
+                    <source>HOME</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.type.VOICE">
+                    <source>VOICE</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.type.FAX">
+                    <source>FAX</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.type.MSG">
+                    <source>MSG</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.type.CELL">
+                    <source>CELL</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.type.PAGER">
+                    <source>PAGER</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.type.BBS">
+                    <source>BBS</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.type.MODEM">
+                    <source>MODEM</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.type.CAR">
+                    <source>CAR</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.type.ISDN">
+                    <source>ISDN</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.type.VIDEO">
+                    <source>VIDEO</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_phone.number">
+                    <source>Phone Number</source>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

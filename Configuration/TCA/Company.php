@@ -3,13 +3,13 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-$TCA['tx_contacts_domain_model_contact'] = array(
-	'ctrl' => $TCA['tx_contacts_domain_model_contact']['ctrl'],
+$TCA['tx_contacts_domain_model_company'] = array(
+	'ctrl' => $TCA['tx_contacts_domain_model_company']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, salutation, title, first_name, last_name, birthday, addresses, phone_numbers',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, addresses, phone_numbers',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, salutation, title, first_name, last_name, birthday, addresses, phone_numbers,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, addresses, phone_numbers,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -37,8 +37,8 @@ $TCA['tx_contacts_domain_model_contact'] = array(
 				'items' => array(
 					array('', 0),
 				),
-				'foreign_table' => 'tx_contact_domain_model_contact',
-				'foreign_table_where' => 'AND tx_contact_domain_model_contact.pid=###CURRENT_PID### AND tx_contact_domain_model_contact.sys_language_uid IN (-1,0)',
+				'foreign_table' => 'tx_contact_domain_model_company',
+				'foreign_table_where' => 'AND tx_contact_domain_model_company.pid=###CURRENT_PID### AND tx_contact_domain_model_company.sys_language_uid IN (-1,0)',
 			),
 		),
 		'l10n_diffsource' => array(
@@ -93,60 +93,22 @@ $TCA['tx_contacts_domain_model_contact'] = array(
 				),
 			),
 		),
-		'salutation' => array(
+		'name' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_contact.salutation',
-			'config' => array(
-				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim'
-			),
-		),
-		'title' => array(
-			'exclude' => 0,
-			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_contact.title',
-			'config' => array(
-				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim'
-			),
-		),
-		'first_name' => array(
-			'exclude' => 0,
-			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_contact.first_name',
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xml:tx_contacts_domain_model_company.name',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
 				'eval' => 'trim,required'
-			),
-		),
-		'last_name' => array(
-			'exclude' => 0,
-			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_contact.last_name',
-			'config' => array(
-				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim,required'
-			),
-		),
-		'birthday' => array(
-			'exclude' => 0,
-			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xml:tx_contacts_domain_model_contact.birthday',
-			'config' => array(
-				'type' => 'input',
-				'size' => 10,
-				'eval' => 'date',
-				'checkbox' => 1,
-				'default' => 0
 			),
 		),
 		'addresses' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_contact.addresses',
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company.addresses',
 			'config' => array(
 				'type' => 'inline',
 				'foreign_table' => 'tx_contacts_domain_model_address',
-				'foreign_field' => 'contact',
+				'foreign_field' => 'company',
 				'maxitems'      => 9999,
 				'appearance' => array(
 					'collapseAll' => 1,
@@ -159,11 +121,11 @@ $TCA['tx_contacts_domain_model_contact'] = array(
 		),
 		'phone_numbers' => array(
 			'exclude' => 0,
-			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_contact.phone_numbers',
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company.phone_numbers',
 			'config' => array(
 				'type' => 'inline',
 				'foreign_table' => 'tx_contacts_domain_model_phone',
-				'foreign_field' => 'contact',
+				'foreign_field' => 'company',
 				'maxitems'      => 9999,
 				'appearance' => array(
 					'collapseAll' => 1,

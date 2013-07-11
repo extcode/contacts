@@ -1,21 +1,14 @@
 #
-# Table structure for table 'tx_contacts_domain_model_address'
+# Table structure for table 'tx_contacts_domain_model_company'
 #
-CREATE TABLE tx_contacts_domain_model_address (
+CREATE TABLE tx_contacts_domain_model_company (
 
   uid int(11) NOT NULL auto_increment,
   pid int(11) DEFAULT '0' NOT NULL,
 
-  type varchar(255) DEFAULT '' NOT NULL,
+  name varchar(255) DEFAULT '' NOT NULL,
 
-  contact int(11) unsigned DEFAULT '0' NOT NULL,
-
-  street varchar(255) DEFAULT '' NOT NULL,
-  street_number varchar(255) DEFAULT '' NOT NULL,
-  zip varchar(255) DEFAULT '' NOT NULL,
-  city varchar(255) DEFAULT '' NOT NULL,
-  country varchar(255) DEFAULT '' NOT NULL,
-  post_box varchar(255) DEFAULT '' NOT NULL,
+  addresses int(11) unsigned DEFAULT '0' NOT NULL,
 
   tstamp int(11) unsigned DEFAULT '0' NOT NULL,
   crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -44,5 +37,14 @@ CREATE TABLE tx_contacts_domain_model_address (
   KEY parent (pid),
   KEY t3ver_oid (t3ver_oid,t3ver_wsid),
   KEY language (l10n_parent,sys_language_uid)
+
+);
+
+#
+# Table structure for table 'tx_contacts_domain_model_address'
+#
+CREATE TABLE tx_contacts_domain_model_address (
+
+  company int(11) unsigned DEFAULT '0' NOT NULL
 
 );

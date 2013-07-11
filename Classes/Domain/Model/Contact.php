@@ -53,6 +53,13 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $addresses;
 
 	/**
+	 * Phone Numbers
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Phone>
+	 */
+	protected $phoneNumbers;
+
+	/**
 	 * @param $salutation
 	 * @param $title
 	 * @param $firstName
@@ -74,6 +81,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	protected function initStorageObjects() {
 		$this->addresses = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->phoneNumbers = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 
@@ -200,6 +208,45 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setAddresses(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $addresses) {
 		$this->addresses = $addresses;
+	}
+
+	/**
+	 * Adds a Phone Number
+	 *
+	 * @param \Extcode\Contacts\Domain\Model\Phone $phoneNumber
+	 * @return void
+	 */
+	public function addPhoneNumber(\Extcode\Contacts\Domain\Model\Phone $phoneNumber) {
+		$this->phoneNumbers->attach($phoneNumber);
+	}
+
+	/**
+	 * Removes a Phone Number
+	 *
+	 * @param \Extcode\Contacts\Domain\Model\Phone $phoneNumberToRemove The Phone Number to be removed
+	 * @return void
+	 */
+	public function removePhoneNumber(\Extcode\Contacts\Domain\Model\Phone $phoneNumberToRemove) {
+		$this->phoneNumbers->detach($phoneNumberToRemove);
+	}
+
+	/**
+	 * Returns the phoneNumbers
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Phone> $phoneNumbers
+	 */
+	public function getPhoneNumbers() {
+		return $this->phoneNumbers;
+	}
+
+	/**
+	 * Sets the phoneNumbers
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Phone> $phoneNumbers
+	 * @return void
+	 */
+	public function setPhoneNumbers(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $phoneNumbers) {
+		$this->phoneNumbers = $phoneNumbers;
 	}
 
 }

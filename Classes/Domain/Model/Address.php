@@ -44,6 +44,13 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $city = '';
 
 	/**
+	 * Region
+	 *
+	 * @var string
+	 */
+	protected $region = '';
+
+	/**
 	 * Country
 	 *
 	 * @var string
@@ -56,6 +63,20 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @var string
 	 */
 	protected $postBox = '';
+
+	/**
+	 * Lon
+	 *
+	 * @var string
+	 */
+	protected $lon = '';
+
+	/**
+	 * Lat
+	 *
+	 * @var string
+	 */
+	protected $lat = '';
 
 	/**
 	 * @param string $type
@@ -138,6 +159,20 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
+	 * @param string $region
+	 */
+	public function setRegion($region) {
+		$this->region = $region;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getRegion() {
+		return $this->region;
+	}
+
+	/**
 	 * @param string $country
 	 */
 	public function setCountry($country) {
@@ -165,5 +200,32 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		return $this->postBox;
 	}
 
+	/**
+	 * @param string $lat
+	 */
+	public function setLat($lat) {
+		$this->lat = $lat;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLat() {
+		return $this->lat;
+	}
+
+	/**
+	 * @param string $lon
+	 */
+	public function setLon($lon) {
+		$this->lon = $lon;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLon() {
+		return $this->lon;
+	}
 
 }

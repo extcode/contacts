@@ -144,6 +144,28 @@ class AddressTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 			$this->fixture->getCity()
 		);
 	}
+
+	/**
+	 * @test
+	 */
+	public function getRegionInitiallyReturnsEmptyString() {
+		$this->assertSame(
+			'',
+			$this->fixture->getRegion()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setRegionSetsRegion() {
+		$this->fixture->setRegion('Region');
+
+		$this->assertSame(
+			'Region',
+			$this->fixture->getRegion()
+		);
+	}
 	
 	/**
 	 * @test
@@ -186,6 +208,50 @@ class AddressTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
 		$this->assertSame(
 			'Post Box',
 			$this->fixture->getPostBox()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function getLatInitiallyReturnsEmptyString() {
+		$this->assertSame(
+			'',
+			$this->fixture->getLat()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setLatSetsLat() {
+		$this->fixture->setLat('52° 31′ N');
+
+		$this->assertSame(
+			'52° 31′ N',
+			$this->fixture->getLat()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function getLonInitiallyReturnsEmptyString() {
+		$this->assertSame(
+			'',
+			$this->fixture->getLon()
+		);
+	}
+
+	/**
+	 * @test
+	 */
+	public function setLonSetsLon() {
+		$this->fixture->setLon('13° 24′ O');
+
+		$this->assertSame(
+			'13° 24′ O',
+			$this->fixture->getLon()
 		);
 	}
 }

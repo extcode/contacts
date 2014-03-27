@@ -6,13 +6,18 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_contacts_domain_model_address'] = array(
 	'ctrl' => $TCA['tx_contacts_domain_model_address']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, street, street_number, zip, city, country, post_box',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, street, street_number, zip, city, region, country, post_box, lon, lat',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, type, street, street_number, zip, city, country, post_box,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1,
+		type,
+		street, street_number, zip, city, region, country, post_box,
+		--palette--;LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.lon_lat;lon_lat,
+		--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
+		'lon_lat' => array('showitem' => 'lon, lat', 'canNotCollapse' => 1),
 	),
 	'columns' => array(
 		'sys_language_uid' => array(
@@ -93,7 +98,6 @@ $TCA['tx_contacts_domain_model_address'] = array(
 				),
 			),
 		),
-
 		'type' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xml:tx_contacts_domain_model_address.type',
@@ -112,7 +116,6 @@ $TCA['tx_contacts_domain_model_address'] = array(
 				'eval' => 'required'
 			),
 		),
-
 		'street' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.street',
@@ -149,9 +152,36 @@ $TCA['tx_contacts_domain_model_address'] = array(
 				'eval' => 'trim'
 			),
 		),
+		'region' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.region',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
 		'country' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.country',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'lon' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.lon',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'lat' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.lat',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,

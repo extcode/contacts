@@ -75,8 +75,17 @@
             <trans-unit id="tx_contacts_domain_model_address.city">
                     <source>City</source>
             </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.region">
+                    <source>Region</source>
+            </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.country">
                     <source>Country</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.lon">
+                    <source>Longitude</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.lat">
+                    <source>Latitude</source>
             </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_phone">

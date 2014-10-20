@@ -58,7 +58,11 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 * @param \Extcode\Contacts\Domain\Model\Contact $contact
 	 * @return void
 	 */
-	public function showAction(\Extcode\Contacts\Domain\Model\Contact $contact) {
+	public function showAction( \Extcode\Contacts\Domain\Model\Contact $contact = NULL ) {
+		if ( !$contact && intval($this->settings['contact']) ) {
+			$contact = $this->contactRepository->findByUid( intval( $this->settings['contact'] ) );
+		}
+
 		$this->view->assign('contact', $contact);
 	}
 

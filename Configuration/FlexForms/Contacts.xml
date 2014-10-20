@@ -1,0 +1,47 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Optionen</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<switchableControllerActions>
+						<TCEforms>
+							<label>Standardaktion des Plugins</label>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">Listenansicht</numIndex>
+										<numIndex index="1">Contact->list</numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">Einzelansicht</numIndex>
+										<numIndex index="1">Contact->show</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+					<settings.contact>
+						<TCEforms>
+							<label>LLL:EXT:dates/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_contact</label>
+							<config>
+								<type>select</type>
+								<items type="array">
+									<numIndex index="0" type="array">
+										<numIndex index="0"></numIndex>
+										<numIndex index="1"></numIndex>
+									</numIndex>
+								</items>
+								<foreign_table>tx_contacts_domain_model_contact</foreign_table>
+							</config>
+						</TCEforms>
+					</settings.contact>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

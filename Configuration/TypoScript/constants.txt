@@ -1,0 +1,14 @@
+plugin.tx_contacts {
+  view {
+    # cat=module.tx_contacts/file; type=string; label=Path to template root (BE)
+    templateRootPath = EXT:contacts/Resources/Private/Templates/
+    # cat=module.tx_contacts/file; type=string; label=Path to template partials (BE)
+    partialRootPath = EXT:contacts/Resources/Private/Partials/
+    # cat=module.tx_contacts/file; type=string; label=Path to template layouts (BE)
+    layoutRootPath = EXT:contacts/Resources/Private/Layouts/
+  }
+  persistence {
+    # cat=module.tx_contacts//a; type=string; label=Default storage PID
+    storagePid =
+  }
+}

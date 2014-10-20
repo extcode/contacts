@@ -1,0 +1,17 @@
+plugin.tx_contacts {
+  view {
+    templateRootPath = {$plugin.tx_contacts.view.templateRootPath}
+    partialRootPath = {$plugin.tx_contacts.view.partialRootPath}
+    layoutRootPath = {$plugin.tx_contacts.view.layoutRootPath}
+  }
+  persistence {
+    storagePid = {$plugin.tx_contacts.persistence.storagePid}
+  }
+
+  settings {
+    gmaps.width = 500px
+    gmaps.heigth = 500px
+    gmaps.scrollwheel = true
+    gmaps.draggable = true
+  }
+}

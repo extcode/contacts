@@ -3,6 +3,12 @@
     <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-07-11T08:15:06Z" product-name="contacts">
         <header/>
         <body>
+            <trans-unit id="plugin.contacts">
+                    <target>Kontakte</target>
+            </trans-unit>
+            <trans-unit id="plugin.addresses">
+                    <target>Addressen</target>
+            </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_contact">
                     <target>Contact</target>
@@ -44,6 +50,9 @@
 
             <trans-unit id="tx_contacts_domain_model_address">
                     <target>Adresse</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.title">
+                    <target>Titel</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.type">
                     <target>Typ</target>

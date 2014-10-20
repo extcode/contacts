@@ -6,11 +6,11 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_contacts_domain_model_address'] = array(
 	'ctrl' => $TCA['tx_contacts_domain_model_address']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, street, street_number, zip, city, region, country, post_box, lon, lat',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, type, street, street_number, zip, city, region, country, post_box, lon, lat',
 	),
 	'types' => array(
 		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1,
-		type,
+		title, type,
 		street, street_number, zip, city, region, country, post_box,
 		--palette--;LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.lon_lat;lon_lat,
 		--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
@@ -98,6 +98,15 @@ $TCA['tx_contacts_domain_model_address'] = array(
 				),
 			),
 		),
+		'title' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.title',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
 		'type' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xml:tx_contacts_domain_model_address.type',
@@ -161,9 +170,22 @@ $TCA['tx_contacts_domain_model_address'] = array(
 				'eval' => 'trim'
 			),
 		),
-		'country' => array(
-			'exclude' => 0,
+		'country' => Array(
+			'exclude' => 1,
 			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.country',
+			'config' => Array(
+				'type' => 'select',
+				'foreign_table' => 'tx_contacts_domain_model_country',
+				'maxitems' => 1,
+				'appearance' => Array(
+					'collapseAll' => 1,
+					'expandSingle' => 1,
+				),
+			),
+		),
+		'lat' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.lat',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,
@@ -173,15 +195,6 @@ $TCA['tx_contacts_domain_model_address'] = array(
 		'lon' => array(
 			'exclude' => 0,
 			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.lon',
-			'config' => array(
-				'type' => 'input',
-				'size' => 30,
-				'eval' => 'trim'
-			),
-		),
-		'lat' => array(
-			'exclude' => 0,
-			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.lat',
 			'config' => array(
 				'type' => 'input',
 				'size' => 30,

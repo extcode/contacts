@@ -23,7 +23,7 @@
                     <target>Adressen</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.phone_numbers">
-                    <source>Telefonnummern</source>
+                    <target>Telefonnummern</target>
             </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_company">
@@ -36,11 +36,14 @@
                     <target>Addresses</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.phone_numbers">
-                    <source>Telefonnummern</source>
+                    <target>Telefonnummern</target>
             </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_address">
                     <target>Adresse</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.title">
+                    <target>Titel</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.street">
                     <target>Straße</target>

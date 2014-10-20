@@ -3,6 +3,12 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-07-11T08:15:06Z" product-name="contacts">
 		<header/>
 		<body>
+            <trans-unit id="tx_contacts.plugin.contacts">
+                    <source>Contacts</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.address">
+                    <source>Address</source>
+            </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_contact">
                     <source>Contact</source>
@@ -44,6 +50,9 @@
 
             <trans-unit id="tx_contacts_domain_model_address">
                     <source>Address</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.title">
+                    <source>Title</source>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.type">
                     <source>Type</source>
@@ -144,6 +153,25 @@
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_phone.number">
                     <source>Phone Number</source>
+            </trans-unit>
+
+            <trans-unit id="tx_contacts_domain_model_country">
+                    <source>Country</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_country.iso2">
+                    <source>ISO2 Country Code</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_country.iso3">
+                    <source>ISO3 Country Code</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_country.name">
+                    <source>Name</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_country.tld">
+                    <source>Top Level Domain</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_country.phone_country_code">
+                    <source>Phone Country Code</source>
             </trans-unit>
         </body>
     </file>

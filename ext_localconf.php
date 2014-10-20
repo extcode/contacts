@@ -18,3 +18,13 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 
 	)
 );
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Extcode.' . $_EXTKEY,
+	'Address',
+	array(
+		'Address' => 'show',
+	),
+	array(
+	)
+);

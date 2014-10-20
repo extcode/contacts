@@ -42,4 +42,28 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 */
 	protected $addressRepository;
 
+	/**
+	 * action show
+	 *
+	 * @return void
+	 */
+	public function showAction() {
+		if ( $this->settings['type'] == 'gmaps' ) {
+			$this->view->setTemplatePathAndFilename('typo3conf/ext/' .
+				$this->request->getControllerExtensionKey() .
+				'/Resources/Private/Templates/Address/ShowAsGmaps.html'
+			);
+		} elseif ( $this->settings['type'] == 'osm' ) {
+			$this->view->setTemplatePathAndFilename('typo3conf/ext/' .
+				$this->request->getControllerExtensionKey() .
+				'/Resources/Private/Templates/Address/ShowAsGmaps.html'
+			);
+		}
+
+
+		$address = $this->addressRepository->findByUid( $this->settings['address'] );
+
+		$this->view->assign('address', $address);
+	}
+
 }

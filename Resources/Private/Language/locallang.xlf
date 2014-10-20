@@ -42,6 +42,9 @@
             <trans-unit id="tx_contacts_domain_model_address">
                     <source>Address</source>
             </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.title">
+                    <source>Title</source>
+            </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.type">
                     <source>Type</source>
             </trans-unit>

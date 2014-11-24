@@ -13,6 +13,8 @@ CREATE TABLE tx_contacts_domain_model_contact (
   last_name varchar(255) DEFAULT '' NOT NULL,
   birthday int(11) DEFAULT '0' NOT NULL,
 
+  companies int(11) unsigned DEFAULT '0' NOT NULL,
+
   addresses int(11) unsigned DEFAULT '0' NOT NULL,
   phone_numbers int(11) unsigned DEFAULT '0' NOT NULL,
 
@@ -55,6 +57,10 @@ CREATE TABLE tx_contacts_domain_model_company (
   pid int(11) DEFAULT '0' NOT NULL,
 
   name varchar(255) DEFAULT '' NOT NULL,
+
+  companies int(11) unsigned DEFAULT '0' NOT NULL,
+
+  contacts int(11) unsigned DEFAULT '0' NOT NULL,
 
   addresses int(11) unsigned DEFAULT '0' NOT NULL,
   phone_numbers int(11) unsigned DEFAULT '0' NOT NULL,
@@ -232,4 +238,26 @@ CREATE TABLE tx_contacts_domain_model_country (
   KEY t3ver_oid (t3ver_oid,t3ver_wsid),
   KEY language (l10n_parent,sys_language_uid)
 
+);
+
+CREATE TABLE tx_contacts_domain_model_company_company_mm (
+  uid_local int(11) DEFAULT '0' NOT NULL,
+  uid_foreign int(11) DEFAULT '0' NOT NULL,
+  sorting int(11) DEFAULT '0' NOT NULL,
+  sorting_foreign int(11) DEFAULT '0' NOT NULL,
+
+  KEY uid_local (uid_local),
+  KEY uid_foreign (uid_foreign)
+);
+
+CREATE TABLE tx_contacts_domain_model_contact_company_mm (
+  uid_local int(11) DEFAULT '0' NOT NULL,
+  uid_foreign int(11) DEFAULT '0' NOT NULL,
+  sorting int(11) DEFAULT '0' NOT NULL,
+  sorting_foreign int(11) DEFAULT '0' NOT NULL,
+
+  contact int(11) unsigned DEFAULT '0' NOT NULL,
+
+  KEY uid_local (uid_local),
+  KEY uid_foreign (uid_foreign)
 );

@@ -28,6 +28,9 @@
             <trans-unit id="tx_contacts_domain_model_contact.birthday">
                     <source>Birthday</source>
             </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.companies">
+                    <source>Companies</source>
+            </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.addresses">
                     <source>Addresses</source>
             </trans-unit>
@@ -40,6 +43,12 @@
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.name">
                     <source>Company Name</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.companies">
+                    <source>Headquaters</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.contacts">
+                    <source>Contacts</source>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.addresses">
                     <source>Addresses</source>

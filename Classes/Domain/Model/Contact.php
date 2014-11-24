@@ -46,6 +46,13 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $birthday = 0;
 
 	/**
+	 * companies
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Comnpany>
+	 */
+	protected $companies;
+
+	/**
 	 * addresses
 	 *
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Address>
@@ -80,6 +87,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @return void
 	 */
 	protected function initStorageObjects() {
+		$this->companies = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->addresses = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->phoneNumbers = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
@@ -169,6 +177,45 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function getBirthday() {
 		return $this->birthday;
+	}
+
+	/**
+	 * Adds a Company
+	 *
+	 * @param \Extcode\Contacts\Domain\Model\Company $company
+	 * @return void
+	 */
+	public function addCompany(\Extcode\Contacts\Domain\Model\Company $company) {
+		$this->companies->attach($company);
+	}
+
+	/**
+	 * Removes a Company
+	 *
+	 * @param \Extcode\Contacts\Domain\Model\Company $companyToRemove The Company to be removed
+	 * @return void
+	 */
+	public function removeCompany(\Extcode\Contacts\Domain\Model\Company $companyToRemove) {
+		$this->companies->detach($companyToRemove);
+	}
+
+	/**
+	 * Returns the companies
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Company> $companies
+	 */
+	public function getCompanies() {
+		return $this->companies;
+	}
+
+	/**
+	 * Sets the companies
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Company> $companies
+	 * @return void
+	 */
+	public function setCompanies(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $companies) {
+		$this->companies = $companies;
 	}
 
 	/**

@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_contacts_domain_model_company'] = array(
 	'ctrl' => $TCA['tx_contacts_domain_model_company']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, addresses, phone_numbers',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, companies, contacts, addresses, phone_numbers',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, addresses, phone_numbers,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, companies, contacts, addresses, phone_numbers,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -100,6 +100,66 @@ $TCA['tx_contacts_domain_model_company'] = array(
 				'type' => 'input',
 				'size' => 30,
 				'eval' => 'trim,required'
+			),
+		),
+		'contacts' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company.contacts',
+			'config' => array(
+				'type' => 'group',
+				'internal_type' => 'db',
+				'foreign_table' => 'tx_contacts_domain_model_contact',
+				'allowed' => 'tx_contacts_domain_model_contact',
+				'MM' => 'tx_contacts_domain_model_contact_company_mm',
+				'maxitems' => 9999,
+				'wizards' => array(
+					'suggest' => array(
+						'type' => 'suggest',
+					),
+					'add' => array(
+						'type' => 'script',
+						'title' => 'LLL:EXT:cms/locallang_tca.xlf:sys_template.basedOn_add',
+						'icon' => 'add.gif',
+						'params' => array(
+							'table' => 'tx_contacts_domain_model_contact',
+							'pid' => '###CURRENT_PID###',
+							'setValue' => 'prepend'
+						),
+						'module' => array(
+							'name' => 'wizard_add'
+						)
+					)
+				),
+			),
+		),
+		'companies' => array(
+			'exclude' => 0,
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company.companies',
+			'config' => array(
+				'type' => 'group',
+				'internal_type' => 'db',
+				'foreign_table' => 'tx_contacts_domain_model_company',
+				'allowed' => 'tx_contacts_domain_model_company',
+				'MM' => 'tx_contacts_domain_model_company_company_mm',
+				'maxitems' => 9999,
+				'wizards' => array(
+					'suggest' => array(
+						'type' => 'suggest',
+					),
+				),
+				'add' => array(
+					'type' => 'script',
+					'title' => 'LLL:EXT:cms/locallang_tca.xlf:sys_template.basedOn_add',
+					'icon' => 'add.gif',
+					'params' => array(
+						'table' => 'tx_contacts_domain_model_company',
+						'pid' => '###CURRENT_PID###',
+						'setValue' => 'prepend'
+					),
+					'module' => array(
+						'name' => 'wizard_add'
+					)
+				)
 			),
 		),
 		'addresses' => array(

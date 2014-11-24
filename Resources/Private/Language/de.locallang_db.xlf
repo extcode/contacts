@@ -14,38 +14,47 @@
                     <target>Contact</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.salutation">
-                    <target>Salutation</target>
+                    <target>Anrede</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.title">
-                    <target>Title</target>
+                    <target>Titel</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.first_name">
-                    <target>First Name</target>
+                    <target>Vorname</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.last_name">
-                    <target>Last Name</target>
+                    <target>Nachname</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.birthday">
-                    <target>Birthday</target>
+                    <target>Geburtsdatum</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.companies">
+                    <target>Firmen</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.addresses">
-                    <target>Addresses</target>
+                    <target>Adressen</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.phone_numbers">
-                    <target>Phone Numbers</target>
+                    <target>Telefonnummern</target>
             </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_company">
                     <target>Company</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.name">
-                    <target>Company Name</target>
+                    <target>Name</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.companies">
+                    <target>Standorte</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.contacts">
+                    <target>Kontakte</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.addresses">
-                    <target>Addresses</target>
+                    <target>Adressen</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.phone_numbers">
-                    <target>Phone Numbers</target>
+                    <target>Telefonnummern</target>
             </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_address">

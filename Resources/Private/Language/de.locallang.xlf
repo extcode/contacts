@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-07-11T08:15:06Z" product-name="contacts">
-		<header/>
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-07-11T08:15:06Z" product-name="contacts">
+        <header/>
         <body>
 
             <trans-unit id="tx_contacts_domain_model_contact">
@@ -19,6 +19,9 @@
             <trans-unit id="tx_contacts_domain_model_contact.last_name">
                     <target>Nachname</target>
             </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.companies">
+                    <target>Firmen</target>
+            </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.addresses">
                     <target>Adressen</target>
             </trans-unit>
@@ -31,6 +34,9 @@
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.name">
                     <target>Firmenname</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.contacts">
+                    <target>Kontakte</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.addresses">
                     <target>Addresses</target>
@@ -120,5 +126,5 @@
             </trans-unit>
 
         </body>
-	</file>
+    </file>
 </xliff>

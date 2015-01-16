@@ -13,6 +13,10 @@ CREATE TABLE tx_contacts_domain_model_contact (
   last_name varchar(255) DEFAULT '' NOT NULL,
   birthday int(11) DEFAULT '0' NOT NULL,
 
+  email varchar(255) DEFAULT '' NOT NULL,
+  uri varchar(255) DEFAULT '' NOT NULL,
+  photo int(11) unsigned NOT NULL default '0',
+
   companies int(11) unsigned DEFAULT '0' NOT NULL,
 
   addresses int(11) unsigned DEFAULT '0' NOT NULL,
@@ -57,6 +61,10 @@ CREATE TABLE tx_contacts_domain_model_company (
   pid int(11) DEFAULT '0' NOT NULL,
 
   name varchar(255) DEFAULT '' NOT NULL,
+
+  email varchar(255) DEFAULT '' NOT NULL,
+  uri varchar(255) DEFAULT '' NOT NULL,
+  logo int(11) unsigned NOT NULL default '0',
 
   companies int(11) unsigned DEFAULT '0' NOT NULL,
 

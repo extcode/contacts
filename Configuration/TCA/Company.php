@@ -6,10 +6,10 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_contacts_domain_model_company'] = array(
 	'ctrl' => $TCA['tx_contacts_domain_model_company']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, companies, contacts, addresses, phone_numbers',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, logo, name, email, uri, companies, contacts, addresses, phone_numbers',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, name, companies, contacts, addresses, phone_numbers,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, logo, name, email, uri, companies, contacts, addresses, phone_numbers,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -103,7 +103,7 @@ $TCA['tx_contacts_domain_model_company'] = array(
 			),
 		),
 		'contacts' => array(
-			'exclude' => 0,
+			'exclude' => 1,
 			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company.contacts',
 			'config' => array(
 				'type' => 'group',
@@ -133,7 +133,7 @@ $TCA['tx_contacts_domain_model_company'] = array(
 			),
 		),
 		'companies' => array(
-			'exclude' => 0,
+			'exclude' => 1,
 			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company.companies',
 			'config' => array(
 				'type' => 'group',
@@ -163,7 +163,7 @@ $TCA['tx_contacts_domain_model_company'] = array(
 			),
 		),
 		'addresses' => array(
-			'exclude' => 0,
+			'exclude' => 1,
 			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company.addresses',
 			'config' => array(
 				'type' => 'inline',
@@ -180,7 +180,7 @@ $TCA['tx_contacts_domain_model_company'] = array(
 			),
 		),
 		'phone_numbers' => array(
-			'exclude' => 0,
+			'exclude' => 1,
 			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company.phone_numbers',
 			'config' => array(
 				'type' => 'inline',
@@ -195,6 +195,33 @@ $TCA['tx_contacts_domain_model_company'] = array(
 					'showAllLocalizationLink' => 1
 				),
 			),
+		),
+		'email' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company.email',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'uri' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company.uri',
+			'config' => array(
+				'type' => 'input',
+				'size' => 30,
+				'eval' => 'trim'
+			),
+		),
+		'logo' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company.logo',
+			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
+					'Logo',
+					array('maxitems' => 1),
+					$GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
+				),
 		),
 	),
 );

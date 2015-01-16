@@ -38,6 +38,27 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $phoneNumbers;
 
 	/**
+	 * email
+	 *
+	 * @var string
+	 */
+	protected $email;
+
+	/**
+	 * uri
+	 *
+	 * @var string
+	 */
+	protected $uri;
+
+	/**
+	 * logo
+	 *
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+	 */
+	protected $logo = NULL;
+
+	/**
 	 * @param $name
 	 */
 	public function __construct($name) {
@@ -194,5 +215,52 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setPhoneNumbers(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $phoneNumbers) {
 		$this->phoneNumbers = $phoneNumbers;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getEmail() {
+		return $this->email;
+	}
+
+	/**
+	 * @param string $email
+	 */
+	public function setEmail($email) {
+		$this->email = $email;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getUri() {
+		return $this->uri;
+	}
+
+	/**
+	 * @param string $uri
+	 */
+	public function setUri($uri) {
+		$this->uri = $uri;
+	}
+
+	/**
+	 * Returns the logo
+	 *
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+	 */
+	public function getLogo() {
+		return $this->logo;
+	}
+
+	/**
+	 * Sets the logo
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $logo
+	 * @return void
+	 */
+	public function setLogo(\TYPO3\CMS\Extbase\Domain\Model\FileReference $logo) {
+		$this->logo = $logo;
 	}
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-07-11T08:15:06Z" product-name="contacts">
-		<header/>
+    <file source-language="en" datatype="plaintext" original="messages" date="2013-07-11T08:15:06Z" product-name="contacts">
+        <header/>
         <body>
 
             <trans-unit id="tx_contacts_domain_model_contact">
@@ -147,5 +147,5 @@
             </trans-unit>
 
         </body>
-	</file>
+    </file>
 </xliff>

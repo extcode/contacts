@@ -37,6 +37,15 @@
             <trans-unit id="tx_contacts_domain_model_contact.phone_numbers">
                     <target>Telefonnummern</target>
             </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.email">
+                    <target>E-Mail</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.uri">
+                    <target>Webseite</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.photo">
+                    <target>Photo</target>
+            </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_company">
                     <target>Company</target>
@@ -55,6 +64,15 @@
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.phone_numbers">
                     <target>Telefonnummern</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.email">
+                    <target>E-Mail</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.uri">
+                    <target>Webseite</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.logo">
+                    <target>Logo</target>
             </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_address">

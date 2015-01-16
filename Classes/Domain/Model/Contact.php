@@ -48,7 +48,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * companies
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Comnpany>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Company>
 	 */
 	protected $companies;
 
@@ -65,6 +65,27 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Phone>
 	 */
 	protected $phoneNumbers;
+
+	/**
+	 * email
+	 *
+	 * @var string
+	 */
+	protected $email;
+
+	/**
+	 * uri
+	 *
+	 * @var string
+	 */
+	protected $uri;
+
+	/**
+	 * photo
+	 *
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+	 */
+	protected $photo = NULL;
 
 	/**
 	 * @param $salutation
@@ -294,6 +315,53 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setPhoneNumbers(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $phoneNumbers) {
 		$this->phoneNumbers = $phoneNumbers;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getEmail() {
+		return $this->email;
+	}
+
+	/**
+	 * @param string $email
+	 */
+	public function setEmail($email) {
+		$this->email = $email;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getUri() {
+		return $this->uri;
+	}
+
+	/**
+	 * @param string $uri
+	 */
+	public function setUri($uri) {
+		$this->uri = $uri;
+	}
+
+	/**
+	 * Returns the photo
+	 *
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+	 */
+	public function getPhoto() {
+		return $this->photo;
+	}
+
+	/**
+	 * Sets the photo
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $photo
+	 * @return void
+	 */
+	public function setPhoto(\TYPO3\CMS\Extbase\Domain\Model\FileReference $photo) {
+		$this->photo = $photo;
 	}
 
 }

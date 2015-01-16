@@ -162,7 +162,7 @@ $TCA['tx_contacts_domain_model_address'] = array(
 			),
 		),
 		'region' => array(
-			'exclude' => 0,
+			'exclude' => 1,
 			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.region',
 			'config' => array(
 				'type' => 'input',
@@ -184,7 +184,7 @@ $TCA['tx_contacts_domain_model_address'] = array(
 			),
 		),
 		'lat' => array(
-			'exclude' => 0,
+			'exclude' => 1,
 			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.lat',
 			'config' => array(
 				'type' => 'input',
@@ -193,7 +193,7 @@ $TCA['tx_contacts_domain_model_address'] = array(
 			),
 		),
 		'lon' => array(
-			'exclude' => 0,
+			'exclude' => 1,
 			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.lon',
 			'config' => array(
 				'type' => 'input',
@@ -202,7 +202,7 @@ $TCA['tx_contacts_domain_model_address'] = array(
 			),
 		),
 		'post_box' => array(
-			'exclude' => 0,
+			'exclude' => 1,
 			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.post_box',
 			'config' => array(
 				'type' => 'input',

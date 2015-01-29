@@ -1,186 +1,191 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-07-11T08:15:06Z" product-name="contacts">
-        <header/>
-        <body>
-            <trans-unit id="plugin.contacts">
-                    <target>Kontakte</target>
-            </trans-unit>
-            <trans-unit id="plugin.addresses">
-                    <target>Addressen</target>
-            </trans-unit>
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-07-11T08:15:06Z" product-name="contacts">
+		<header/>
+		<body>
 
-            <trans-unit id="tx_contacts_domain_model_contact">
-                    <target>Contact</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_contact.salutation">
-                    <target>Anrede</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_contact.title">
-                    <target>Titel</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_contact.first_name">
-                    <target>Vorname</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_contact.last_name">
-                    <target>Nachname</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_contact.birthday">
-                    <target>Geburtsdatum</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_contact.companies">
-                    <target>Firmen</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_contact.addresses">
-                    <target>Adressen</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_contact.phone_numbers">
-                    <target>Telefonnummern</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_contact.email">
-                    <target>E-Mail</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_contact.uri">
-                    <target>Webseite</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_contact.photo">
-                    <target>Photo</target>
-            </trans-unit>
+			<trans-unit id="tx_contacts.module.contacts">
+				<target>Kontakte</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts.plugin.contacts">
+				<target>Kontakte</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts.plugin.addresses">
+				<target>Addressen</target>
+			</trans-unit>
 
-            <trans-unit id="tx_contacts_domain_model_company">
-                    <target>Company</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_company.name">
-                    <target>Name</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_company.companies">
-                    <target>Standorte</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_company.contacts">
-                    <target>Kontakte</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_company.addresses">
-                    <target>Adressen</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_company.phone_numbers">
-                    <target>Telefonnummern</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_company.email">
-                    <target>E-Mail</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_company.uri">
-                    <target>Webseite</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_company.logo">
-                    <target>Logo</target>
-            </trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact">
+				<target>Contact</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.salutation">
+				<target>Anrede</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.title">
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.first_name">
+				<target>Vorname</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.last_name">
+				<target>Nachname</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.birthday">
+				<target>Geburtsdatum</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.companies">
+				<target>Firmen</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.addresses">
+				<target>Adressen</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.phone_numbers">
+				<target>Telefonnummern</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.email">
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.uri">
+				<target>Webseite</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.photo">
+				<target>Photo</target>
+			</trans-unit>
 
-            <trans-unit id="tx_contacts_domain_model_address">
-                    <target>Adresse</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.title">
-                    <target>Titel</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.type">
-                    <target>Typ</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.type.DOM">
-                    <target>DOM</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.type.INTL">
-                    <target>INTL</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.type.POSTAL">
-                    <target>POSTAL</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.type.PARCEL">
-                    <target>PARCEL</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.type.HOME">
-                    <target>HOME</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.type.WORK">
-                    <target>WORK</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.street">
-                    <target>Straße</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.street_number">
-                    <target>Hausummer</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.zip">
-                    <target>Postleitzahl</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.city">
-                    <target>Ort</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.region">
-                    <target>Region</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.country">
-                    <target>Land</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.post_box">
-                    <target>Post Box</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.lon_lat">
-                    <target>geographischen Koordinaten</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.lon">
-                    <target>geographische Länge</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_address.lat">
-                    <target>geographische Breite</target>
-            </trans-unit>
+			<trans-unit id="tx_contacts_domain_model_company">
+				<target>Company</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_company.name">
+				<target>Name</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_company.companies">
+				<target>Standorte</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_company.contacts">
+				<target>Kontakte</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_company.addresses">
+				<target>Adressen</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_company.phone_numbers">
+				<target>Telefonnummern</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_company.email">
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_company.uri">
+				<target>Webseite</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_company.logo">
+				<target>Logo</target>
+			</trans-unit>
 
-            <trans-unit id="tx_contacts_domain_model_phone">
-                    <target>Phone</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.type">
-                    <target>Type</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.type.PREF">
-                    <target>PREF</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.type.WORK">
-                    <target>WORK</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.type.HOME">
-                    <target>HOME</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.type.VOICE">
-                    <target>VOICE</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.type.FAX">
-                    <target>FAX</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.type.MSG">
-                    <target>MSG</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.type.CELL">
-                    <target>CELL</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.type.PAGER">
-                    <target>PAGER</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.type.BBS">
-                    <target>BBS</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.type.MODEM">
-                    <target>MODEM</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.type.CAR">
-                    <target>CAR</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.type.ISDN">
-                    <target>ISDN</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.type.VIDEO">
-                    <target>VIDEO</target>
-            </trans-unit>
-            <trans-unit id="tx_contacts_domain_model_phone.number">
-                    <target>Phone Number</target>
-            </trans-unit>
-        </body>
-    </file>
+			<trans-unit id="tx_contacts_domain_model_address">
+				<target>Adresse</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.title">
+				<target>Titel</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.type">
+				<target>Typ</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.type.DOM">
+				<target>DOM</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.type.INTL">
+				<target>INTL</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.type.POSTAL">
+				<target>POSTAL</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.type.PARCEL">
+				<target>PARCEL</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.type.HOME">
+				<target>HOME</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.type.WORK">
+				<target>WORK</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.street">
+				<target>Straße</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.street_number">
+				<target>Hausummer</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.zip">
+				<target>Postleitzahl</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.city">
+				<target>Ort</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.region">
+				<target>Region</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.country">
+				<target>Land</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.post_box">
+				<target>Post Box</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.lon_lat">
+				<target>geographischen Koordinaten</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.lon">
+				<target>geographische Länge</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.lat">
+				<target>geographische Breite</target>
+			</trans-unit>
+
+			<trans-unit id="tx_contacts_domain_model_phone">
+				<target>Phone</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.type">
+				<target>Type</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.type.PREF">
+				<target>PREF</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.type.WORK">
+				<target>WORK</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.type.HOME">
+				<target>HOME</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.type.VOICE">
+				<target>VOICE</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.type.FAX">
+				<target>FAX</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.type.MSG">
+				<target>MSG</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.type.CELL">
+				<target>CELL</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.type.PAGER">
+				<target>PAGER</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.type.BBS">
+				<target>BBS</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.type.MODEM">
+				<target>MODEM</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.type.CAR">
+				<target>CAR</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.type.ISDN">
+				<target>ISDN</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.type.VIDEO">
+				<target>VIDEO</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_phone.number">
+				<target>Phone Number</target>
+			</trans-unit>
+
+		</body>
+	</file>
 </xliff>

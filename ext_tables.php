@@ -15,9 +15,27 @@ if (!defined('TYPO3_MODE')) {
 	'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts.plugin.address'
 );
 
-t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'contacts');
+if (TYPO3_MODE === 'BE') {
+	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+		'Extcode.' . $_EXTKEY,
+		'web',
+		'contacts',
+		'',
+		array(
+			'Contact' => 'list, show, edit, update',
+			'Company' => 'list, show, edit, update',
+		),
+		array(
+			'access' => 'admin',
+			'icon'   => 'EXT:' . $_EXTKEY . '/ext_icon.gif',
+			'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf:tx_contacts.module.contacts',
+		)
+	);
+}
 
-t3lib_extMgm::addLLrefForTCAdescr('tx_contacts_domain_model_address', 'EXT:contacts/Resources/Private/Language/locallang_csh_tx_contacts_domain_model_address.xlf');t3lib_extMgm::allowTableOnStandardPages('tx_contacts_domain_model_address');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'contacts');
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_contacts_domain_model_address', 'EXT:contacts/Resources/Private/Language/locallang_csh_tx_contacts_domain_model_address.xlf');\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_contacts_domain_model_address');
 $TCA['tx_contacts_domain_model_address'] = array(
 	'ctrl' => array(
 		'title' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address',
@@ -42,12 +60,12 @@ $TCA['tx_contacts_domain_model_address'] = array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'street,zip,city',
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Address.php',
-		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_contacts_domain_model_address.png'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Address.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_contacts_domain_model_address.png'
 	),
 );
 
-t3lib_extMgm::addLLrefForTCAdescr('tx_contacts_domain_model_contact', 'EXT:contacts/Resources/Private/Language/locallang_csh_tx_contacts_domain_model_contact.xlf');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_contacts_domain_model_contact', 'EXT:contacts/Resources/Private/Language/locallang_csh_tx_contacts_domain_model_contact.xlf');
 $TCA['tx_contacts_domain_model_contact'] = array(
 	'ctrl' => array(
 		'title' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_contact',
@@ -72,12 +90,12 @@ $TCA['tx_contacts_domain_model_contact'] = array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'first_name,last_name,addresses,',
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Contact.php',
-		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_contacts_domain_model_contact.png'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Contact.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_contacts_domain_model_contact.png'
 	),
 );
 
-t3lib_extMgm::addLLrefForTCAdescr('tx_contacts_domain_model_company', 'EXT:contacts/Resources/Private/Language/locallang_csh_tx_contacts_domain_model_company.xlf');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_contacts_domain_model_company', 'EXT:contacts/Resources/Private/Language/locallang_csh_tx_contacts_domain_model_company.xlf');
 $TCA['tx_contacts_domain_model_company'] = array(
 	'ctrl' => array(
 		'title' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company',
@@ -100,12 +118,12 @@ $TCA['tx_contacts_domain_model_company'] = array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'street,zip,city',
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Company.php',
-		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_contacts_domain_model_company.png'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Company.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_contacts_domain_model_company.png'
 	),
 );
 
-t3lib_extMgm::addLLrefForTCAdescr('tx_contacts_domain_model_phone', 'EXT:contacts/Resources/Private/Language/locallang_csh_tx_contacts_domain_model_phone.xlf');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_contacts_domain_model_phone', 'EXT:contacts/Resources/Private/Language/locallang_csh_tx_contacts_domain_model_phone.xlf');
 $TCA['tx_contacts_domain_model_phone'] = array(
 	'ctrl' => array(
 		'title' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_phone',
@@ -128,12 +146,12 @@ $TCA['tx_contacts_domain_model_phone'] = array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'street,zip,city',
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Phone.php',
-		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_contacts_domain_model_phone.png'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Phone.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_contacts_domain_model_phone.png'
 	),
 );
 
-t3lib_extMgm::addLLrefForTCAdescr('tx_contacts_domain_model_country', 'EXT:contacts/Resources/Private/Language/locallang_csh_tx_contacts_domain_model_country.xlf');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_contacts_domain_model_country', 'EXT:contacts/Resources/Private/Language/locallang_csh_tx_contacts_domain_model_country.xlf');
 $TCA['tx_contacts_domain_model_country'] = array(
 	'ctrl' => array(
 		'title' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_country',
@@ -158,8 +176,8 @@ $TCA['tx_contacts_domain_model_country'] = array(
 			'endtime' => 'endtime',
 		),
 		'searchFields' => 'iso,name',
-		'dynamicConfigFile' => t3lib_extMgm::extPath($_EXTKEY) . 'Configuration/TCA/Country.php',
-		'iconfile' => t3lib_extMgm::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_contacts_domain_model_country.png'
+		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Country.php',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_contacts_domain_model_country.png'
 	),
 );
 

@@ -187,6 +187,13 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getFullName() {
+		return join(' ', array( $this->getFirstName(), $this->getLastName() ));
+	}
+
+	/**
 	 * @param int $birthday
 	 */
 	public function setBirthday($birthday) {

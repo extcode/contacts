@@ -1,0 +1,38 @@
+<f:layout name="Default" />
+
+<f:section name="content">
+	<h1><f:translate key="tx_contacts.module.contactController.listAction.header" /></h1>
+
+	<f:render partial="Contact/Filter" arguments="{piVars: piVars, action: 'list'}" />
+
+	<div class="clear"></div>
+
+	<f:if condition="{contacts}">
+		<f:then>
+			<f:widget.paginate objects="{contacts}" as="paginatedContacts" configuration="{itemsPerPage: 25}">
+				<table class="tx_contact typo3-dblist" >
+					<tr class="t3-row-header">
+						<th><f:translate key="tx_contacts_domain_model_contact.salutation" /></th>
+						<th><f:translate key="tx_contacts_domain_model_contact.title" /></th>
+						<th><f:translate key="tx_contacts_domain_model_contact.first_name" /></th>
+						<th><f:translate key="tx_contacts_domain_model_contact.last_name" /></th>
+						<th> </th>
+						<th> </th>
+					</tr>
+
+					<f:for each="{paginatedContacts}" as="contact">
+						<tr>
+							<td><f:link.action action="show" arguments="{contact : contact}"> {contact.salutation}</f:link.action></td>
+							<td><f:link.action action="show" arguments="{contact : contact}"> {contact.title}</f:link.action></td>
+							<td><f:link.action action="show" arguments="{contact : contact}"> {contact.firstName}</f:link.action></td>
+							<td><f:link.action action="show" arguments="{contact : contact}"> {contact.lastName}</f:link.action></td>
+						</tr>
+					</f:for>
+				</table>
+			</f:widget.paginate>
+		</f:then>
+		<f:else>
+			Select a Page where Contacts Dataset are saved.
+		</f:else>
+	</f:if>
+</f:section>

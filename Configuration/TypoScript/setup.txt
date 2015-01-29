@@ -1,3 +1,14 @@
+module.tx_contacts {
+  view {
+    templateRootPath = {$module.tx_contacts.view.templateRootPath}
+    partialRootPath = {$module.tx_contacts.view.partialRootPath}
+    layoutRootPath = {$module.tx_contacts.view.layoutRootPath}
+  }
+  persistence {
+    storagePid = {$module.tx_contacts.persistence.storagePid}
+  }
+}
+
 plugin.tx_contacts {
   view {
     templateRootPath = {$plugin.tx_contacts.view.templateRootPath}

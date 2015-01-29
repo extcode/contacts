@@ -59,6 +59,14 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $logo = NULL;
 
 	/**
+	 * TT Content
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
+	 * @lazy
+	 */
+	protected $ttContent;
+
+	/**
 	 * @param $name
 	 */
 	public function __construct($name) {
@@ -249,5 +257,24 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setLogo(\TYPO3\CMS\Extbase\Domain\Model\FileReference $logo) {
 		$this->logo = $logo;
+	}
+
+	/**
+	 * Returns the TT Content
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 */
+	public function getTtContent() {
+		return $this->ttContent;
+	}
+
+	/**
+	 * Sets the TT Content
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $ttContent
+	 * @return void
+	 */
+	public function setTtContent($ttContent) {
+		$this->ttContent = $ttContent;
 	}
 }

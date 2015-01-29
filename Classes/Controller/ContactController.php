@@ -95,4 +95,14 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		$this->view->assign('contact', $contact);
 	}
 
+	/**
+	 * action teaser
+	 *
+	 * @return void
+	 */
+	public function teaserAction() {
+		$contacts = $this->contactRepository->findByUids( $this->settings['contactUids'] );
+		$this->view->assign('contacts', $contacts);
+	}
+
 }

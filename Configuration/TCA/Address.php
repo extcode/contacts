@@ -6,12 +6,13 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_contacts_domain_model_address'] = array(
 	'ctrl' => $TCA['tx_contacts_domain_model_address']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, type, street, street_number, zip, city, region, country, post_box, lon, lat',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, type, street, street_number, zip, city, region, country, post_box, lon, lat, tt_content',
 	),
 	'types' => array(
 		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1,
 		title, type,
 		street, street_number, zip, city, region, country, post_box,
+		tt_content,
 		--palette--;LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.lon_lat;lon_lat,
 		--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
@@ -220,5 +221,42 @@ $TCA['tx_contacts_domain_model_address'] = array(
 				'type' => 'passthrough',
 			),
 		),
+		'tt_content' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.tt_content',
+			'config' => array(
+				'type' => 'inline',
+				'foreign_table' => 'tt_content',
+				'foreign_field' => 'tx_contacts_domain_model_address',
+				'foreign_sortby' => 'sorting',
+				'minitems' => 0,
+				'maxitems' => 99,
+				'appearance' => array(
+					'levelLinksPosition' => 'top',
+					'showPossibleLocalizationRecords' => TRUE,
+					'showRemovedLocalizationRecords' => TRUE,
+					'showAllLocalizationLink' => TRUE,
+					'showSynchronizationLink' => TRUE,
+					'enabledControls' => array(
+						'info' => TRUE,
+						'new' => FALSE,
+						'dragdrop' => FALSE,
+						'sort' => FALSE,
+						'hide' => TRUE,
+						'delete' => TRUE,
+						'localize' => TRUE,
+					)
+				),
+				'inline' => array(
+					'inlineNewButtonStyle' => 'display: inline-block;',
+				),
+				'behaviour' => array(
+					'localizationMode' => 'select',
+					'localizeChildrenAtParentLocalization' => TRUE,
+				),
+			)
+		),
 	),
 );
+
+$GLOBALS['TCA']['tt_content']['columns']['tx_contacts_domain_model_address']['config']['type'] = 'passthrough';

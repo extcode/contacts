@@ -1,7 +1,17 @@
+{namespace contacts=Extcode\Contacts\ViewHelpers}
+
 <f:layout name="Default" />
 
 <f:section name="main">
     <f:flashMessages />
+
+	<f:if condition="{contact.photo}">
+		<div class="right">
+			<f:image src="{contact.photo.originalResource.originalFile.uid}" title="{contact.photo.originalResource.title}" alt="{contact.photo.originalResource.title}" maxWidth="150" maxHeight="150" />
+		</div>
+		<div class="clear"><!-- &nbsp; --></div>
+	</f:if>
+
     <f:render partial="Contact/Properties" arguments="{contact:contact}" />
 
     <f:for each="{contact.addresses}" as="address" key="key">
@@ -11,6 +21,14 @@
     <f:for each="{contact.phoneNumbers}" as="phone_number" key="key">
         <f:render partial="Phone/Properties" arguments="{phone:phone_number}" />
     </f:for>
+
+	<f:if condition="{contact.ttContent}">
+		<f:for each="{contact.ttContent}" as="content" iteration="contentIterator" >
+			<div id="content-{contentIterator.cycle}"  class="content-element">
+				<f:cObject typoscriptObjectPath="tt_content.{content.contentType}.20" data="<contacts:mapModelPropertiesToTableColumns class='Extcode\\Contacts\\Domain\\Model\\TtContent' table='tt_content' data='{content}' />" />
+			</div>
+		</f:for>
+	</f:if>
 
     <f:link.action action="list">Back to list</f:link.action><br />
 </f:section>

@@ -88,6 +88,14 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $photo = NULL;
 
 	/**
+	 * TT Content
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
+	 * @lazy
+	 */
+	protected $ttContent;
+
+	/**
 	 * @param $salutation
 	 * @param $title
 	 * @param $firstName
@@ -187,10 +195,25 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
+	 * @param string $seperator
 	 * @return string
 	 */
-	public function getFullName() {
-		return join(' ', array( $this->getFirstName(), $this->getLastName() ));
+	public function getFullName( $seperator=' ' ) {
+		return join($seperator, array( $this->getFirstName(), $this->getLastName() ));
+	}
+
+	/**
+	 * @param string $seperator
+	 * @return string
+	 */
+	public function getTitleFullName( $seperator=' ' ) {
+		$titleFullName = array( );
+		if ($this->getTitle()) {
+			$titleFullName[] = $this->getTitle();
+		}
+		$titleFullName[] = $this->getFullName($seperator);
+
+		return join($seperator, $titleFullName);
 	}
 
 	/**
@@ -369,6 +392,25 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setPhoto(\TYPO3\CMS\Extbase\Domain\Model\FileReference $photo) {
 		$this->photo = $photo;
+	}
+
+	/**
+	 * Returns the TT Content
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 */
+	public function getTtContent() {
+		return $this->ttContent;
+	}
+
+	/**
+	 * Sets the TT Content
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $ttContent
+	 * @return void
+	 */
+	public function setTtContent($ttContent) {
+		$this->ttContent = $ttContent;
 	}
 
 }

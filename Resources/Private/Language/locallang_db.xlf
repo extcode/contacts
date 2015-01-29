@@ -50,6 +50,9 @@
 			<trans-unit id="tx_contacts_domain_model_contact.photo">
 				<source>Photo</source>
 			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.tt_content">
+				<source>Additional Content</source>
+			</trans-unit>
 
 			<trans-unit id="tx_contacts_domain_model_company">
 				<source>Company</source>
@@ -77,6 +80,9 @@
 			</trans-unit>
 			<trans-unit id="tx_contacts_domain_model_company.logo">
 				<source>Logo</source>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_company.tt_content">
+				<source>Additional Content</source>
 			</trans-unit>
 
 			<trans-unit id="tx_contacts_domain_model_address">
@@ -135,6 +141,9 @@
 			</trans-unit>
 			<trans-unit id="tx_contacts_domain_model_address.lat">
 				<source>Latitude</source>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_address.tt_content">
+				<source>Additional Content</source>
 			</trans-unit>
 
 			<trans-unit id="tx_contacts_domain_model_phone">

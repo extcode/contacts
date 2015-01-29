@@ -22,6 +22,8 @@ CREATE TABLE tx_contacts_domain_model_contact (
   addresses int(11) unsigned DEFAULT '0' NOT NULL,
   phone_numbers int(11) unsigned DEFAULT '0' NOT NULL,
 
+  tt_content int(11) DEFAULT '0' NOT NULL,
+
   tstamp int(11) unsigned DEFAULT '0' NOT NULL,
   crdate int(11) unsigned DEFAULT '0' NOT NULL,
   cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
@@ -72,6 +74,8 @@ CREATE TABLE tx_contacts_domain_model_company (
 
   addresses int(11) unsigned DEFAULT '0' NOT NULL,
   phone_numbers int(11) unsigned DEFAULT '0' NOT NULL,
+
+  tt_content int(11) DEFAULT '0' NOT NULL,
 
   tstamp int(11) unsigned DEFAULT '0' NOT NULL,
   crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -128,6 +132,8 @@ CREATE TABLE tx_contacts_domain_model_address (
 
   lat double default '0',
   lon double default '0',
+
+  tt_content int(11) DEFAULT '0' NOT NULL,
 
   tstamp int(11) unsigned DEFAULT '0' NOT NULL,
   crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -268,4 +274,13 @@ CREATE TABLE tx_contacts_domain_model_contact_company_mm (
 
   KEY uid_local (uid_local),
   KEY uid_foreign (uid_foreign)
+);
+
+#
+# Extend table structure of table 'tt_content'
+#
+CREATE TABLE tt_content (
+    tx_contacts_domain_model_contact int(11) unsigned DEFAULT '0' NOT NULL,
+    tx_contacts_domain_model_company int(11) unsigned DEFAULT '0' NOT NULL,
+    tx_contacts_domain_model_address int(11) unsigned DEFAULT '0' NOT NULL,
 );

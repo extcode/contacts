@@ -8,7 +8,7 @@ if (!defined('TYPO3_MODE')) {
 	'Extcode.' . $_EXTKEY,
 	'Contacts',
 	array(
-		'Contact' => 'list, show',
+		'Contact' => 'list, show, teaser',
 
 	),
 	// non-cacheable actions

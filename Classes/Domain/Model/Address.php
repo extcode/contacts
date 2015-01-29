@@ -79,6 +79,14 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $lon = '';
 
 	/**
+	 * TT Content
+	 *
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
+	 * @lazy
+	 */
+	protected $ttContent;
+
+	/**
 	 * Lat
 	 *
 	 * @var string
@@ -263,5 +271,24 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function getContact() {
 		return $this->contact;
+	}
+
+	/**
+	 * Returns the TT Content
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 */
+	public function getTtContent() {
+		return $this->ttContent;
+	}
+
+	/**
+	 * Sets the TT Content
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $ttContent
+	 * @return void
+	 */
+	public function setTtContent($ttContent) {
+		$this->ttContent = $ttContent;
 	}
 }

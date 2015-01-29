@@ -6,10 +6,13 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_contacts_domain_model_company'] = array(
 	'ctrl' => $TCA['tx_contacts_domain_model_company']['ctrl'],
 	'interface' => array(
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, logo, name, email, uri, companies, contacts, addresses, phone_numbers',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, logo, name, email, uri, companies, contacts, addresses, phone_numbers, tt_content',
 	),
 	'types' => array(
-		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, logo, name, email, uri, companies, contacts, addresses, phone_numbers,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
+		'1' => array('showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1,
+			logo, name, email, uri, companies, contacts, addresses, phone_numbers,
+			tt_content,
+			--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'),
 	),
 	'palettes' => array(
 		'1' => array('showitem' => ''),
@@ -223,5 +226,42 @@ $TCA['tx_contacts_domain_model_company'] = array(
 					$GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
 				),
 		),
+		'tt_content' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company.tt_content',
+			'config' => array(
+				'type' => 'inline',
+				'foreign_table' => 'tt_content',
+				'foreign_field' => 'tx_contacts_domain_model_company',
+				'foreign_sortby' => 'sorting',
+				'minitems' => 0,
+				'maxitems' => 99,
+				'appearance' => array(
+					'levelLinksPosition' => 'top',
+					'showPossibleLocalizationRecords' => TRUE,
+					'showRemovedLocalizationRecords' => TRUE,
+					'showAllLocalizationLink' => TRUE,
+					'showSynchronizationLink' => TRUE,
+					'enabledControls' => array(
+						'info' => TRUE,
+						'new' => FALSE,
+						'dragdrop' => FALSE,
+						'sort' => FALSE,
+						'hide' => TRUE,
+						'delete' => TRUE,
+						'localize' => TRUE,
+					)
+				),
+				'inline' => array(
+					'inlineNewButtonStyle' => 'display: inline-block;',
+				),
+				'behaviour' => array(
+					'localizationMode' => 'select',
+					'localizeChildrenAtParentLocalization' => TRUE,
+				),
+			)
+		),
 	),
 );
+
+$GLOBALS['TCA']['tt_content']['columns']['tx_contacts_domain_model_company']['config']['type'] = 'passthrough';

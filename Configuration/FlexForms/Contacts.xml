@@ -14,32 +14,31 @@
 								<type>select</type>
 								<items>
 									<numIndex index="0">
-										<numIndex index="0">Listenansicht</numIndex>
-										<numIndex index="1">Contact->list</numIndex>
+										<numIndex index="0">LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts.plugin.contactController.listAction.title</numIndex>
+										<numIndex index="1">Contact->list;Contact->show</numIndex>
 									</numIndex>
 									<numIndex index="1">
-										<numIndex index="0">Einzelansicht</numIndex>
-										<numIndex index="1">Contact->show</numIndex>
+										<numIndex index="0">LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts.plugin.contactController.teaserAction.title</numIndex>
+										<numIndex index="1">Contact->teaser</numIndex>
 									</numIndex>
 								</items>
 							</config>
 						</TCEforms>
 					</switchableControllerActions>
-					<settings.contact>
+
+					<settings.contactUids>
 						<TCEforms>
 							<label>LLL:EXT:dates/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_contact</label>
+							<displayCond>FIELD:switchableControllerActions:=:Contact->teaser</displayCond>
 							<config>
 								<type>select</type>
-								<items type="array">
-									<numIndex index="0" type="array">
-										<numIndex index="0"></numIndex>
-										<numIndex index="1"></numIndex>
-									</numIndex>
-								</items>
 								<foreign_table>tx_contacts_domain_model_contact</foreign_table>
+								<size>3</size>
+								<minitems>1</minitems>
+								<maxitems>3</maxitems>
 							</config>
 						</TCEforms>
-					</settings.contact>
+					</settings.contactUids>
 				</el>
 			</ROOT>
 		</sDEF>

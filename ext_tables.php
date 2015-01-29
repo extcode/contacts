@@ -4,13 +4,13 @@ if (!defined('TYPO3_MODE')) {
 }
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	$_EXTKEY,
+	'Extcode.' . $_EXTKEY,
 	'Contacts',
 	'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts.plugin.contacts'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	$_EXTKEY,
+	'Extcode.' . $_EXTKEY,
 	'Address',
 	'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts.plugin.address'
 );
@@ -185,7 +185,7 @@ $extensionName = strtolower(\TYPO3\CMS\Core\Utility\GeneralUtility::underscoredT
 $pluginName = strtolower('Address');
 $pluginSignature = $extensionName.'_'.$pluginName;
 
-$TCA['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = 'layout,select_key,pages';
+$TCA['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = 'layout,select_key';
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:'.$_EXTKEY . '/Configuration/FlexForms/Address.xml');
 
@@ -194,7 +194,7 @@ $extensionName = strtolower(\TYPO3\CMS\Core\Utility\GeneralUtility::underscoredT
 $pluginName = strtolower('Contacts');
 $pluginSignature = $extensionName.'_'.$pluginName;
 
-$TCA['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = 'layout,select_key,pages';
+$TCA['tt_content']['types']['list']['subtypes_excludelist'][$pluginSignature] = 'layout,select_key';
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:'.$_EXTKEY . '/Configuration/FlexForms/Contacts.xml');
 

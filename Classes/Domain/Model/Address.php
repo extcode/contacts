@@ -86,6 +86,13 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $lat = '';
 
 	/**
+	 * Contact
+	 *
+	 * @var \Extcode\Contacts\Domain\Model\Contact
+	 */
+	protected $contact = NULL;
+
+	/**
 	 * @param string $title
 	 */
 	public function setTitle($title) {
@@ -249,4 +256,12 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		return $this->lon;
 	}
 
+	/**
+	 * Returns the contact
+	 *
+	 * @return \Extcode\Contacts\Domain\Model\Contact
+	 */
+	public function getContact() {
+		return $this->contact;
+	}
 }

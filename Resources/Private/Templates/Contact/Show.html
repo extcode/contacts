@@ -3,8 +3,6 @@
 <f:layout name="Default" />
 
 <f:section name="main">
-    <f:flashMessages />
-
 	<f:if condition="{contact.photo}">
 		<div class="right">
 			<f:image src="{contact.photo.originalResource.originalFile.uid}" title="{contact.photo.originalResource.title}" alt="{contact.photo.originalResource.title}" maxWidth="150" maxHeight="150" />
@@ -30,5 +28,5 @@
 		</f:for>
 	</f:if>
 
-    <f:link.action action="list">Back to list</f:link.action><br />
+    <f:link.action action="list">Back to list</f:link.action>
 </f:section>

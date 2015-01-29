@@ -1,0 +1,25 @@
+<f:layout name="Default" />
+
+<f:section name="main">
+	<f:flashMessages />
+
+	<table  class="tx_company" >
+		<tr>
+			<th><f:translate key="tx_contacts_domain_model_contact.logo" /></th>
+			<th><f:translate key="tx_contacts_domain_model_contact.name" /></th>
+		</tr>
+
+		<f:for each="{companies}" as="company">
+			<tr>
+				<td>
+					<f:if condition="{company.logo}">
+						<f:link.action action="show" arguments="{company : company}">
+							<f:image src="{company.logo.originalResource.originalFile.uid}" title="{company.logo.originalResource.title}" alt="{company.logo.originalResource.title}" maxWidth="150" maxHeight="150" />
+						</f:link.action>
+					</f:if>
+				</td>
+				<td><f:link.action action="show" arguments="{company : company}">{company.name}</f:link.action></td>
+			</tr>
+		</f:for>
+	</table>
+</f:section>

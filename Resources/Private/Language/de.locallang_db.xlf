@@ -3,12 +3,24 @@
 	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-07-11T08:15:06Z" product-name="contacts">
 		<header/>
 		<body>
+			<trans-unit id="tx_contacts.plugin.contactController.listAction.title">
+				<target>Liste und Details</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts.plugin.contactController.teaserAction.title">
+				<target>Teaser</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts.plugin.companyController.listAction.title">
+				<target>Liste und Details</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts.plugin.companyController.teaserAction.title">
+				<target>Teaser</target>
+			</trans-unit>
 
 			<trans-unit id="tx_contacts.module.contacts">
 				<target>Kontakte</target>
 			</trans-unit>
-			<trans-unit id="tx_contacts.plugin.contacts">
-				<target>Kontakte</target>
+			<trans-unit id="tx_contacts.plugin.companies">
+				<target>Firmen</target>
 			</trans-unit>
 			<trans-unit id="tx_contacts.plugin.addresses">
 				<target>Addressen</target>

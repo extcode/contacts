@@ -1,0 +1,46 @@
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>Optionen</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<switchableControllerActions>
+						<TCEforms>
+							<label>Standardaktion des Plugins</label>
+							<config>
+								<type>select</type>
+								<items>
+									<numIndex index="0">
+										<numIndex index="0">LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts.plugin.companyController.listAction.title</numIndex>
+										<numIndex index="1">Company->list;Company->show</numIndex>
+									</numIndex>
+									<numIndex index="1">
+										<numIndex index="0">LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts.plugin.companyController.teaserAction.title</numIndex>
+										<numIndex index="1">Company->teaser</numIndex>
+									</numIndex>
+								</items>
+							</config>
+						</TCEforms>
+					</switchableControllerActions>
+
+					<settings.companyUids>
+						<TCEforms>
+							<label>LLL:EXT:dates/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company</label>
+							<displayCond>FIELD:switchableControllerActions:=:Company->teaser</displayCond>
+							<config>
+								<type>select</type>
+								<foreign_table>tx_contacts_domain_model_company</foreign_table>
+								<size>3</size>
+								<minitems>1</minitems>
+								<maxitems>3</maxitems>
+							</config>
+						</TCEforms>
+					</settings.companyUids>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

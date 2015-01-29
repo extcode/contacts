@@ -60,7 +60,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * Country
 	 *
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Country>
+	 * @var \Extcode\Contacts\Domain\Model\Country
 	 */
 	protected $country = '';
 
@@ -209,14 +209,14 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $country
+	 * @param \Extcode\Contacts\Domain\Model\Country $country
 	 */
 	public function setCountry($country) {
 		$this->country = $country;
 	}
 
 	/**
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 * @return \Extcode\Contacts\Domain\Model\Country
 	 */
 	public function getCountry() {
 		return $this->country;

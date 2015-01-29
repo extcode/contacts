@@ -95,4 +95,14 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		$this->view->assign('company', $company);
 	}
 
+	/**
+	 * action teaser
+	 *
+	 * @return void
+	 */
+	public function teaserAction() {
+		$companies = $this->companyRepository->findByUids( $this->settings['companyUids'] );
+		$this->view->assign('companies', $companies);
+	}
+
 }

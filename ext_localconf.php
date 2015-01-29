@@ -9,13 +9,20 @@ if (!defined('TYPO3_MODE')) {
 	'Contacts',
 	array(
 		'Contact' => 'list, show, teaser',
-
 	),
-	// non-cacheable actions
 	array(
 		'Contact' => '',
-		'Address' => '',
+	)
+);
 
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'Extcode.' . $_EXTKEY,
+	'Companies',
+	array(
+		'Company' => 'list, show, teaser',
+	),
+	array(
+		'Company' => '',
 	)
 );
 
@@ -24,7 +31,6 @@ if (!defined('TYPO3_MODE')) {
 	'Address',
 	array(
 		'Address' => 'show',
-
 	),
 	array(
 	)

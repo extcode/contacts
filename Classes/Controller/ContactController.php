@@ -56,7 +56,6 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	protected $pageId;
 
 	protected function initializeAction() {
-
 		if ($GLOBALS['TSFE'] === NULL) {
 			$this->pageId = (int) \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('id');
 		} else {
@@ -66,6 +65,8 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		$frameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
 		$persistenceConfiguration = array('persistence' => array('storagePid' => $this->pageId));
 		$this->configurationManager->setConfiguration(array_merge($frameworkConfiguration, $persistenceConfiguration));
+
+		$this->piVars = $this->request->getArguments();
 	}
 
 	/**
@@ -74,7 +75,9 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 * @return void
 	 */
 	public function listAction() {
-		$contacts = $this->contactRepository->findAll();
+		$contacts = $this->contactRepository->findAll( $this->piVars );
+
+		$this->view->assign('piVars', $this->piVars);
 		$this->view->assign('contacts', $contacts);
 	}
 

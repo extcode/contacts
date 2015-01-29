@@ -45,7 +45,7 @@
 				<source>Email</source>
 			</trans-unit>
 			<trans-unit id="tx_contacts_domain_model_contact.uri">
-				<source>Uri</source>
+				<source>Website</source>
 			</trans-unit>
 			<trans-unit id="tx_contacts_domain_model_contact.photo">
 				<source>Photo</source>
@@ -73,7 +73,7 @@
 				<source>Email</source>
 			</trans-unit>
 			<trans-unit id="tx_contacts_domain_model_company.uri">
-				<source>Uri</source>
+				<source>Website</source>
 			</trans-unit>
 			<trans-unit id="tx_contacts_domain_model_company.logo">
 				<source>Logo</source>

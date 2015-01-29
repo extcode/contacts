@@ -34,6 +34,45 @@ namespace Extcode\Contacts\Domain\Repository;
  */
 class CompanyRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
+	/**
+	 * Finds objects filtered by $piVars['filter']
+	 *
+	 * @param array $piVars
+	 * @return Query Object
+	 */
+	public function findAll($piVars = array()) {
+		// settings
+		$query = $this->createQuery();
+
+		$constraints = array();
+
+		// filter
+		if ( isset($piVars['filter']) ) {
+			foreach ((array) $piVars['filter'] as $field => $value) {
+
+				if (empty($value)) {
+					continue;
+				}
+
+				switch ($field) {
+					case 'searchString':
+						$constraints[] = $query->like('name', '%' . $value . '%');
+				}
+			}
+		}
+
+		// create constraint
+		if (!empty($constraints)) {
+			$query->matching(
+				$query->logicalAnd($constraints)
+			);
+		}
+
+		$companies = $query->execute();
+
+		return $companies;
+	}
+
 }
 
 ?>

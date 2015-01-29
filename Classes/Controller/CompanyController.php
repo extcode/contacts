@@ -42,4 +42,57 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	 */
 	protected $companyRepository;
 
+	/**
+	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
+	 * @inject
+	 */
+	protected $configurationManager;
+
+	/**
+	 * pageId
+	 *
+	 * @var int
+	 */
+	protected $pageId;
+
+	protected function initializeAction() {
+		if ($GLOBALS['TSFE'] === NULL) {
+			$this->pageId = (int) \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('id');
+		} else {
+			$this->pageId = $GLOBALS['TSFE']->id;
+		}
+
+		$frameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
+		$persistenceConfiguration = array('persistence' => array('storagePid' => $this->pageId));
+		$this->configurationManager->setConfiguration(array_merge($frameworkConfiguration, $persistenceConfiguration));
+
+		$this->piVars = $this->request->getArguments();
+	}
+
+	/**
+	 * action list
+	 *
+	 * @return void
+	 */
+	public function listAction() {
+		$companies = $this->companyRepository->findAll( $this->piVars );
+
+		$this->view->assign('piVars', $this->piVars);
+		$this->view->assign('companies', $companies);
+	}
+
+	/**
+	 * action show
+	 *
+	 * @param \Extcode\Contacts\Domain\Model\Company $company
+	 * @return void
+	 */
+	public function showAction( \Extcode\Contacts\Domain\Model\Company $company = NULL ) {
+		if ( !$company && intval($this->settings['company']) ) {
+			$company = $this->companyRepository->findByUid( intval( $this->settings['company'] ) );
+		}
+
+		$this->view->assign('company', $company);
+	}
+
 }

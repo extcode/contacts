@@ -1,0 +1,64 @@
+<f:layout name="Default" />
+
+<f:section name="content">
+	<h1><f:translate key="tx_contacts.module.companyController.showAction.header" /></h1>
+
+	<f:if condition="{company.logo}">
+		<div class="right">
+			<f:image src="{company.logo.originalResource.originalFile.uid}" title="{company.logo.originalResource.title}" alt="{company.logo.originalResource.title}" maxWidth="150" maxHeight="150" />
+		</div>
+		<div class="clear"><!-- &nbsp; --></div>
+	</f:if>
+
+	<table class="tx_contact typo3-dblist" >
+		<tr>
+			<th class="t3-row-header"><f:translate key="tx_contacts_domain_model_company.name" /></th>
+			<td>{company.name}</td>
+		</tr>
+		<f:if condition="{company.addresses}">
+			<f:for each="{company.addresses}" as="address" iteration="addressIterator">
+				<tr>
+					<th class="t3-row-header">
+						<f:if condition="{addressIterator.isFirst}">
+							<f:then>
+								<f:translate key="tx_contacts_domain_model_company.addresses" />
+							</f:then>
+							<f:else>
+								&nbsp;
+							</f:else>
+						</f:if>
+					</th>
+					<td>{address.title}</td>
+				</tr>
+			</f:for>
+		</f:if>
+		<f:if condition="{company.phoneNumbers}">
+			<f:for each="{company.phoneNumbers}" as="phoneNumber" iteration="phoneNumberIterator">
+				<tr>
+					<th class="t3-row-header">
+						<f:if condition="{phoneNumberIterator.isFirst}">
+							<f:then>
+								<f:translate key="tx_contacts_domain_model_company.phone_numbers" />
+							</f:then>
+							<f:else>
+								&nbsp;
+							</f:else>
+						</f:if>
+					</th>
+					<td>{phoneNumber.number}</td>
+				</tr>
+			</f:for>
+		</f:if>
+		<tr>
+			<th class="t3-row-header"><f:translate key="tx_contacts_domain_model_company.email" /></th>
+			<td>{company.email}</td>
+		</tr>
+		<tr>
+			<th class="t3-row-header"><f:translate key="tx_contacts_domain_model_company.uri" /></th>
+			<td>{company.uri}</td>
+		</tr>
+	</table>
+
+	<br><br>
+	<f:link.action action="list">Back to Company List</f:link.action>
+</f:section>

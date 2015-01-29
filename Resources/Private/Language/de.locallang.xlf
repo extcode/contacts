@@ -7,6 +7,16 @@
 			<trans-unit id="tx_contacts.module.contactController.listAction.header">
 				<target>Kontakt Liste</target>
 			</trans-unit>
+			<trans-unit id="tx_contacts.module.companyController.listAction.header">
+				<target>Firmen Liste</target>
+			</trans-unit>
+
+			<trans-unit id="tx_contacts.module.contactController.listAction.menuItem">
+				<target>Kontakt Liste</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts.module.companyController.listAction.menuItem">
+				<target>Firmen Liste</target>
+			</trans-unit>
 
 			<trans-unit id="tx_contacts.module.action.filter">
 				<target>Filter List</target>
@@ -25,6 +35,9 @@
 			<trans-unit id="tx_contacts_domain_model_contact.title">
 				<target>Title</target>
 			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.full_name">
+				<target>Name</target>
+			</trans-unit>
 			<trans-unit id="tx_contacts_domain_model_contact.first_name">
 				<target>Vorname</target>
 			</trans-unit>
@@ -39,6 +52,15 @@
 			</trans-unit>
 			<trans-unit id="tx_contacts_domain_model_contact.phone_numbers">
 				<target>Telefonnummern</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.email">
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.uri">
+				<target>Webseite</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_contact.photo">
+				<target>Photo</target>
 			</trans-unit>
 
 			<trans-unit id="tx_contacts_domain_model_company">
@@ -55,6 +77,15 @@
 			</trans-unit>
 			<trans-unit id="tx_contacts_domain_model_company.phone_numbers">
 				<target>Telefonnummern</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_company.email">
+				<target>E-Mail</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_company.uri">
+				<target>Webseite</target>
+			</trans-unit>
+			<trans-unit id="tx_contacts_domain_model_company.logo">
+				<target>Logo</target>
 			</trans-unit>
 
 			<trans-unit id="tx_contacts_domain_model_address">

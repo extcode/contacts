@@ -63,19 +63,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function __construct($name) {
 		$this->name = $name;
-
-		$this->initStorageObjects();
-	}
-
-	/**
-	 * Initializes all ObjectStorage properties.
-	 *
-	 * @return void
-	 */
-	protected function initStorageObjects() {
-		$this->contacts = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$this->addresses = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-		$this->phoneNumbers = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 	/**

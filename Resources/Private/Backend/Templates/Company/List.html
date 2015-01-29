@@ -1,0 +1,30 @@
+<f:layout name="Default" />
+
+<f:section name="content">
+	<h1><f:translate key="tx_contacts.module.companyController.listAction.header" /></h1>
+
+	<f:render partial="Company/Filter" arguments="{piVars: piVars, action: 'list'}" />
+
+	<div class="clear"></div>
+
+	<f:if condition="{companies}">
+		<f:then>
+			<f:widget.paginate objects="{companies}" as="paginatedCompanies" configuration="{itemsPerPage: 25}">
+				<table class="tx_contact typo3-dblist" >
+					<tr class="t3-row-header">
+						<th><f:translate key="tx_contacts_domain_model_company.name" /></th>
+					</tr>
+
+					<f:for each="{paginatedCompanies}" as="company">
+						<tr>
+							<td><f:link.action action="show" arguments="{company : company}"> {company.name}</f:link.action></td>
+						</tr>
+					</f:for>
+				</table>
+			</f:widget.paginate>
+		</f:then>
+		<f:else>
+			Select a Page where Company Dataset are saved.
+		</f:else>
+	</f:if>
+</f:section>

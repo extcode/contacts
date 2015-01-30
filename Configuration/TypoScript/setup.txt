@@ -1,8 +1,14 @@
 module.tx_contacts {
   view {
-    templateRootPath = {$module.tx_contacts.view.templateRootPath}
-    partialRootPath = {$module.tx_contacts.view.partialRootPath}
-    layoutRootPath = {$module.tx_contacts.view.layoutRootPath}
+    templateRootPaths {
+      100 = {$module.tx_contacts.view.templateRootPath}
+    }
+    partialRootPaths {
+      100 = {$module.tx_contacts.view.partialRootPath}
+    }
+    layoutRootPaths {
+      100 = {$module.tx_contacts.view.layoutRootPath}
+    }
   }
   persistence {
     storagePid = {$module.tx_contacts.persistence.storagePid}
@@ -11,9 +17,15 @@ module.tx_contacts {
 
 plugin.tx_contacts {
   view {
-    templateRootPath = {$plugin.tx_contacts.view.templateRootPath}
-    partialRootPath = {$plugin.tx_contacts.view.partialRootPath}
-    layoutRootPath = {$plugin.tx_contacts.view.layoutRootPath}
+    templateRootPaths {
+      100 = {$plugin.tx_contacts.view.templateRootPath}
+    }
+    partialRootPaths {
+      100 = {$plugin.tx_contacts.view.partialRootPath}
+    }
+    layoutRootPath {
+      100 = {$plugin.tx_contacts.view.layoutRootPath}
+    }
   }
   persistence {
     storagePid = {$plugin.tx_contacts.persistence.storagePid}

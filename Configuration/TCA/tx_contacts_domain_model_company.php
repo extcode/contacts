@@ -3,8 +3,30 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-$TCA['tx_contacts_domain_model_company'] = array(
-	'ctrl' => $TCA['tx_contacts_domain_model_company']['ctrl'],
+return array(
+	'ctrl' => array(
+		'title' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_company',
+		'label' => 'name',
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'dividers2tabs' => TRUE,
+
+		'versioningWS' => 2,
+		'versioning_followPages' => TRUE,
+		'origUid' => 't3_origuid',
+		'languageField' => 'sys_language_uid',
+		'transOrigPointerField' => 'l10n_parent',
+		'transOrigDiffSourceField' => 'l10n_diffsource',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+			'starttime' => 'starttime',
+			'endtime' => 'endtime',
+		),
+		'searchFields' => 'street,zip,city',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('contacts') . 'Resources/Public/Icons/tx_contacts_domain_model_company.png'
+	),
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, logo, name, email, uri, companies, contacts, addresses, phone_numbers, tt_content',
 	),
@@ -40,8 +62,8 @@ $TCA['tx_contacts_domain_model_company'] = array(
 				'items' => array(
 					array('', 0),
 				),
-				'foreign_table' => 'tx_contact_domain_model_company',
-				'foreign_table_where' => 'AND tx_contact_domain_model_company.pid=###CURRENT_PID### AND tx_contact_domain_model_company.sys_language_uid IN (-1,0)',
+				'foreign_table' => 'tx_contacts_domain_model_company',
+				'foreign_table_where' => 'AND tx_contacts_domain_model_company.pid=###CURRENT_PID### AND tx_contacts_domain_model_company.sys_language_uid IN (-1,0)',
 			),
 		),
 		'l10n_diffsource' => array(
@@ -263,5 +285,3 @@ $TCA['tx_contacts_domain_model_company'] = array(
 		),
 	),
 );
-
-$GLOBALS['TCA']['tt_content']['columns']['tx_contacts_domain_model_company']['config']['type'] = 'passthrough';

@@ -3,8 +3,32 @@ if (!defined ('TYPO3_MODE')) {
 	die ('Access denied.');
 }
 
-$TCA['tx_contacts_domain_model_address'] = array(
-	'ctrl' => $TCA['tx_contacts_domain_model_address']['ctrl'],
+return array(
+	'ctrl' => array(
+		'title' => 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address',
+		'label' => 'street',
+		'label_alt' => 'street_number, zip, city, country',
+		'label_alt_force' => 1,
+		'tstamp' => 'tstamp',
+		'crdate' => 'crdate',
+		'cruser_id' => 'cruser_id',
+		'dividers2tabs' => TRUE,
+
+		'versioningWS' => 2,
+		'versioning_followPages' => TRUE,
+		'origUid' => 't3_origuid',
+		'languageField' => 'sys_language_uid',
+		'transOrigPointerField' => 'l10n_parent',
+		'transOrigDiffSourceField' => 'l10n_diffsource',
+		'delete' => 'deleted',
+		'enablecolumns' => array(
+			'disabled' => 'hidden',
+			'starttime' => 'starttime',
+			'endtime' => 'endtime',
+		),
+		'searchFields' => 'street,zip,city',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('contacts') . 'Resources/Public/Icons/tx_contacts_domain_model_address.png'
+	),
 	'interface' => array(
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, type, street, street_number, zip, city, region, country, post_box, lon, lat, tt_content',
 	),
@@ -182,6 +206,7 @@ $TCA['tx_contacts_domain_model_address'] = array(
 					'collapseAll' => 1,
 					'expandSingle' => 1,
 				),
+                'renderType' => 'selectSingle',
 			),
 		),
 		'lat' => array(
@@ -258,5 +283,3 @@ $TCA['tx_contacts_domain_model_address'] = array(
 		),
 	),
 );
-
-$GLOBALS['TCA']['tt_content']['columns']['tx_contacts_domain_model_address']['config']['type'] = 'passthrough';

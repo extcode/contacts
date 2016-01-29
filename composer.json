@@ -1,0 +1,16 @@
+{
+	"name": "extcode/contacts",
+	"type": "typo3-cms-extension",
+	"description": "Contact extension to replace tt_address",
+	"homepage": "http://www.extco.de/",
+	"license": ["GPL-2.0+"],
+	"version": "0.1.2",
+	"require": {
+		"typo3/cms-core": ">=6.2.0,<8.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"Extcode\\Contacts\\": "Classes" 
+		}
+	}
+}

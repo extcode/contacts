@@ -1,37 +1,36 @@
 <?php
 if (!defined('TYPO3_MODE')) {
-	die ('Access denied.');
+    die('Access denied.');
 }
 
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Extcode.' . $_EXTKEY,
-	'Contacts',
-	array(
-		'Contact' => 'list, show, teaser',
-	),
-	array(
-		'Contact' => '',
-	)
+    'Extcode.' . $_EXTKEY,
+    'Contacts',
+    [
+        'Contact' => 'list, show, teaser',
+    ],
+    [
+        'Contact' => '',
+    ]
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Extcode.' . $_EXTKEY,
-	'Companies',
-	array(
-		'Company' => 'list, show, teaser',
-	),
-	array(
-		'Company' => '',
-	)
+    'Extcode.' . $_EXTKEY,
+    'Companies',
+    [
+        'Company' => 'list, show, teaser',
+    ],
+    [
+        'Company' => '',
+    ]
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'Extcode.' . $_EXTKEY,
-	'Address',
-	array(
-		'Address' => 'show',
-	),
-	array(
-	)
+    'Extcode.' . $_EXTKEY,
+    'Address',
+    [
+        'Address' => 'show',
+    ],
+    []
 );

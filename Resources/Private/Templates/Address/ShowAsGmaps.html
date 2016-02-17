@@ -4,6 +4,7 @@
 	<div id="googleMap{address.uid}" style="width: {settings.gmaps.width}; height: {settings.gmaps.width};"></div>
 	<script type="text/javascript">
 		function initialize() {
+
 			var addressLatLng = new google.maps.LatLng( {address.lat}, {address.lon} );
 			var scrollwheel = {settings.gmaps.scrollwheel};
 			var draggable = {settings.gmaps.draggable};

@@ -1,51 +1,55 @@
 <T3DataStructure>
-	<sheets>
-		<sDEF>
-			<ROOT>
-				<TCEforms>
-					<sheetTitle>Optionen</sheetTitle>
-				</TCEforms>
-				<type>array</type>
-				<el>
-					<settings.address>
-						<TCEforms>
-							<label>LLL:EXT:dates/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address</label>
-							<config>
-								<type>select</type>
-								<items type="array">
-									<numIndex index="0" type="array">
-										<numIndex index="0"></numIndex>
-										<numIndex index="1"></numIndex>
-									</numIndex>
-								</items>
-								<foreign_table>tx_contacts_domain_model_address</foreign_table>
-							</config>
-						</TCEforms>
-					</settings.address>
-					<settings.type>
-					<TCEforms>
-						<label>LLL:EXT:dates/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address</label>
-						<config>
-							<type>select</type>
-							<items type="array">
-								<numIndex index="0" type="array">
-									<numIndex index="0">HTML</numIndex>
-									<numIndex index="1">html</numIndex>
-								</numIndex>
-								<numIndex index="1" type="array">
-									<numIndex index="0">Google Maps</numIndex>
-									<numIndex index="1">gmaps</numIndex>
-								</numIndex>
-								<numIndex index="3" type="array">
-									<numIndex index="0">OpenStreetMap</numIndex>
-									<numIndex index="1">osm</numIndex>
-								</numIndex>
-							</items>
-						</config>
-					</TCEforms>
-				</settings.type>
-				</el>
-			</ROOT>
-		</sDEF>
-	</sheets>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Optionen</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.address>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:dates/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0"></numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                </items>
+                                <foreign_table>tx_contacts_domain_model_address</foreign_table>
+                            </config>
+                        </TCEforms>
+                    </settings.address>
+                    <settings.type>
+                        <TCEforms>
+                            <label>
+                                LLL:EXT:dates/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address
+                            </label>
+                            <config>
+                                <type>select</type>
+                                <items type="array">
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">HTML</numIndex>
+                                        <numIndex index="1">html</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1" type="array">
+                                        <numIndex index="0">Google Maps</numIndex>
+                                        <numIndex index="1">gmaps</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3" type="array">
+                                        <numIndex index="0">OpenStreetMap</numIndex>
+                                        <numIndex index="1">osm</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.type>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
 </T3DataStructure>

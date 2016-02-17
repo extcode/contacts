@@ -1,29 +1,29 @@
 {
-  "name": "extcode/contacts",
-  "type": "typo3-cms-extension",
-  "description": "contacts",
-  "homepage": "http://www.extco.de",
-  "license": [
-    "GPL-2.0+"
-  ],
-  "keywords": [
-    "TYPO3 CMS",
-    "Contacts",
-    "contacts"
-  ],
-  "support": {
-    "issues": "https://forge.typo3.org/projects/extension-contacts"
-  },
-  "version": "0.1.2",
-  "require": {
-    "typo3/cms-core": ">=6.2.1,<8.0"
-  },
-  "replace": {
-    "contacts": "*"
-  },
-  "autoload": {
-    "psr-4": {
-      "Extcode\\Contacts\\": "Classes/"
+    "name": "extcode/contacts",
+    "type": "typo3-cms-extension",
+    "description": "contacts",
+    "homepage": "http://www.extco.de",
+    "license": [
+        "GPL-2.0+"
+    ],
+    "keywords": [
+        "TYPO3 CMS",
+        "Contacts",
+        "contacts"
+    ],
+    "support": {
+        "issues": "https://forge.typo3.org/projects/extension-contacts"
+    },
+    "version": "0.1.2",
+    "require": {
+        "typo3/cms-core": ">=6.2.1,<8.0"
+    },
+    "replace": {
+        "contacts": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Extcode\\Contacts\\": "Classes/"
+        }
     }
-  }
 }

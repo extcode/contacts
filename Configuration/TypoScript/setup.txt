@@ -1,40 +1,46 @@
 module.tx_contacts {
-  view {
-    templateRootPaths {
-      100 = {$module.tx_contacts.view.templateRootPath}
+    view {
+        templateRootPaths {
+            100 = {$module.tx_contacts.view.templateRootPath}
+        }
+
+        partialRootPaths {
+            100 = {$module.tx_contacts.view.partialRootPath}
+        }
+
+        layoutRootPaths {
+            100 = {$module.tx_contacts.view.layoutRootPath}
+        }
     }
-    partialRootPaths {
-      100 = {$module.tx_contacts.view.partialRootPath}
+
+    persistence {
+        storagePid = {$module.tx_contacts.persistence.storagePid}
     }
-    layoutRootPaths {
-      100 = {$module.tx_contacts.view.layoutRootPath}
-    }
-  }
-  persistence {
-    storagePid = {$module.tx_contacts.persistence.storagePid}
-  }
 }
 
 plugin.tx_contacts {
-  view {
-    templateRootPaths {
-      100 = {$plugin.tx_contacts.view.templateRootPath}
-    }
-    partialRootPaths {
-      100 = {$plugin.tx_contacts.view.partialRootPath}
-    }
-    layoutRootPath {
-      100 = {$plugin.tx_contacts.view.layoutRootPath}
-    }
-  }
-  persistence {
-    storagePid = {$plugin.tx_contacts.persistence.storagePid}
-  }
+    view {
+        templateRootPaths {
+            100 = {$plugin.tx_contacts.view.templateRootPath}
+        }
 
-  settings {
-    gmaps.width = 500px
-    gmaps.heigth = 500px
-    gmaps.scrollwheel = true
-    gmaps.draggable = true
-  }
+        partialRootPaths {
+            100 = {$plugin.tx_contacts.view.partialRootPath}
+        }
+
+        layoutRootPath {
+            100 = {$plugin.tx_contacts.view.layoutRootPath}
+        }
+    }
+
+    persistence {
+        storagePid = {$plugin.tx_contacts.persistence.storagePid}
+    }
+
+    settings {
+        gmaps.width = 500px
+        gmaps.heigth = 500px
+        gmaps.scrollwheel = true
+        gmaps.draggable = true
+    }
 }

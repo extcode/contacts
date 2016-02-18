@@ -30,6 +30,9 @@
             <trans-unit id="tx_contacts_domain_model_contact">
                 <source>Contact</source>
             </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.fe_user">
+                <source>Frontend User</source>
+            </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.salutation">
                 <source>Salutation</source>
             </trans-unit>

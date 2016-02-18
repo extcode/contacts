@@ -1,82 +1,98 @@
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 <f:section name="content">
-	<h1><f:translate key="tx_contacts.module.contactController.showAction.header" /></h1>
+    <h1>
+        <f:translate key="tx_contacts.module.contactController.showAction.header"/>
+    </h1>
 
-	<f:if condition="{contact.photo}">
-		<div class="right">
-			<f:image src="{contact.photo.originalResource.originalFile.uid}" title="{contact.photo.originalResource.title}" alt="{contact.photo.originalResource.title}" maxWidth="150" maxHeight="150" />
-		</div>
-		<div class="clear"><!-- &nbsp; --></div>
-	</f:if>
+    <f:if condition="{contact.photo}">
+        <div class="right">
+            <f:image src="{contact.photo.originalResource.originalFile.uid}"
+                     title="{contact.photo.originalResource.title}" alt="{contact.photo.originalResource.title}"
+                     maxWidth="150" maxHeight="150"/>
+        </div>
+        <div class="clear"><!-- &nbsp; --></div>
+    </f:if>
 
-	<table class="tx_contact typo3-dblist" >
-		<tr>
-			<th class="t3-row-header"><f:translate key="tx_contacts_domain_model_contact.salutation" /></th>
-			<td>{contact.salutation}</td>
-		</tr>
-		<f:if condition="{contact.title}">
-			<tr>
-				<th class="t3-row-header"><f:translate key="tx_contacts_domain_model_contact.title" /></th>
-				<td>{contact.title}</td>
-			</tr>
-		</f:if>
-		<tr>
-			<th class="t3-row-header"><f:translate key="tx_contacts_domain_model_contact.first_name" /></th>
-			<td>{contact.firstName}</td>
-		</tr>
-		<tr>
-			<th class="t3-row-header"><f:translate key="tx_contacts_domain_model_contact.last_name" /></th>
-			<td>{contact.lastName}</td>
-		</tr>
-		<f:if condition="{contact.addresses}">
-			<f:for each="{contact.addresses}" as="address" iteration="addressIterator">
-				<tr>
-					<th class="t3-row-header">
-						<f:if condition="{addressIterator.isFirst}">
-							<f:then>
-								<f:translate key="tx_contacts_domain_model_contact.addresses" />
-							</f:then>
-							<f:else>
-								&nbsp;
-							</f:else>
-						</f:if>
-					</th>
-					<td>{address.title}</td>
-				</tr>
-			</f:for>
-		</f:if>
-		<f:if condition="{contact.phoneNumbers}">
-			<f:for each="{contact.phoneNumbers}" as="phoneNumber" iteration="phoneNumberIterator">
-				<tr>
-					<th class="t3-row-header">
-						<f:if condition="{phoneNumberIterator.isFirst}">
-							<f:then>
-								<f:translate key="tx_contacts_domain_model_contact.phone_numbers" />
-							</f:then>
-							<f:else>
-								&nbsp;
-							</f:else>
-						</f:if>
-					</th>
-					<td>{phoneNumber.number}</td>
-				</tr>
-			</f:for>
-		</f:if>
-		<f:if condition="{contact.email}">
-			<tr>
-				<th class="t3-row-header"><f:translate key="tx_contacts_domain_model_contact.email" /></th>
-				<td>{contact.email}</td>
-			</tr>
-		</f:if>
-		<f:if condition="{contact.uri}">
-			<tr>
-				<th class="t3-row-header"><f:translate key="tx_contacts_domain_model_contact.uri" /></th>
-				<td>{contact.uri}</td>
-			</tr>
-		</f:if>
-	</table>
+    <table class="tx_contact typo3-dblist">
+        <tr>
+            <th class="t3-row-header">
+                <f:translate key="tx_contacts_domain_model_contact.salutation"/>
+            </th>
+            <td>{contact.salutation}</td>
+        </tr>
+        <f:if condition="{contact.title}">
+            <tr>
+                <th class="t3-row-header">
+                    <f:translate key="tx_contacts_domain_model_contact.title"/>
+                </th>
+                <td>{contact.title}</td>
+            </tr>
+        </f:if>
+        <tr>
+            <th class="t3-row-header">
+                <f:translate key="tx_contacts_domain_model_contact.first_name"/>
+            </th>
+            <td>{contact.firstName}</td>
+        </tr>
+        <tr>
+            <th class="t3-row-header">
+                <f:translate key="tx_contacts_domain_model_contact.last_name"/>
+            </th>
+            <td>{contact.lastName}</td>
+        </tr>
+        <f:if condition="{contact.addresses}">
+            <f:for each="{contact.addresses}" as="address" iteration="addressIterator">
+                <tr>
+                    <th class="t3-row-header">
+                        <f:if condition="{addressIterator.isFirst}">
+                            <f:then>
+                                <f:translate key="tx_contacts_domain_model_contact.addresses"/>
+                            </f:then>
+                            <f:else>
+                                &nbsp;
+                            </f:else>
+                        </f:if>
+                    </th>
+                    <td>{address.title}</td>
+                </tr>
+            </f:for>
+        </f:if>
+        <f:if condition="{contact.phoneNumbers}">
+            <f:for each="{contact.phoneNumbers}" as="phoneNumber" iteration="phoneNumberIterator">
+                <tr>
+                    <th class="t3-row-header">
+                        <f:if condition="{phoneNumberIterator.isFirst}">
+                            <f:then>
+                                <f:translate key="tx_contacts_domain_model_contact.phone_numbers"/>
+                            </f:then>
+                            <f:else>
+                                &nbsp;
+                            </f:else>
+                        </f:if>
+                    </th>
+                    <td>{phoneNumber.number}</td>
+                </tr>
+            </f:for>
+        </f:if>
+        <f:if condition="{contact.email}">
+            <tr>
+                <th class="t3-row-header">
+                    <f:translate key="tx_contacts_domain_model_contact.email"/>
+                </th>
+                <td>{contact.email}</td>
+            </tr>
+        </f:if>
+        <f:if condition="{contact.uri}">
+            <tr>
+                <th class="t3-row-header">
+                    <f:translate key="tx_contacts_domain_model_contact.uri"/>
+                </th>
+                <td>{contact.uri}</td>
+            </tr>
+        </f:if>
+    </table>
 
-	<br><br>
-	<f:link.action action="list">Back to Contact List</f:link.action>
+    <br><br>
+    <f:link.action action="list">Back to Contact List</f:link.action>
 </f:section>

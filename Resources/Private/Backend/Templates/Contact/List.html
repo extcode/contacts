@@ -1,36 +1,62 @@
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 <f:section name="content">
-	<f:render partial="Contact/Filter" arguments="{piVars: piVars, action: 'list'}" />
+    <f:render partial="Contact/Filter" arguments="{piVars: piVars, action: 'list'}"/>
 
-	<div class="clear"></div>
+    <div class="clear"></div>
 
-	<f:if condition="{contacts}">
-		<f:then>
-			<f:widget.paginate objects="{contacts}" as="paginatedContacts" configuration="{itemsPerPage: 25}">
-				<table class="tx_contact typo3-dblist" >
-					<tr class="t3-row-header">
-						<th><f:translate key="tx_contacts_domain_model_contact.salutation" /></th>
-						<th><f:translate key="tx_contacts_domain_model_contact.title" /></th>
-						<th><f:translate key="tx_contacts_domain_model_contact.first_name" /></th>
-						<th><f:translate key="tx_contacts_domain_model_contact.last_name" /></th>
-						<th> </th>
-						<th> </th>
-					</tr>
+    <f:if condition="{contacts}">
+        <f:then>
+            <f:widget.paginate objects="{contacts}" as="paginatedContacts" configuration="{itemsPerPage: 25}">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr class="t3-row-header">
+                            <th>
+                                <f:translate key="tx_contacts_domain_model_contact.salutation"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contacts_domain_model_contact.title"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contacts_domain_model_contact.first_name"/>
+                            </th>
+                            <th>
+                                <f:translate key="tx_contacts_domain_model_contact.last_name"/>
+                            </th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
 
-					<f:for each="{paginatedContacts}" as="contact">
-						<tr>
-							<td><f:link.action action="show" arguments="{contact : contact}"> {contact.salutation}</f:link.action></td>
-							<td><f:link.action action="show" arguments="{contact : contact}"> {contact.title}</f:link.action></td>
-							<td><f:link.action action="show" arguments="{contact : contact}"> {contact.firstName}</f:link.action></td>
-							<td><f:link.action action="show" arguments="{contact : contact}"> {contact.lastName}</f:link.action></td>
-						</tr>
-					</f:for>
-				</table>
-			</f:widget.paginate>
-		</f:then>
-		<f:else>
-			Select a Page where Contacts Dataset are saved.
-		</f:else>
-	</f:if>
+                    <tbody>
+                        <f:for each="{paginatedContacts}" as="contact">
+                            <tr>
+                                <td>
+                                    {contact.salutation}
+                                </td>
+                                <td>
+                                    {contact.title}
+                                </td>
+                                <td>
+                                    {contact.firstName}
+                                </td>
+                                <td>
+                                    {contact.lastName}
+                                </td>
+                                <td>
+                                    <span class="btn btn-default">
+                                        <f:be.buttons.icon
+                                                uri="{f:uri.action(action:'show', arguments:{contact : contact})}"
+                                                icon="actions-preview"/>
+                                    </span>
+                                </td>
+                            </tr>
+                        </f:for>
+                    </tbody>
+                </table>
+            </f:widget.paginate>
+        </f:then>
+        <f:else>
+            Select a Page where Contacts Dataset are saved.
+        </f:else>
+    </f:if>
 </f:section>

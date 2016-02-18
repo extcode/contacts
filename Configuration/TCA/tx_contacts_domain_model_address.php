@@ -28,7 +28,7 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'street,zip,city',
-        'iconfile' => 'EXT:contacts/Resources/Public/Icons/Order/tx_contacts_domain_model_address.png',
+        'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_address.png',
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, type, street, street_number, zip, city, region, country, post_box, lon, lat, tt_content',
@@ -279,9 +279,9 @@ return [
                     'showSynchronizationLink' => true,
                     'enabledControls' => [
                         'info' => true,
-                        'new' => false,
+                        'new' => true,
                         'dragdrop' => false,
-                        'sort' => false,
+                        'sort' => true,
                         'hide' => true,
                         'delete' => true,
                         'localize' => true,

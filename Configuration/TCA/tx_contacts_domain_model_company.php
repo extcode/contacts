@@ -26,7 +26,7 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'street,zip,city',
-        'iconfile' => 'EXT:contacts/Resources/Public/Icons/Order/tx_contacts_domain_model_company.png',
+        'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_company.png',
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, fe_user, logo, name, email, uri, companies, contacts, addresses, phone_numbers, tt_content',
@@ -62,8 +62,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_contact_domain_model_company',
-                'foreign_table_where' => 'AND tx_contact_domain_model_company.pid=###CURRENT_PID### AND tx_contact_domain_model_company.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_contacts_domain_model_company',
+                'foreign_table_where' => 'AND tx_contacts_domain_model_company.pid=###CURRENT_PID### AND tx_contacts_domain_model_company.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -124,7 +124,7 @@ return [
             'label' => $_LLL . ':tx_contacts_domain_model_company.fe_user',
             'config' => [
                 'type' => 'select',
-                'readOnly' => 1,
+                'readOnly' => 0,
                 'foreign_table' => 'fe_users',
                 'size' => 1,
                 'autoMaxSize' => 1,
@@ -285,9 +285,9 @@ return [
                     'showSynchronizationLink' => true,
                     'enabledControls' => [
                         'info' => true,
-                        'new' => false,
+                        'new' => true,
                         'dragdrop' => false,
-                        'sort' => false,
+                        'sort' => true,
                         'hide' => true,
                         'delete' => true,
                         'localize' => true,

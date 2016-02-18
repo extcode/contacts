@@ -6,10 +6,8 @@ $_LLL = 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf';
 
 return [
     'ctrl' => [
-        'title' => $_LLL . ':tx_contacts_domain_model_country',
-        'label' => 'name',
-        'label_alt' => 'iso2',
-        'label_alt_force' => 1,
+        'title' => $_LLL . ':tx_contacts_domain_model_phone',
+        'label' => 'number',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -27,14 +25,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'iso,name',
-        'iconfile' => 'EXT:contacts/Resources/Public/Icons/Order/tx_contacts_domain_model_country.png',
+        'searchFields' => 'street,zip,city',
+        'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_phone.png',
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, iso2, iso3, name, tld, phone_country_code',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, number',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, iso2, iso3, name, tld, phone_country_code,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, type, number,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'],
     ],
     'palettes' => [
         '1' => ['showitem' => ''],
@@ -62,8 +60,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_contact_domain_model_company',
-                'foreign_table_where' => 'AND tx_contact_domain_model_company.pid=###CURRENT_PID### AND tx_contact_domain_model_company.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_contacts_domain_model_phone',
+                'foreign_table_where' => 'AND tx_contacts_domain_model_phone.pid=###CURRENT_PID### AND tx_contacts_domain_model_phone.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -118,49 +116,87 @@ return [
                 ],
             ],
         ],
-        'iso2' => [
+        'type' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_country.iso2',
+            'label' => $_LLL . ':tx_contacts_domain_model_phone.type',
+            'config' => [
+                'type' => 'select',
+                'items' => [
+                    [
+                        $_LLL . ':tx_contacts_domain_model_phone.type.PREF',
+                        'PREF'
+                    ],
+                    [
+                        $_LLL . ':tx_contacts_domain_model_phone.type.WORK',
+                        'WORK'
+                    ],
+                    [
+                        $_LLL . ':tx_contacts_domain_model_phone.type.HOME',
+                        'HOME'
+                    ],
+                    [
+                        $_LLL . ':tx_contacts_domain_model_phone.type.VOICE',
+                        'VOICE'
+                    ],
+                    [
+                        $_LLL . ':tx_contacts_domain_model_phone.type.FAX',
+                        'FAX'
+                    ],
+                    [
+                        $_LLL . ':tx_contacts_domain_model_phone.type.MSG',
+                        'MSG'
+                    ],
+                    [
+                        $_LLL . ':tx_contacts_domain_model_phone.type.CELL',
+                        'CELL'
+                    ],
+                    [
+                        $_LLL . ':tx_contacts_domain_model_phone.type.PAGER',
+                        'PAGER'
+                    ],
+                    [
+                        $_LLL . ':tx_contacts_domain_model_phone.type.BBS',
+                        'BBS'
+                    ],
+                    [
+                        $_LLL . ':tx_contacts_domain_model_phone.type.MODEM',
+                        'MODEM'
+                    ],
+                    [
+                        $_LLL . ':tx_contacts_domain_model_phone.type.CAR',
+                        'CAR'
+                    ],
+                    [
+                        $_LLL . ':tx_contacts_domain_model_phone.type.ISDN',
+                        'ISDN'
+                    ],
+                    [
+                        $_LLL . ':tx_contacts_domain_model_phone.type.VIDEO',
+                        'VIDEO'
+                    ],
+                ],
+                'size' => 5,
+                'maxitems' => 10,
+                'eval' => 'required'
+            ],
+        ],
+        'number' => [
+            'exclude' => 0,
+            'label' => $_LLL . ':tx_contacts_domain_model_phone.number',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim,required'
             ],
         ],
-        'iso3' => [
-            'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_country.iso3',
+        'contact' => [
             'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
+                'type' => 'passthrough',
             ],
         ],
-        'name' => [
-            'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_country.name',
+        'company' => [
             'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim,required'
-            ],
-        ],
-        'tld' => [
-            'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_country.tld',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'phone_country_code' => [
-            'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_country.phone_country_code',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
+                'type' => 'passthrough',
             ],
         ],
     ],

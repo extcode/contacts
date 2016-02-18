@@ -28,7 +28,7 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'first_name,last_name,addresses,',
-        'iconfile' => 'EXT:contacts/Resources/Public/Icons/Order/tx_contacts_domain_model_contact.png',
+        'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_contact.png',
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, fe_user, photo, salutation, title, first_name, last_name, birthday, email, uri, companies, addresses, phone_numbers,tt_content',
@@ -64,8 +64,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_contact_domain_model_contact',
-                'foreign_table_where' => 'AND tx_contact_domain_model_contact.pid=###CURRENT_PID### AND tx_contact_domain_model_contact.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_contacts_domain_model_contact',
+                'foreign_table_where' => 'AND tx_contacts_domain_model_contact.pid=###CURRENT_PID### AND tx_contacts_domain_model_contact.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -126,7 +126,7 @@ return [
             'label' => $_LLL . ':tx_contacts_domain_model_contact.fe_user',
             'config' => [
                 'type' => 'select',
-                'readOnly' => 1,
+                'readOnly' => 0,
                 'foreign_table' => 'fe_users',
                 'size' => 1,
                 'autoMaxSize' => 1,
@@ -296,9 +296,9 @@ return [
                     'showSynchronizationLink' => true,
                     'enabledControls' => [
                         'info' => true,
-                        'new' => false,
+                        'new' => true,
                         'dragdrop' => false,
-                        'sort' => false,
+                        'sort' => true,
                         'hide' => true,
                         'delete' => true,
                         'localize' => true,

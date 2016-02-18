@@ -18,13 +18,20 @@
             </trans-unit>
 
             <trans-unit id="tx_contacts.module.contacts">
+                <source>Contacts</source>
                 <target>Kontakte</target>
             </trans-unit>
-            <trans-unit id="tx_contacts.plugin.companies">
-                <target>Firmen</target>
+            <trans-unit id="tx_contacts.plugin.contacts">
+                <source>Contacts: Contacts</source>
+                <target>Contacts: Kontakte</target>
             </trans-unit>
-            <trans-unit id="tx_contacts.plugin.addresses">
-                <target>Addressen</target>
+            <trans-unit id="tx_contacts.plugin.companies">
+                <source>Contacts: Companies</source>
+                <target>Contacts: Firmen</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.address">
+                <source>Contacts: Address</source>
+                <target>Contacts: Addresse</target>
             </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_contact">

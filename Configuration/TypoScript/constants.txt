@@ -1,15 +1,3 @@
-module.tx_contacts {
-    view {
-        templateRootPath = EXT:contacts/Resources/Private/Backend/Templates/
-        partialRootPath = EXT:contacts/Resources/Private/Backend/Partials/
-        layoutRootPath = EXT:contacts/Resources/Private/Backend/Layouts/
-    }
-
-    persistence {
-        storagePid =
-    }
-}
-
 plugin.tx_contacts {
     view {
         templateRootPath = EXT:contacts/Resources/Private/Templates/

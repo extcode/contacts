@@ -32,7 +32,57 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $name;
 
     /**
-     * contacts
+     * Legal Name
+     *
+     * @var string
+     */
+    protected $legalName = '';
+
+    /**
+     * Legal Form
+     *
+     * @var string
+     */
+    protected $legalForm = '';
+
+
+    /**
+     * Registered Office
+     *
+     * @var string
+     */
+    protected $registeredOffice = '';
+
+    /**
+     * Register Court
+     *
+     * @var string
+     */
+    protected $registerCourt = '';
+
+    /**
+     * Register Number
+     *
+     * @var string
+     */
+    protected $registerNumber = '';
+
+    /**
+     * VAT Id
+     *
+     * @var string
+     */
+    protected $vatId = '';
+
+    /**
+     * Directors
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Contact>
+     */
+    protected $directors;
+
+    /**
+     * Contacts
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Contact>
      */
@@ -57,14 +107,14 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @var string
      */
-    protected $email;
+    protected $email = '';
 
     /**
      * uri
      *
      * @var string
      */
-    protected $uri;
+    protected $uri = '';
 
     /**
      * logo
@@ -117,6 +167,156 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
+     * @return string
+     */
+    public function getLegalName()
+    {
+        return $this->legalName;
+    }
+
+    /**
+     * @param string $legalName
+     *
+     * @return void
+     */
+    public function setLegalName($legalName)
+    {
+        $this->legalName = $legalName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLegalForm()
+    {
+        return $this->legalForm;
+    }
+
+    /**
+     * @param string $legalForm
+     *
+     * @return void
+     */
+    public function setLegalForm($legalForm)
+    {
+        $this->legalForm = $legalForm;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegisteredOffice()
+    {
+        return $this->registeredOffice;
+    }
+
+    /**
+     * @param string $registeredOffice
+     *
+     * @return void
+     */
+    public function setRegisteredOffice($registeredOffice)
+    {
+        $this->registeredOffice = $registeredOffice;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegisterCourt()
+    {
+        return $this->registerCourt;
+    }
+
+    /**
+     * @param string $registerCourt
+     *
+     * @return void
+     */
+    public function setRegisterCourt($registerCourt)
+    {
+        $this->registerCourt = $registerCourt;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegisterNumber()
+    {
+        return $this->registerNumber;
+    }
+
+    /**
+     * @param string $registerNumber
+     *
+     * @return void
+     */
+    public function setRegisterNumber($registerNumber)
+    {
+        $this->registerNumber = $registerNumber;
+    }
+
+    /**
+     * @return string
+     */
+    public function getVatId()
+    {
+        return $this->vatId;
+    }
+
+    /**
+     * @param string $vatId
+     *
+     * @return void
+     */
+    public function setVatId($vatId)
+    {
+        $this->vatId = $vatId;
+    }
+
+    /**
+     * Adds a Director
+     *
+     * @param \Extcode\Contacts\Domain\Model\Contact $director
+     *
+     * @return void
+     */
+    public function addDirector(\Extcode\Contacts\Domain\Model\Contact $director)
+    {
+        $this->directors->attach($director);
+    }
+
+    /**
+     * Removes a Director
+     *
+     * @param \Extcode\Contacts\Domain\Model\Contact $directorToRemove
+     *
+     * @return void
+     */
+    public function removeDirector(\Extcode\Contacts\Domain\Model\Contact $directorToRemove)
+    {
+        $this->directors->detach($directorToRemove);
+    }
+
+    /**
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Contact>
+     */
+    public function getDirectors()
+    {
+        return $this->directors;
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Contact> $directors
+     *
+     * @return void
+     */
+    public function setDirectors($directors)
+    {
+        $this->directors = $directors;
+    }
+
+    /**
      * Adds a Contact
      *
      * @param \Extcode\Contacts\Domain\Model\Contact $contact
@@ -131,7 +331,7 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * Removes a Contact
      *
-     * @param \Extcode\Contacts\Domain\Model\Contact $contactToRemove The Contact to be removed
+     * @param \Extcode\Contacts\Domain\Model\Contact $contactToRemove
      *
      * @return void
      */

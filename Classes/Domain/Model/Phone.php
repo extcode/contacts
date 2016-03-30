@@ -44,7 +44,7 @@ class Phone extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setType($type)
     {
-        $types = array(
+        $types = [
             'PREF',
             'WORK',
             'HOME',
@@ -58,7 +58,7 @@ class Phone extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
             'CAR',
             'ISDN',
             'VIDEO'
-        );
+        ];
 
         if (!in_array($type, $types)) {
             throw new \InvalidArgumentException(

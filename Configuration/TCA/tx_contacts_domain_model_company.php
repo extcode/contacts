@@ -33,11 +33,12 @@ return [
     ],
     'types' => [
         '1' => [
-            'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, fe_user, logo, name, email, uri, companies, contacts, addresses, phone_numbers, tt_content, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'
+            'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, fe_user, logo, --palette--;' . $_LLL . ':tx_contacts_domain_model_company.palette.name;name, directors, email, uri, companies, contacts, addresses, phone_numbers, tt_content, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'
         ],
     ],
     'palettes' => [
         '1' => ['showitem' => ''],
+        'name' => ['showitem' => 'name, --linebreak--, legal_name, legal_form, --linebreak--, registered_office, register_court, register_number, vat_id', 'canNotCollapse' => 1],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -144,6 +145,90 @@ return [
                 'type' => 'input',
                 'size' => 30,
                 'eval' => 'trim,required'
+            ],
+        ],
+        'legal_name' => [
+            'exclude' => 1,
+            'label' => $_LLL . ':tx_contacts_domain_model_company.legal_name',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'legal_form' => [
+            'exclude' => 1,
+            'label' => $_LLL . ':tx_contacts_domain_model_company.legal_form',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'registered_office' => [
+            'exclude' => 1,
+            'label' => $_LLL . ':tx_contacts_domain_model_company.registered_office',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'register_court' => [
+            'exclude' => 1,
+            'label' => $_LLL . ':tx_contacts_domain_model_company.register_court',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'register_number' => [
+            'exclude' => 1,
+            'label' => $_LLL . ':tx_contacts_domain_model_company.register_number',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'vat_id' => [
+            'exclude' => 1,
+            'label' => $_LLL . ':tx_contacts_domain_model_company.vat_id',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'directors' => [
+            'exclude' => 1,
+            'label' => $_LLL . ':tx_contacts_domain_model_company.directors',
+            'config' => [
+                'type' => 'group',
+                'internal_type' => 'db',
+                'foreign_table' => 'tx_contacts_domain_model_contact',
+                'allowed' => 'tx_contacts_domain_model_contact',
+                'MM' => 'tx_contacts_domain_model_company_director_mm',
+                'maxitems' => 99,
+                'wizards' => [
+                    'suggest' => [
+                        'type' => 'suggest',
+                    ],
+                    'add' => [
+                        'type' => 'script',
+                        'title' => 'LLL:EXT:cms/locallang_tca.xlf:sys_template.basedOn_add',
+                        'icon' => 'add.gif',
+                        'params' => [
+                            'table' => 'tx_contacts_domain_model_contact',
+                            'pid' => '###CURRENT_PID###',
+                            'setValue' => 'prepend'
+                        ],
+                        'module' => [
+                            'name' => 'wizard_add'
+                        ]
+                    ]
+                ],
             ],
         ],
         'contacts' => [

@@ -31,15 +31,16 @@ return [
         'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_address.png',
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, type, street, street_number, zip, city, region, country, post_box, lon, lat, tt_content',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, type, street, street_number, addition1, addition2, zip, city, region, country, post_box, lon, lat, tt_content',
     ],
     'types' => [
         '1' => [
-            'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, type, street, street_number, zip, city, region, country, post_box, tt_content, --palette--;LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.lon_lat;lon_lat, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'
+            'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, type, --palette--;' . $_LLL . ':tx_contacts_domain_model_company.palette.address;address, post_box, tt_content, --palette--;LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.lon_lat;lon_lat, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'
         ],
     ],
     'palettes' => [
         '1' => ['showitem' => ''],
+        'address' => ['showitem' => 'street, street_number, --linebreak--, addition1, addition2, --linebreak--, zip, city, --linebreak--, region, country', 'canNotCollapse' => 1],
         'lon_lat' => ['showitem' => 'lon, lat', 'canNotCollapse' => 1],
     ],
     'columns' => [
@@ -178,6 +179,33 @@ return [
         'street_number' => [
             'exclude' => 0,
             'label' => $_LLL . ':tx_contacts_domain_model_address.street_number',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'street_number' => [
+            'exclude' => 0,
+            'label' => $_LLL . ':tx_contacts_domain_model_address.street_number',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'addition1' => [
+            'exclude' => 0,
+            'label' => $_LLL . ':tx_contacts_domain_model_address.addition1',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim'
+            ],
+        ],
+        'addition2' => [
+            'exclude' => 0,
+            'label' => $_LLL . ':tx_contacts_domain_model_address.addition2',
             'config' => [
                 'type' => 'input',
                 'size' => 30,

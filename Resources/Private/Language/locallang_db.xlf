@@ -17,6 +17,10 @@
                 <source>Teaser</source>
             </trans-unit>
 
+            <trans-unit id="tx_contacts_domain_model_company.palette.name">
+                <source>Name</source>
+            </trans-unit>
+
             <trans-unit id="tx_contacts.module.contacts">
                 <source>Contacts</source>
             </trans-unit>
@@ -76,8 +80,32 @@
             <trans-unit id="tx_contacts_domain_model_company">
                 <source>Company</source>
             </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.fe_user">
+                <source>Frontend User</source>
+            </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.name">
                 <source>Company Name</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.legal_name">
+                <source>Legal Name</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.legal_form">
+                <source>Legal Form</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.registered_office">
+                <source>Registered Office</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.register_court">
+                <source>Register Court</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.register_number">
+                <source>Register Number</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.vat_id">
+                <source>VAT ID</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.directors">
+                <source>Directors</source>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.companies">
                 <source>Headquaters</source>
@@ -136,6 +164,12 @@
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.street_number">
                 <source>Street Number</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.addition1">
+                <source>Address Addition 1</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.addition2">
+                <source>Address Addition 2</source>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.zip">
                 <source>Zip</source>

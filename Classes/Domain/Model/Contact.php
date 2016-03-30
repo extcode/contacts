@@ -235,7 +235,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getFullName($seperator = ' ')
     {
-        return join($seperator, array($this->getFirstName(), $this->getLastName()));
+        return join($seperator, [$this->getFirstName(), $this->getLastName()]);
     }
 
     /**
@@ -244,7 +244,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getTitleFullName($seperator = ' ')
     {
-        $titleFullName = array();
+        $titleFullName = [];
         if ($this->getTitle()) {
             $titleFullName[] = $this->getTitle();
         }

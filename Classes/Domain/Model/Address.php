@@ -52,6 +52,20 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $streetNumber = '';
 
     /**
+     * Addition to Address 1
+     *
+     * @var string
+     */
+    protected $addition1 = '';
+
+    /**
+     * Addition to Address 2
+     *
+     * @var string
+     */
+    protected $addition2 = '';
+
+    /**
      * ZIP
      *
      * @var string
@@ -142,7 +156,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function setType($type)
     {
-        $types = array('DOM', 'INTL', 'POSTAL', 'PARCEL', 'HOME', 'WORK');
+        $types = ['DOM', 'INTL', 'POSTAL', 'PARCEL', 'HOME', 'WORK'];
 
         if (!in_array($type, $types)) {
             throw new \InvalidArgumentException(
@@ -196,6 +210,42 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getStreetNumber()
     {
         return $this->streetNumber;
+    }
+
+    /**
+     * @param string $addition1
+     *
+     * @return void
+     */
+    public function setAddition1($addition1)
+    {
+        $this->addition1 = $addition1;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddition1()
+    {
+        return $this->addition1;
+    }
+
+    /**
+     * @param string $addition2
+     *
+     * @return void
+     */
+    public function setAddition2($addition2)
+    {
+        $this->addition2 = $addition2;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddition2()
+    {
+        return $this->addition2;
     }
 
     /**

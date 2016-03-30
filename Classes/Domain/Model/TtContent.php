@@ -24,12 +24,12 @@ namespace Extcode\Contacts\Domain\Model;
 class TtContent extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * @var DateTime
+     * @var \DateTime
      */
     protected $crdate;
 
     /**
-     * @var DateTime
+     * @var \DateTime
      */
     protected $tstamp;
 

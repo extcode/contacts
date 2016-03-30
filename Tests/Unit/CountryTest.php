@@ -2,128 +2,174 @@
 
 namespace Extcode\Contacts\Tests;
 
-class CountryTest extends \TYPO3\CMS\Extbase\Tests\Unit\BaseTestCase {
+/**
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
 
-	/**
-	 * Name
-	 *
-	 * @var string
-	 */
-	protected $name;
+/**
+ * Country Model Test
+ *
+ * @package contacts
+ * @author Daniel Lorenz <ext.contacts@extco.de>
+ */
 
-	/**
-	 * @var \Tx_Contacts_Domain_Model_Country
-	 */
-	protected $fixture = NULL;
+class CountryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+{
+    /**
+     * Name
+     *
+     * @var string
+     */
+    protected $name;
 
-	/**
-	 *
-	 */
-	public function setUp() {
-		$this->fixture = new \Extcode\Contacts\Domain\Model\Country($this->name);
-	}
+    /**
+     * @var \Extcode\Contacts\Domain\Model\Country
+     */
+    protected $fixture = null;
 
-	/**
-	 *
-	 */
-	public function tearDown() {
-		unset($this->fixture);
-	}
+    /**
+     *
+     */
+    public function setUp()
+    {
+        $this->fixture = new \Extcode\Contacts\Domain\Model\Country($this->name);
+    }
 
-	/**
-	 * @test
-	 */
-	public function getIso2InitiallyReturnsEmptyString() {
-		$this->assertSame(
-			'',
-			$this->fixture->getIso2()
-		);
-	}
+    /**
+     *
+     */
+    public function tearDown()
+    {
+        unset($this->fixture);
+    }
 
-	/**
-	 * @test
-	 */
-	public function setIso2SetsIso2() {
-		$this->fixture->setIso2('DE');
+    /**
+     * @test
+     */
+    public function getIso2InitiallyReturnsEmptyString()
+    {
+        $this->assertSame(
+            '',
+            $this->fixture->getIso2()
+        );
+    }
 
-		$this->assertSame(
-			'DE',
-			$this->fixture->getIso2()
-		);
-	}
+    /**
+     * @test
+     */
+    public function setIso2SetsIso2()
+    {
+        $this->fixture->setIso2('DE');
 
-	/**
-	 * @test
-	 * @expectedException Tx_Extbase_Property_Exception_InvalidPropertyException
-	 */
-	public function setIso2WithMoreOrLessThanTwoDigitThrowsException() {
-		$this->fixture->setIso2('D');
-		$this->fixture->setIso2('DEU');
-	}
+        $this->assertSame(
+            'DE',
+            $this->fixture->getIso2()
+        );
+    }
 
-	/**
-	 * @test
-	 */
-	public function getIso3InitiallyReturnsEmptyString() {
-		$this->assertSame(
-			'',
-			$this->fixture->getIso3()
-		);
-	}
+    /**
+     * @test
+     * @expectedException \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException
+     */
+    public function setIso2WithLessThanTwoDigitThrowsException()
+    {
+        $this->fixture->setIso2('DEU');
+    }
 
-	/**
-	 * @test
-	 */
-	public function setIso3SetsIso3() {
-		$this->fixture->setIso3('DEU');
+    /**
+     * @test
+     * @expectedException \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException
+     */
+    public function setIso2WithMoreThanTwoDigitThrowsException()
+    {
+        $this->fixture->setIso2('DEU');
+    }
 
-		$this->assertSame(
-			'DEU',
-			$this->fixture->getIso3()
-		);
-	}
+    /**
+     * @test
+     */
+    public function getIso3InitiallyReturnsEmptyString()
+    {
+        $this->assertSame(
+            '',
+            $this->fixture->getIso3()
+        );
+    }
 
-	/**
-	 * @test
-	 */
-	public function setIso3WithEmptyStringSetsIso3ToEmptyString() {
-		$this->fixture->setIso3('');
+    /**
+     * @test
+     */
+    public function setIso3SetsIso3()
+    {
+        $this->fixture->setIso3('DEU');
 
-		$this->assertSame(
-			'',
-			$this->fixture->getIso3()
-		);
-	}
+        $this->assertSame(
+            'DEU',
+            $this->fixture->getIso3()
+        );
+    }
 
-	/**
-	 * @test
-	 * @expectedException Tx_Extbase_Property_Exception_InvalidPropertyException
-	 */
-	public function setIso3WithNoEmptyStringAndMoreOrLessThanThreeDigitThrowsException() {
-		$this->fixture->setIso3('DE');
-		$this->fixture->setIso3('DEUT');
-	}
+    /**
+     * @test
+     */
+    public function setIso3WithEmptyStringSetsIso3ToEmptyString()
+    {
+        $this->fixture->setIso3('');
 
-	/**
-	 * @test
-	 */
-	public function getNameInitiallyReturnsEmptyString() {
-		$this->assertSame(
-			'',
-			$this->fixture->getName()
-		);
-	}
+        $this->assertSame(
+            '',
+            $this->fixture->getIso3()
+        );
+    }
 
-	/**
-	 * @test
-	 */
-	public function setNameSetsName() {
-		$this->fixture->setName('Name new');
+    /**
+     * @test
+     * @expectedException \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException
+     */
+    public function setIso3WithNoEmptyStringAndLessThanThreeDigitThrowsException()
+    {
+        $this->fixture->setIso3('DE');
+    }
 
-		$this->assertSame(
-			'Name new',
-			$this->fixture->getName()
-		);
-	}
+    /**
+     * @test
+     * @expectedException \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException
+     */
+    public function setIso3WithNoEmptyStringAndMoreThanThreeDigitThrowsException()
+    {
+        $this->fixture->setIso3('DEUT');
+    }
 
+    /**
+     * @test
+     */
+    public function getNameInitiallyReturnsEmptyString()
+    {
+        $this->assertSame(
+            '',
+            $this->fixture->getName()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setNameSetsName()
+    {
+        $this->fixture->setName('Name new');
+
+        $this->assertSame(
+            'Name new',
+            $this->fixture->getName()
+        );
+    }
 }

@@ -67,6 +67,15 @@ CREATE TABLE tx_contacts_domain_model_company (
     fe_user int(11) unsigned DEFAULT '0',
 
     name varchar(255) DEFAULT '' NOT NULL,
+    legal_name varchar(255) DEFAULT '' NOT NULL,
+    legal_form varchar(255) DEFAULT '' NOT NULL,
+    registered_office varchar(255) DEFAULT '' NOT NULL,
+    register_court varchar(255) DEFAULT '' NOT NULL,
+    register_number varchar(255) DEFAULT '' NOT NULL,
+
+    vat_id varchar(255) DEFAULT '' NOT NULL,
+
+    directors int(11) unsigned DEFAULT '0' NOT NULL,
 
     email varchar(255) DEFAULT '' NOT NULL,
     uri varchar(255) DEFAULT '' NOT NULL,
@@ -133,6 +142,8 @@ CREATE TABLE tx_contacts_domain_model_address (
     region varchar(255) DEFAULT '' NOT NULL,
     country int(11) unsigned DEFAULT '0' NOT NULL,
     post_box varchar(255) DEFAULT '' NOT NULL,
+    addition1 varchar(255) DEFAULT '' NOT NULL,
+    addition2 varchar(255) DEFAULT '' NOT NULL,
 
     lat double default '0',
     lon double default '0',
@@ -275,6 +286,16 @@ CREATE TABLE tx_contacts_domain_model_contact_company_mm (
     sorting_foreign int(11) DEFAULT '0' NOT NULL,
 
     contact int(11) unsigned DEFAULT '0' NOT NULL,
+
+    KEY uid_local (uid_local),
+    KEY uid_foreign (uid_foreign)
+);
+
+CREATE TABLE tx_contacts_domain_model_company_director_mm (
+    uid_local int(11) DEFAULT '0' NOT NULL,
+    uid_foreign int(11) DEFAULT '0' NOT NULL,
+    sorting int(11) DEFAULT '0' NOT NULL,
+    sorting_foreign int(11) DEFAULT '0' NOT NULL,
 
     KEY uid_local (uid_local),
     KEY uid_foreign (uid_foreign)

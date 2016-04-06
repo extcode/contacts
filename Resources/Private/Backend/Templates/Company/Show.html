@@ -65,7 +65,11 @@
             <th class="t3-row-header">
                 <f:translate key="tx_contacts_domain_model_company.uri"/>
             </th>
-            <td>{company.uri}</td>
+            <td>
+                <f:link.typolink parameter="{company.uri}">
+                    <f:translate key="tx_contacts_domain_model_company.uri"/>
+                </f:link.typolink>
+            </td>
         </tr>
     </table>
 

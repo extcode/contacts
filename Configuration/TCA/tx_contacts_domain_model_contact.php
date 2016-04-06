@@ -266,7 +266,24 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'max' => '256',
+                'eval' => 'trim',
+                'wizards' => [
+                    '_PADDING' => 2,
+                    'link' => [
+                        'type' => 'popup',
+                        'title' => 'LLL:EXT:cms/locallang_ttc.xlf:header_link_formlabel',
+                        'icon' => 'link_popup.gif',
+                        'module' => [
+                            'name' => 'wizard_element_browser',
+                            'urlParameters' => [
+                                'mode' => 'wizard'
+                            ]
+                        ],
+                        'JSopenParams' => 'height=300,width=500,status=0,menubar=0,scrollbars=1'
+                    ]
+                ],
+                'softref' => 'typolink'
             ],
         ],
         'photo' => [

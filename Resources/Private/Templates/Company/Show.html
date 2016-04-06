@@ -33,7 +33,9 @@
 
 	<f:if condition="{company.uri}">
 		<div class="contacts-company-uri">
-			{company.uri}
+			<f:link.typolink parameter="{company.uri}">
+				<f:translate key="tx_contacts_domain_model_company.uri"/>
+			</f:link.typolink>
 		</div>
 	</f:if>
 

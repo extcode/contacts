@@ -88,7 +88,11 @@
                 <th class="t3-row-header">
                     <f:translate key="tx_contacts_domain_model_contact.uri"/>
                 </th>
-                <td>{contact.uri}</td>
+                <td>
+                    <f:link.typolink parameter="{contact.uri}">
+                        <f:translate key="tx_contacts_domain_model_contact.uri"/>
+                    </f:link.typolink>
+                </td>
             </tr>
         </f:if>
     </table>

@@ -20,6 +20,20 @@
         <f:render partial="Phone/Properties" arguments="{phone:phone_number}" />
     </f:for>
 
+	<f:if condition="{contact.email}">
+		<div class="contacts-contact-email">
+			{contact.email}
+		</div>
+	</f:if>
+
+	<f:if condition="{contact.uri}">
+		<div class="contacts-contact-uri">
+			<f:link.typolink parameter="{contact.uri}">
+				<f:translate key="tx_contacts_domain_model_contact.uri"/>
+			</f:link.typolink>
+		</div>
+	</f:if>
+
 	<f:if condition="{contact.ttContent}">
 		<f:for each="{contact.ttContent}" as="content" iteration="contentIterator" >
 			<div id="content-{contentIterator.cycle}"  class="content-element">

@@ -225,7 +225,7 @@
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.country">
                 <source>Country</source>
-                <target>Region</target>
+                <target>Land</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.post_box">
                 <source>Post Box</source>

@@ -176,8 +176,8 @@ return [
                     ],
                 ],
                 'size' => 5,
+                'minitems' => 1,
                 'maxitems' => 10,
-                'eval' => 'required'
             ],
         ],
         'number' => [

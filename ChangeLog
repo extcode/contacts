@@ -1,0 +1,5 @@
+0.1.8
+    2017-02-07
+    Daniel Lorenz <daniel.lorenz@extco.de>
+
+    * BUGFIX #2: change order of latitude and longitude in TCA

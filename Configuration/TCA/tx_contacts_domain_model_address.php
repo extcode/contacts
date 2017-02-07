@@ -41,7 +41,7 @@ return [
     'palettes' => [
         '1' => ['showitem' => ''],
         'address' => ['showitem' => 'street, street_number, --linebreak--, addition1, addition2, --linebreak--, zip, city, --linebreak--, region, country', 'canNotCollapse' => 1],
-        'lon_lat' => ['showitem' => 'lon, lat', 'canNotCollapse' => 1],
+        'lon_lat' => ['showitem' => 'lat, lon', 'canNotCollapse' => 1],
     ],
     'columns' => [
         'sys_language_uid' => [

@@ -1,3 +1,9 @@
+0.1.9
+    2017-02-07
+    Daniel Lorenz <daniel.lorenz@extco.de>
+
+    * BUGFIX #3: remove dublicate array key
+
 0.1.8
     2017-02-07
     Daniel Lorenz <daniel.lorenz@extco.de>

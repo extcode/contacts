@@ -185,15 +185,6 @@ return [
                 'eval' => 'trim'
             ],
         ],
-        'street_number' => [
-            'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.street_number',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
         'addition1' => [
             'exclude' => 0,
             'label' => $_LLL . ':tx_contacts_domain_model_address.addition1',

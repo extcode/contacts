@@ -1,3 +1,9 @@
+0.1.11
+    2017-04-12
+    Daniel Lorenz <daniel.lorenz@extco.de>
+
+    * BUGFIX #6: duplicated first_name in ext_tables.sql
+
 0.1.10
     2017-03-01
     Daniel Lorenz <daniel.lorenz@extco.de>

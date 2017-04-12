@@ -11,7 +11,6 @@ CREATE TABLE tx_contacts_domain_model_contact (
     salutation varchar(255) DEFAULT '' NOT NULL,
     title varchar(255) DEFAULT '' NOT NULL,
     first_name varchar(255) DEFAULT '' NOT NULL,
-    first_name varchar(255) DEFAULT '' NOT NULL,
     last_name varchar(255) DEFAULT '' NOT NULL,
     birthday int(11) DEFAULT '0' NOT NULL,
 

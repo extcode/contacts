@@ -43,11 +43,10 @@
                                     {contact.lastName}
                                 </td>
                                 <td>
-                                    <span class="btn btn-default">
-                                        <f:be.buttons.icon
-                                                uri="{f:uri.action(action:'show', arguments:{contact : contact})}"
-                                                icon="actions-preview"/>
-                                    </span>
+                                    <a class="btn btn-default"
+                                       href="{f:uri.action(action:'show', arguments:{contact : contact})}">
+                                        <core:icon identifier="actions-preview" />
+                                    </a>
                                 </td>
                             </tr>
                         </f:for>

@@ -1,3 +1,9 @@
+0.5.0
+    2017-04-14
+    Daniel Lorenz <daniel.lorenz@extco.de>
+
+    * TASK #9: remove support for php versions 5.4 and 5.5
+
 0.4.0
     2017-04-14
     Daniel Lorenz <daniel.lorenz@extco.de>

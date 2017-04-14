@@ -17,11 +17,11 @@ $EM_CONF[$_EXTKEY] = [
     'modify_tables' => '',
     'clearCacheOnLoad' => 0,
     'lockType' => '',
-    'version' => '0.4.0',
+    'version' => '0.5.0',
     'constraints' => [
         'depends' => [
             'typo3' => '6.2.0-8.7.99',
-            'php' => '5.4.0'
+            'php' => '5.6.0'
         ],
         'conflicts' => [],
         'suggests' => [],

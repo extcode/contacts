@@ -18,7 +18,6 @@ namespace Extcode\Contacts\Controller;
 /**
  * Address Controller
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
@@ -33,8 +32,6 @@ class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     /**
      * action show
-     *
-     * @return void
      */
     public function showAction()
     {

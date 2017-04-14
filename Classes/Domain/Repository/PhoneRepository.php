@@ -18,10 +18,8 @@ namespace Extcode\Contacts\Domain\Repository;
 /**
  * Phone Repository
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class PhoneRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-
 }

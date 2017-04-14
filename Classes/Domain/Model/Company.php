@@ -18,7 +18,6 @@ namespace Extcode\Contacts\Domain\Model;
 /**
  * Company Model
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
@@ -44,7 +43,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $legalForm = '';
-
 
     /**
      * Registered Office
@@ -151,8 +149,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $name
      *
      * @throws \InvalidArgumentException
-     *
-     * @return void
      */
     public function setName($name)
     {
@@ -176,8 +172,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $legalName
-     *
-     * @return void
      */
     public function setLegalName($legalName)
     {
@@ -194,8 +188,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $legalForm
-     *
-     * @return void
      */
     public function setLegalForm($legalForm)
     {
@@ -212,8 +204,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $registeredOffice
-     *
-     * @return void
      */
     public function setRegisteredOffice($registeredOffice)
     {
@@ -230,8 +220,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $registerCourt
-     *
-     * @return void
      */
     public function setRegisterCourt($registerCourt)
     {
@@ -248,8 +236,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $registerNumber
-     *
-     * @return void
      */
     public function setRegisterNumber($registerNumber)
     {
@@ -266,8 +252,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $vatId
-     *
-     * @return void
      */
     public function setVatId($vatId)
     {
@@ -278,8 +262,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Adds a Director
      *
      * @param \Extcode\Contacts\Domain\Model\Contact $director
-     *
-     * @return void
      */
     public function addDirector(\Extcode\Contacts\Domain\Model\Contact $director)
     {
@@ -290,8 +272,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Removes a Director
      *
      * @param \Extcode\Contacts\Domain\Model\Contact $directorToRemove
-     *
-     * @return void
      */
     public function removeDirector(\Extcode\Contacts\Domain\Model\Contact $directorToRemove)
     {
@@ -308,8 +288,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Contact> $directors
-     *
-     * @return void
      */
     public function setDirectors($directors)
     {
@@ -320,8 +298,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Adds a Contact
      *
      * @param \Extcode\Contacts\Domain\Model\Contact $contact
-     *
-     * @return void
      */
     public function addContact(\Extcode\Contacts\Domain\Model\Contact $contact)
     {
@@ -332,8 +308,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Removes a Contact
      *
      * @param \Extcode\Contacts\Domain\Model\Contact $contactToRemove
-     *
-     * @return void
      */
     public function removeContact(\Extcode\Contacts\Domain\Model\Contact $contactToRemove)
     {
@@ -354,8 +328,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Sets the contacts
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Contact> $contacts
-     *
-     * @return void
      */
     public function setContacts(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $contacts)
     {
@@ -366,8 +338,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Adds a Address
      *
      * @param \Extcode\Contacts\Domain\Model\Address $address
-     *
-     * @return void
      */
     public function addAddress(\Extcode\Contacts\Domain\Model\Address $address)
     {
@@ -378,8 +348,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Removes a Address
      *
      * @param \Extcode\Contacts\Domain\Model\Address $addressToRemove The Address to be removed
-     *
-     * @return void
      */
     public function removeAddress(\Extcode\Contacts\Domain\Model\Address $addressToRemove)
     {
@@ -400,8 +368,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Sets the addresses
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Address> $addresses
-     *
-     * @return void
      */
     public function setAddresses(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $addresses)
     {
@@ -412,8 +378,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Adds a Phone Number
      *
      * @param \Extcode\Contacts\Domain\Model\Phone $phoneNumber
-     *
-     * @return void
      */
     public function addPhoneNumber(\Extcode\Contacts\Domain\Model\Phone $phoneNumber)
     {
@@ -424,8 +388,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Removes a Phone Number
      *
      * @param \Extcode\Contacts\Domain\Model\Phone $phoneNumberToRemove The Phone Number to be removed
-     *
-     * @return void
      */
     public function removePhoneNumber(\Extcode\Contacts\Domain\Model\Phone $phoneNumberToRemove)
     {
@@ -446,8 +408,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Sets the phoneNumbers
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Phone> $phoneNumbers
-     *
-     * @return void
      */
     public function setPhoneNumbers(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $phoneNumbers)
     {
@@ -464,8 +424,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $email
-     *
-     * @return void
      */
     public function setEmail($email)
     {
@@ -482,8 +440,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $uri
-     *
-     * @return void
      */
     public function setUri($uri)
     {
@@ -504,8 +460,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Sets the logo
      *
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $logo
-     *
-     * @return void
      */
     public function setLogo(\TYPO3\CMS\Extbase\Domain\Model\FileReference $logo)
     {
@@ -526,8 +480,6 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Sets the TT Content
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $ttContent
-     *
-     * @return void
      */
     public function setTtContent($ttContent)
     {

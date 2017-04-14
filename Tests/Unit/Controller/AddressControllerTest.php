@@ -18,7 +18,6 @@ namespace Extcode\Contacts\Tests\Unit\Controller;
 /**
  * Address Controller Test
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class AddressControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
@@ -49,8 +48,8 @@ class AddressControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 
         $this->addressRepository = $this->getMock(
             \Extcode\Contacts\Domain\Repository\AddressRepository::class,
-            array(),
-            array(),
+            [],
+            [],
             '',
             false
         );

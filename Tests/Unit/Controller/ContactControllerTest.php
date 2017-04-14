@@ -18,7 +18,6 @@ namespace Extcode\Contacts\Tests\Unit\Controller;
 /**
  * Contact Controller Test
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class ContactControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
@@ -49,8 +48,8 @@ class ContactControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 
         $this->contactRepository = $this->getMock(
             \Extcode\Contacts\Domain\Repository\ContactRepository::class,
-            array(),
-            array(),
+            [],
+            [],
             '',
             false
         );

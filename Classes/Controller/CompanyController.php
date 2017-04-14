@@ -18,7 +18,6 @@ namespace Extcode\Contacts\Controller;
 /**
  * Company Controller
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
@@ -74,8 +73,6 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     /**
      * action list
-     *
-     * @return void
      */
     public function listAction()
     {
@@ -89,7 +86,6 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      * action show
      *
      * @param \Extcode\Contacts\Domain\Model\Company $company
-     * @return void
      */
     public function showAction(\Extcode\Contacts\Domain\Model\Company $company = null)
     {
@@ -102,8 +98,6 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
     /**
      * action teaser
-     *
-     * @return void
      */
     public function teaserAction()
     {

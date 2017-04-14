@@ -18,7 +18,6 @@ namespace Extcode\Contacts\Domain\Model;
 /**
  * Address Model
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
@@ -131,8 +130,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $title
-     *
-     * @return void
      */
     public function setTitle($title)
     {
@@ -151,8 +148,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $type
      *
      * @throws \InvalidArgumentException
-     *
-     * @return void
      */
     public function setType($type)
     {
@@ -178,8 +173,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $street
-     *
-     * @return void
      */
     public function setStreet($street)
     {
@@ -196,8 +189,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $streetNumber
-     *
-     * @return void
      */
     public function setStreetNumber($streetNumber)
     {
@@ -214,8 +205,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $addition1
-     *
-     * @return void
      */
     public function setAddition1($addition1)
     {
@@ -232,8 +221,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $addition2
-     *
-     * @return void
      */
     public function setAddition2($addition2)
     {
@@ -250,8 +237,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $zip
-     *
-     * @return void
      */
     public function setZip($zip)
     {
@@ -268,8 +253,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $city
-     *
-     * @return void
      */
     public function setCity($city)
     {
@@ -286,8 +269,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $region
-     *
-     * @return void
      */
     public function setRegion($region)
     {
@@ -304,8 +285,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param \Extcode\Contacts\Domain\Model\Country $country
-     *
-     * @return void
      */
     public function setCountry($country)
     {
@@ -322,8 +301,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $postBox
-     *
-     * @return void
      */
     public function setPostBox($postBox)
     {
@@ -340,8 +317,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $lat
-     *
-     * @return void
      */
     public function setLat($lat)
     {
@@ -358,8 +333,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $lon
-     *
-     * @return void
      */
     public function setLon($lon)
     {
@@ -398,8 +371,6 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Sets the TT Content
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $ttContent
-     *
-     * @return void
      */
     public function setTtContent($ttContent)
     {

@@ -18,10 +18,8 @@ namespace Extcode\Contacts\Tests\Domain\Model;
 /**
  * Company Model Test
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
-
 class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
     /**
@@ -41,7 +39,7 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setUp()
     {
-        $this->name = "Name";
+        $this->name = 'Name';
 
         $this->fixture = new \Extcode\Contacts\Domain\Model\Company($this->name);
     }

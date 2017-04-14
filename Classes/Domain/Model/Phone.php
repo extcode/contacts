@@ -18,7 +18,6 @@ namespace Extcode\Contacts\Domain\Model;
 /**
  * Phone Model
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class Phone extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
@@ -80,8 +79,6 @@ class Phone extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $number
-     *
-     * @return void
      */
     public function setNumber($number)
     {

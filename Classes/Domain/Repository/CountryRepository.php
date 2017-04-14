@@ -18,10 +18,8 @@ namespace Extcode\Contacts\Domain\Repository;
 /**
  * Country Repository
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class CountryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-
 }

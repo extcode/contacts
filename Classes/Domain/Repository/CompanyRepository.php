@@ -18,7 +18,6 @@ namespace Extcode\Contacts\Domain\Repository;
 /**
  * Company Repository
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class CompanyRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
@@ -30,12 +29,12 @@ class CompanyRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param array $piVars
      * @return Query Object
      */
-    public function findAll($piVars = array())
+    public function findAll($piVars = [])
     {
         // settings
         $query = $this->createQuery();
 
-        $constraints = array();
+        $constraints = [];
 
         // filter
         if (isset($piVars['filter'])) {

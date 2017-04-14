@@ -18,7 +18,6 @@ namespace Extcode\Contacts\ViewHelpers;
 /**
  * Map Model Properties To Table Columns ViewHelper
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class MapModelPropertiesToTableColumnsViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper

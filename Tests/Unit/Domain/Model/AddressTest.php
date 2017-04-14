@@ -18,10 +18,8 @@ namespace Extcode\Contacts\Tests\Domain\Model;
 /**
  * Address Model Test
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
-
 class AddressTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
     /**

@@ -18,7 +18,6 @@ namespace Extcode\Contacts\Tests\Domain\Model;
 /**
  * Company Model Test
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class CompanyRepositoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase

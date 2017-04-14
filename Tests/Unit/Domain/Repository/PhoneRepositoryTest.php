@@ -18,7 +18,6 @@ namespace Extcode\Contacts\Tests\Domain\Model;
 /**
  * Phone Model Test
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class PhoneRepositoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase

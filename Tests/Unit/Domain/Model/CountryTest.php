@@ -18,10 +18,8 @@ namespace Extcode\Contacts\Tests\Domain\Model;
 /**
  * Country Model Test
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
-
 class CountryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 {
     /**

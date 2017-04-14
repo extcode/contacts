@@ -18,7 +18,6 @@ namespace Extcode\Contacts\Domain\Model;
 /**
  * Country Model
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
@@ -66,8 +65,6 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $iso2
      *
      * @throws \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException
-     *
-     * @return void
      */
     public function setIso2($iso2)
     {
@@ -93,12 +90,10 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $iso3
      *
      * @throws \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException
-     *
-     * @return void
      */
     public function setIso3($iso3)
     {
-        if ((strlen($iso3) != 0) AND (strlen($iso3) != 3)) {
+        if ((strlen($iso3) != 0) and (strlen($iso3) != 3)) {
             throw new \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException(
                 'The iso3 code has to have three chars.',
                 1395925960
@@ -118,8 +113,6 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $name
-     *
-     * @return void
      */
     public function setName($name)
     {
@@ -136,8 +129,6 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $tld
-     *
-     * @return void
      */
     public function setTld($tld)
     {
@@ -154,8 +145,6 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @param string $phoneCountryCode
-     *
-     * @return void
      */
     public function setPhoneCountryCode($phoneCountryCode)
     {

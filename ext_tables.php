@@ -9,7 +9,6 @@ $_LLL = 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf';
 /**
  * Register Frontend Plugins
  */
-
 $pluginNames = [
     'Address',
     'Companies',

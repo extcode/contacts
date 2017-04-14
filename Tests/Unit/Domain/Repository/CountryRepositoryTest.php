@@ -18,7 +18,6 @@ namespace Extcode\Countrys\Tests\Domain\Model;
 /**
  * Country Model Test
  *
- * @package contacts
  * @author Daniel Lorenz <ext.contacts@extco.de>
  */
 class CountryRepositoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase

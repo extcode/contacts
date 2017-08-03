@@ -54,10 +54,7 @@ TxContacts.codeAddress = function() {
 };
 
 TxContacts.updateValue = function(fieldName, value) {
-    if(version < 7006000) {
-        document[TBE_EDITOR.formname][fieldName].value = value;
-        document[TBE_EDITOR.formname][fieldName + '_hr'].value = value;
-    } if(version < 8007000) {
+    if (version < 8007000) {
         document[TBE_EDITOR.formname][fieldName].value = value;
         TYPO3.jQuery('[data-formengine-input-name="' + fieldName + '"]').val(value);
     } else {

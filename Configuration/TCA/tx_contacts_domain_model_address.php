@@ -31,7 +31,7 @@ return [
         'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_address.png',
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, type, street, street_number, addition1, addition2, zip, city, region, country, post_box, lon, lat, tt_content',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, type, street, street_number, addition1, addition2, zip, city, region, country, post_box, lat, lon, coords, tt_content',
     ],
     'types' => [
         '1' => [
@@ -40,7 +40,10 @@ return [
     ],
     'palettes' => [
         '1' => ['showitem' => ''],
-        'address' => ['showitem' => 'street, street_number, --linebreak--, addition1, addition2, --linebreak--, zip, city, --linebreak--, region, country', 'canNotCollapse' => 1],
+        'address' => [
+            'showitem' => 'street, street_number, --linebreak--, addition1, addition2, --linebreak--, zip, city, --linebreak--, region, country',
+            'canNotCollapse' => 1
+        ],
         'lon_lat' => ['showitem' => 'lat, lon', 'canNotCollapse' => 1],
     ],
     'columns' => [

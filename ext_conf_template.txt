@@ -1,0 +1,4 @@
+# cat=basic/enable/010; type=string; label=Sets the Google Maps API key.
+googleMapsApiKey =
+# cat=basic/enable/030; type=string; label=Sets the Google Maps Library.
+googleMapsLibrary = https://maps.google.com/maps/api/js?v=3.23

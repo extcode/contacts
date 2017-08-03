@@ -1,8 +1,8 @@
 <?php
 
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'contacts',
-    'description' => 'Contact extension to replace tt_address',
+    'title' => 'Contacts',
+    'description' => 'Contacts can handle persons and companies and relations to each other. With multiple addresses and phone numbers Contacts can be a modern replacement for tt_address.',
     'category' => 'plugin',
     'author' => 'Daniel Lorenz',
     'author_email' => 'ext.contacts@extco.de',
@@ -17,7 +17,7 @@ $EM_CONF[$_EXTKEY] = [
     'modify_tables' => '',
     'clearCacheOnLoad' => 0,
     'lockType' => '',
-    'version' => '0.5.0',
+    'version' => '0.6.0',
     'constraints' => [
         'depends' => [
             'typo3' => '6.2.0-8.7.99',

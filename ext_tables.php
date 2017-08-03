@@ -45,7 +45,7 @@ if (TYPO3_MODE === 'BE') {
         [
             'access' => 'admin',
             'icon' => 'EXT:' . $_EXTKEY . '/ext_icon.gif',
-            'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf:tx_contacts.module.contacts',
+            'labels' => $_LLL . ':tx_contacts.module.contacts',
         ]
     );
 }

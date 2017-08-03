@@ -1,47 +1,53 @@
+0.6.0
+    2017-08-03
+    Daniel Lorenz <https://github.com/extcode>
+
+    * TASK #10: add google maps api hook
+
 0.5.0
     2017-04-14
-    Daniel Lorenz <daniel.lorenz@extco.de>
+    Daniel Lorenz <https://github.com/extcode>
 
     * TASK #9: remove support for php versions 5.4 and 5.5
 
 0.4.0
     2017-04-14
-    Daniel Lorenz <daniel.lorenz@extco.de>
+    Daniel Lorenz <https://github.com/extcode>
 
     * TASK #8: add cs-fixer to gitlab-ci
 
 0.3.0
     2017-04-14
-    Daniel Lorenz <daniel.lorenz@extco.de>
+    Daniel Lorenz <https://github.com/extcode>
 
     * TASK #7: add gitlab-ci configuration
 
 0.2.0
     2017-04-12
-    Daniel Lorenz <daniel.lorenz@extco.de>
+    Daniel Lorenz <https://github.com/extcode>
 
     * TASK #5: make extension compatibile to TYPO3 v8
 
 0.1.11
     2017-04-12
-    Daniel Lorenz <daniel.lorenz@extco.de>
+    Daniel Lorenz <https://github.com/extcode>
 
     * BUGFIX #6: duplicated first_name in ext_tables.sql
 
 0.1.10
     2017-03-01
-    Daniel Lorenz <daniel.lorenz@extco.de>
+    Daniel Lorenz <https://github.com/extcode>
 
     * TASK #4: use testing framework
 
 0.1.9
     2017-02-07
-    Daniel Lorenz <daniel.lorenz@extco.de>
+    Daniel Lorenz <https://github.com/extcode>
 
     * BUGFIX #3: remove dublicate array key
 
 0.1.8
     2017-02-07
-    Daniel Lorenz <daniel.lorenz@extco.de>
+    Daniel Lorenz <https://github.com/extcode>
 
     * BUGFIX #2: change order of latitude and longitude in TCA

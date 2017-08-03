@@ -108,12 +108,10 @@ class GoogleMapHook
             $googleMapsLibrary .=  '&key=' . $extensionConfArr['googleMapsApiKey'];
         }
 
-        $address = $this->concatenateFieldsToAddress($params);
-
         $this->tableName = $params['table'];
         $this->mapId = $this->tableName . '_map';
 
-        $out = $this->getJavaScript($googleMapsLibrary, $params, $this->latFieldName, $this->lonFieldName, $this->mapId);
+        $out = $this->getJavaScript($googleMapsLibrary);
         $out .= $this->getInputFields($params);
 
         return $out;
@@ -172,11 +170,10 @@ class GoogleMapHook
 
     /**
      * @param string $googleMapsLibrary
-     * @param array $params
      *
      * @return string
      */
-    protected function getJavaScript($googleMapsLibrary, $params)
+    protected function getJavaScript($googleMapsLibrary)
     {
         $version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version);
 

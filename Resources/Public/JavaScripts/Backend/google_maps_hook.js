@@ -1,4 +1,4 @@
-if (typeof TxContacts === 'undefined') TxContacts = {};
+if (typeof TxContacts === "undefined") TxContacts = {};
 
 TxContacts.init = function() {
 
@@ -17,7 +17,7 @@ TxContacts.init = function() {
         draggable: true
     });
 
-    google.maps.event.addListener(TxContacts.marker, 'dragend', function() {
+    google.maps.event.addListener(TxContacts.marker, "dragend", function() {
 
         var lat = TxContacts.marker.getPosition().lat().toFixed(6);
         var lng = TxContacts.marker.getPosition().lng().toFixed(6);
@@ -32,14 +32,14 @@ TxContacts.init = function() {
 };
 
 TxContacts.refreshMap = function() {
-    google.maps.event.trigger(TxContacts.map, 'resize');
+    google.maps.event.trigger(TxContacts.map, "resize");
     // No need to do it again
-    Ext.fly(TxContacts.tabPrefix + '-MENU').un('click', TxContacts.refreshMap);
+    Ext.fly(TxContacts.tabPrefix + "-MENU").un("click", TxContacts.refreshMap);
 };
 
 TxContacts.codeAddress = function() {
     var address = document.getElementById("inputAddress").value;
-    TxContacts.geocoder.geocode({'address': address}, function(results, status) {
+    TxContacts.geocoder.geocode({"address": address}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
             TxContacts.map.setCenter(results[0].geometry.location);
             TxContacts.marker.setPosition(results[0].geometry.location);
@@ -56,11 +56,11 @@ TxContacts.codeAddress = function() {
 TxContacts.updateValue = function(fieldName, value) {
     if (version < 8007000) {
         document[TBE_EDITOR.formname][fieldName].value = value;
-        TYPO3.jQuery('[data-formengine-input-name="' + fieldName + '"]').val(value);
+        TYPO3.jQuery("[data-formengine-input-name='" + fieldName + "']").val(value);
     } else {
         var selectorFieldName = "data[" + tableName + "][1][" + fieldName + "]";
-        TYPO3.jQuery('input[data-formengine-input-name="' + selectorFieldName + '"]').val(value);
-        TYPO3.jQuery('input[name="' + selectorFieldName + '"]').val(value);
+        TYPO3.jQuery("input[data-formengine-input-name='" + selectorFieldName + "']").val(value);
+        TYPO3.jQuery("input[name='" + selectorFieldName + "']").val(value);
     }
 };
 

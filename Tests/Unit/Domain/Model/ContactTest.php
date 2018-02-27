@@ -63,8 +63,12 @@ class ContactTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         $this->title = 'Title';
         $this->firstName = 'FirstName';
         $this->lastName = 'LastName';
-        $this->fixture = new \Extcode\Contacts\Domain\Model\Contact($this->salutation, $this->title, $this->firstName,
-            $this->lastName);
+        $this->fixture = new \Extcode\Contacts\Domain\Model\Contact(
+            $this->salutation,
+            $this->title,
+            $this->firstName,
+            $this->lastName
+        );
     }
 
     /**

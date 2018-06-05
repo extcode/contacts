@@ -44,7 +44,7 @@ if (TYPO3_MODE === 'BE') {
         ],
         [
             'access' => 'admin',
-            'icon' => 'EXT:' . $_EXTKEY . '/ext_icon.gif',
+            'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/module_contacts.svg',
             'labels' => $_LLL . ':tx_contacts.module.contacts',
         ]
     );

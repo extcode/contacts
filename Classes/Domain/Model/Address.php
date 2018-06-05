@@ -107,19 +107,19 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $lon = '';
 
     /**
+     * Lat
+     *
+     * @var string
+     */
+    protected $lat = '';
+
+    /**
      * TT Content
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
      * @lazy
      */
     protected $ttContent;
-
-    /**
-     * Lat
-     *
-     * @var string
-     */
-    protected $lat = '';
 
     /**
      * Contact

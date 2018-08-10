@@ -1,4 +1,9 @@
+{namespace contacts=Extcode\Contacts\ViewHelpers}
+
 <f:layout name="Default"/>
+
+<f:section name="actions">
+</f:section>
 
 <f:section name="content">
     <f:render partial="Contact/Filter" arguments="{piVars: piVars, action: 'list'}"/>
@@ -43,10 +48,13 @@
                                     {contact.lastName}
                                 </td>
                                 <td>
-                                    <a class="btn btn-default"
-                                       href="{f:uri.action(action:'show', arguments:{contact : contact})}">
-                                        <core:icon identifier="actions-preview" />
-                                    </a>
+                                    <div class="col-control nowrap">
+                                        <a class="btn btn-default"
+                                           href="{f:uri.action(action:'show', arguments:{contact: contact})}">
+                                            <core:icon identifier="actions-view" />
+                                        </a>
+                                        <a class="btn btn-default" href="{contacts:backend.editRecord(parameters: 'edit[tx_contacts_domain_model_contact][{contact.uid}]=edit&returnUrl={returnUrl}')}"><core:icon identifier="actions-open" /></a>
+                                    </div>
                                 </td>
                             </tr>
                         </f:for>

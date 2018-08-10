@@ -1,5 +1,9 @@
 <f:layout name="Default"/>
 
+<f:section name="actions">
+    <f:render partial="Contact/Show/Actions"/>
+</f:section>
+
 <f:section name="content">
     <h1>
         <f:translate key="tx_contacts.module.contactController.showAction.header"/>
@@ -96,7 +100,4 @@
             </tr>
         </f:if>
     </table>
-
-    <br><br>
-    <f:link.action action="list">Back to Contact List</f:link.action>
 </f:section>

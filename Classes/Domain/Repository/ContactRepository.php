@@ -76,6 +76,8 @@ class ContactRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $uids = explode(',', $uids);
 
         $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+
         $query->matching(
             $query->in('uid', $uids)
         );

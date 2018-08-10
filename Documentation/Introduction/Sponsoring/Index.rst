@@ -6,7 +6,12 @@
 Sponsoring
 ==========
 
-Gibt es eine Funktion, die in Contacts noch nicht umgesetzt wurde, können Sie mich jederzeit kontaktieren.
+If there is a feature that has not yet been implemented in Cart, you can contact me at any time.
 
-Sponsoren
----------
+There is also the possibility to support the further development independently of new functions.
+
+*  `paypal.me <https://paypal.me/extcart>`_
+*  `patreon.com <https://patreon.com/ext_cart>`_
+
+Sponsors
+--------

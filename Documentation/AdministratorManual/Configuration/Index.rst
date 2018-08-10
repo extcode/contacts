@@ -3,9 +3,5 @@
 .. --------------------------------------------------
 .. -*- coding: utf-8 -*- with BOM.
 
-Konfiguration
+Configuration
 =============
-
-.. toctree::
-   :maxdepth: 5
-   :titlesonly:

@@ -3,11 +3,12 @@
 .. --------------------------------------------------
 .. -*- coding: utf-8 -*- with BOM.
 
-Einführung
-----------
+Introduction
+------------
 
-Contacts ist eine Erweiterung um Kontaktdaten (Firmen, Personen, Adressen) zu speichern und in Beziehung zueinander zu setzen.
-Contacts kann unter anderem dafür genutzt werden, um tt_address zu ersetzen und einem Datensatz mehrere Adressen zuzuordnen.
+Contacts is a TYPO3 extension for handling contacts (companies, persons).
+People and companies can be related to each other.
+Both can have multiple addresses and other contact data.
 
 .. toctree::
    :maxdepth: 5

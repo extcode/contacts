@@ -18,23 +18,32 @@ EXT: Contacts
 
 .. only:: html
 
-    :Version:
-        |release|
+   :Classification:
+      contacts
 
-    :Sprache:
-        de
+   :Version:
+      |release|
 
-    :Beschreibung:
-        Contacts ist eine Erweiterung um Kontaktdaten (Firmen, Personen, Adressen) zu speichern und in Beziehung zueinander zu setzen.
+   :Language:
+      en
 
-    :Keywords:
-        contacts, tt_address, address, fe_user
+   :Description:
+      Contacts is a TYPO3 extension for handling contacts (companies, persons).
+      People and companies can be related to each other.
+      Both can have multiple addresses and other contact data.
 
-    :Autor:
-        Daniel Lorenz
+   :Keywords:
+      contacts, tt_address, address, fe_user
 
-    :E-Mail:
-        ext.contacts@extco.de
+   :Autor:
+      Daniel Lorenz
+
+   :E-Mail:
+      ext.contacts@extco.de
+
+   :License:
+      This document is published under the Open Publication License
+      available from http://www.opencontent.org/openpub/
 
     :Rendered:
         |today|
@@ -42,7 +51,7 @@ EXT: Contacts
     The content of this document is related to TYPO3,
     a GNU/GPL CMS/Framework available from `www.typo3.org <https://typo3.org/>`__.
 
-    **Inhaltsverzeichnis**
+    **Table of Contents**
 
 .. toctree::
     :maxdepth: 5

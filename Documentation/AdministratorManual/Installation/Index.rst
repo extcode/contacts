@@ -6,14 +6,25 @@
 Installation
 ============
 
-Die Erweiterung wird wie jede andere Erweiterung im TYPO3 CMS installiert.
+Installation using Composer
+---------------------------
+
+The recommended way to install the extension is by using `Composer <https://getcomposer.org/>`_.
+In your Composer based TYPO3 project root, just do
+
+`composer require extcode/contacts`.
+
+Installation from TYPO3 Extension Repository (TER)
+--------------------------------------------------
+
+Download and install the extension with the extension manager module.
 
 .. IMPORTANT::
-   Bis zur Version 1.0.0 wird die Erweiterung nicht über das TYPO3 Extension Repository (TER) verfügbar sein.
+   Until version 1.0.0 the extension will not be available on the TYPO3 Extension Repository (TER).
 
-Versionsverwaltung (github)
----------------------------
-Die aktuellste Version lässt sich über github mit den üblichen git-Kommandos herunterladen.
+Latest version from git
+-----------------------
+You can get the latest version from git by using the git command:
 
 .. code-block:: bash
 
@@ -21,10 +32,15 @@ Die aktuellste Version lässt sich über github mit den üblichen git-Kommandos 
 
 |
 
-Nachdem die Erweiterung heruntergeladen ist, kann sie über den Extension-Manager aktiviert werden.
+Preparation: Include static TypoScript
+--------------------------------------
 
-Vorbereitung: Include static TypoScript
----------------------------------------
+The extension ships some TypoScript code which needs to be included.
 
-Die Erweiterung wird mit einer TypoScript Konfigurationsdatei ausgeliefert, die in das Template eingebunden werden
-muss.
+#. Switch to the root page of your site.
+
+#. Switch to the **Template module** and select *Info/Modify*.
+
+#. Press the link **Edit the whole template record** and switch to the tab *Includes*.
+
+#. Select **Contacts (contacts)** at the field *Include static (from extensions):*

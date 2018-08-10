@@ -33,7 +33,7 @@ Download and install the extension with the extension manager module.
 | ------------- | ---------- | ----------|---------------------------------------- |
 | 3.x.x         | 9.x        | 7.2       | Features, Bugfixes, Security Updates    |
 | 2.x.x         | 8.7        | 7.0 - 7.2 | Features _(in certain circumstances with feature toogle)_, Bugfixes, Security Updates    |
-| 1.x.x         | 7.6        |           | Bugfixes, Security Updates              |
+| 1.x.x         | 7.6        | 5.6 - 7.1 | Bugfixes, Security Updates              |
 | 0.x.x         |            |           |                                         |
 
 ### 3.2. Changelog

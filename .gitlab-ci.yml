@@ -67,20 +67,6 @@ test:php71:typo3_7:
     DOCKER_TAG: 7.1-alpine
     TYPO3_VERSION: ^7.6
 
-# Build in PHP 7.0 and TYPO3 8.7
-test:php70:typo3_8:
-  <<: *test_php
-  variables:
-    DOCKER_TAG: 7.0-alpine
-    TYPO3_VERSION: ^8.7
-
-# Build in PHP 7.1 and TYPO3 8.7
-test:php71:typo3_8:
-  <<: *test_php
-  variables:
-    DOCKER_TAG: 7.1-alpine
-    TYPO3_VERSION: ^8.7
-
 sonarqube:
   stage: analysis
   image: ciricihq/gitlab-sonar-scanner
@@ -93,7 +79,7 @@ sonarqube:
     SONAR_SOURCES: "./Classes"
     SONAR_GITLAB_PROJECT_ID: "$CI_PROJECT_ID"
   script:
-  - echo "sonar.projectKey=contacts" > sonar-project.properties
+  - echo "sonar.projectKey=contacts-7.x" > sonar-project.properties
   - gitlab-sonar-scanner
   allow_failure: true
 
@@ -109,7 +95,7 @@ sonarqube-reports:
     SONAR_SOURCES: "./Classes"
     SONAR_TESTS: "./Tests"
   script:
-  - echo "sonar.projectKey=contacts" > sonar-project.properties
+  - echo "sonar.projectKey=contacts-7.x" > sonar-project.properties
   - gitlab-sonar-scanner
 
 ter-upload:

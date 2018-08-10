@@ -1,3 +1,17 @@
+2.0.0
+    2018-08-10
+    Daniel Lorenz <https://github.com/extcode>
+
+    * TASK #20: create a TYPO3 v8 release branch
+    * TASK #18: add github contribution templates
+    * TASK #17: translate documentation
+    * TASK #16: split up controller for backend and frontend
+
+    2018-07-19
+    Daniel Lorenz <https://github.com/extcode>
+
+    * TASK #15: fix travis for TYPO3 v7.6 and PHP 5.6
+
 0.9.1
     2018-06-05
     Daniel Lorenz <https://github.com/extcode>

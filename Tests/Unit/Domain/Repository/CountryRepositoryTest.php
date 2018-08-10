@@ -14,13 +14,9 @@ namespace Extcode\Countrys\Tests\Domain\Model;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 
-/**
- * Country Model Test
- *
- * @author Daniel Lorenz <ext.contacts@extco.de>
- */
-class CountryRepositoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class CountryRepositoryTest extends UnitTestCase
 {
     /**
      * @var \Extcode\Contacts\Domain\Repository\CountryRepository
@@ -34,7 +30,8 @@ class CountryRepositoryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
 
     protected function setUp()
     {
-        $this->objectManager = $this->getMock(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface::class);
+        $this->objectManager = $this->getMockBuilder(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface::class)
+            ->getMock();
         $this->subject = new \Extcode\Contacts\Domain\Repository\CountryRepository($this->objectManager);
     }
 

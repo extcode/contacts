@@ -14,13 +14,9 @@ namespace Extcode\Contacts\Tests\Domain\Model;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 
-/**
- * Company Model Test
- *
- * @author Daniel Lorenz <ext.contacts@extco.de>
- */
-class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class CompanyTest extends UnitTestCase
 {
     /**
      * Name
@@ -81,11 +77,9 @@ class CompanyTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setNameWithEmptyStringThrowsException()
     {
-        $this->setExpectedException(
-            'InvalidArgumentException',
-            'The name can not be blank.',
-            1373527548
-        );
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The name can not be blank.');
+        $this->expectExceptionCode(1373527548);
 
         $this->fixture->setName('');
     }

@@ -22,11 +22,11 @@
         "issues": "https://github.com/extcode/contacts/issues"
     },
     "require": {
-        "php": ">=7.0.0 <7.3",
-        "typo3/cms": "^8.7"
+        "php": ">=7.2.0 <7.3",
+        "typo3/cms-core": "^9.3"
     },
     "require-dev": {
-        "nimut/testing-framework": "^2.0",
+        "nimut/testing-framework": "^4.0",
         "friendsofphp/php-cs-fixer": "^2.0"
     },
     "autoload": {

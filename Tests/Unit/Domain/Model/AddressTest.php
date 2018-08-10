@@ -14,13 +14,9 @@ namespace Extcode\Contacts\Tests\Domain\Model;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 
-/**
- * Address Model Test
- *
- * @author Daniel Lorenz <ext.contacts@extco.de>
- */
-class AddressTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class AddressTest extends UnitTestCase
 {
     /**
      * @var \Extcode\Contacts\Domain\Model\Address
@@ -72,11 +68,9 @@ class AddressTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setInvalidTypeThrowsException()
     {
-        $this->setExpectedException(
-            'InvalidArgumentException',
-            'The type have to be a set of (DOM, INTL, POSTAL, PARCEL, HOME, WORK).',
-            1373530255
-        );
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The type have to be a set of (DOM, INTL, POSTAL, PARCEL, HOME, WORK).');
+        $this->expectExceptionCode(1373530255);
 
         $this->fixture->setType('inValidType');
     }

@@ -14,13 +14,9 @@ namespace Extcode\Contacts\Tests\Domain\Model;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 
-/**
- * Phone Model Test
- *
- * @author Daniel Lorenz <ext.contacts@extco.de>
- */
-class PhoneTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class PhoneTest extends UnitTestCase
 {
     /**
      * @var \Extcode\Contacts\Domain\Model\Phone
@@ -72,11 +68,9 @@ class PhoneTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setInvalidTypeThrowsException()
     {
-        $this->setExpectedException(
-            'InvalidArgumentException',
-            'The type have to be a set of (PREF, WORK, HOME, VOICE, FAX, MSG, CELL, PAGER, BBS, MODEM, CAR, ISDN, VIDEO).',
-            1373531068
-        );
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The type have to be a set of (PREF, WORK, HOME, VOICE, FAX, MSG, CELL, PAGER, BBS, MODEM, CAR, ISDN, VIDEO).');
+        $this->expectExceptionCode(1373531068);
 
         $this->fixture->setType('inValidType');
     }

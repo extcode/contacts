@@ -86,7 +86,7 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      *
      * @param \Extcode\Contacts\Domain\Model\Contact $contact
      *
-     * @ignorevalidation $contact
+     * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation $contact
      */
     public function showAction(\Extcode\Contacts\Domain\Model\Contact $contact = null)
     {

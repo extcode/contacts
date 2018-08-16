@@ -26,7 +26,7 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Iso2
      *
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate NotEmpty
      */
     protected $iso2 = '';
 
@@ -34,7 +34,7 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Iso3
      *
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate NotEmpty
      */
     protected $iso3 = '';
 
@@ -42,7 +42,7 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Name
      *
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate NotEmpty
      */
     protected $name = '';
 
@@ -57,19 +57,19 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * PhoneCountryCode
      *
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate NotEmpty
      */
     protected $phoneCountryCode = '';
 
     /**
      * @param string $iso2
      *
-     * @throws \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException
+     * @throws \TYPO3\CMS\Extbase\Property\Exception
      */
     public function setIso2($iso2)
     {
         if (strlen($iso2) != 2) {
-            throw new \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException(
+            throw new \TYPO3\CMS\Extbase\Property\Exception(
                 'The iso2 code has to have two chars.',
                 1395925918
             );
@@ -89,12 +89,12 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $iso3
      *
-     * @throws \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException
+     * @throws \TYPO3\CMS\Extbase\Property\Exception
      */
     public function setIso3($iso3)
     {
         if ((strlen($iso3) != 0) and (strlen($iso3) != 3)) {
-            throw new \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException(
+            throw new \TYPO3\CMS\Extbase\Property\Exception(
                 'The iso3 code has to have three chars.',
                 1395925960
             );

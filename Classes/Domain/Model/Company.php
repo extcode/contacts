@@ -26,7 +26,7 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Name
      *
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate NotEmpty
      */
     protected $name;
 
@@ -124,8 +124,8 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * TT Content
      *
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
-     * @lazy
      */
     protected $ttContent;
 

@@ -40,7 +40,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * First Name
      *
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate NotEmpty
      */
     protected $firstName;
 
@@ -48,7 +48,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Last Name
      *
      * @var string
-     * @validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate NotEmpty
      */
     protected $lastName;
 
@@ -104,8 +104,8 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * TT Content
      *
+     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
-     * @lazy
      */
     protected $ttContent;
 

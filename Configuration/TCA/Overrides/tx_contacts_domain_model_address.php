@@ -2,11 +2,14 @@
 
 defined('TYPO3_MODE') or die();
 
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 $_LLL = 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf';
 
-$extensionConfArr = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['contacts']);
-$googleMapsLibrary = $extensionConfArr['googleMapsLibrary'];
-$googleMapsApiKey = $extensionConfArr['googleMapsApiKey'];
+$googleMapsLibrary = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('contacts', 'googleMapsLibrary');
+$googleMapsApiKey = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('contacts', 'googleMapsApiKey');
 
 if (!empty($googleMapsLibrary) && !empty($googleMapsApiKey)) {
     $googleMapsField = [
@@ -20,11 +23,11 @@ if (!empty($googleMapsLibrary) && !empty($googleMapsApiKey)) {
         ],
     ];
 
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
+    ExtensionManagementUtility::addTCAcolumns(
         'tx_contacts_domain_model_address',
         $googleMapsField
     );
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+    ExtensionManagementUtility::addToAllTCAtypes(
         'tx_contacts_domain_model_address',
         '--linebreak, coords',
         '',

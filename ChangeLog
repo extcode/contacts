@@ -1,3 +1,9 @@
+3.0.2
+    2018-08-16
+    Daniel Lorenz <https://github.com/extcode>
+
+    * TASK #23: refactor extension manager warnings
+
 3.0.1
     2018-08-16
     Daniel Lorenz <https://github.com/extcode>

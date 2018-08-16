@@ -14,6 +14,8 @@ namespace Extcode\Contacts\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Extcode\Contacts\Domain\Repository\ContactRepository;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /**
  * Contact Controller
@@ -23,18 +25,9 @@ namespace Extcode\Contacts\Controller;
 class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
     /**
-     * Contact Repository
-     *
-     * @var \Extcode\Contacts\Domain\Repository\ContactRepository
-     * @inject
+     * @var ContactRepository
      */
     protected $contactRepository;
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
-     */
-    protected $configurationManager;
 
     /**
      * pageId
@@ -50,6 +43,14 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected $piVars;
 
+    /**
+     * @param ContactRepository $contactRepository
+     */
+    public function injectContactRepository(ContactRepository $contactRepository)
+    {
+        $this->contactRepository = $contactRepository;
+    }
+
     protected function initializeAction()
     {
         if ($GLOBALS['TSFE'] === null) {
@@ -59,7 +60,7 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         }
 
         $frameworkConfiguration = $this->configurationManager->getConfiguration(
-            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
         );
         $persistenceConfiguration = [
             'persistence' => [
@@ -89,8 +90,8 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function showAction(\Extcode\Contacts\Domain\Model\Contact $contact = null)
     {
-        if (!$contact && intval($this->settings['contact'])) {
-            $contact = $this->contactRepository->findByUid(intval($this->settings['contact']));
+        if (!$contact && (int)$this->settings['contact']) {
+            $contact = $this->contactRepository->findByUid((int)$this->settings['contact']);
         }
 
         $this->view->assign('contact', $contact);

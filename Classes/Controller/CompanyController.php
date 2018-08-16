@@ -14,6 +14,8 @@ namespace Extcode\Contacts\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Extcode\Contacts\Domain\Repository\CompanyRepository;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /**
  * Company Controller
@@ -23,18 +25,9 @@ namespace Extcode\Contacts\Controller;
 class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
     /**
-     * Company Repository
-     *
-     * @var \Extcode\Contacts\Domain\Repository\CompanyRepository
-     * @inject
+     * @var CompanyRepository
      */
     protected $companyRepository;
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
-     */
-    protected $configurationManager;
 
     /**
      * pageId
@@ -50,6 +43,14 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected $piVars;
 
+    /**
+     * @param CompanyRepository $companyRepository
+     */
+    public function injectCompanyRepository(CompanyRepository $companyRepository)
+    {
+        $this->companyRepository = $companyRepository;
+    }
+
     protected function initializeAction()
     {
         if ($GLOBALS['TSFE'] === null) {
@@ -59,7 +60,7 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         }
 
         $frameworkConfiguration = $this->configurationManager->getConfiguration(
-            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
         );
         $persistenceConfiguration = [
             'persistence' => [
@@ -89,8 +90,8 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     public function showAction(\Extcode\Contacts\Domain\Model\Company $company = null)
     {
-        if (!$company && intval($this->settings['company'])) {
-            $company = $this->companyRepository->findByUid(intval($this->settings['company']));
+        if (!$company && (int)$this->settings['company']) {
+            $company = $this->companyRepository->findByUid((int)$this->settings['company']);
         }
 
         $this->view->assign('company', $company);

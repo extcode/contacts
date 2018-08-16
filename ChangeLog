@@ -1,3 +1,9 @@
+2.0.1
+    2018-08-16
+    Daniel Lorenz <https://github.com/extcode>
+
+    * TASK #22: refactor @inject
+
 2.0.0
     2018-08-10
     Daniel Lorenz <https://github.com/extcode>

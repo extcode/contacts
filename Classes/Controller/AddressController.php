@@ -14,6 +14,7 @@ namespace Extcode\Contacts\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Extcode\Contacts\Domain\Repository\AddressRepository;
 
 /**
  * Address Controller
@@ -23,12 +24,17 @@ namespace Extcode\Contacts\Controller;
 class AddressController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
     /**
-     * Address Repository
-     *
-     * @var \Extcode\Contacts\Domain\Repository\AddressRepository
-     * @inject
+     * @var AddressRepository
      */
     protected $addressRepository;
+
+    /**
+     * @param AddressRepository $addressRepository
+     */
+    public function injectAddressRepository(AddressRepository $addressRepository)
+    {
+        $this->addressRepository = $addressRepository;
+    }
 
     /**
      * action show

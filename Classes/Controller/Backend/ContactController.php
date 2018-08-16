@@ -14,6 +14,8 @@ namespace Extcode\Contacts\Controller\Backend;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Extcode\Contacts\Domain\Repository\ContactRepository;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /**
  * Contact Controller
@@ -25,16 +27,9 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     /**
      * Contact Repository
      *
-     * @var \Extcode\Contacts\Domain\Repository\ContactRepository
-     * @inject
+     * @var ContactRepository
      */
     protected $contactRepository;
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
-     * @inject
-     */
-    protected $configurationManager;
 
     /**
      * pageId
@@ -50,12 +45,20 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
      */
     protected $piVars;
 
+    /**
+     * @param ContactRepository $contactRepository
+     */
+    public function injectContactRepository(ContactRepository $contactRepository)
+    {
+        $this->contactRepository = $contactRepository;
+    }
+
     protected function initializeAction()
     {
         $this->pageId = (int)\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('id');
 
         $frameworkConfiguration = $this->configurationManager->getConfiguration(
-            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
         );
         $persistenceConfiguration = [
             'persistence' => [

@@ -14,6 +14,8 @@ namespace Extcode\Contacts\Hooks;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Google Map Hook
@@ -101,11 +103,11 @@ class GoogleMapHook
     {
         $this->init($params);
 
-        $extensionConfArr = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['contacts']);
-        $googleMapsLibrary = $extensionConfArr['googleMapsLibrary'];
+        $googleMapsLibrary = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('contacts', 'googleMapsLibrary');
+        $googleMapsApiKey = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('contacts', 'googleMapsApiKey');
 
-        if ($extensionConfArr['googleMapsApiKey']) {
-            $googleMapsLibrary .=  '&key=' . $extensionConfArr['googleMapsApiKey'];
+        if ($googleMapsApiKey) {
+            $googleMapsLibrary .=  '&key=' . $googleMapsApiKey;
         }
 
         $this->tableName = $params['table'];

@@ -33,7 +33,7 @@ class Phone extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Number
      *
      * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $number = '';
 

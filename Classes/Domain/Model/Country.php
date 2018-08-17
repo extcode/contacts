@@ -26,7 +26,7 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Iso2
      *
      * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $iso2 = '';
 
@@ -34,7 +34,7 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Iso3
      *
      * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $iso3 = '';
 
@@ -42,7 +42,7 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Name
      *
      * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $name = '';
 
@@ -57,7 +57,7 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * PhoneCountryCode
      *
      * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate NotEmpty
+     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $phoneCountryCode = '';
 

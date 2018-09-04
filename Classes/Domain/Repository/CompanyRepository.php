@@ -14,6 +14,7 @@ namespace Extcode\Contacts\Domain\Repository;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * Company Repository
@@ -27,7 +28,8 @@ class CompanyRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * Finds objects filtered by $piVars['filter']
      *
      * @param array $piVars
-     * @return Query Object
+     *
+     * @return QueryResultInterface|array
      */
     public function findAll($piVars = [])
     {
@@ -57,9 +59,7 @@ class CompanyRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             );
         }
 
-        $companies = $query->execute();
-
-        return $companies;
+        return $query->execute();
     }
 
     /**
@@ -67,7 +67,7 @@ class CompanyRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @param string $uids
      *
-     * @return object
+     * @return array
      */
     public function findByUids($uids)
     {
@@ -80,6 +80,31 @@ class CompanyRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $query->in('uid', $uids)
         );
 
-        return $query->execute();
+        return $this->orderByField($query->execute(), $uids);
+    }
+
+    /**
+     * @param QueryResultInterface $companies
+     * @param array $uids
+     *
+     * @return array
+     */
+    protected function orderByField(QueryResultInterface $companies, $uids)
+    {
+        $indexedCompanies = [];
+        $orderedCompanies = [];
+
+        // Create an associative array
+        foreach ($companies as $object) {
+            $indexedCompanies[$object->getUid()] = $object;
+        }
+        // add to ordered array in right order
+        foreach ($uids as $uid) {
+            if (isset($indexedCompanies[$uid])) {
+                $orderedCompanies[] = $indexedCompanies[$uid];
+            }
+        }
+
+        return $orderedCompanies;
     }
 }

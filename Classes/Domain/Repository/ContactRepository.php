@@ -14,6 +14,7 @@ namespace Extcode\Contacts\Domain\Repository;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * Contact Reoository
@@ -26,7 +27,8 @@ class ContactRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * Finds objects filtered by $piVars['filter']
      *
      * @param array $piVars
-     * @return Query Object
+     *
+     * @return QueryResultInterface|array
      */
     public function findAll($piVars = [])
     {
@@ -59,9 +61,7 @@ class ContactRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             );
         }
 
-        $contacts = $query->execute();
-
-        return $contacts;
+        return $query->execute();
     }
 
     /**
@@ -69,7 +69,7 @@ class ContactRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @param string $uids
      *
-     * @return object
+     * @return array
      */
     public function findByUids($uids)
     {
@@ -82,6 +82,31 @@ class ContactRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $query->in('uid', $uids)
         );
 
-        return $query->execute();
+        return $this->orderByField($query->execute(), $uids);
+    }
+
+    /**
+     * @param QueryResultInterface $contacts
+     * @param array $uids
+     *
+     * @return array
+     */
+    protected function orderByField(QueryResultInterface $contacts, $uids)
+    {
+        $indexedContacts = [];
+        $orderedContacts = [];
+
+        // Create an associative array
+        foreach ($contacts as $object) {
+            $indexedContacts[$object->getUid()] = $object;
+        }
+        // add to ordered array in right order
+        foreach ($uids as $uid) {
+            if (isset($indexedContacts[$uid])) {
+                $orderedContacts[] = $indexedContacts[$uid];
+            }
+        }
+
+        return $orderedContacts;
     }
 }

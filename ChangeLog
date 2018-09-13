@@ -1,3 +1,9 @@
+2.1.0
+    2018-09-13
+    Daniel Lorenz <https://github.com/extcode>
+
+    * TASK #26: only contacts and companies in right language are selectable in teaser plugin
+
 2.0.3
     2018-09-13
     Daniel Lorenz <https://github.com/extcode>

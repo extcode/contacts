@@ -98,7 +98,11 @@ class ContactRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         // Create an associative array
         foreach ($contacts as $object) {
-            $indexedContacts[$object->getUid()] = $object;
+            if ($object->_getProperty('_localizedUid')) {
+                $indexedContacts[$object->_getProperty('_localizedUid')] = $object;
+            } else {
+                $indexedContacts[$object->getUid()] = $object;
+            }
         }
         // add to ordered array in right order
         foreach ($uids as $uid) {

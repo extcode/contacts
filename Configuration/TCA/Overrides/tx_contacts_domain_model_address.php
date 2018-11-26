@@ -2,8 +2,6 @@
 
 defined('TYPO3_MODE') or die();
 
-$_LLL = 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf';
-
 $extensionConfArr = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['contacts']);
 $googleMapsLibrary = $extensionConfArr['googleMapsLibrary'];
 $googleMapsApiKey = $extensionConfArr['googleMapsApiKey'];

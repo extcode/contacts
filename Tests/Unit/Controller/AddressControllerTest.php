@@ -14,13 +14,9 @@ namespace Extcode\Contacts\Tests\Unit\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 
-/**
- * Address Controller Test
- *
- * @author Daniel Lorenz <ext.contacts@extco.de>
- */
-class AddressControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class AddressControllerTest extends UnitTestCase
 {
     /**
      * @var \Extcode\Contacts\Controller\AddressController
@@ -41,18 +37,18 @@ class AddressControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     {
         $this->subject = new \Extcode\Contacts\Controller\AddressController();
 
-        $this->view = $this->getMock(
-            \TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class
-        );
+        $this->view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
         $this->inject($this->subject, 'view', $this->view);
 
-        $this->addressRepository = $this->getMock(
-            \Extcode\Contacts\Domain\Repository\AddressRepository::class,
-            [],
-            [],
-            '',
-            false
-        );
+        $this->mockedObjectManager = $this->getMockBuilder(
+            \TYPO3\CMS\Extbase\Object\ObjectManagerInterface::class
+        )->getMock();
+        $this->addressRepository = $this->getMockBuilder(\Extcode\Contacts\Domain\Repository\AddressRepository::class)
+            ->setConstructorArgs(
+                [
+                    $this->mockedObjectManager
+                ]
+            )->getMock();
         $this->inject($this->subject, 'addressRepository', $this->addressRepository);
     }
 

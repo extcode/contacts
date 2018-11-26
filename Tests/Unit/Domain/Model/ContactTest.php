@@ -14,13 +14,9 @@ namespace Extcode\Contacts\Tests\Domain\Model;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 
-/**
- * Contact Model Test
- *
- * @author Daniel Lorenz <ext.contacts@extco.de>
- */
-class ContactTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class ContactTest extends UnitTestCase
 {
     /**
      * Salutation
@@ -156,11 +152,9 @@ class ContactTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setFirstNameWithEmptyStringThrowsException()
     {
-        $this->setExpectedException(
-            'InvalidArgumentException',
-            'The first name can not be blank.',
-            1373525114
-        );
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The first name can not be blank.');
+        $this->expectExceptionCode(1373525114);
 
         $this->fixture->setFirstName('');
     }
@@ -194,11 +188,9 @@ class ContactTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setLastNameWithEmptyStringThrowsException()
     {
-        $this->setExpectedException(
-            'InvalidArgumentException',
-            'The last name can not be blank.',
-            1373525586
-        );
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('The last name can not be blank.');
+        $this->expectExceptionCode(1373525586);
 
         $this->fixture->setLastName('');
     }

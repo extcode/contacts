@@ -14,13 +14,9 @@ namespace Extcode\Contacts\Tests\Unit\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 
-/**
- * Company Controller Test
- *
- * @author Daniel Lorenz <ext.contacts@extco.de>
- */
-class CompanyControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class CompanyControllerTest extends UnitTestCase
 {
     /**
      * @var \Extcode\Contacts\Controller\CompanyController
@@ -41,18 +37,18 @@ class CompanyControllerTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     {
         $this->subject = new \Extcode\Contacts\Controller\CompanyController();
 
-        $this->view = $this->getMock(
-            \TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class
-        );
+        $this->view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
         $this->inject($this->subject, 'view', $this->view);
 
-        $this->companyRepository = $this->getMock(
-            \Extcode\Contacts\Domain\Repository\CompanyRepository::class,
-            [],
-            [],
-            '',
-            false
-        );
+        $this->mockedObjectManager = $this->getMockBuilder(
+            \TYPO3\CMS\Extbase\Object\ObjectManagerInterface::class
+        )->getMock();
+        $this->companyRepository = $this->getMockBuilder(\Extcode\Contacts\Domain\Repository\CompanyRepository::class)
+            ->setConstructorArgs(
+                [
+                    $this->mockedObjectManager
+                ]
+            )->getMock();
         $this->inject($this->subject, 'companyRepository', $this->companyRepository);
     }
 

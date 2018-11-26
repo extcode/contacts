@@ -14,13 +14,9 @@ namespace Extcode\Contacts\Tests\Domain\Model;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Nimut\TestingFramework\TestCase\UnitTestCase;
 
-/**
- * Country Model Test
- *
- * @author Daniel Lorenz <ext.contacts@extco.de>
- */
-class CountryTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
+class CountryTest extends UnitTestCase
 {
     /**
      * Name

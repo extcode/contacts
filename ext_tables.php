@@ -2,39 +2,11 @@
 
 defined('TYPO3_MODE') or die();
 
-$_LLL = 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_db.xlf';
-
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'Contacts (contacts)');
-
-/**
- * Register Frontend Plugins
- */
-$pluginNames = [
-    'Address',
-    'Companies',
-    'Contacts',
-];
-
-foreach ($pluginNames as $pluginName) {
-    $pluginSignature = strtolower(str_replace('_', '', $_EXTKEY)) . '_' . strtolower($pluginName);
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-        'Extcode.' . $_EXTKEY,
-        $pluginName,
-        $_LLL . ':tx_contacts.plugin.' . lcfirst($pluginName)
-    );
-    $flexFormPath = 'EXT:' . $_EXTKEY . '/Configuration/FlexForms/' . $pluginName . 'Plugin.xml';
-    if (file_exists(\TYPO3\CMS\Core\Utility\GeneralUtility::getFileAbsFileName($flexFormPath))) {
-        $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
-        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
-            $pluginSignature,
-            'FILE:' . $flexFormPath
-        );
-    }
-}
+$_LLL_db = 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:';
 
 if (TYPO3_MODE === 'BE') {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-        'Extcode.' . $_EXTKEY,
+        'Extcode.contacts',
         'web',
         'contacts',
         '',
@@ -44,23 +16,8 @@ if (TYPO3_MODE === 'BE') {
         ],
         [
             'access' => 'admin',
-            'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/module_contacts.svg',
-            'labels' => $_LLL . ':tx_contacts.module.contacts',
+            'icon' => 'EXT:contacts/Resources/Public/Icons/module_contacts.svg',
+            'labels' => $_LLL_db . 'tx_contacts.module.contacts',
         ]
-    );
-}
-
-$tables = [
-    'address',
-    'contact',
-    'company',
-    'country',
-    'phone',
-];
-
-foreach ($tables as $table) {
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr(
-        'tx_contacts_domain_model_' . $table,
-        'EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_csh_tx_contacts_domain_model_' . $table . '.xlf'
     );
 }

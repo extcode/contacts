@@ -6,8 +6,6 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-$_LLL = 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf';
-
 $googleMapsLibrary = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('contacts', 'googleMapsLibrary');
 $googleMapsApiKey = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('contacts', 'googleMapsApiKey');
 

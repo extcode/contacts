@@ -1,42 +1,42 @@
 3.1.0
     2018-09-13
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #26: only contacts and companies in right language are selectable in teaser plugin
 
 3.0.4
     2018-09-13
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #25: allow more contacts / companies in teaser plugin
 
 3.0.3
     2018-09-04
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #24: sorting in teaser plugin
 
 3.0.2
     2018-08-17
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #23: refactor extension manager warnings
 
 3.0.1
     2018-08-16
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #22: refactor @inject
 
 3.0.0
     2018-08-10
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #21: add support for TYPO3 v9
 
 2.0.0
     2018-08-10
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #20: create a TYPO3 v8 release branch
     * TASK #18: add github contribution templates
@@ -44,84 +44,84 @@
     * TASK #16: split up controller for backend and frontend
 
     2018-07-19
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #15: fix travis for TYPO3 v7.6 and PHP 5.6
 
 0.9.1
     2018-06-05
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #14: change module icon
 
 0.9.0
     2018-02-27
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #13: add sonarqube and ter upload to gitlab-ci pipeline
 
 0.8.0
     2017-08-03
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #12: add codacy batch
 
 0.7.0
     2017-08-03
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #11: remove TYPO3 6.2 compatibility
 
 0.6.0
     2017-08-03
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #10: add google maps api hook
 
 0.5.0
     2017-04-14
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #9: remove support for php versions 5.4 and 5.5
 
 0.4.0
     2017-04-14
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #8: add cs-fixer to gitlab-ci
 
 0.3.0
     2017-04-14
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #7: add gitlab-ci configuration
 
 0.2.0
     2017-04-12
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #5: make extension compatibile to TYPO3 v8
 
 0.1.11
     2017-04-12
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * BUGFIX #6: duplicated first_name in ext_tables.sql
 
 0.1.10
     2017-03-01
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * TASK #4: use testing framework
 
 0.1.9
     2017-02-07
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * BUGFIX #3: remove dublicate array key
 
 0.1.8
     2017-02-07
-    Daniel Lorenz <https://github.com/extcode>
+    Daniel Gohlke <https://github.com/extcode>
 
     * BUGFIX #2: change order of latitude and longitude in TCA

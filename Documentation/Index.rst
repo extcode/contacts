@@ -36,7 +36,7 @@ EXT: Contacts
       contacts, tt_address, address, fe_user
 
    :Autor:
-      Daniel Lorenz
+      Daniel Gohlke
 
    :E-Mail:
       ext.contacts@extco.de

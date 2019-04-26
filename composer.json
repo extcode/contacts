@@ -13,7 +13,7 @@
     ],
     "authors": [
         {
-            "name": "Daniel Lorenz",
+            "name": "Daniel Gohlke",
             "email": "ext.contacts@extco.de",
             "role": "Developer"
         }
@@ -27,7 +27,8 @@
     },
     "require-dev": {
         "nimut/testing-framework": "^2.0 || ^3.0 || ^4.0",
-        "friendsofphp/php-cs-fixer": "^2.0"
+        "friendsofphp/php-cs-fixer": "^2.0",
+        "helmich/typo3-typoscript-lint": "^1.4"
     },
     "autoload": {
         "psr-4": {
@@ -46,10 +47,18 @@
         "vendor-dir": ".Build/vendor",
         "bin-dir": ".Build/bin"
     },
+    "scripts": {
+        "post-autoload-dump": [
+            "mkdir -p .Build/Web/typo3conf/ext/",
+            "[ -L .Build/Web/typo3conf/ext/contacts ] || ln -snvf ../../../../. .Build/Web/typo3conf/ext/contacts"
+        ]
+    },
     "extra": {
         "typo3/cms": {
+            "extension-key": "contacts",
             "cms-package-dir": "{$vendor-dir}/typo3/cms",
-            "web-dir": ".Build/Web"
+            "app-dir": ".Build",
+            "web-dir": ".Build/public"
         }
     }
 }

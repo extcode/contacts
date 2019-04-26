@@ -1,10 +1,10 @@
 <?php
 
-$EM_CONF[$_EXTKEY] = [
+$EM_CONF['contacts'] = [
     'title' => 'Contacts',
     'description' => 'Contacts can handle persons and companies and relations to each other. With multiple addresses and phone numbers Contacts can be a modern replacement for tt_address.',
     'category' => 'plugin',
-    'author' => 'Daniel Lorenz',
+    'author' => 'Daniel Gohlke',
     'author_email' => 'ext.contacts@extco.de',
     'author_company' => 'extco.de UG (haftungsbeschränkt)',
     'shy' => '',

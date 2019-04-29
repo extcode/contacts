@@ -1,8 +1,3 @@
-.. ==================================================
-.. FOR YOUR INFORMATION
-.. --------------------------------------------------
-.. -*- coding: utf-8 -*- with BOM.
-
 .. include:: Includes.txt
 
 .. _start:
@@ -29,7 +24,7 @@ EXT: Contacts
 
    :Description:
       Contacts is a TYPO3 extension for handling contacts (companies, persons).
-      People and companies can be related to each other.
+      Persons and companies can be related to each other.
       Both can have multiple addresses and other contact data.
 
    :Keywords:
@@ -58,7 +53,5 @@ EXT: Contacts
     :titlesonly:
 
     Introduction/Index
-    EditorManual/Index
-    DeveloperManual/Index
     AdministratorManual/Index
-    Misc/Index
+    Changelog/Index

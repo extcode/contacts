@@ -4,14 +4,12 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0e71b0ff657e475f8b4af581e13ce3b8)](https://www.codacy.com/app/extcode/contacts?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=extcode/contacts&amp;utm_campaign=Badge_Grade)
 
 Contacts is a TYPO3 extension for handling contacts (companies, persons).
-People and companies can be related to each other.
-Both can have multiple addresses and other contact data.
 
 ## 1. Features
 
--
--
--
+- Persons and companies can be related to each other.
+- Both can have multiple addresses and other contact data.
+- Addresses can hold geolocation data to display them in maps.
 
 ## 2. Installation / Upgrade
 

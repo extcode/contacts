@@ -3,8 +3,7 @@
 if (PHP_SAPI !== 'cli') {
     die('This script supports command line usage only. Please check your command.');
 }
-$finder = PhpCsFixer\Finder::create()
-    ->in(__DIR__ . '/../');
+
 return PhpCsFixer\Config::create()
     ->setRiskyAllowed(true)
     ->setRules([
@@ -36,4 +35,13 @@ return PhpCsFixer\Config::create()
         'phpdoc_no_empty_return' => true,
         'phpdoc_trim' => true
     ])
-    ->setFinder($finder);
+    ->setFinder(
+        PhpCsFixer\Finder::create()
+            ->in(__DIR__ . '/../')
+            ->exclude('.Build')
+            ->exclude('Documentation')
+            ->exclude('Resources')
+            ->notName('ext_emconf.php')
+            ->notName('ext_localconf.php')
+            ->notName('ext_tables.php')
+    );

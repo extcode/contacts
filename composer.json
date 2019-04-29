@@ -41,7 +41,8 @@
         }
     },
     "replace": {
-        "contacts": "self.version"
+        "contacts": "self.version",
+        "extcode/contacts": "self.version"
     },
     "config": {
         "vendor-dir": ".Build/vendor",

@@ -2,11 +2,13 @@
 
 defined('TYPO3_MODE') or die();
 
-$_LLL = 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf';
+$_LLL_core_general = 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf';
+$_LLL_db = 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf';
+$_LLL_tca = 'LLL:EXT:contacts/Resources/Private/Language/locallang_tca.xlf';
 
 return [
     'ctrl' => [
-        'title' => $_LLL . ':tx_contacts_domain_model_address',
+        'title' => $_LLL_db . ':tx_contacts_domain_model_address',
         'label' => 'street',
         'label_alt' => 'street_number, zip, city, country',
         'label_alt_force' => 1,
@@ -15,8 +17,7 @@ return [
         'cruser_id' => 'cruser_id',
         'dividers2tabs' => true,
 
-        'versioningWS' => 2,
-        'versioning_followPages' => true,
+        'versioningWS' => true,
         'origUid' => 't3_origuid',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
@@ -35,16 +36,33 @@ return [
     ],
     'types' => [
         '1' => [
-            'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, title, type, --palette--;' . $_LLL . ':tx_contacts_domain_model_company.palette.address;address, post_box, tt_content, --palette--;LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address.lon_lat;lon_lat, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'
+            'showitem' => '
+                title,
+                type,
+                --palette--;' . $_LLL_db . ':tx_contacts_domain_model_company.palette.address;address,
+                post_box,
+                tt_content,
+                --palette--;' . $_LLL_db . ':tx_contacts_domain_model_address.lon_lat;lon_lat,
+                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,
+                    --palette--;' . $_LLL_tca . ':palettes.visibility;hiddenonly,
+                    --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access,
+            '
         ],
     ],
     'palettes' => [
-        '1' => ['showitem' => ''],
         'address' => [
             'showitem' => 'street, street_number, --linebreak--, addition1, addition2, --linebreak--, zip, city, --linebreak--, region, country',
             'canNotCollapse' => 1
         ],
-        'lon_lat' => ['showitem' => 'lat, lon', 'canNotCollapse' => 1],
+        'lon_lat' => [
+            'showitem' => 'lat, lon', 'canNotCollapse' => 1
+        ],
+        'hiddenonly' => [
+            'showitem' => 'hidden;' . $_LLL_db . ':tx_contacts_domain_model_address',
+        ],
+        'access' => [
+            'showitem' => 'starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel, endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel',
+        ],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -52,12 +70,15 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'foreign_table' => 'sys_language',
                 'foreign_table_where' => 'ORDER BY sys_language.title',
                 'items' => [
                     ['LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1],
                     ['LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0]
                 ],
+                'eval' => 'int',
+                'default' => 0,
             ],
         ],
         'l10n_parent' => [
@@ -66,6 +87,7 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'items' => [
                     ['', 0],
                 ],
@@ -88,19 +110,24 @@ return [
         ],
         'hidden' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+            'label' => $_LLL_core_general . ':LGL.hidden',
             'config' => [
                 'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    '1' => [
+                        '0' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:hidden.I.0'
+                    ]
+                ]
             ],
         ],
         'starttime' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputDateTime',
                 'size' => 13,
-                'max' => 20,
                 'eval' => 'datetime',
                 'checkbox' => 0,
                 'default' => 0,
@@ -111,12 +138,11 @@ return [
         ],
         'endtime' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputDateTime',
                 'size' => 13,
-                'max' => 20,
                 'eval' => 'datetime',
                 'checkbox' => 0,
                 'default' => 0,
@@ -127,7 +153,7 @@ return [
         ],
         'title' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.title',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.title',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -136,32 +162,33 @@ return [
         ],
         'type' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.type',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.type',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'items' => [
                     [
-                        $_LLL . ':tx_contacts_domain_model_address.type.DOM',
+                        $_LLL_db . ':tx_contacts_domain_model_address.type.DOM',
                         'DOM'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_address.type.INTL',
+                        $_LLL_db . ':tx_contacts_domain_model_address.type.INTL',
                         'INTL'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_address.type.POSTAL',
+                        $_LLL_db . ':tx_contacts_domain_model_address.type.POSTAL',
                         'POSTAL'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_address.type.PARCEL',
+                        $_LLL_db . ':tx_contacts_domain_model_address.type.PARCEL',
                         'PARCEL'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_address.type.HOME',
+                        $_LLL_db . ':tx_contacts_domain_model_address.type.HOME',
                         'HOME'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_address.type.WORK',
+                        $_LLL_db . ':tx_contacts_domain_model_address.type.WORK',
                         'WORK'
                     ],
                 ],
@@ -172,7 +199,7 @@ return [
         ],
         'street' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.street',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.street',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -181,7 +208,7 @@ return [
         ],
         'street_number' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.street_number',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.street_number',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -190,7 +217,7 @@ return [
         ],
         'addition1' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.addition1',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.addition1',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -199,7 +226,7 @@ return [
         ],
         'addition2' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.addition2',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.addition2',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -208,7 +235,7 @@ return [
         ],
         'zip' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.zip',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.zip',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -217,7 +244,7 @@ return [
         ],
         'city' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.city',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.city',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -226,7 +253,7 @@ return [
         ],
         'region' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.region',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.region',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -235,9 +262,10 @@ return [
         ],
         'country' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.country',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.country',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'foreign_table' => 'tx_contacts_domain_model_country',
                 'maxitems' => 1,
                 'appearance' => [
@@ -248,25 +276,25 @@ return [
         ],
         'lat' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.lat',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.lat',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim,double2'
             ],
         ],
         'lon' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.lon',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.lon',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim'
+                'eval' => 'trim,double2'
             ],
         ],
         'post_box' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.post_box',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.post_box',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -285,7 +313,7 @@ return [
         ],
         'tt_content' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_address.tt_content',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.tt_content',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tt_content',
@@ -311,10 +339,6 @@ return [
                 ],
                 'inline' => [
                     'inlineNewButtonStyle' => 'display: inline-block;',
-                ],
-                'behaviour' => [
-                    'localizationMode' => 'select',
-                    'localizeChildrenAtParentLocalization' => true,
                 ],
             ]
         ],

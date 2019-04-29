@@ -2,11 +2,13 @@
 
 defined('TYPO3_MODE') or die();
 
-$_LLL = 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf';
+$_LLL_core_general = 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf';
+$_LLL_db = 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf';
+$_LLL_tca = 'LLL:EXT:contacts/Resources/Private/Language/locallang_tca.xlf';
 
 return [
     'ctrl' => [
-        'title' => $_LLL . ':tx_contacts_domain_model_contact',
+        'title' => $_LLL_db . ':tx_contacts_domain_model_contact',
         'label' => 'first_name',
         'label_alt' => 'last_name',
         'label_alt_force' => 1,
@@ -15,8 +17,7 @@ return [
         'cruser_id' => 'cruser_id',
         'dividers2tabs' => true,
 
-        'versioningWS' => 2,
-        'versioning_followPages' => true,
+        'versioningWS' => true,
         'origUid' => 't3_origuid',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
@@ -35,11 +36,29 @@ return [
     ],
     'types' => [
         '1' => [
-            'showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, fe_user, photo, salutation, title, first_name, last_name, birthday, email, uri, companies, addresses, phone_numbers, tt_content, --div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'
+            'showitem' => '
+                fe_user,
+                photo,
+                salutation, title, first_name, last_name,
+                birthday,
+                email, uri,
+                companies,
+                addresses,
+                phone_numbers,
+                tt_content,
+                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,
+                    --palette--;' . $_LLL_tca . ':palettes.visibility;hiddenonly,
+                    --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access,
+            '
         ],
     ],
     'palettes' => [
-        '1' => ['showitem' => ''],
+        'hiddenonly' => [
+            'showitem' => 'hidden;' . $_LLL_db . ':tx_contacts_domain_model_contact',
+        ],
+        'access' => [
+            'showitem' => 'starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel, endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel',
+        ],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -47,12 +66,15 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'foreign_table' => 'sys_language',
                 'foreign_table_where' => 'ORDER BY sys_language.title',
                 'items' => [
                     ['LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1],
                     ['LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0]
                 ],
+                'eval' => 'int',
+                'default' => 0,
             ],
         ],
         'l10n_parent' => [
@@ -61,6 +83,7 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'items' => [
                     ['', 0],
                 ],
@@ -83,19 +106,24 @@ return [
         ],
         'hidden' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+            'label' => $_LLL_core_general . ':LGL.hidden',
             'config' => [
                 'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    '1' => [
+                        '0' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:hidden.I.0'
+                    ]
+                ]
             ],
         ],
         'starttime' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputDateTime',
                 'size' => 13,
-                'max' => 20,
                 'eval' => 'datetime',
                 'checkbox' => 0,
                 'default' => 0,
@@ -106,12 +134,11 @@ return [
         ],
         'endtime' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputDateTime',
                 'size' => 13,
-                'max' => 20,
                 'eval' => 'datetime',
                 'checkbox' => 0,
                 'default' => 0,
@@ -123,25 +150,26 @@ return [
 
         'fe_user' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_contact.fe_user',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_contact.fe_user',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'readOnly' => 0,
                 'foreign_table' => 'fe_users',
                 'size' => 1,
-                'autoMaxSize' => 1,
                 'items' => [
-                    [$_LLL . ':tx_contacts_domain_model_contact.fe_user.not_available', 0],
+                    ['', 0],
                 ],
                 'minitems' => 0,
                 'maxitems' => 1,
-                'multiple' => 0,
+                'eval' => 'int',
+                'default' => 0,
             ]
         ],
 
         'salutation' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_contact.salutation',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_contact.salutation',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -150,7 +178,7 @@ return [
         ],
         'title' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_contact.title',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_contact.title',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -159,7 +187,7 @@ return [
         ],
         'first_name' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_contact.first_name',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_contact.first_name',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -168,7 +196,7 @@ return [
         ],
         'last_name' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_contact.last_name',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_contact.last_name',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -177,10 +205,11 @@ return [
         ],
         'birthday' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_contact.birthday',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_contact.birthday',
             'config' => [
                 'type' => 'input',
-                'size' => 10,
+                'renderType' => 'inputDateTime',
+                'size' => 13,
                 'eval' => 'date',
                 'checkbox' => 1,
                 'default' => 0
@@ -188,7 +217,7 @@ return [
         ],
         'companies' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_contact.companies',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_contact.companies',
             'config' => [
                 'type' => 'group',
                 'internal_type' => 'db',
@@ -197,29 +226,22 @@ return [
                 'MM' => 'tx_contacts_domain_model_contact_company_mm',
                 'MM_opposite_field' => 'contact',
                 'maxitems' => 9999,
-                'wizards' => [
-                    'suggest' => [
-                        'type' => 'suggest',
-                    ],
-                    'add' => [
-                        'type' => 'script',
-                        'title' => 'LLL:EXT:cms/locallang_tca.xlf:sys_template.basedOn_add',
-                        'icon' => 'add.gif',
-                        'params' => [
-                            'table' => 'tx_contacts_domain_model_company',
+                'fieldControl' => [
+                    'addRecord' => [
+                        'disabled' => false,
+                        'renderType' => 'addRecord',
+                        'options' => [
+                            'title' => 'Definiere ',
+                            'setValue' => 'append',
                             'pid' => '###CURRENT_PID###',
-                            'setValue' => 'prepend'
                         ],
-                        'module' => [
-                            'name' => 'wizard_add'
-                        ]
-                    ]
+                    ],
                 ],
             ],
         ],
         'addresses' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_contact.addresses',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_contact.addresses',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_contacts_domain_model_address',
@@ -236,7 +258,7 @@ return [
         ],
         'phone_numbers' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_contact.phone_numbers',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_contact.phone_numbers',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_contacts_domain_model_phone',
@@ -253,7 +275,7 @@ return [
         ],
         'email' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_contact.email',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_contact.email',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -262,20 +284,21 @@ return [
         ],
         'uri' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_contact.uri',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_contact.uri',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputLink',
                 'size' => 30,
-                'max' => '256',
+                'max' => 256,
                 'eval' => 'trim',
                 'wizards' => [
                     '_PADDING' => 2,
                     'link' => [
                         'type' => 'popup',
                         'title' => 'LLL:EXT:cms/locallang_ttc.xlf:header_link_formlabel',
-                        'icon' => 'link_popup.gif',
+                        'icon' => 'actions-wizard-link',
                         'module' => [
-                            'name' => 'wizard_element_browser',
+                            'name' => 'wizard_link',
                             'urlParameters' => [
                                 'mode' => 'wizard'
                             ]
@@ -291,7 +314,7 @@ return [
         ],
         'photo' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_contact.photo',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_contact.photo',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
                 'Photo',
                 ['maxitems' => 1],
@@ -300,7 +323,7 @@ return [
         ],
         'tt_content' => [
             'exclude' => 1,
-            'label' => $_LLL . ':tx_contacts_domain_model_contact.tt_content',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_contact.tt_content',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tt_content',
@@ -326,10 +349,6 @@ return [
                 ],
                 'inline' => [
                     'inlineNewButtonStyle' => 'display: inline-block;',
-                ],
-                'behaviour' => [
-                    'localizationMode' => 'select',
-                    'localizeChildrenAtParentLocalization' => true,
                 ],
             ]
         ],

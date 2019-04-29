@@ -2,19 +2,20 @@
 
 defined('TYPO3_MODE') or die();
 
-$_LLL = 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf';
+$_LLL_core_general = 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf';
+$_LLL_db = 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf';
+$_LLL_tca = 'LLL:EXT:contacts/Resources/Private/Language/locallang_tca.xlf';
 
 return [
     'ctrl' => [
-        'title' => $_LLL . ':tx_contacts_domain_model_phone',
+        'title' => $_LLL_db . ':tx_contacts_domain_model_phone',
         'label' => 'number',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
         'dividers2tabs' => true,
 
-        'versioningWS' => 2,
-        'versioning_followPages' => true,
+        'versioningWS' => true,
         'origUid' => 't3_origuid',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
@@ -32,10 +33,23 @@ return [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, number',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, type, number,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        '1' => [
+            'showitem' => '
+                type,
+                number,
+                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,
+                    --palette--;' . $_LLL_tca . ':palettes.visibility;hiddenonly,
+                    --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access,
+            '
+        ],
     ],
     'palettes' => [
-        '1' => ['showitem' => ''],
+        'hiddenonly' => [
+            'showitem' => 'hidden;' . $_LLL_db . ':tx_contacts_domain_model_phone',
+        ],
+        'access' => [
+            'showitem' => 'starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel, endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel',
+        ],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -43,12 +57,15 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'foreign_table' => 'sys_language',
                 'foreign_table_where' => 'ORDER BY sys_language.title',
                 'items' => [
                     ['LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1],
                     ['LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0]
                 ],
+                'eval' => 'int',
+                'default' => 0,
             ],
         ],
         'l10n_parent' => [
@@ -57,6 +74,7 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'items' => [
                     ['', 0],
                 ],
@@ -79,19 +97,24 @@ return [
         ],
         'hidden' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+            'label' => $_LLL_core_general . ':LGL.hidden',
             'config' => [
                 'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    '1' => [
+                        '0' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:hidden.I.0'
+                    ]
+                ]
             ],
         ],
         'starttime' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputDateTime',
                 'size' => 13,
-                'max' => 20,
                 'eval' => 'datetime',
                 'checkbox' => 0,
                 'default' => 0,
@@ -102,12 +125,11 @@ return [
         ],
         'endtime' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputDateTime',
                 'size' => 13,
-                'max' => 20,
                 'eval' => 'datetime',
                 'checkbox' => 0,
                 'default' => 0,
@@ -118,60 +140,61 @@ return [
         ],
         'type' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_phone.type',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_phone.type',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'items' => [
                     [
-                        $_LLL . ':tx_contacts_domain_model_phone.type.PREF',
+                        $_LLL_db . ':tx_contacts_domain_model_phone.type.PREF',
                         'PREF'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_phone.type.WORK',
+                        $_LLL_db . ':tx_contacts_domain_model_phone.type.WORK',
                         'WORK'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_phone.type.HOME',
+                        $_LLL_db . ':tx_contacts_domain_model_phone.type.HOME',
                         'HOME'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_phone.type.VOICE',
+                        $_LLL_db . ':tx_contacts_domain_model_phone.type.VOICE',
                         'VOICE'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_phone.type.FAX',
+                        $_LLL_db . ':tx_contacts_domain_model_phone.type.FAX',
                         'FAX'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_phone.type.MSG',
+                        $_LLL_db . ':tx_contacts_domain_model_phone.type.MSG',
                         'MSG'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_phone.type.CELL',
+                        $_LLL_db . ':tx_contacts_domain_model_phone.type.CELL',
                         'CELL'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_phone.type.PAGER',
+                        $_LLL_db . ':tx_contacts_domain_model_phone.type.PAGER',
                         'PAGER'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_phone.type.BBS',
+                        $_LLL_db . ':tx_contacts_domain_model_phone.type.BBS',
                         'BBS'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_phone.type.MODEM',
+                        $_LLL_db . ':tx_contacts_domain_model_phone.type.MODEM',
                         'MODEM'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_phone.type.CAR',
+                        $_LLL_db . ':tx_contacts_domain_model_phone.type.CAR',
                         'CAR'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_phone.type.ISDN',
+                        $_LLL_db . ':tx_contacts_domain_model_phone.type.ISDN',
                         'ISDN'
                     ],
                     [
-                        $_LLL . ':tx_contacts_domain_model_phone.type.VIDEO',
+                        $_LLL_db . ':tx_contacts_domain_model_phone.type.VIDEO',
                         'VIDEO'
                     ],
                 ],
@@ -182,7 +205,7 @@ return [
         ],
         'number' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_phone.number',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_phone.number',
             'config' => [
                 'type' => 'input',
                 'size' => 30,

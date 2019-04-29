@@ -2,11 +2,13 @@
 
 defined('TYPO3_MODE') or die();
 
-$_LLL = 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf';
+$_LLL_core_general = 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf';
+$_LLL_db = 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf';
+$_LLL_tca = 'LLL:EXT:contacts/Resources/Private/Language/locallang_tca.xlf';
 
 return [
     'ctrl' => [
-        'title' => $_LLL . ':tx_contacts_domain_model_country',
+        'title' => $_LLL_db . ':tx_contacts_domain_model_country',
         'label' => 'name',
         'label_alt' => 'iso2',
         'label_alt_force' => 1,
@@ -15,8 +17,7 @@ return [
         'cruser_id' => 'cruser_id',
         'dividers2tabs' => true,
 
-        'versioningWS' => 2,
-        'versioning_followPages' => true,
+        'versioningWS' => true,
         'origUid' => 't3_origuid',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
@@ -34,10 +35,25 @@ return [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, iso2, iso3, name, tld, phone_country_code',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid;;;;1-1-1, l10n_parent, l10n_diffsource, hidden;;1, iso2, iso3, name, tld, phone_country_code,--div--;LLL:EXT:cms/locallang_ttc.xlf:tabs.access,starttime, endtime'],
+        '1' => [
+            'showitem' => '
+                iso2, iso3,
+                name,
+                tld,
+                phone_country_code,
+                --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,
+                    --palette--;' . $_LLL_tca . ':palettes.visibility;hiddenonly,
+                    --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access,
+            '
+        ],
     ],
     'palettes' => [
-        '1' => ['showitem' => ''],
+        'hiddenonly' => [
+            'showitem' => 'hidden;' . $_LLL_db . ':tx_contacts_domain_model_country',
+        ],
+        'access' => [
+            'showitem' => 'starttime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:starttime_formlabel, endtime;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:endtime_formlabel',
+        ],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -45,12 +61,15 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.language',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'foreign_table' => 'sys_language',
                 'foreign_table_where' => 'ORDER BY sys_language.title',
                 'items' => [
                     ['LLL:EXT:lang/locallang_general.xlf:LGL.allLanguages', -1],
                     ['LLL:EXT:lang/locallang_general.xlf:LGL.default_value', 0]
                 ],
+                'eval' => 'int',
+                'default' => 0,
             ],
         ],
         'l10n_parent' => [
@@ -59,6 +78,7 @@ return [
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.l18n_parent',
             'config' => [
                 'type' => 'select',
+                'renderType' => 'selectSingle',
                 'items' => [
                     ['', 0],
                 ],
@@ -81,19 +101,24 @@ return [
         ],
         'hidden' => [
             'exclude' => 1,
-            'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+            'label' => $_LLL_core_general . ':LGL.hidden',
             'config' => [
                 'type' => 'check',
+                'renderType' => 'checkboxToggle',
+                'items' => [
+                    '1' => [
+                        '0' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:hidden.I.0'
+                    ]
+                ]
             ],
         ],
         'starttime' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.starttime',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputDateTime',
                 'size' => 13,
-                'max' => 20,
                 'eval' => 'datetime',
                 'checkbox' => 0,
                 'default' => 0,
@@ -104,12 +129,11 @@ return [
         ],
         'endtime' => [
             'exclude' => 1,
-            'l10n_mode' => 'mergeIfNotBlank',
             'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.endtime',
             'config' => [
                 'type' => 'input',
+                'renderType' => 'inputDateTime',
                 'size' => 13,
-                'max' => 20,
                 'eval' => 'datetime',
                 'checkbox' => 0,
                 'default' => 0,
@@ -120,7 +144,7 @@ return [
         ],
         'iso2' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_country.iso2',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_country.iso2',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -129,7 +153,7 @@ return [
         ],
         'iso3' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_country.iso3',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_country.iso3',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -138,7 +162,7 @@ return [
         ],
         'name' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_country.name',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_country.name',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -147,7 +171,7 @@ return [
         ],
         'tld' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_country.tld',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_country.tld',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -156,7 +180,7 @@ return [
         ],
         'phone_country_code' => [
             'exclude' => 0,
-            'label' => $_LLL . ':tx_contacts_domain_model_country.phone_country_code',
+            'label' => $_LLL_db . ':tx_contacts_domain_model_country.phone_country_code',
             'config' => [
                 'type' => 'input',
                 'size' => 30,

@@ -29,7 +29,7 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'first_name,last_name,addresses,',
-        'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_contact.png',
+        'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_contact.svg',
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, fe_user, photo, salutation, title, first_name, last_name, birthday, email, uri, companies, addresses, phone_numbers,tt_content',

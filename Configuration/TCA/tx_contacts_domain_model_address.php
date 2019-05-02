@@ -28,8 +28,8 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'street,zip,city',
-        'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_address.png',
+        'searchFields' => 'title,street,zip,city',
+        'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_address.svg',
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, type, street, street_number, addition1, addition2, zip, city, region, country, post_box, lat, lon, coords, tt_content',

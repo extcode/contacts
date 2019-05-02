@@ -27,7 +27,7 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'street,zip,city',
-        'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_company.png',
+        'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_company.svg',
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, fe_user, logo, name, email, uri, companies, contacts, addresses, phone_numbers, tt_content',

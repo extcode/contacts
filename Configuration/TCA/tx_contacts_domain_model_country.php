@@ -29,7 +29,7 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'iso,name',
-        'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_country.png',
+        'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_country.svg',
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, iso2, iso3, name, tld, phone_country_code',

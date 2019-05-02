@@ -27,7 +27,7 @@ return [
             'endtime' => 'endtime',
         ],
         'searchFields' => 'street,zip,city',
-        'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_phone.png',
+        'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_phone.svg',
     ],
     'interface' => [
         'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, type, number',

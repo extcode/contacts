@@ -201,7 +201,7 @@ class ContactTest extends UnitTestCase
     public function getBirthdayInitiallyReturnsZero()
     {
         $this->assertSame(
-            0,
+            null,
             $this->fixture->getBirthday()
         );
     }
@@ -211,10 +211,12 @@ class ContactTest extends UnitTestCase
      */
     public function setBirthdaySetsBirthday()
     {
-        $this->fixture->setBirthday(123456);
+        $birthdate = new \DateTime('2019-05-05');
+
+        $this->fixture->setBirthday($birthdate);
 
         $this->assertSame(
-            123456,
+            $birthdate,
             $this->fixture->getBirthday()
         );
     }

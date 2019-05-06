@@ -44,22 +44,22 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $vatId = '';
 
     /**
-     * @var ObjectStorage<Contact>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Contact>
      */
     protected $directors;
 
     /**
-     * @var ObjectStorage<Contact>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Contact>
      */
     protected $contacts;
 
     /**
-     * @var ObjectStorage<Address>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Address>
      */
     protected $addresses;
 
     /**
-     * @var ObjectStorage<Phone>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Phone>
      */
     protected $phoneNumbers;
 
@@ -74,7 +74,7 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $uri = '';
 
     /**
-     * @var FileReference
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected $logo = null;
 

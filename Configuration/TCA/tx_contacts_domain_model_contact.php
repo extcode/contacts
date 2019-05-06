@@ -210,9 +210,9 @@ return [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
                 'size' => 13,
-                'eval' => 'date',
+                'eval' => 'date,int',
                 'checkbox' => 1,
-                'default' => 0
+                'default' => 0,
             ],
         ],
         'companies' => [

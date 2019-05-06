@@ -30,22 +30,22 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $lastName;
 
     /**
-     * @var int
+     * @var \DateTime
      */
-    protected $birthday = 0;
+    protected $birthday;
 
     /**
-     * @var ObjectStorage<Company>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Company>
      */
     protected $companies;
 
     /**
-     * @var ObjectStorage<Address>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Address>
      */
     protected $addresses;
 
     /**
-     * @var ObjectStorage<Phone>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Phone>
      */
     protected $phoneNumbers;
 
@@ -60,13 +60,13 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $uri = '';
 
     /**
-     * @var FileReference
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
-    protected $photo = null;
+    protected $photo;
 
     /**
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     * @var ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
      */
     protected $ttContent;
 
@@ -203,19 +203,23 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * @param int $birthday
+     * @param \DateTime $birthday
      */
-    public function setBirthday(int $birthday)
+    public function setBirthday(\DateTime $birthday)
     {
         $this->birthday = $birthday;
     }
 
     /**
-     * @return int
+     * @return \DateTime|null
      */
     public function getBirthday()
     {
-        return $this->birthday;
+        if ($this->birthday) {
+            return $this->birthday;
+        }
+
+        return null;
     }
 
     /**

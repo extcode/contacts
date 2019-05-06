@@ -52,7 +52,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $region = '';
 
     /**
-     * @var Country
+     * @var \Extcode\Contacts\Domain\Model\Country
      */
     protected $country = '';
 
@@ -73,12 +73,12 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
     /**
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     * @var ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
      */
     protected $ttContent;
 
     /**
-     * @var Contact
+     * @var \Extcode\Contacts\Domain\Model\Contact
      */
     protected $contact = null;
 

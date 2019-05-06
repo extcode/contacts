@@ -17,10 +17,10 @@ $EM_CONF['contacts'] = [
     'modify_tables' => '',
     'clearCacheOnLoad' => 0,
     'lockType' => '',
-    'version' => '3.1.0',
+    'version' => '3.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '9.3.0-9.3.99',
+            'typo3' => '9.5.0-9.5.99',
             'php' => '7.2.0'
         ],
         'conflicts' => [],

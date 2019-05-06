@@ -259,10 +259,13 @@ class AddressTest extends UnitTestCase
      */
     public function setCountrySetsCountry()
     {
-        $this->fixture->setCountry('Country');
+        $country = new \Extcode\Contacts\Domain\Model\Country();
+        $country->setIso2('de');
+
+        $this->fixture->setCountry($country);
 
         $this->assertSame(
-            'Country',
+            $country,
             $this->fixture->getCountry()
         );
     }

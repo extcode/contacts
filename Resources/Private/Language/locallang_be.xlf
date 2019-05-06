@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2019-05-06T10:30:00Z" product-name="contacts">
+        <header/>
+        <body>
+
+            <trans-unit id="flexforms_template.templateLayout">
+                <source>Template Layout</source>
+            </trans-unit>
+            <trans-unit id="flexforms_template.templateLayout.address.gmaps">
+                <source>Google Maps</source>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

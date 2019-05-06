@@ -24,30 +24,21 @@
                             </config>
                         </TCEforms>
                     </settings.address>
-                    <settings.type>
+
+                    <!-- Template Layout -->
+                    <settings.templateLayout>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:dates/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address
-                            </label>
+                            <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:flexforms_template.templateLayout</label>
                             <config>
                                 <type>select</type>
-                                <items type="array">
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">HTML</numIndex>
-                                        <numIndex index="1">html</numIndex>
-                                    </numIndex>
-                                    <numIndex index="1" type="array">
-                                        <numIndex index="0">Google Maps</numIndex>
-                                        <numIndex index="1">gmaps</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3" type="array">
-                                        <numIndex index="0">OpenStreetMap</numIndex>
-                                        <numIndex index="1">osm</numIndex>
-                                    </numIndex>
-                                </items>
+                                <itemsProcFunc>Extcode\Contacts\Hooks\ItemsProcFunc->user_templateLayout</itemsProcFunc>
+                                <extKey>contacts</extKey>
+                                <pluginName>Address</pluginName>
+                                <renderType>selectSingle</renderType>
                             </config>
                         </TCEforms>
-                    </settings.type>
+                    </settings.templateLayout>
+
                 </el>
             </ROOT>
         </sDEF>

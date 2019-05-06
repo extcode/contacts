@@ -1,18 +1,15 @@
 plugin.tx_contacts {
     view {
         templateRootPaths {
-            0 = EXT:contacts/Resources/Private/Templates/
-            1 = {$plugin.tx_contacts.view.templateRootPath}
+            0 = {$plugin.tx_contacts.view.templateRootPath}
         }
 
         partialRootPaths {
-            0 = EXT:contacts/Resources/Private/Partials/
-            1 = {$plugin.tx_contacts.view.partialRootPath}
+            0 = {$plugin.tx_contacts.view.partialRootPath}
         }
 
         layoutRootPaths {
-            0 = EXT:contacts/Resources/Private/Layouts/
-            1 = {$plugin.tx_contacts.view.layoutRootPath}
+            0 = {$plugin.tx_contacts.view.layoutRootPath}
         }
     }
 

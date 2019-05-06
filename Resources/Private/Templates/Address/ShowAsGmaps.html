@@ -1,32 +1,36 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
 <f:layout name="Default" />
 
 <f:section name="main">
-	<div id="googleMap{address.uid}" style="width: {settings.gmaps.width}; height: {settings.gmaps.width};"></div>
-	<script type="text/javascript">
-		function initialize() {
+    <div id="googleMap{address.uid}" style="width: {settings.gmaps.width}; height: {settings.gmaps.height};"></div>
+    <script type="text/javascript">
+        function initialize() {
 
-			var addressLatLng = new google.maps.LatLng( {address.lat}, {address.lon} );
-			var scrollwheel = {settings.gmaps.scrollwheel};
-			var draggable = {settings.gmaps.draggable};
+            var addressLatLng = new google.maps.LatLng( {address.lat}, {address.lon} );
+            var scrollwheel = {settings.gmaps.scrollwheel};
+            var draggable = {settings.gmaps.draggable};
 
-			var mapProp{address.uid} = {
-				center: addressLatLng,
-				zoom: 16,
-				mapTypeId: google.maps.MapTypeId.ROADMAP,
-				scrollwheel: scrollwheel,
-				draggable: draggable
-			};
+            var mapProp{address.uid} = {
+                center: addressLatLng,
+                zoom: 16,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                scrollwheel: scrollwheel,
+                draggable: draggable
+            };
 
-			var map = new google.maps.Map(document.getElementById("googleMap{address.uid}"), mapProp{address.uid});
+            var map = new google.maps.Map(document.getElementById("googleMap{address.uid}"), mapProp{address.uid});
 
-			var marker = new google.maps.Marker({
-				"position": addressLatLng,
-				"map": map,
-				"title": "{address.title}"
-			});
+            var marker = new google.maps.Marker({
+                "position": addressLatLng,
+                "map": map,
+                "title": "{address.title}"
+            });
 
-		}
+        }
 
-		google.maps.event.addDomListener(window, 'load', initialize);
-	</script>
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 </f:section>
+</html>

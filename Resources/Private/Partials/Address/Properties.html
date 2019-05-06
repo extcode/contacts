@@ -1,18 +1,22 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
 <div id="contacts-address-{address.uid}" class="contacts-address">
-	<div class="address">
-		<p>
-			{address.street} {address.streetNumber}
-		</p>
-		<p>
-			{address.zip} {address.city}
-		</p>
-		<f:if condition="{address.region}">
-			<p>
-				{address.region}
-			</p>
-		</f:if>
-		<p>
-			{address.country.name}
-		</p>
-	</div>
+    <div class="address">
+        <p>
+            {address.street} {address.streetNumber}
+        </p>
+        <p>
+            {address.zip} {address.city}
+        </p>
+        <f:if condition="{address.region}">
+            <p>
+                {address.region}
+            </p>
+        </f:if>
+        <p>
+            {address.country.name}
+        </p>
+    </div>
 </div>
+</html>

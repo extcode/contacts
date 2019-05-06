@@ -4,8 +4,4 @@ plugin.tx_contacts {
         partialRootPath = EXT:contacts/Resources/Private/Partials/
         layoutRootPath = EXT:contacts/Resources/Private/Layouts/
     }
-
-    persistence {
-        storagePid =
-    }
 }

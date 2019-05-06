@@ -1,36 +1,40 @@
-{namespace contacts=Extcode\Contacts\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
 
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 <f:section name="main">
-	<f:if condition="{contacts}">
-		<f:for each="{contacts}" as="contact">
+    <f:if condition="{contacts}">
+        <f:for each="{contacts}" as="contact">
 
-			<div id="contact-teaser-{contact.uid}" class="contact-teaser">
-				<f:if condition="{contact.photo}">
-					<div class="right">
-						<f:image src="{contact.photo.originalResource.originalFile.uid}" title="{contact.photo.originalResource.title}" alt="{contact.photo.originalResource.title}" maxWidth="150" maxHeight="150" />
-					</div>
-					<div class="clear"><!-- &nbsp; --></div>
-				</f:if>
+            <div id="contact-teaser-{contact.uid}" class="contact-teaser">
+                <f:if condition="{contact.photo}">
+                    <div class="right">
+                        <f:image src="{contact.photo.originalResource.originalFile.uid}"
+                                 title="{contact.photo.originalResource.title}"
+                                 alt="{contact.photo.originalResource.title}" maxWidth="150" maxHeight="150"/>
+                    </div>
+                    <div class="clear"><!-- &nbsp; --></div>
+                </f:if>
 
-				{contact.titleFullName}
+                {contact.titleFullName}
 
-				<f:if condition="{contact.phoneNumbers}">
-					<div id="contact-teaser-{contact.uid}-phoneNumbers" class="contact-teaser-phoneNumbers">
-						<f:for each="{contact.phoneNumbers}" as="phoneNumber" key="key">
-							{phoneNumber.number}
-						</f:for>
-					</div>
-				</f:if>
+                <f:if condition="{contact.phoneNumbers}">
+                    <div id="contact-teaser-{contact.uid}-phoneNumbers" class="contact-teaser-phoneNumbers">
+                        <f:for each="{contact.phoneNumbers}" as="phoneNumber" key="key">
+                            {phoneNumber.number}
+                        </f:for>
+                    </div>
+                </f:if>
 
-				<f:if condition="{contact.email}">
-					<div id="contact-teaser-{contact.uid}-email" class="contact-teaser-email">
-						{contact.email}
-					</div>
-				</f:if>
-			</div>
+                <f:if condition="{contact.email}">
+                    <div id="contact-teaser-{contact.uid}-email" class="contact-teaser-email">
+                        {contact.email}
+                    </div>
+                </f:if>
+            </div>
 
-		</f:for>
-	</f:if>
+        </f:for>
+    </f:if>
 </f:section>
+</html>

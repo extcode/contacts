@@ -1,51 +1,56 @@
-{namespace contacts=Extcode\Contacts\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
 
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 <f:section name="main">
-	<f:if condition="{company.logo}">
-		<div class="contacts-company-logo">
-			<f:image src="{company.logo.originalResource.originalFile.uid}" title="{company.logo.originalResource.title}" alt="{company.logo.originalResource.title}" maxWidth="150" maxHeight="150" />
-		</div>
-	</f:if>
+    <f:if condition="{company.logo}">
+        <div class="contacts-company-logo">
+            <f:image src="{company.logo.originalResource.originalFile.uid}"
+                     title="{company.logo.originalResource.title}" alt="{company.logo.originalResource.title}"
+                     maxWidth="150" maxHeight="150"/>
+        </div>
+    </f:if>
 
-	<div class="contacts-company-name">
-		{company.name}
-	</div>
+    <div class="contacts-company-name">
+        {company.name}
+    </div>
 
-	<f:if condition="{company.addresses}">
-		<f:for each="{company.addresses}" as="address" key="key">
-			<f:render partial="Address/Properties" arguments="{address:address}" />
-		</f:for>
-	</f:if>
+    <f:if condition="{company.addresses}">
+        <f:for each="{company.addresses}" as="address" key="key">
+            <f:render partial="Address/Properties" arguments="{address:address}"/>
+        </f:for>
+    </f:if>
 
-	<f:if condition="{company.phoneNumbers}">
-		<f:for each="{company.phoneNumbers}" as="phoneNumber" key="key">
-			<f:render partial="Phone/Properties" arguments="{phone:phoneNumber}" />
-		</f:for>
-	</f:if>
+    <f:if condition="{company.phoneNumbers}">
+        <f:for each="{company.phoneNumbers}" as="phoneNumber" key="key">
+            <f:render partial="Phone/Properties" arguments="{phone:phoneNumber}"/>
+        </f:for>
+    </f:if>
 
-	<f:if condition="{company.email}">
-		<div class="contacts-company-email">
-			{company.email}
-		</div>
-	</f:if>
+    <f:if condition="{company.email}">
+        <div class="contacts-company-email">
+            {company.email}
+        </div>
+    </f:if>
 
-	<f:if condition="{company.uri}">
-		<div class="contacts-company-uri">
-			<f:link.typolink parameter="{company.uri}">
-				<f:translate key="tx_contacts_domain_model_company.uri"/>
-			</f:link.typolink>
-		</div>
-	</f:if>
+    <f:if condition="{company.uri}">
+        <div class="contacts-company-uri">
+            <f:link.typolink parameter="{company.uri}">
+                <f:translate key="tx_contacts_domain_model_company.uri"/>
+            </f:link.typolink>
+        </div>
+    </f:if>
 
-	<f:if condition="{company.ttContent}">
-		<f:for each="{company.ttContent}" as="content" iteration="contentIterator" >
-			<div id="content-{contentIterator.cycle}"  class="content-element">
-				<f:cObject typoscriptObjectPath="tt_content.{content.contentType}.20" data="<companys:mapModelPropertiesToTableColumns class='Extcode\\Contacts\\Domain\\Model\\TtContent' table='tt_content' data='{content}' />" />
-			</div>
-		</f:for>
-	</f:if>
+    <f:if condition="{company.ttContent}">
+        <f:for each="{company.ttContent}" as="content" iteration="contentIterator">
+            <div id="content-{contentIterator.cycle}" class="content-element">
+                <f:cObject typoscriptObjectPath="tt_content.{content.contentType}.20"
+                           data="<companys:mapModelPropertiesToTableColumns class='Extcode\\Contacts\\Domain\\Model\\TtContent' table='tt_content' data='{content}' />"/>
+            </div>
+        </f:for>
+    </f:if>
 
     <f:link.action action="list">Back to list</f:link.action>
 </f:section>
+</html>

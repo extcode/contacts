@@ -1,46 +1,51 @@
-{namespace contacts=Extcode\Contacts\ViewHelpers}
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
 
-<f:layout name="Default" />
+<f:layout name="Default"/>
 
 <f:section name="main">
-	<f:if condition="{contact.photo}">
-		<div class="right">
-			<f:image src="{contact.photo.originalResource.originalFile.uid}" title="{contact.photo.originalResource.title}" alt="{contact.photo.originalResource.title}" maxWidth="150" maxHeight="150" />
-		</div>
-		<div class="clear"><!-- &nbsp; --></div>
-	</f:if>
+    <f:if condition="{contact.photo}">
+        <div class="right">
+            <f:image src="{contact.photo.originalResource.originalFile.uid}"
+                     title="{contact.photo.originalResource.title}" alt="{contact.photo.originalResource.title}"
+                     maxWidth="150" maxHeight="150"/>
+        </div>
+        <div class="clear"><!-- &nbsp; --></div>
+    </f:if>
 
-    <f:render partial="Contact/Properties" arguments="{contact:contact}" />
+    <f:render partial="Contact/Properties" arguments="{contact:contact}"/>
 
     <f:for each="{contact.addresses}" as="address" key="key">
-        <f:render partial="Address/Properties" arguments="{address:address}" />
+        <f:render partial="Address/Properties" arguments="{address:address}"/>
     </f:for>
 
     <f:for each="{contact.phoneNumbers}" as="phone_number" key="key">
-        <f:render partial="Phone/Properties" arguments="{phone:phone_number}" />
+        <f:render partial="Phone/Properties" arguments="{phone:phone_number}"/>
     </f:for>
 
-	<f:if condition="{contact.email}">
-		<div class="contacts-contact-email">
-			{contact.email}
-		</div>
-	</f:if>
+    <f:if condition="{contact.email}">
+        <div class="contacts-contact-email">
+            {contact.email}
+        </div>
+    </f:if>
 
-	<f:if condition="{contact.uri}">
-		<div class="contacts-contact-uri">
-			<f:link.typolink parameter="{contact.uri}">
-				<f:translate key="tx_contacts_domain_model_contact.uri"/>
-			</f:link.typolink>
-		</div>
-	</f:if>
+    <f:if condition="{contact.uri}">
+        <div class="contacts-contact-uri">
+            <f:link.typolink parameter="{contact.uri}">
+                <f:translate key="tx_contacts_domain_model_contact.uri"/>
+            </f:link.typolink>
+        </div>
+    </f:if>
 
-	<f:if condition="{contact.ttContent}">
-		<f:for each="{contact.ttContent}" as="content" iteration="contentIterator" >
-			<div id="content-{contentIterator.cycle}"  class="content-element">
-				<f:cObject typoscriptObjectPath="tt_content.{content.contentType}.20" data="<contacts:mapModelPropertiesToTableColumns class='Extcode\\Contacts\\Domain\\Model\\TtContent' table='tt_content' data='{content}' />" />
-			</div>
-		</f:for>
-	</f:if>
+    <f:if condition="{contact.ttContent}">
+        <f:for each="{contact.ttContent}" as="content" iteration="contentIterator">
+            <div id="content-{contentIterator.cycle}" class="content-element">
+                <f:cObject typoscriptObjectPath="tt_content.{content.contentType}.20"
+                           data="<contacts:mapModelPropertiesToTableColumns class='Extcode\\Contacts\\Domain\\Model\\TtContent' table='tt_content' data='{content}' />"/>
+            </div>
+        </f:for>
+    </f:if>
 
     <f:link.action action="list">Back to list</f:link.action>
 </f:section>
+</html>

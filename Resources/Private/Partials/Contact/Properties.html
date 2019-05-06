@@ -1,7 +1,10 @@
-<table class="tx-contact" >
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<table class="tx-contact">
     <tr>
         <td>
-            <f:translate key="tx_contacts_domain_model_contact.salutation" />
+            <f:translate key="tx_contacts_domain_model_contact.salutation"/>
         </td>
         <td>
             {contact.salutation}
@@ -9,7 +12,7 @@
     </tr>
     <tr>
         <td>
-            <f:translate key="tx_contacts_domain_model_contact.title" />
+            <f:translate key="tx_contacts_domain_model_contact.title"/>
         </td>
         <td>
             {contact.title}
@@ -17,7 +20,7 @@
     </tr>
     <tr>
         <td>
-            <f:translate key="tx_contacts_domain_model_contact.first_name" />
+            <f:translate key="tx_contacts_domain_model_contact.first_name"/>
         </td>
         <td>
             {contact.firstName}
@@ -25,10 +28,11 @@
     </tr>
     <tr>
         <td>
-            <f:translate key="tx_contacts_domain_model_contact.last_name" />
+            <f:translate key="tx_contacts_domain_model_contact.last_name"/>
         </td>
         <td>
             {contact.lastName}
         </td>
     </tr>
 </table>
+</html>

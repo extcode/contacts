@@ -2,102 +2,81 @@
 
 namespace Extcode\Contacts\Domain\Model;
 
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * Salutation
-     *
      * @var string
      */
-    protected $salutation;
+    protected $salutation = '';
 
     /**
-     * Title
-     *
      * @var string
      */
-    protected $title;
+    protected $title = '';
 
     /**
-     * First Name
-     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $firstName;
 
     /**
-     * Last Name
-     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $lastName;
 
     /**
-     * Birthday
-     *
      * @var int
      */
     protected $birthday = 0;
 
     /**
-     * companies
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Company>
+     * @var ObjectStorage<Company>
      */
     protected $companies;
 
     /**
-     * addresses
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Address>
+     * @var ObjectStorage<Address>
      */
     protected $addresses;
 
     /**
-     * Phone Numbers
-     *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Phone>
+     * @var ObjectStorage<Phone>
      */
     protected $phoneNumbers;
 
     /**
-     * email
-     *
      * @var string
      */
-    protected $email;
+    protected $email = '';
 
     /**
-     * uri
-     *
      * @var string
      */
-    protected $uri;
+    protected $uri = '';
 
     /**
-     * photo
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var FileReference
      */
     protected $photo = null;
 
     /**
-     * TT Content
-     *
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
+     * @var ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
      */
     protected $ttContent;
 
     /**
-     * @param $salutation
-     * @param $title
-     * @param $firstName
-     * @param $lastName
+     * @param string $salutation
+     * @param string $title
+     * @param string $firstName
+     * @param string $lastName
      */
-    public function __construct($salutation, $title, $firstName, $lastName)
+    public function __construct(string $salutation, string $title, string $firstName, string $lastName)
     {
         $this->salutation = $salutation;
         $this->title = $title;
@@ -112,15 +91,15 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     protected function initStorageObjects()
     {
-        $this->companies = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->addresses = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->phoneNumbers = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->companies = new ObjectStorage();
+        $this->addresses = new ObjectStorage();
+        $this->phoneNumbers = new ObjectStorage();
     }
 
     /**
      * @param string $salutation
      */
-    public function setSalutation($salutation)
+    public function setSalutation(string $salutation)
     {
         $this->salutation = $salutation;
     }
@@ -136,7 +115,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $title
      */
-    public function setTitle($title)
+    public function setTitle(string $title)
     {
         $this->title = $title;
     }
@@ -154,7 +133,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @throws \InvalidArgumentException
      */
-    public function setFirstName($firstName)
+    public function setFirstName(string $firstName)
     {
         if (strlen($firstName) == 0) {
             throw new \InvalidArgumentException(
@@ -179,7 +158,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @throws \InvalidArgumentException
      */
-    public function setLastName($lastName)
+    public function setLastName(string $lastName)
     {
         if (strlen($lastName) == 0) {
             throw new \InvalidArgumentException(
@@ -203,7 +182,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $seperator
      * @return string
      */
-    public function getFullName($seperator = ' ')
+    public function getFullName(string $seperator = ' ')
     {
         return implode($seperator, [$this->getFirstName(), $this->getLastName()]);
     }
@@ -212,7 +191,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $seperator
      * @return string
      */
-    public function getTitleFullName($seperator = ' ')
+    public function getTitleFullName(string $seperator = ' ')
     {
         $titleFullName = [];
         if ($this->getTitle()) {
@@ -226,7 +205,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param int $birthday
      */
-    public function setBirthday($birthday)
+    public function setBirthday(int $birthday)
     {
         $this->birthday = $birthday;
     }
@@ -240,29 +219,23 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Adds a Company
-     *
-     * @param \Extcode\Contacts\Domain\Model\Company $company
+     * @param Company $company
      */
-    public function addCompany(\Extcode\Contacts\Domain\Model\Company $company)
+    public function addCompany(Company $company)
     {
         $this->companies->attach($company);
     }
 
     /**
-     * Removes a Company
-     *
-     * @param \Extcode\Contacts\Domain\Model\Company $companyToRemove The Company to be removed
+     * @param Company $company
      */
-    public function removeCompany(\Extcode\Contacts\Domain\Model\Company $companyToRemove)
+    public function removeCompany(Company $company)
     {
-        $this->companies->detach($companyToRemove);
+        $this->companies->detach($company);
     }
 
     /**
-     * Returns the companies
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Company> $companies
+     * @return ObjectStorage<Company> $companies
      */
     public function getCompanies()
     {
@@ -270,39 +243,31 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Sets the companies
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Company> $companies
+     * @param ObjectStorage<Company> $companies
      */
-    public function setCompanies(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $companies)
+    public function setCompanies(ObjectStorage $companies)
     {
         $this->companies = $companies;
     }
 
     /**
-     * Adds a Address
-     *
-     * @param \Extcode\Contacts\Domain\Model\Address $address
+     * @param Address $address
      */
-    public function addAddress(\Extcode\Contacts\Domain\Model\Address $address)
+    public function addAddress(Address $address)
     {
         $this->addresses->attach($address);
     }
 
     /**
-     * Removes a Address
-     *
-     * @param \Extcode\Contacts\Domain\Model\Address $addressToRemove The Address to be removed
+     * @param Address $address
      */
-    public function removeAddress(\Extcode\Contacts\Domain\Model\Address $addressToRemove)
+    public function removeAddress(Address $address)
     {
-        $this->addresses->detach($addressToRemove);
+        $this->addresses->detach($address);
     }
 
     /**
-     * Returns the addresses
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Address> $addresses
+     * @return ObjectStorage<Address> $addresses
      */
     public function getAddresses()
     {
@@ -310,39 +275,31 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Sets the addresses
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Address> $addresses
+     * @param ObjectStorage<Address> $addresses
      */
-    public function setAddresses(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $addresses)
+    public function setAddresses(ObjectStorage $addresses)
     {
         $this->addresses = $addresses;
     }
 
     /**
-     * Adds a Phone Number
-     *
-     * @param \Extcode\Contacts\Domain\Model\Phone $phoneNumber
+     * @param Phone $phoneNumber
      */
-    public function addPhoneNumber(\Extcode\Contacts\Domain\Model\Phone $phoneNumber)
+    public function addPhoneNumber(Phone $phoneNumber)
     {
         $this->phoneNumbers->attach($phoneNumber);
     }
 
     /**
-     * Removes a Phone Number
-     *
-     * @param \Extcode\Contacts\Domain\Model\Phone $phoneNumberToRemove The Phone Number to be removed
+     * @param Phone $phoneNumber
      */
-    public function removePhoneNumber(\Extcode\Contacts\Domain\Model\Phone $phoneNumberToRemove)
+    public function removePhoneNumber(Phone $phoneNumber)
     {
-        $this->phoneNumbers->detach($phoneNumberToRemove);
+        $this->phoneNumbers->detach($phoneNumber);
     }
 
     /**
-     * Returns the phoneNumbers
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Phone> $phoneNumbers
+     * @return ObjectStorage<Phone> $phoneNumbers
      */
     public function getPhoneNumbers()
     {
@@ -350,11 +307,9 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Sets the phoneNumbers
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Phone> $phoneNumbers
+     * @param ObjectStorage<Phone> $phoneNumbers
      */
-    public function setPhoneNumbers(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $phoneNumbers)
+    public function setPhoneNumbers(ObjectStorage $phoneNumbers)
     {
         $this->phoneNumbers = $phoneNumbers;
     }
@@ -370,7 +325,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $email
      */
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
@@ -386,15 +341,13 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $uri
      */
-    public function setUri($uri)
+    public function setUri(string $uri)
     {
         $this->uri = $uri;
     }
 
     /**
-     * Returns the photo
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @return FileReference
      */
     public function getPhoto()
     {
@@ -402,19 +355,15 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Sets the photo
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $photo
+     * @param FileReference $photo
      */
-    public function setPhoto(\TYPO3\CMS\Extbase\Domain\Model\FileReference $photo)
+    public function setPhoto(FileReference $photo)
     {
         $this->photo = $photo;
     }
 
     /**
-     * Returns the TT Content
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     * @return ObjectStorage
      */
     public function getTtContent()
     {
@@ -422,11 +371,9 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Sets the TT Content
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $ttContent
+     * @param ObjectStorage $ttContent
      */
-    public function setTtContent($ttContent)
+    public function setTtContent(ObjectStorage $ttContent)
     {
         $this->ttContent = $ttContent;
     }

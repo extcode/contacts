@@ -2,29 +2,27 @@
 
 namespace Extcode\Contacts\Controller;
 
+use Extcode\Contacts\Domain\Model\Contact;
 use Extcode\Contacts\Domain\Repository\ContactRepository;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class ContactController extends ActionController
 {
     /**
      * @var ContactRepository
      */
-    protected $contactRepository;
+    protected $contactRepository = null;
 
     /**
-     * pageId
-     *
      * @var int
      */
     protected $pageId;
 
     /**
-     * PiVars
-     *
      * @var array
      */
-    protected $piVars;
+    protected $piVars = [];
 
     /**
      * @param ContactRepository $contactRepository
@@ -55,9 +53,6 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->piVars = $this->request->getArguments();
     }
 
-    /**
-     * action list
-     */
     public function listAction()
     {
         $contacts = $this->contactRepository->findAll($this->piVars);
@@ -67,11 +62,9 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     }
 
     /**
-     * action show
-     *
-     * @param \Extcode\Contacts\Domain\Model\Contact $contact
+     * @param Contact $contact
      */
-    public function showAction(\Extcode\Contacts\Domain\Model\Contact $contact = null)
+    public function showAction(Contact $contact = null)
     {
         if (!$contact && (int)$this->settings['contact']) {
             $contact = $this->contactRepository->findByUid((int)$this->settings['contact']);
@@ -80,9 +73,6 @@ class ContactController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->view->assign('contact', $contact);
     }
 
-    /**
-     * action teaser
-     */
     public function teaserAction()
     {
         $contacts = $this->contactRepository->findByUids($this->settings['contactUids']);

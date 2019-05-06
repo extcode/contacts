@@ -5,39 +5,29 @@ namespace Extcode\Contacts\Domain\Model;
 class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * Iso2
-     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $iso2 = '';
 
     /**
-     * Iso3
-     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $iso3 = '';
 
     /**
-     * Name
-     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
     protected $name = '';
 
     /**
-     * Tld
-     *
      * @var string
      */
     protected $tld = '';
 
     /**
-     * PhoneCountryCode
-     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
@@ -48,7 +38,7 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @throws \TYPO3\CMS\Extbase\Property\Exception
      */
-    public function setIso2($iso2)
+    public function setIso2(string $iso2)
     {
         if (strlen($iso2) != 2) {
             throw new \TYPO3\CMS\Extbase\Property\Exception(
@@ -73,7 +63,7 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @throws \TYPO3\CMS\Extbase\Property\Exception
      */
-    public function setIso3($iso3)
+    public function setIso3(string $iso3)
     {
         if ((strlen($iso3) != 0) and (strlen($iso3) != 3)) {
             throw new \TYPO3\CMS\Extbase\Property\Exception(
@@ -96,7 +86,7 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $name
      */
-    public function setName($name)
+    public function setName(string $name)
     {
         $this->name = $name;
     }
@@ -112,7 +102,7 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $tld
      */
-    public function setTld($tld)
+    public function setTld(string $tld)
     {
         $this->tld = $tld;
     }
@@ -128,7 +118,7 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $phoneCountryCode
      */
-    public function setPhoneCountryCode($phoneCountryCode)
+    public function setPhoneCountryCode(string $phoneCountryCode)
     {
         $this->phoneCountryCode = $phoneCountryCode;
     }

@@ -2,118 +2,90 @@
 
 namespace Extcode\Contacts\Domain\Model;
 
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * Title
-     *
      * @var string
      */
-    protected $title;
+    protected $title = '';
 
     /**
-     * Type
-     *
      * @var string
      */
     protected $type = 'INTL,POSTAL,PARCEL,WORK';
 
     /**
-     * Street
-     *
      * @var string
      */
     protected $street = '';
 
     /**
-     * Street Number
-     *
      * @var string
      */
     protected $streetNumber = '';
 
     /**
-     * Addition to Address 1
-     *
      * @var string
      */
     protected $addition1 = '';
 
     /**
-     * Addition to Address 2
-     *
      * @var string
      */
     protected $addition2 = '';
 
     /**
-     * ZIP
-     *
      * @var string
      */
     protected $zip = '';
 
     /**
-     * City
-     *
      * @var string
      */
     protected $city = '';
 
     /**
-     * Region
-     *
      * @var string
      */
     protected $region = '';
 
     /**
-     * Country
-     *
-     * @var \Extcode\Contacts\Domain\Model\Country
+     * @var Country
      */
     protected $country = '';
 
     /**
-     * Post Box
-     *
      * @var string
      */
     protected $postBox = '';
 
     /**
-     * Lon
-     *
      * @var string
      */
     protected $lon = '';
 
     /**
-     * Lat
-     *
      * @var string
      */
     protected $lat = '';
 
     /**
-     * TT Content
-     *
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
+     * @var ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
      */
     protected $ttContent;
 
     /**
-     * Contact
-     *
-     * @var \Extcode\Contacts\Domain\Model\Contact
+     * @var Contact
      */
     protected $contact = null;
 
     /**
      * @param string $title
      */
-    public function setTitle($title)
+    public function setTitle(string $title)
     {
         $this->title = $title;
     }
@@ -131,7 +103,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @throws \InvalidArgumentException
      */
-    public function setType($type)
+    public function setType(string $type)
     {
         $types = ['DOM', 'INTL', 'POSTAL', 'PARCEL', 'HOME', 'WORK'];
 
@@ -156,7 +128,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $street
      */
-    public function setStreet($street)
+    public function setStreet(string $street)
     {
         $this->street = $street;
     }
@@ -172,7 +144,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $streetNumber
      */
-    public function setStreetNumber($streetNumber)
+    public function setStreetNumber(string $streetNumber)
     {
         $this->streetNumber = $streetNumber;
     }
@@ -188,7 +160,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $addition1
      */
-    public function setAddition1($addition1)
+    public function setAddition1(string $addition1)
     {
         $this->addition1 = $addition1;
     }
@@ -204,7 +176,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $addition2
      */
-    public function setAddition2($addition2)
+    public function setAddition2(string $addition2)
     {
         $this->addition2 = $addition2;
     }
@@ -220,7 +192,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $zip
      */
-    public function setZip($zip)
+    public function setZip(string $zip)
     {
         $this->zip = $zip;
     }
@@ -236,7 +208,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $city
      */
-    public function setCity($city)
+    public function setCity(string $city)
     {
         $this->city = $city;
     }
@@ -252,7 +224,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $region
      */
-    public function setRegion($region)
+    public function setRegion(string $region)
     {
         $this->region = $region;
     }
@@ -266,15 +238,15 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * @param \Extcode\Contacts\Domain\Model\Country $country
+     * @param Country $country
      */
-    public function setCountry($country)
+    public function setCountry(Country $country)
     {
         $this->country = $country;
     }
 
     /**
-     * @return \Extcode\Contacts\Domain\Model\Country
+     * @return Country
      */
     public function getCountry()
     {
@@ -284,7 +256,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $postBox
      */
-    public function setPostBox($postBox)
+    public function setPostBox(string $postBox)
     {
         $this->postBox = $postBox;
     }
@@ -300,7 +272,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $lat
      */
-    public function setLat($lat)
+    public function setLat(string $lat)
     {
         $this->lat = $lat;
     }
@@ -316,7 +288,7 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $lon
      */
-    public function setLon($lon)
+    public function setLon(string $lon)
     {
         $this->lon = $lon;
     }
@@ -330,9 +302,15 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the contact
-     *
-     * @return \Extcode\Contacts\Domain\Model\Contact
+     * @param Contact $contact
+     */
+    public function setContact(Contact $contact)
+    {
+        $this->contact = $contact;
+    }
+
+    /**
+     * @return Contact
      */
     public function getContact()
     {
@@ -340,22 +318,18 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the TT Content
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     * @param ObjectStorage $ttContent
+     */
+    public function setTtContent(ObjectStorage $ttContent)
+    {
+        $this->ttContent = $ttContent;
+    }
+
+    /**
+     * @return ObjectStorage
      */
     public function getTtContent()
     {
         return $this->ttContent;
-    }
-
-    /**
-     * Sets the TT Content
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $ttContent
-     */
-    public function setTtContent($ttContent)
-    {
-        $this->ttContent = $ttContent;
     }
 }

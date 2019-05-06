@@ -2,26 +2,24 @@
 
 namespace Extcode\Contacts\Controller;
 
+use Extcode\Contacts\Domain\Model\Company;
 use Extcode\Contacts\Domain\Repository\CompanyRepository;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class CompanyController extends ActionController
 {
     /**
      * @var CompanyRepository
      */
-    protected $companyRepository;
+    protected $companyRepository = null;
 
     /**
-     * pageId
-     *
      * @var int
      */
     protected $pageId;
 
     /**
-     * PiVars
-     *
      * @var array
      */
     protected $piVars;
@@ -55,9 +53,6 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->piVars = $this->request->getArguments();
     }
 
-    /**
-     * action list
-     */
     public function listAction()
     {
         $companies = $this->companyRepository->findAll($this->piVars);
@@ -67,11 +62,9 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
     }
 
     /**
-     * action show
-     *
-     * @param \Extcode\Contacts\Domain\Model\Company $company
+     * @param Company $company
      */
-    public function showAction(\Extcode\Contacts\Domain\Model\Company $company = null)
+    public function showAction(Company $company = null)
     {
         if (!$company && (int)$this->settings['company']) {
             $company = $this->companyRepository->findByUid((int)$this->settings['company']);
@@ -80,9 +73,6 @@ class CompanyController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
         $this->view->assign('company', $company);
     }
 
-    /**
-     * action teaser
-     */
     public function teaserAction()
     {
         $companies = $this->companyRepository->findByUids($this->settings['companyUids']);

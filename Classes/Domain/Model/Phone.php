@@ -5,15 +5,11 @@ namespace Extcode\Contacts\Domain\Model;
 class Phone extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
     /**
-     * Type
-     *
      * @var string
      */
     protected $type = 'VOICE';
 
     /**
-     * Number
-     *
      * @var string
      * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
@@ -23,7 +19,7 @@ class Phone extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $type
      * @throws \InvalidArgumentException
      */
-    public function setType($type)
+    public function setType(string $type)
     {
         $types = [
             'PREF',
@@ -62,7 +58,7 @@ class Phone extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @param string $number
      */
-    public function setNumber($number)
+    public function setNumber(string $number)
     {
         $this->number = $number;
     }

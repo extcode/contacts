@@ -10,7 +10,7 @@ $EM_CONF['contacts'] = [
     'shy' => '',
     'priority' => '',
     'module' => '',
-    'state' => 'beta',
+    'state' => 'stable',
     'internal' => '',
     'uploadfolder' => '0',
     'createDirs' => '',
@@ -21,7 +21,6 @@ $EM_CONF['contacts'] = [
     'constraints' => [
         'depends' => [
             'typo3' => '9.5.0-9.5.99',
-            'php' => '7.2.0'
         ],
         'conflicts' => [],
         'suggests' => [],

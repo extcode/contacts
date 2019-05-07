@@ -54,6 +54,11 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $contacts;
 
     /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Company>
+     */
+    protected $companies;
+
+    /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Address>
      */
     protected $addresses;
@@ -275,6 +280,38 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setContacts(ObjectStorage $contacts)
     {
         $this->contacts = $contacts;
+    }
+
+    /**
+     * @param Company $company
+     */
+    public function addCompany(self $company)
+    {
+        $this->companies->attach($company);
+    }
+
+    /**
+     * @param Company $company
+     */
+    public function removeCompany(self $company)
+    {
+        $this->companies->detach($company);
+    }
+
+    /**
+     * @return ObjectStorage<Company> $companies
+     */
+    public function getCompanies()
+    {
+        return $this->companies;
+    }
+
+    /**
+     * @param ObjectStorage<Company> $companies
+     */
+    public function setCompanies(ObjectStorage $companies)
+    {
+        $this->companies = $companies;
     }
 
     /**

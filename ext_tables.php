@@ -11,8 +11,8 @@ if (TYPO3_MODE === 'BE') {
         'contacts',
         '',
         [
-            'Backend\Contact' => 'list, show, edit, update',
-            'Backend\Company' => 'list, show, edit, update',
+            'Backend\Company' => 'list, show',
+            'Backend\Contact' => 'list, show',
         ],
         [
             'access' => 'admin',

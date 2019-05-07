@@ -3,6 +3,10 @@
 
 <f:layout name="Default"/>
 
+<f:section name="actions">
+    <f:render partial="Contact/Show/Actions"/>
+</f:section>
+
 <f:section name="content">
     <h1>
         <f:translate key="tx_contacts.module.companyController.showAction.header"/>
@@ -17,66 +21,65 @@
         <div class="clear"><!-- &nbsp; --></div>
     </f:if>
 
-    <table class="tx_contact typo3-dblist">
-        <tr>
-            <th class="t3-row-header">
-                <f:translate key="tx_contacts_domain_model_company.name"/>
-            </th>
-            <td>{company.name}</td>
-        </tr>
-        <f:if condition="{company.addresses}">
-            <f:for each="{company.addresses}" as="address" iteration="addressIterator">
-                <tr>
-                    <th class="t3-row-header">
-                        <f:if condition="{addressIterator.isFirst}">
-                            <f:then>
-                                <f:translate key="tx_contacts_domain_model_company.addresses"/>
-                            </f:then>
-                            <f:else>
-                                &nbsp;
-                            </f:else>
-                        </f:if>
-                    </th>
-                    <td>{address.title}</td>
-                </tr>
-            </f:for>
-        </f:if>
-        <f:if condition="{company.phoneNumbers}">
-            <f:for each="{company.phoneNumbers}" as="phoneNumber" iteration="phoneNumberIterator">
-                <tr>
-                    <th class="t3-row-header">
-                        <f:if condition="{phoneNumberIterator.isFirst}">
-                            <f:then>
-                                <f:translate key="tx_contacts_domain_model_company.phone_numbers"/>
-                            </f:then>
-                            <f:else>
-                                &nbsp;
-                            </f:else>
-                        </f:if>
-                    </th>
-                    <td>{phoneNumber.number}</td>
-                </tr>
-            </f:for>
-        </f:if>
-        <tr>
-            <th class="t3-row-header">
-                <f:translate key="tx_contacts_domain_model_company.email"/>
-            </th>
-            <td>{company.email}</td>
-        </tr>
-        <tr>
-            <th class="t3-row-header">
-                <f:translate key="tx_contacts_domain_model_company.uri"/>
-            </th>
-            <td>
-                <f:link.typolink parameter="{company.uri}">
-                    <f:translate key="tx_contacts_domain_model_company.uri"/>
-                </f:link.typolink>
-            </td>
-        </tr>
-    </table>
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 column">
 
-    <br><br>
-    <f:link.action action="list">Back to Company List</f:link.action>
+            <table class="tx_contact table data-table">
+                <tr>
+                    <th style="background-color: #ededed;">
+                        <f:translate key="tx_contacts_domain_model_company.name"/>
+                    </th>
+                    <td>{company.name}</td>
+                </tr>
+                <tr>
+                    <th style="background-color: #ededed;">
+                        <f:translate key="tx_contacts_domain_model_company.email"/>
+                    </th>
+                    <td>{company.email}</td>
+                </tr>
+                <tr>
+                    <th style="background-color: #ededed;">
+                        <f:translate key="tx_contacts_domain_model_company.uri"/>
+                    </th>
+                    <td>
+                        <f:link.typolink parameter="{company.uri}">
+                            <f:translate key="tx_contacts_domain_model_company.uri"/>
+                        </f:link.typolink>
+                    </td>
+                </tr>
+            </table>
+
+            <f:if condition="{company.contacts}">
+                <h3><f:translate key="tx_contacts_domain_model_company.contacts"/></h3>
+                <f:render partial="Contact/List/Table" arguments="{contacts: company.contacts}"/>
+            </f:if>
+
+            <f:if condition="{company.directors}">
+                <h3><f:translate key="tx_contacts_domain_model_company.directors"/></h3>
+                <f:render partial="Contact/List/Table" arguments="{contacts: company.directors}"/>
+            </f:if>
+
+            <f:if condition="{company.companies}">
+                <h3><f:translate key="tx_contacts_domain_model_company.companies"/></h3>
+                <f:render partial="Company/List/Table" arguments="{companies: company.companies}"/>
+            </f:if>
+
+            <f:if condition="{company.addresses}">
+                <h3><f:translate key="tx_contacts_domain_model_company.addresses"/></h3>
+                <f:for each="{company.addresses}" as="address">
+                    <f:render partial="Address/Show" arguments="{_all}"/>
+                </f:for>
+            </f:if>
+
+            <f:if condition="{company.phoneNumbers}">
+                <h3><f:translate key="tx_contacts_domain_model_company.phone_numbers"/></h3>
+                <f:for each="{company.phoneNumbers}" as="phoneNumber">
+                    <f:render partial="Phone/Show" arguments="{_all}"/>
+                </f:for>
+            </f:if>
+
+        </div>
+    </div>
+
 </f:section>
 </html>

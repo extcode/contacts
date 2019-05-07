@@ -1,0 +1,63 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:be="http://typo3.org/ns/TYPO3/CMS/Backend/ViewHelpers"
+      xmlns:core="http://typo3.org/ns/TYPO3/CMS/Core/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:if condition="{contacts}">
+    <f:then>
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr class="t3-row-header">
+                <th>
+                    <f:translate key="tx_contacts_domain_model_contact.salutation"/>
+                </th>
+                <th>
+                    <f:translate key="tx_contacts_domain_model_contact.title"/>
+                </th>
+                <th>
+                    <f:translate key="tx_contacts_domain_model_contact.first_name"/>
+                </th>
+                <th>
+                    <f:translate key="tx_contacts_domain_model_contact.last_name"/>
+                </th>
+                <th>&nbsp;</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <f:for each="{contacts}" as="contact">
+                <tr>
+                    <td>
+                        {contact.salutation}
+                    </td>
+                    <td>
+                        {contact.title}
+                    </td>
+                    <td>
+                        {contact.firstName}
+                    </td>
+                    <td>
+                        {contact.lastName}
+                    </td>
+                    <td>
+                        <div class="col-control nowrap">
+                            <a class="btn btn-default"
+                               href="{f:uri.action(controller: 'Backend\Contact', action:'show', arguments:{contact: contact})}">
+                                <core:icon identifier="actions-view"/>
+                            </a>
+                            <a class="btn btn-default"
+                               href="{be:uri.editRecord(table: 'tx_contacts_domain_model_contact', uid: contact.uid, returnUrl: returnUrl)}">
+                                <core:icon identifier="actions-open"/>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </f:for>
+            </tbody>
+        </table>
+    </f:then>
+    <f:else>
+        Select a Page where Contacts Dataset are saved.
+    </f:else>
+</f:if>
+</html>

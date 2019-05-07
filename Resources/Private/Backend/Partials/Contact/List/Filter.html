@@ -5,10 +5,6 @@
     <div class="contacts_module_search_inner">
 
         <f:form action="{action}" name="filter" id="contacts_module_search">
-
-            <label for="searchString">
-                <f:translate key="tx_contacts_domain_model_contact.filter.searchString"/>
-            </label>
             <f:form.textfield property="searchString" id="searchString" value="{piVars.filter.searchString}"/>
 
             <f:form.submit value="{f:translate(key: 'tx_contacts.module.action.filter')}" class="searchall_submit"/>

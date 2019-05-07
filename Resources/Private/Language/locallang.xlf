@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="messages" date="2013-07-11T08:15:06Z"
-          product-name="contacts">
+    <file source-language="en" datatype="plaintext" original="messages" date="2019-05-07T08:00:00Z" product-name="contacts">
         <header/>
         <body>
 
             <trans-unit id="tx_contacts.module.contactController.listAction.header">
-                <source>Contact Listing</source>
+                <source>People Listing</source>
             </trans-unit>
             <trans-unit id="tx_contacts.module.companyController.listAction.header">
                 <source>Company Listing</source>
             </trans-unit>
 
             <trans-unit id="tx_contacts.module.contactController.listAction.menuItem">
-                <source>Contact Listing</source>
+                <source>People Listing</source>
             </trans-unit>
             <trans-unit id="tx_contacts.module.companyController.listAction.menuItem">
                 <source>Company Listing</source>
@@ -21,10 +20,6 @@
 
             <trans-unit id="tx_contacts.module.action.filter">
                 <source>Filter List</source>
-            </trans-unit>
-
-            <trans-unit id="tx_contacts_domain_model_contact.filter.searchString">
-                <source>Full Text Search</source>
             </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_contact">
@@ -68,7 +63,13 @@
                 <source>Company</source>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.name">
-                <source>name</source>
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.directors">
+                <source>Directors</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.companies">
+                <source>Headquaters</source>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.contacts">
                 <source>Contacts</source>
@@ -187,7 +188,7 @@
                 <source>VIDEO</source>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_phone.number">
-                <source>Phone Number</source>
+                <source>Number</source>
             </trans-unit>
 
         </body>

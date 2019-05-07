@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="messages" date="2013-07-11T08:15:06Z"
-          product-name="contacts">
+    <file source-language="en" datatype="plaintext" original="messages" date="2019-05-07T08:00:00Z" product-name="contacts">
         <header/>
         <body>
+
             <trans-unit id="tx_contacts.plugin.contactController.listAction.title">
                 <source>List and Show</source>
             </trans-unit>
@@ -25,7 +25,7 @@
                 <source>Contacts</source>
             </trans-unit>
             <trans-unit id="tx_contacts.plugin.contacts">
-                <source>Contacts: Contacts</source>
+                <source>Contacts: People</source>
             </trans-unit>
             <trans-unit id="tx_contacts.plugin.companies">
                 <source>Contacts: Companies</source>
@@ -35,7 +35,7 @@
             </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_contact">
-                <source>Contact</source>
+                <source>Person</source>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.fe_user">
                 <source>Frontend User</source>
@@ -84,7 +84,7 @@
                 <source>Frontend User</source>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.name">
-                <source>Company Name</source>
+                <source>Name</source>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.legal_name">
                 <source>Legal Name</source>
@@ -111,7 +111,7 @@
                 <source>Headquaters</source>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.contacts">
-                <source>Contacts</source>
+                <source>People</source>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.addresses">
                 <source>Addresses</source>
@@ -266,6 +266,7 @@
             <trans-unit id="tx_contacts_domain_model_country.phone_country_code">
                 <source>Phone Country Code</source>
             </trans-unit>
+
         </body>
     </file>
 </xliff>

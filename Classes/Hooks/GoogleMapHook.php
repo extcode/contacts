@@ -124,7 +124,7 @@ class GoogleMapHook
             $address[] = $params['row']['city'];
         }
 
-        $country = $this->retrieveCountryCode($params['row']['country'][0]);
+        $country = $this->retrieveCountryCode((int)$params['row']['country'][0]);
         if ($country) {
             $address[] = strtoupper($country);
         }

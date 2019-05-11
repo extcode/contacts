@@ -280,7 +280,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,double2'
+                'eval' => 'trim,Extcode\\Contacts\\DataHandler\\EvalFloat8'
             ],
         ],
         'lon' => [
@@ -289,7 +289,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,double2'
+                'eval' => 'trim,Extcode\\Contacts\\DataHandler\\EvalFloat8'
             ],
         ],
         'post_box' => [

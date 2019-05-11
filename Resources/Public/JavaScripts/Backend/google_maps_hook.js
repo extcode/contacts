@@ -44,8 +44,8 @@ TxContacts.codeAddress = function() {
             TxContacts.map.setCenter(results[0].geometry.location);
             TxContacts.marker.setPosition(results[0].geometry.location);
 
-            TxContacts.updateValue(latitudeField, math.round(TxContacts.marker.getPosition().lat()));
-            TxContacts.updateValue(longitudeField, math.round(TxContacts.marker.getPosition().lng()));
+            TxContacts.updateValue(latitudeField, +(Math.round(TxContacts.marker.getPosition().lat() + "e+8") + "e-8"));
+            TxContacts.updateValue(longitudeField, +(Math.round(TxContacts.marker.getPosition().lng() + "e+8") + "e-8"));
 
         } else {
             alert("Geocode was not successful for the following reason: " + status);
@@ -56,11 +56,11 @@ TxContacts.codeAddress = function() {
 TxContacts.updateValue = function(fieldName, value) {
     if (version < 8007000) {
         document[TBE_EDITOR.formname][fieldName].value = value;
-        TYPO3.jQuery("[data-formengine-input-name='" + fieldName + "']").val(value);
+        $("[data-formengine-input-name='" + fieldName + "']").val(value);
     } else {
         var selectorFieldName = "data[" + tableName + "][1][" + fieldName + "]";
-        TYPO3.jQuery("input[data-formengine-input-name='" + selectorFieldName + "']").val(value);
-        TYPO3.jQuery("input[name='" + selectorFieldName + "']").val(value);
+        $("input[data-formengine-input-name='" + selectorFieldName + "']").val(value);
+        $("input[name='" + selectorFieldName + "']").val(value);
     }
 };
 

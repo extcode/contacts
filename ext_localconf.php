@@ -37,6 +37,14 @@ $_LLL_be = 'LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf';
     ]
 );
 
+// provide extension configuration for TypoScript
+$extensionConfiguration = new \TYPO3\CMS\Core\Configuration\ExtensionConfiguration();
+$contactsConfiguration = $extensionConfiguration->get('contacts');
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('plugin.tx_contacts.googleMapsApiKey=' . $contactsConfiguration['googleMapsApiKey']);
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptConstants('plugin.tx_contacts.googleMapsLibrary=' . $contactsConfiguration['googleMapsLibrary']);
+
+
 // register class to be available in 'eval' of TCA
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals'][\Extcode\Contacts\DataHandler\EvalFloat8::class] = '';
 

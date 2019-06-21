@@ -18,9 +18,14 @@ plugin.tx_contacts {
     }
 
     settings {
-        gmaps.width = 500px
-        gmaps.heigth = 500px
-        gmaps.scrollwheel = true
-        gmaps.draggable = true
+        gmaps {
+            apiKey = {$plugin.tx_contacts.googleMapsApiKey}
+
+            width = 100%
+            height = 500px
+
+            scrollwheel = true
+            draggable = true
+        }
     }
 }

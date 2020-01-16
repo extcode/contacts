@@ -41,7 +41,6 @@
         }
     },
     "replace": {
-        "contacts": "self.version",
         "extcode/contacts": "self.version"
     },
     "config": {

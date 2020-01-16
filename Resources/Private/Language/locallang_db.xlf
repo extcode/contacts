@@ -76,6 +76,12 @@
             <trans-unit id="tx_contacts_domain_model_contact.tt_content">
                 <source>Additional Content</source>
             </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.category">
+                <source>Main Category</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.categories">
+                <source>Associated Categories</source>
+            </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_company">
                 <source>Company</source>
@@ -130,6 +136,12 @@
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.tt_content">
                 <source>Additional Content</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.category">
+                <source>Main Category</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.categories">
+                <source>Associated Categories</source>
             </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_address">

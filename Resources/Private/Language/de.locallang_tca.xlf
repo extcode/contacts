@@ -9,6 +9,16 @@
                 <target>Sichtbarkeit</target>
             </trans-unit>
 
+            <trans-unit id="tx_contacts_domain_model_contact.div.categorization">
+                <source>Categorization</source>
+                <target>Kategorisierung</target>
+            </trans-unit>
+
+            <trans-unit id="tx_contacts_domain_model_company.div.categorization">
+                <source>Categorization</source>
+                <target>Kategorisierung</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

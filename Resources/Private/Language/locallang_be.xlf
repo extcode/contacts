@@ -4,6 +4,29 @@
         <header/>
         <body>
 
+            <trans-unit id="extmng.categoryRestriction" xml:space="preserve">
+                <source>
+                    Category restriction: Restrict the available categories in the person or company records.
+                    PageTsConfig:
+                    TCEFORM.tx_contacts_domain_model_contact.category.PAGE_TSCONFIG_ID=120.
+                    TCEFORM.tx_contacts_domain_model_contact.categories.PAGE_TSCONFIG_ID=120.
+                    TCEFORM.tx_contacts_domain_model_contact.category.PAGE_TSCONFIG_ID=130.
+                    TCEFORM.tx_contacts_domain_model_contact.categories.PAGE_TSCONFIG_ID=130.
+                </source>
+            </trans-unit>
+            <trans-unit id="extmng.categoryRestriction.current_pid" xml:space="preserve">
+                <source>Categories from current page</source>
+            </trans-unit>
+            <trans-unit id="extmng.categoryRestriction.siteroot" xml:space="preserve">
+                <source>Categories from site root</source>
+            </trans-unit>
+            <trans-unit id="extmng.categoryRestriction.pages_tsconfig" xml:space="preserve">
+                <source>Page TsConfig</source>
+            </trans-unit>
+            <trans-unit id="extmng.categoryRestriction.none" xml:space="preserve">
+                <source>No restriction</source>
+            </trans-unit>
+
             <trans-unit id="flexforms_template.templateLayout">
                 <source>Template Layout</source>
             </trans-unit>

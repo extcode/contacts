@@ -32,7 +32,7 @@ return [
         'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_contact.svg',
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, fe_user, photo, salutation, title, first_name, last_name, birthday, email, uri, companies, addresses, phone_numbers,tt_content',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, fe_user, photo, salutation, title, first_name, last_name, birthday, email, uri, companies, addresses, phone_numbers, tt_content, category, categories',
     ],
     'types' => [
         '1' => [
@@ -47,6 +47,8 @@ return [
                 addresses,
                 phone_numbers,
                 tt_content,
+                --div--;' . $_LLL_tca . ':tx_contacts_domain_model_company.div.categorization,
+                    category, categories,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,
                     --palette--;' . $_LLL_tca . ':palettes.visibility;hiddenonly,
                     --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access,

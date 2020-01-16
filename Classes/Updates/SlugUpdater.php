@@ -46,7 +46,7 @@ class SlugUpdater implements UpgradeWizardInterface, ChattyInterface
      */
     public function getDescription(): string
     {
-        return 'TYPO3 includes native URL handling. Every event record has its own speaking URL path called "slug" which can be edited in TYPO3 Backend. However, it is necessary that all events have a URL pre-filled. This is done by evaluating the title.';
+        return 'TYPO3 includes native URL handling. Every event record has its own speaking URL path called "slug" which can be edited in TYPO3 Backend. However, it is necessary that all contacts have a URL pre-filled. This is done by evaluating the title.';
     }
 
     /**

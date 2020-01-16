@@ -67,6 +67,10 @@
                 <source>Last Name</source>
                 <target>Nachname</target>
             </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.path_segment">
+                <source>URL Segment</source>
+                <target>URL Segment</target>
+            </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.birthday">
                 <source>Birthday</source>
                 <target>Geburtsdatum</target>
@@ -135,6 +139,10 @@
             <trans-unit id="tx_contacts_domain_model_company.vat_id">
                 <source>VAT ID</source>
                 <target>Ust-IdNr.</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.path_segment">
+                <source>URL Segment</source>
+                <target>URL Segment</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.directors">
                 <source>Directors</source>

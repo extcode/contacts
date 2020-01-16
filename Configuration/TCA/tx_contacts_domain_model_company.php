@@ -38,6 +38,7 @@ return [
                 fe_user,
                 logo,
                 --palette--;' . $_LLL_db . ':tx_contacts_domain_model_company.palette.name;name,
+                path_segment,
                 directors,
                 email, uri,
                 companies,
@@ -232,6 +233,26 @@ return [
                 'eval' => 'trim'
             ],
         ],
+
+        'path_segment' => [
+            'exclude' => true,
+            'label' => $_LLL_db . ':tx_contacts_domain_model_company.path_segment',
+            'config' => [
+                'type' => 'slug',
+                'size' => 50,
+                'generatorOptions' => [
+                    'fields' => ['name'],
+                    'fieldSeparator' => '-',
+                    'replacements' => [
+                        '/' => '',
+                    ],
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'uniqueInSite',
+                'default' => '',
+            ],
+        ],
+
         'directors' => [
             'exclude' => 1,
             'label' => $_LLL_db . ':tx_contacts_domain_model_company.directors',

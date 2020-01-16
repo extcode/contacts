@@ -40,6 +40,7 @@ return [
                 fe_user,
                 photo,
                 salutation, title, first_name, last_name,
+                path_segment,
                 birthday,
                 email, uri,
                 companies,
@@ -203,6 +204,26 @@ return [
                 'eval' => 'trim,required'
             ],
         ],
+
+        'path_segment' => [
+            'exclude' => true,
+            'label' => $_LLL_db . ':tx_contacts_domain_model_contact.path_segment',
+            'config' => [
+                'type' => 'slug',
+                'size' => 50,
+                'generatorOptions' => [
+                    'fields' => ['title', 'first_name', 'last_name'],
+                    'fieldSeparator' => '-',
+                    'replacements' => [
+                        '/' => '',
+                    ],
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'uniqueInSite',
+                'default' => '',
+            ],
+        ],
+
         'birthday' => [
             'exclude' => 1,
             'label' => $_LLL_db . ':tx_contacts_domain_model_contact.birthday',

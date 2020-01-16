@@ -8,6 +8,8 @@ CREATE TABLE tx_contacts_domain_model_contact (
 
     fe_user int(11) unsigned DEFAULT '0',
 
+    path_segment varchar(2048),
+
     salutation varchar(255) DEFAULT '' NOT NULL,
     title varchar(255) DEFAULT '' NOT NULL,
     first_name varchar(255) DEFAULT '' NOT NULL,
@@ -64,6 +66,8 @@ CREATE TABLE tx_contacts_domain_model_company (
     pid int(11) DEFAULT '0' NOT NULL,
 
     fe_user int(11) unsigned DEFAULT '0',
+
+    path_segment varchar(2048),
 
     name varchar(255) DEFAULT '' NOT NULL,
     legal_name varchar(255) DEFAULT '' NOT NULL,

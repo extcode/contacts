@@ -40,7 +40,7 @@
                             <config>
                                 <type>select</type>
                                 <foreign_table>tx_contacts_domain_model_contact</foreign_table>
-                                <foreign_table_where>AND (sys_language_uid=CAST('###REC_FIELD_sys_language_uid###' AS UNSIGNED) OR sys_language_uid = '-1') AND tx_contacts_domain_model_contact.deleted = 0 AND tx_contacts_domain_model_contact.hidden = 0</foreign_table_where>
+                                <foreign_table_where>AND (tx_contacts_domain_model_contact.sys_language_uid=CAST('###REC_FIELD_sys_language_uid###' AS UNSIGNED) OR tx_contacts_domain_model_contact.sys_language_uid = '-1') AND tx_contacts_domain_model_contact.deleted = 0 AND tx_contacts_domain_model_contact.hidden = 0</foreign_table_where>
                                 <size>3</size>
                                 <minitems>1</minitems>
                                 <maxitems>99</maxitems>

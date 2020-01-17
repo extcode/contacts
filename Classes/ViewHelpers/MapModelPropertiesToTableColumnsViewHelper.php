@@ -4,16 +4,41 @@ namespace Extcode\Contacts\ViewHelpers;
 
 class MapModelPropertiesToTableColumnsViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 {
+    public function initializeArguments()
+    {
+        parent::initializeArguments();
+
+        $this->registerArgument(
+            'data',
+            'Object',
+            'data',
+            false
+        );
+        $this->registerArgument(
+            'class',
+            'string',
+            'class',
+            false,
+            ''
+        );
+        $this->registerArgument(
+            'table',
+            'string',
+            'table',
+            false,
+            ''
+        );
+    }
+
     /**
-     * render
-     *
-     * @param string $class
-     * @param string $table
-     * @param object $data
      * @return array
      */
-    public function render($data, $class = '', $table = '')
+    public function render()
     {
+        $data = $arguments['data'];
+        $class = $arguments['data'];
+        $table = $arguments['data'];
+
         $configurationManager = $this->objectManager->get(
             \TYPO3\CMS\Extbase\Configuration\ConfigurationManager::class
         );

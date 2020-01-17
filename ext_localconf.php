@@ -37,6 +37,10 @@ $_LLL_be = 'LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf';
     ]
 );
 
+// register "contacts:" namespace
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['contacts'][]
+    = 'Extcode\\Contacts\\ViewHelpers';
+
 // provide extension configuration for TypoScript
 $extensionConfiguration = new \TYPO3\CMS\Core\Configuration\ExtensionConfiguration();
 $contactsConfiguration = $extensionConfiguration->get('contacts');

@@ -37,6 +37,10 @@ $_LLL_be = 'LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf';
     ]
 );
 
+// register "contacts:" namespace
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['contacts'][]
+    = 'Extcode\\Contacts\\ViewHelpers';
+
 // register class to be available in 'eval' of TCA
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals'][\Extcode\Contacts\DataHandler\EvalFloat8::class] = '';
 

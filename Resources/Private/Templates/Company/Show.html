@@ -1,4 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:contacts="http://typo3.org/ns/Extcode/Contacts/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
 <f:layout name="Default"/>
@@ -46,7 +47,7 @@
         <f:for each="{company.ttContent}" as="content" iteration="contentIterator">
             <div id="content-{contentIterator.cycle}" class="content-element">
                 <f:cObject typoscriptObjectPath="tt_content.{content.contentType}.20"
-                           data="<companys:mapModelPropertiesToTableColumns class='Extcode\\Contacts\\Domain\\Model\\TtContent' table='tt_content' data='{content}' />"/>
+                           data="<contacts:mapModelPropertiesToTableColumns class='Extcode\\Contacts\\Domain\\Model\\TtContent' table='tt_content' data='{content}' />"/>
             </div>
         </f:for>
     </f:if>

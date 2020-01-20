@@ -46,6 +46,41 @@
                             </config>
                         </TCEforms>
                     </settings.companyUids>
+
+                    <settings.categoriesList>
+                        <TCEforms>
+                            <exclude>1</exclude>
+                            <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.companies.action.company.list.categories</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Company->list;Company->show</displayCond>
+                            <config>
+                                <type>select</type>
+                                <autoSizeMax>50</autoSizeMax>
+                                <foreign_table>sys_category</foreign_table>
+                                <foreign_table_where>AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC
+                                </foreign_table_where>
+                                <maxitems>99</maxitems>
+                                <renderMode>tree</renderMode>
+                                <size>10</size>
+                                <treeConfig>
+                                    <appearance>
+                                        <expandAll>1</expandAll>
+                                        <showHeader>1</showHeader>
+                                    </appearance>
+                                    <parentField>parent</parentField>
+                                </treeConfig>
+                            </config>
+                        </TCEforms>
+                    </settings.categoriesList>
+
+                    <settings.listSubcategories>
+                        <TCEforms>
+                            <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.companies.action.company.list.subcategories</label>
+                            <displayCond>FIELD:switchableControllerActions:=:Company->list;Company->show</displayCond>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.listSubcategories>
                 </el>
             </ROOT>
         </sDEF>

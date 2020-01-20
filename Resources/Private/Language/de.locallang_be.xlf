@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2019-05-07T08:00:00Z" product-name="contacts">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2020-01-20T08:30:00Z" product-name="contacts">
         <header/>
         <body>
 
@@ -45,6 +45,24 @@
             <trans-unit id="flexforms_template.templateLayout.address.gmaps">
                 <source>Google Maps</source>
                 <target>Googke Maps</target>
+            </trans-unit>
+
+            <trans-unit id="tx_contacts.plugin.contacts.action.contact.list.categories">
+                <source>Categories</source>
+                <target>Kategorie</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.contacts.action.contact.list.subcategories">
+                <source>with Subcategories</source>
+                <target>mit Unterkategorien</target>
+            </trans-unit>
+
+            <trans-unit id="tx_contacts.plugin.companies.action.company.list.categories">
+                <source>Categories</source>
+                <target>Kategorie</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.companies.action.company.list.subcategories">
+                <source>with Subcategories</source>
+                <target>mit Unterkategorien</target>
             </trans-unit>
 
         </body>

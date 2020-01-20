@@ -2,43 +2,43 @@
 
 namespace Extcode\Contacts\Domain\Repository;
 
+use Extcode\Contacts\Domain\Model\Dto\CompanyDemand;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 class CompanyRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
 
     /**
-     * Finds objects filtered by $piVars['filter']
-     *
-     * @param array $piVars
+     * @param CompanyDemand $demand
      *
      * @return QueryResultInterface|array
      */
-    public function findAll($piVars = [])
+    public function findDemanded(CompanyDemand $demand)
     {
         // settings
         $query = $this->createQuery();
 
         $constraints = [];
 
-        // filter
-        if (isset($piVars['filter'])) {
-            foreach ((array)$piVars['filter'] as $field => $value) {
-                if (empty($value)) {
-                    continue;
-                }
+        if (!empty($demand->getSearchString())) {
+            $constraints[] = $query->like('name', '%' . $demand->getSearchString() . '%');
+        }
 
-                switch ($field) {
-                    case 'searchString':
-                        $constraints[] = $query->like('name', '%' . $value . '%');
-                }
+        if ((!empty($demand->getCategories()))) {
+            $categoryConstraints = [];
+            foreach ($demand->getCategories() as $category) {
+                $categoryConstraints[] = $query->contains('category', $category);
+                $categoryConstraints[] = $query->contains('categories', $category);
             }
+            $constraints = $query->logicalOr($categoryConstraints);
         }
 
         // create constraint
         if (!empty($constraints)) {
             $query->matching(
-                $query->logicalAnd($constraints)
+                $query->logicalAnd(
+                    $query->logicalOr($constraints)
+                )
             );
         }
 

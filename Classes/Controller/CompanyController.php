@@ -3,12 +3,19 @@
 namespace Extcode\Contacts\Controller;
 
 use Extcode\Contacts\Domain\Model\Company;
+use Extcode\Contacts\Domain\Model\Dto\CompanyDemand;
 use Extcode\Contacts\Domain\Repository\CompanyRepository;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class CompanyController extends ActionController
 {
+    /**
+     * @var CategoryRepository
+     */
+    protected $categoryRepository;
+
     /**
      * @var CompanyRepository
      */
@@ -20,9 +27,12 @@ class CompanyController extends ActionController
     protected $pageId;
 
     /**
-     * @var array
+     * @param CategoryRepository $categoryRepository
      */
-    protected $piVars;
+    public function injectCategoryRepository(CategoryRepository $categoryRepository)
+    {
+        $this->categoryRepository = $categoryRepository;
+    }
 
     /**
      * @param CompanyRepository $companyRepository
@@ -49,15 +59,16 @@ class CompanyController extends ActionController
             ],
         ];
         $this->configurationManager->setConfiguration(array_merge($frameworkConfiguration, $persistenceConfiguration));
-
-        $this->piVars = $this->request->getArguments();
     }
 
     public function listAction()
     {
-        $companies = $this->companyRepository->findAll($this->piVars);
+        $demand = $this->createDemandObjectFromSettings($this->settings);
+        $demand->setActionAndClass(__METHOD__, __CLASS__);
 
-        $this->view->assign('piVars', $this->piVars);
+        $companies = $this->companyRepository->findDemanded($demand);
+
+        $this->view->assign('piVars', $this->request->getArguments());
         $this->view->assign('companies', $companies);
     }
 
@@ -77,5 +88,62 @@ class CompanyController extends ActionController
     {
         $companies = $this->companyRepository->findByUids($this->settings['companyUids']);
         $this->view->assign('companies', $companies);
+    }
+
+    /**
+     * Create the demand object which define which records will get shown
+     *
+     * @param array $settings
+     *
+     * @return CompanyDemand
+     */
+    protected function createDemandObjectFromSettings(array $settings) : CompanyDemand
+    {
+        $demand = $this->objectManager->get(
+            CompanyDemand::class
+        );
+
+        $arguments = $this->request->getArguments();
+        if ($arguments['filter']) {
+            $this->searchArguments = $arguments['filter'];
+        }
+
+        if ($arguments['filter']['searchString']) {
+            $demand->setSearchString($arguments['filter']['searchString']);
+        }
+
+        $this->addCategoriesToDemandObjectFromSettings($demand);
+
+        return $demand;
+    }
+
+    /**
+     * @param CompanyDemand $demand
+     */
+    protected function addCategoriesToDemandObjectFromSettings(&$demand)
+    {
+        if ($this->settings['categoriesList']) {
+            $selectedCategories = \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(
+                ',',
+                $this->settings['categoriesList'],
+                true
+            );
+
+            $categories = [];
+
+            if ($this->settings['listSubcategories']) {
+                foreach ($selectedCategories as $selectedCategory) {
+                    $category = $this->categoryRepository->findByUid($selectedCategory);
+                    $categories = array_merge(
+                        $categories,
+                        $this->categoryRepository->findSubcategoriesRecursiveAsArray($category)
+                    );
+                }
+            } else {
+                $categories = $selectedCategories;
+            }
+
+            $demand->setCategories($categories);
+        }
     }
 }

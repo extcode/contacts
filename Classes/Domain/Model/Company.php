@@ -84,6 +84,16 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $logo = null;
 
     /**
+     * @var \TYPO3\CMS\Extbase\Domain\Model\Category
+     */
+    protected $category;
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
+     */
+    protected $categories;
+
+    /**
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
      */
@@ -424,6 +434,82 @@ class Company extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setLogo(FileReference $logo)
     {
         $this->logo = $logo;
+    }
+
+    /**
+     * Returns the Main Category
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Sets the Main Category
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    }
+
+    /**
+     * Adds a Product Category
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+     */
+    public function addCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
+    {
+        $this->categories->attach($category);
+    }
+
+    /**
+     * Removes a Category
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
+     */
+    public function removeCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
+    {
+        $this->categories->detach($category);
+    }
+
+    /**
+     * Returns the Categories
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
+     */
+    public function getCategories()
+    {
+        return $this->categories;
+    }
+
+    /**
+     * Returns the First Category
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\Category
+     */
+    public function getFirstCategory()
+    {
+        $categories = $this->getCategories();
+        if ($categories !== null) {
+            $categories->rewind();
+            return $categories->current();
+        }
+
+        return null;
+    }
+
+    /**
+     * Sets the Categories
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
+     */
+    public function setCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories)
+    {
+        $this->categories = $categories;
     }
 
     /**

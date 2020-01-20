@@ -14,6 +14,9 @@ namespace Extcode\Contacts\Tests\Unit\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Extcode\Contacts\Controller\CompanyController;
+use Extcode\Contacts\Domain\Model\Dto\CompanyDemand;
+use Extcode\Contacts\Domain\Repository\CompanyRepository;
 use Nimut\TestingFramework\TestCase\UnitTestCase;
 
 class CompanyControllerTest extends UnitTestCase
@@ -21,35 +24,23 @@ class CompanyControllerTest extends UnitTestCase
     /**
      * @var \Extcode\Contacts\Controller\CompanyController
      */
-    protected $subject = null;
+    protected $fixture = null;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Mvc\View\ViewInterface|\PHPUnit_Framework_MockObject_MockObject
-     */
-    protected $view = null;
-
-    /**
-     * @var \Extcode\Contacts\Domain\Repository\CompanyRepository|\PHPUnit_Framework_MockObject_MockObject
+     * @var CompanyRepository
      */
     protected $companyRepository = null;
 
     protected function setUp()
     {
-        $this->subject = new \Extcode\Contacts\Controller\CompanyController();
+        $this->fixture = new CompanyController();
 
-        $this->view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
-        $this->inject($this->subject, 'view', $this->view);
+        $this->companyRepository = $this->prophesize(CompanyRepository::class);
+    }
 
-        $this->mockedObjectManager = $this->getMockBuilder(
-            \TYPO3\CMS\Extbase\Object\ObjectManagerInterface::class
-        )->getMock();
-        $this->companyRepository = $this->getMockBuilder(\Extcode\Contacts\Domain\Repository\CompanyRepository::class)
-            ->setConstructorArgs(
-                [
-                    $this->mockedObjectManager
-                ]
-            )->getMock();
-        $this->inject($this->subject, 'companyRepository', $this->companyRepository);
+    public function tearDown()
+    {
+        unset($this->fixture, $this->companyRepository);
     }
 
     /**
@@ -57,57 +48,40 @@ class CompanyControllerTest extends UnitTestCase
      */
     public function listActionCanBeCalled()
     {
-        $this->subject->listAction();
-    }
+        $demand = new CompanyDemand();
+        $settings = ['category' => '25'];
 
-    /**
-     * @test
-     */
-    public function listActionPassesAllCompaniesAsCompaniesToView()
-    {
-        $companies = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $fixture = $this->getAccessibleMock(
+            \Extcode\Contacts\Controller\CompanyController::class,
+            ['createDemandObjectFromSettings']
+        );
 
-        $this->companyRepository
-            ->expects(self::any())
-            ->method('findAll')
-            ->will(self::returnValue($companies));
+        $fixture->_set('companyRepository', $this->companyRepository->reveal());
+        $fixture->injectConfigurationManager(
+            $this->getMockBuilder(
+                \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::class
+            )->getMock()
+        );
 
-        $this->view->expects(self::at(1))->method('assign')->with('companies', $companies);
+        $view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
+        $this->inject($fixture, 'view', $view);
 
-        $this->subject->listAction();
-    }
+        $mockRequest = $this->getMockBuilder(
+            \TYPO3\CMS\Extbase\Mvc\Request::class
+        )->getMock();
+        $mockRequest->expects($this->any())->method('getArguments')->willReturn([]);
+        $this->inject($fixture, 'request', $mockRequest);
 
-    /**
-     * @test
-     */
-    public function showActionCanBeCalled()
-    {
-        $this->subject->showAction();
-    }
+        $fixture->_set('settings', $settings);
 
-    /**
-     * @test
-     */
-    public function showActionWithNoCompanyPassesNullAsCompanyToView()
-    {
-        $this->view->expects(self::once())->method('assign')->with('company', null);
-        $this->subject->showAction();
-    }
+        $fixture->expects($this->once())->method('createDemandObjectFromSettings')
+            ->will($this->returnValue($demand));
 
-    /**
-     * @test
-     */
-    public function showActionWithCompanyPassesContactAsContactToView()
-    {
-        $company = new \Extcode\Contacts\Domain\Model\Company('company');
+        $this->companyRepository->findDemanded($demand)->shouldBeCalled();
 
-        $this->companyRepository
-            ->expects(self::any())
-            ->method('findByUid')
-            ->will(self::returnValue($company));
+        $fixture->listAction();
 
-        $this->view->expects(self::once())->method('assign')->with('company', $company);
-
-        $this->subject->showAction($company);
+        // datetime must be removed
+        $this->assertEquals($fixture->_get('settings'), ['category' => '25']);
     }
 }

@@ -14,6 +14,9 @@ namespace Extcode\Contacts\Tests\Unit\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use Extcode\Contacts\Controller\ContactController;
+use Extcode\Contacts\Domain\Model\Dto\ContactDemand;
+use Extcode\Contacts\Domain\Repository\ContactRepository;
 use Nimut\TestingFramework\TestCase\UnitTestCase;
 
 class ContactControllerTest extends UnitTestCase
@@ -21,35 +24,23 @@ class ContactControllerTest extends UnitTestCase
     /**
      * @var \Extcode\Contacts\Controller\ContactController
      */
-    protected $subject = null;
+    protected $fixture = null;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Mvc\View\ViewInterface|\PHPUnit_Framework_MockObject_MockObject
-     */
-    protected $view = null;
-
-    /**
-     * @var \Extcode\Contacts\Domain\Repository\ContactRepository|\PHPUnit_Framework_MockObject_MockObject
+     * @var ContactRepository
      */
     protected $contactRepository = null;
 
     protected function setUp()
     {
-        $this->subject = new \Extcode\Contacts\Controller\ContactController();
+        $this->fixture = new ContactController();
 
-        $this->view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
-        $this->inject($this->subject, 'view', $this->view);
+        $this->contactRepository = $this->prophesize(ContactRepository::class);
+    }
 
-        $mockedObjectManager = $this->getMockBuilder(
-            \TYPO3\CMS\Extbase\Object\ObjectManagerInterface::class
-        )->getMock();
-        $this->contactRepository = $this->getMockBuilder(\Extcode\Contacts\Domain\Repository\ContactRepository::class)
-            ->setConstructorArgs(
-                [
-                    $mockedObjectManager
-                ]
-            )->getMock();
-        $this->inject($this->subject, 'contactRepository', $this->contactRepository);
+    public function tearDown()
+    {
+        unset($this->fixture, $this->contactRepository);
     }
 
     /**
@@ -57,62 +48,40 @@ class ContactControllerTest extends UnitTestCase
      */
     public function listActionCanBeCalled()
     {
-        $this->subject->listAction();
-    }
+        $demand = new ContactDemand();
+        $settings = ['category' => '25'];
 
-    /**
-     * @test
-     */
-    public function listActionPassesAllContactsAsContactsToView()
-    {
-        $contacts = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-
-        $this->contactRepository
-            ->expects(self::any())
-            ->method('findAll')
-            ->will(self::returnValue($contacts));
-
-        $this->view->expects(self::at(1))->method('assign')->with('contacts', $contacts);
-
-        $this->subject->listAction();
-    }
-
-    /**
-     * @test
-     */
-    public function showActionCanBeCalled()
-    {
-        $this->subject->showAction();
-    }
-
-    /**
-     * @test
-     */
-    public function showActionWithNoContactPassesNullAsContactToView()
-    {
-        $this->view->expects(self::once())->method('assign')->with('contact', null);
-        $this->subject->showAction();
-    }
-
-    /**
-     * @test
-     */
-    public function showActionWithContactPassesContactAsContactToView()
-    {
-        $contact = new \Extcode\Contacts\Domain\Model\Contact(
-            'salutation',
-            'title',
-            'firstName',
-            'lastName'
+        $fixture = $this->getAccessibleMock(
+            \Extcode\Contacts\Controller\ContactController::class,
+            ['createDemandObjectFromSettings']
         );
 
-        $this->contactRepository
-            ->expects(self::any())
-            ->method('findByUid')
-            ->will(self::returnValue($contact));
+        $fixture->_set('contactRepository', $this->contactRepository->reveal());
+        $fixture->injectConfigurationManager(
+            $this->getMockBuilder(
+                \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::class
+            )->getMock()
+        );
 
-        $this->view->expects(self::once())->method('assign')->with('contact', $contact);
+        $view = $this->getMockBuilder(\TYPO3\CMS\Extbase\Mvc\View\ViewInterface::class)->getMock();
+        $this->inject($fixture, 'view', $view);
 
-        $this->subject->showAction($contact);
+        $mockRequest = $this->getMockBuilder(
+            \TYPO3\CMS\Extbase\Mvc\Request::class
+        )->getMock();
+        $mockRequest->expects($this->any())->method('getArguments')->willReturn([]);
+        $this->inject($fixture, 'request', $mockRequest);
+
+        $fixture->_set('settings', $settings);
+
+        $fixture->expects($this->once())->method('createDemandObjectFromSettings')
+            ->will($this->returnValue($demand));
+
+        $this->contactRepository->findDemanded($demand)->shouldBeCalled();
+
+        $fixture->listAction();
+
+        // datetime must be removed
+        $this->assertEquals($fixture->_get('settings'), ['category' => '25']);
     }
 }

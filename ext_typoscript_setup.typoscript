@@ -14,6 +14,18 @@ module.tx_contacts {
     }
 }
 
+plugin.tx_contacts {
+    persistence {
+        classes {
+            Extcode\Contacts\Domain\Model\Category {
+                mapping {
+                    tableName = sys_category
+                }
+            }
+        }
+    }
+}
+
 config.tx_extbase {
     persistence {
         classes {

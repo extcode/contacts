@@ -4,9 +4,9 @@ namespace Extcode\Contacts\Controller;
 
 use Extcode\Contacts\Domain\Model\Contact;
 use Extcode\Contacts\Domain\Model\Dto\ContactDemand;
+use Extcode\Contacts\Domain\Repository\CategoryRepository;
 use Extcode\Contacts\Domain\Repository\ContactRepository;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class ContactController extends ActionController

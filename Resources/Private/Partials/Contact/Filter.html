@@ -1,0 +1,11 @@
+<f:form name="filter">
+    <label for="filter[category]">{f:translate(key: 'filter.field.category.select.label')}</label>
+    <f:form.select name="filter[category]"
+                   prependOptionValue="0"
+                   prependOptionLabel="{f:translate(key: 'filter.field.category.select.option.0')}"
+                   options="{categories}"
+                   optionValueField="uid"
+                   optionLabelField="title"
+                   value="{demand.selectedCategory}" />
+    <f:form.submit value="{f:translate(key: 'filter')}" class="filter_submit"/>
+</f:form>

@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2019-05-07T08:00:00Z" product-name="contacts">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2020-01-21T11:30:00Z" product-name="contacts">
         <header/>
         <body>
+
+            <trans-unit id="filter">
+                <source>filter</source>
+                <target>filtern</target>
+            </trans-unit>
+            <trans-unit id="filter.field.category.select.label">
+                <source>Category</source>
+                <target>Kategorie</target>
+            </trans-unit>
+            <trans-unit id="filter.field.category.select.option.0">
+                <source>all</source>
+                <target>alle</target>
+            </trans-unit>
 
             <trans-unit id="tx_contacts.module.contactController.listAction.header">
                 <source>People Listing</source>

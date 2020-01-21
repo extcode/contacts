@@ -3,19 +3,11 @@
 namespace Extcode\Contacts\Controller;
 
 use Extcode\Contacts\Domain\Model\Contact;
-use Extcode\Contacts\Domain\Model\Dto\ContactDemand;
-use Extcode\Contacts\Domain\Repository\CategoryRepository;
 use Extcode\Contacts\Domain\Repository\ContactRepository;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class ContactController extends ActionController
 {
-    /**
-     * @var CategoryRepository
-     */
-    protected $categoryRepository;
-
     /**
      * @var ContactRepository
      */
@@ -25,14 +17,6 @@ class ContactController extends ActionController
      * @var int
      */
     protected $pageId;
-
-    /**
-     * @param CategoryRepository $categoryRepository
-     */
-    public function injectCategoryRepository(CategoryRepository $categoryRepository)
-    {
-        $this->categoryRepository = $categoryRepository;
-    }
 
     /**
      * @param ContactRepository $contactRepository
@@ -68,8 +52,9 @@ class ContactController extends ActionController
 
         $contacts = $this->contactRepository->findDemanded($demand);
 
-        $this->view->assign('piVars', $this->request->getArguments());
+        $this->view->assign('demand', $demand);
         $this->view->assign('contacts', $contacts);
+        $this->view->assign('categories', $this->getSelectedCategories($demand));
     }
 
     /**
@@ -88,62 +73,5 @@ class ContactController extends ActionController
     {
         $contacts = $this->contactRepository->findByUids($this->settings['contactUids']);
         $this->view->assign('contacts', $contacts);
-    }
-
-    /**
-     * Create the demand object which define which records will get shown
-     *
-     * @param array $settings
-     *
-     * @return ContactDemand
-     */
-    protected function createDemandObjectFromSettings(array $settings) : ContactDemand
-    {
-        $demand = $this->objectManager->get(
-            ContactDemand::class
-        );
-
-        $arguments = $this->request->getArguments();
-        if ($arguments['filter']) {
-            $this->searchArguments = $arguments['filter'];
-        }
-
-        if ($arguments['filter']['searchString']) {
-            $demand->setSearchString($arguments['filter']['searchString']);
-        }
-
-        $this->addCategoriesToDemandObjectFromSettings($demand);
-
-        return $demand;
-    }
-
-    /**
-     * @param ContactDemand $demand
-     */
-    protected function addCategoriesToDemandObjectFromSettings(&$demand)
-    {
-        if ($this->settings['categoriesList']) {
-            $selectedCategories = \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(
-                ',',
-                $this->settings['categoriesList'],
-                true
-            );
-
-            $categories = [];
-
-            if ($this->settings['listSubcategories']) {
-                foreach ($selectedCategories as $selectedCategory) {
-                    $category = $this->categoryRepository->findByUid($selectedCategory);
-                    $categories = array_merge(
-                        $categories,
-                        $this->categoryRepository->findSubcategoriesRecursiveAsArray($category)
-                    );
-                }
-            } else {
-                $categories = $selectedCategories;
-            }
-
-            $demand->setCategories($categories);
-        }
     }
 }

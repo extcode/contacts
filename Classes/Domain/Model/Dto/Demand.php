@@ -2,7 +2,7 @@
 
 namespace Extcode\Contacts\Domain\Model\Dto;
 
-class ContactDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Demand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
@@ -13,7 +13,12 @@ class ContactDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @var array
      */
-    protected $categories;
+    protected $availableCategories = [];
+
+    /**
+     * @var int
+     */
+    protected $selectedCategory = 0;
 
     /**
      * @var string
@@ -42,19 +47,35 @@ class ContactDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getCategories()
+    public function getAvailableCategories(): array
     {
-        return $this->categories;
+        return $this->availableCategories;
     }
 
     /**
-     * @param mixed $categories
+     * @param array $availableCategories
      */
-    public function setCategories($categories)
+    public function setAvailableCategories(array $availableCategories): void
     {
-        $this->categories = $categories;
+        $this->availableCategories = $availableCategories;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSelectedCategory(): int
+    {
+        return $this->selectedCategory;
+    }
+
+    /**
+     * @param int $selectedCategory
+     */
+    public function setSelectedCategory(int $selectedCategory): void
+    {
+        $this->selectedCategory = $selectedCategory;
     }
 
     /**

@@ -6,6 +6,10 @@
 <f:section name="main">
     <f:flashMessages/>
 
+    <f:if condition="{categories -> f:count()} > 1">
+        <f:render partial="Company/Filter" arguments="{demand: demand, categories: categories}"/>
+    </f:if>
+
     <table class="tx_company">
         <tr>
             <th>

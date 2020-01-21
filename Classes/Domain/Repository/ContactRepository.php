@@ -2,18 +2,18 @@
 
 namespace Extcode\Contacts\Domain\Repository;
 
-use Extcode\Contacts\Domain\Model\Dto\ContactDemand;
+use Extcode\Contacts\Domain\Model\Dto\Demand;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 class ContactRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
 
     /**
-     * @param ContactDemand $demand
+     * @param Demand $demand
      *
      * @return QueryResultInterface|array
      */
-    public function findDemanded(ContactDemand $demand)
+    public function findDemanded(Demand $demand)
     {
         // settings
         $query = $this->createQuery();
@@ -25,12 +25,20 @@ class ContactRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $constraints[] = $query->like('lastName', '%' . $demand->getSearchString() . '%');
         }
 
-        if ((!empty($demand->getCategories()))) {
+        if ((!empty($demand->getAvailableCategories()))) {
             $categoryConstraints = [];
-            foreach ($demand->getCategories() as $category) {
+
+            if ($demand->getSelectedCategory()) {
+                $category = $demand->getSelectedCategory();
                 $categoryConstraints[] = $query->contains('category', $category);
                 $categoryConstraints[] = $query->contains('categories', $category);
+            } else {
+                foreach ($demand->getAvailableCategories() as $category) {
+                    $categoryConstraints[] = $query->contains('category', $category);
+                    $categoryConstraints[] = $query->contains('categories', $category);
+                }
             }
+
             $constraints = $query->logicalOr($categoryConstraints);
         }
 

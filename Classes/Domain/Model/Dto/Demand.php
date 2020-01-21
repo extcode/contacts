@@ -2,7 +2,7 @@
 
 namespace Extcode\Contacts\Domain\Model\Dto;
 
-class CompanyDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Demand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 {
 
     /**
@@ -13,17 +13,22 @@ class CompanyDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * @var array
      */
-    protected $categories;
+    protected $availableCategories = [];
+
+    /**
+     * @var int
+     */
+    protected $selectedCategory = 0;
 
     /**
      * @var string
      */
-    protected $action;
+    protected $action = '';
 
     /**
      * @var string
      */
-    protected $class;
+    protected $class = '';
 
     /**
      * @return string
@@ -42,67 +47,74 @@ class CompanyDemand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getCategories()
+    public function getAvailableCategories(): array
     {
-        return $this->categories;
+        return $this->availableCategories;
     }
 
     /**
-     * @param mixed $categories
+     * @param array $availableCategories
      */
-    public function setCategories($categories)
+    public function setAvailableCategories(array $availableCategories): void
     {
-        $this->categories = $categories;
+        $this->availableCategories = $availableCategories;
     }
 
     /**
-     * Returns action
-     *
+     * @return int
+     */
+    public function getSelectedCategory(): int
+    {
+        return $this->selectedCategory;
+    }
+
+    /**
+     * @param int $selectedCategory
+     */
+    public function setSelectedCategory(int $selectedCategory): void
+    {
+        $this->selectedCategory = $selectedCategory;
+    }
+
+    /**
      * @return string
      */
-    public function getAction()
+    public function getAction(): string
     {
         return $this->action;
     }
 
     /**
-     * Sets action
-     *
      * @param string $action
      */
-    public function setAction($action)
+    public function setAction($action): void
     {
         $this->action = $action;
     }
+
     /**
-     * Returns class
-     *
      * @return string
      */
-    public function getClass()
+    public function getClass(): string
     {
         return $this->class;
     }
 
     /**
-     * Sets class
-     *
      * @param string $class
      */
-    public function setClass($class)
+    public function setClass($class):void
     {
         $this->class = $class;
     }
 
     /**
-     * Sets action and class
-     *
      * @param string $action
      * @param string $class
      */
-    public function setActionAndClass($action, $class)
+    public function setActionAndClass($action, $class): void
     {
         $this->action = $action;
         $this->class = $class;

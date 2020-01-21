@@ -15,7 +15,7 @@ namespace Extcode\Contacts\Tests\Unit\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 use Extcode\Contacts\Controller\ContactController;
-use Extcode\Contacts\Domain\Model\Dto\ContactDemand;
+use Extcode\Contacts\Domain\Model\Dto\Demand;
 use Extcode\Contacts\Domain\Repository\ContactRepository;
 use Nimut\TestingFramework\TestCase\UnitTestCase;
 
@@ -48,12 +48,12 @@ class ContactControllerTest extends UnitTestCase
      */
     public function listActionCanBeCalled()
     {
-        $demand = new ContactDemand();
+        $demand = new Demand();
         $settings = ['category' => '25'];
 
         $fixture = $this->getAccessibleMock(
             \Extcode\Contacts\Controller\ContactController::class,
-            ['createDemandObjectFromSettings']
+            ['createDemandObjectFromSettings', 'getSelectedCategories']
         );
 
         $fixture->_set('contactRepository', $this->contactRepository->reveal());
@@ -76,6 +76,7 @@ class ContactControllerTest extends UnitTestCase
 
         $fixture->expects($this->once())->method('createDemandObjectFromSettings')
             ->will($this->returnValue($demand));
+        $fixture->expects($this->once())->method('getSelectedCategories');
 
         $this->contactRepository->findDemanded($demand)->shouldBeCalled();
 

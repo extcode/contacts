@@ -11,7 +11,7 @@ $_LLL_be = 'LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf';
         'Contact' => 'list, show, teaser',
     ],
     [
-        'Contact' => '',
+        'Contact' => 'list',
     ]
 );
 
@@ -22,7 +22,7 @@ $_LLL_be = 'LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf';
         'Company' => 'list, show, teaser',
     ],
     [
-        'Company' => '',
+        'Company' => 'list',
     ]
 );
 

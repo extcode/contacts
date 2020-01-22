@@ -46,8 +46,7 @@
     <f:if condition="{company.ttContent}">
         <f:for each="{company.ttContent}" as="content" iteration="contentIterator">
             <div id="content-{contentIterator.cycle}" class="content-element">
-                <f:cObject typoscriptObjectPath="tt_content.{content.contentType}.20"
-                           data="<contacts:mapModelPropertiesToTableColumns class='Extcode\\Contacts\\Domain\\Model\\TtContent' table='tt_content' data='{content}' />"/>
+                <f:cObject typoscriptObjectPath="lib.tx_contacts.contentElementRendering">{content.uid}</f:cObject>
             </div>
         </f:for>
     </f:if>

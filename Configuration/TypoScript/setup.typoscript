@@ -29,3 +29,11 @@ plugin.tx_contacts {
         }
     }
 }
+
+# Rendering of content elements in detail view
+lib.tx_contacts.contentElementRendering = RECORDS
+lib.tx_contacts.contentElementRendering {
+    tables = tt_content
+    source.current = 1
+    dontCheckPid = 1
+}

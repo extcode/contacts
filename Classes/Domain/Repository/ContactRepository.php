@@ -25,7 +25,7 @@ class ContactRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $constraints[] = $query->like('lastName', '%' . $demand->getSearchString() . '%');
         }
 
-        if ((!empty($demand->getAvailableCategories()))) {
+        if (!empty($demand->getAvailableCategories())) {
             $categoryConstraints = [];
 
             if ($demand->getSelectedCategory()) {

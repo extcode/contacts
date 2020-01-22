@@ -93,6 +93,10 @@ class ActionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      */
     protected function getSelectedCategories(Demand $demand)
     {
+        if (empty($demand->getAvailableCategories())) {
+            return [];
+        }
+
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getQueryBuilderForTable('sys_category');
         $queryBuilder

@@ -41,6 +41,11 @@ $_LLL_be = 'LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf';
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['contacts'][]
     = 'Extcode\\Contacts\\ViewHelpers';
 
+// clearCachePostProc Hook
+
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['contacts_clearcache'] =
+    \Extcode\Contacts\Hooks\DataHandler::class . '->clearCachePostProc';
+
 // register class to be available in 'eval' of TCA
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals'][\Extcode\Contacts\DataHandler\EvalFloat8::class] = '';
 

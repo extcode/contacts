@@ -43,6 +43,17 @@ class CompanyController extends ActionController
             ],
         ];
         $this->configurationManager->setConfiguration(array_merge($frameworkConfiguration, $persistenceConfiguration));
+
+        if (!empty($GLOBALS['TSFE']) && is_object($GLOBALS['TSFE'])) {
+            static $cacheTagsSet = false;
+
+            /** @var $typoScriptFrontendController \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController */
+            $typoScriptFrontendController = $GLOBALS['TSFE'];
+            if (!$cacheTagsSet) {
+                $typoScriptFrontendController->addCacheTags(['tx_contacts']);
+                $cacheTagsSet = true;
+            }
+        }
     }
 
     public function listAction()
@@ -67,11 +78,31 @@ class CompanyController extends ActionController
         }
 
         $this->view->assign('company', $company);
+
+        $this->addCacheTags([$company]);
     }
 
     public function teaserAction()
     {
         $companies = $this->companyRepository->findByUids($this->settings['companyUids']);
         $this->view->assign('companies', $companies);
+
+        $this->addCacheTags($companies);
+    }
+
+    /**
+     * @param array $companies
+     */
+    protected function addCacheTags($companies)
+    {
+        $cacheTags = [];
+
+        foreach ($companies as $company) {
+            // cache tag for each product record
+            $cacheTags[] = 'tx_contacts_company_' . $company->getUid();
+        }
+        if (count($cacheTags) > 0) {
+            $GLOBALS['TSFE']->addCacheTags($cacheTags);
+        }
     }
 }

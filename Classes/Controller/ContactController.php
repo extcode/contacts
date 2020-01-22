@@ -43,6 +43,17 @@ class ContactController extends ActionController
             ],
         ];
         $this->configurationManager->setConfiguration(array_merge($frameworkConfiguration, $persistenceConfiguration));
+
+        if (!empty($GLOBALS['TSFE']) && is_object($GLOBALS['TSFE'])) {
+            static $cacheTagsSet = false;
+
+            /** @var $typoScriptFrontendController \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController */
+            $typoScriptFrontendController = $GLOBALS['TSFE'];
+            if (!$cacheTagsSet) {
+                $typoScriptFrontendController->addCacheTags(['tx_contacts']);
+                $cacheTagsSet = true;
+            }
+        }
     }
 
     public function listAction()
@@ -67,11 +78,31 @@ class ContactController extends ActionController
         }
 
         $this->view->assign('contact', $contact);
+
+        $this->addCacheTags([$contact]);
     }
 
     public function teaserAction()
     {
         $contacts = $this->contactRepository->findByUids($this->settings['contactUids']);
         $this->view->assign('contacts', $contacts);
+
+        $this->addCacheTags($contacts);
+    }
+
+    /**
+     * @param array $contacts
+     */
+    protected function addCacheTags($contacts)
+    {
+        $cacheTags = [];
+
+        foreach ($contacts as $contact) {
+            // cache tag for each product record
+            $cacheTags[] = 'tx_contacts_contact_' . $contact->getUid();
+        }
+        if (count($cacheTags) > 0) {
+            $GLOBALS['TSFE']->addCacheTags($cacheTags);
+        }
     }
 }

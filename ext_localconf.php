@@ -41,6 +41,11 @@ $_LLL_be = 'LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf';
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['contacts'][]
     = 'Extcode\\Contacts\\ViewHelpers';
 
+// clearCachePostProc Hook
+
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['contacts_clearcache'] =
+    \Extcode\Contacts\Hooks\DataHandler::class . '->clearCachePostProc';
+
 // provide extension configuration for TypoScript
 $extensionConfiguration = new \TYPO3\CMS\Core\Configuration\ExtensionConfiguration();
 $contactsConfiguration = $extensionConfiguration->get('contacts');

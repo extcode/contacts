@@ -4,24 +4,13 @@
 <f:layout name="Default"/>
 
 <f:section name="main">
-    <f:if condition="{companies}">
-        <f:for each="{companies}" as="company">
-
-            <div id="company-teaser-{company.uid}" class="company-teaser">
-                <f:if condition="{company.logo}">
-                    <div class="contacts-company-logo">
-                        <f:image src="{company.logo.originalResource.originalFile.uid}"
-                                 title="{company.logo.originalResource.title}"
-                                 alt="{company.logo.originalResource.title}" maxWidth="150" maxHeight="150"/>
-                    </div>
-                </f:if>
-
-                <div class="contacts-company-name">
-                    {company.name}
-                </div>
-            </div>
-
-        </f:for>
+    <f:if condition="{settings.templateLayout}">
+        <f:then>
+            <f:render partial="Company/Teaser/{f:format.case(value: settings.templateLayout, mode: 'capital')}" arguments="{_all}" />
+        </f:then>
+        <f:else>
+            <f:render partial="Company/Teaser/Default" arguments="{_all}" />
+        </f:else>
     </f:if>
 </f:section>
 </html>

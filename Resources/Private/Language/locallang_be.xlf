@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="messages" date="2020-01-20T08:30:00Z" product-name="contacts">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-01-30T12:30:00Z" product-name="contacts">
         <header/>
         <body>
 
@@ -32,6 +32,12 @@
             </trans-unit>
             <trans-unit id="flexforms_template.templateLayout.address.gmaps">
                 <source>Google Maps</source>
+            </trans-unit>
+            <trans-unit id="flexforms_template.templateLayout.contact_teaser.default">
+                <source>Default</source>
+            </trans-unit>
+            <trans-unit id="flexforms_template.templateLayout.company_teaser.default">
+                <source>Default</source>
             </trans-unit>
 
             <trans-unit id="tx_contacts.plugin.contacts.action.contact.list.categories">

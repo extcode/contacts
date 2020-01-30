@@ -8,7 +8,9 @@ call_user_func(function () {
     $pluginNames = [
         'Address',
         'Companies',
+        'CompanyTeaser',
         'Contacts',
+        'ContactTeaser',
     ];
 
     foreach ($pluginNames as $pluginName) {

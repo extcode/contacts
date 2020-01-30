@@ -17,12 +17,34 @@ $_LLL_be = 'LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf';
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'Extcode.contacts',
+    'ContactTeaser',
+    [
+        'Contact' => 'teaser',
+    ],
+    [
+        'Contact' => '',
+    ]
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'Extcode.contacts',
     'Companies',
     [
         'Company' => 'list, show, teaser',
     ],
     [
         'Company' => 'list',
+    ]
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'Extcode.contacts',
+    'CompanyTeaser',
+    [
+        'Company' => 'teaser',
+    ],
+    [
+        'Company' => '',
     ]
 );
 
@@ -59,3 +81,6 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tce']['formevals'][\Extcode\Contacts\
 
 // register layouts
 $GLOBALS['TYPO3_CONF_VARS']['EXT']['contacts']['templateLayouts']['address'][] = [$_LLL_be . ':flexforms_template.templateLayout.address.gmaps', 'gmaps'];
+
+$GLOBALS['TYPO3_CONF_VARS']['EXT']['contacts']['templateLayouts']['contact_teaser'][] = [$_LLL_be . ':flexforms_template.templateLayout.contact_teaser.default', 'default'];
+$GLOBALS['TYPO3_CONF_VARS']['EXT']['contacts']['templateLayouts']['company_teaser'][] = [$_LLL_be . ':flexforms_template.templateLayout.company_teaser.default', 'default'];

@@ -44,7 +44,7 @@ class ItemsProcFunc
                     htmlspecialchars($this->getLanguageService()->sL($layout[0])),
                     $layout[1]
                 ];
-                array_push($config['items'], $additionalLayout);
+                $config['items'][] = $additionalLayout;
             }
         }
     }

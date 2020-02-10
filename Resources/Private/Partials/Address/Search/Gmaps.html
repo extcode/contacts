@@ -1,0 +1,16 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div id="map"
+     class="map"
+     style="width: {settings.gmaps.width}; height: {settings.gmaps.height};"
+     data-zoom="10"
+     data-hue="{settings.gmaps.hue}"
+     data-saturation="{settings.gmaps.saturation}"
+     data-lightness="{settings.gmaps.lightness}">
+    <f:for each="{addresses}" as="address">
+        <f:render partial="Address/Marker" arguments="{address: address}" />
+    </f:for>
+</div>
+
+</html>

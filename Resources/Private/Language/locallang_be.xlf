@@ -39,6 +39,18 @@
             <trans-unit id="flexforms_template.templateLayout.company_teaser.default">
                 <source>Default</source>
             </trans-unit>
+            <trans-unit id="tx_contacts.plugin.addressSearch.settings.templateLayout">
+                <target>Template Layout</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.addressSearch.settings.templateLayout.gmaps">
+                <source>Google Maps</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.addressSearch.settings.displayResultList">
+                <source>display result list</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.addressSearch.settings.showPid">
+                <source>detail page</source>
+            </trans-unit>
 
             <trans-unit id="tx_contacts.plugin.contacts.action.contact.list.categories">
                 <source>Categories</source>

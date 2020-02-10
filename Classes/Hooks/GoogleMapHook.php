@@ -26,12 +26,17 @@ class GoogleMapHook
     /**
      * @var string
      */
+    protected $idPrefix = '';
+
+    /**
+     * @var string
+     */
     protected $tableName = '';
 
     /**
      * @var string
      */
-    protected $mapId = '';
+    protected $addressId = '';
 
     /**
      * @var string
@@ -69,7 +74,8 @@ class GoogleMapHook
         $this->countryRepository->setDefaultQuerySettings($querySettings);
 
         $this->tableName = $params['table'];
-        $this->mapId = $this->tableName . '_map';
+        $this->addressId = $params['row']['uid'];
+        $this->idPrefix = 'tx-contacts-address-' . $this->addressId;
 
         $this->setLatLonFieldNames($params);
         $this->setLatLon($params);
@@ -94,11 +100,8 @@ class GoogleMapHook
         $googleMapsApiKey = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('contacts', 'googleMapsApiKey');
 
         if ($googleMapsApiKey) {
-            $googleMapsLibrary .=  '&key=' . $googleMapsApiKey;
+            $googleMapsLibrary .=  '&key=' . $googleMapsApiKey . '&callback=initTxContacts';
         }
-
-        $this->tableName = $params['table'];
-        $this->mapId = $this->tableName . '_map';
 
         $out = $this->getJavaScript($googleMapsLibrary);
         $out .= $this->getInputFields($params);
@@ -175,7 +178,8 @@ class GoogleMapHook
         $out .= "var tableName = '{$this->tableName}';";
         $out .= "var latitudeField = '{$this->latFieldName}';";
         $out .= "var longitudeField = '{$this->lonFieldName}';";
-        $out .= "var mapId = '{$this->mapId}';";
+        $out .= "var addressId = '{$this->addressId}';";
+        $out .= "var idPrefix = '{$this->idPrefix}';";
         $out .= "var version = {$version};";
         $out .= '</script>';
         $out .= '<script type="text/javascript" src="/typo3conf/ext/contacts/Resources/Public/JavaScripts/Backend/google_maps_hook.js"></script>';
@@ -192,15 +196,15 @@ class GoogleMapHook
     {
         $address = $this->concatenateFieldsToAddress($params);
 
-        $this->tableName = $params['table'];
-        $this->mapId = $this->tableName . '_map';
+        $uid = $params['row']['uid'];
+
+        $htmlIdPrefix = 'tx-contacts-address-' . $uid;
 
         $out = '';
-
-        $out .= '<div id="' . $this->tableName . '">';
-        $out .= '<input id="inputAddress" type="textbox" value="' . $address . '" style="width:300px">';
-        $out .= '<input type="button" value="Search" onclick="TxContacts.codeAddress()">';
-        $out .= '<div id="' . $this->mapId . '" style="height:420px;width:640px; border: 1px solid #bbbbbb; margin-top: 15px;"></div>';
+        $out .= '<div id="' . $htmlIdPrefix . '">';
+        $out .= '<input id="' . $htmlIdPrefix . '-address" class="address" type="textbox" value="' . $address . '" style="width:300px">';
+        $out .= '<input type="button" value="Search" onclick="TxContacts.codeAddress(' . $uid . ')">';
+        $out .= '<div id="' . $htmlIdPrefix . '-map" style="height:300px; width:100%; border: 1px solid #bbbbbb; margin-top: 15px;"></div>';
         $out .= '</div>';
 
         return $out;

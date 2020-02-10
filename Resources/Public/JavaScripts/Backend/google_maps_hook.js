@@ -1,7 +1,6 @@
 if (typeof TxContacts === "undefined") TxContacts = {};
 
 TxContacts.init = function() {
-
     TxContacts.origin = new google.maps.LatLng(latitude, longitude);
 
     var myOptions = {
@@ -10,7 +9,7 @@ TxContacts.init = function() {
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-    TxContacts.map = new google.maps.Map(document.getElementById(mapId), myOptions);
+    TxContacts.map = new google.maps.Map(document.getElementById(idPrefix+"-map"), myOptions);
     TxContacts.marker = new google.maps.Marker({
         map: TxContacts.map,
         position: TxContacts.origin,
@@ -22,8 +21,8 @@ TxContacts.init = function() {
         var lat = TxContacts.marker.getPosition().lat().toFixed(6);
         var lng = TxContacts.marker.getPosition().lng().toFixed(6);
 
-        TxContacts.updateValue(latitudeField, lat);
-        TxContacts.updateValue(longitudeField, lng);
+        TxContacts.updateValue(latitudeField, addressId, lat);
+        TxContacts.updateValue(longitudeField, addressId, lng);
 
     });
 
@@ -37,31 +36,32 @@ TxContacts.refreshMap = function() {
     Ext.fly(TxContacts.tabPrefix + "-MENU").un("click", TxContacts.refreshMap);
 };
 
-TxContacts.codeAddress = function() {
-    var address = document.getElementById("inputAddress").value;
+TxContacts.codeAddress = function(addressId) {
+    var address = document.getElementById(idPrefix + '-address').value;
+
     TxContacts.geocoder.geocode({"address": address}, function(results, status) {
         if (status === google.maps.GeocoderStatus.OK) {
             TxContacts.map.setCenter(results[0].geometry.location);
             TxContacts.marker.setPosition(results[0].geometry.location);
 
-            TxContacts.updateValue(latitudeField, +(Math.round(TxContacts.marker.getPosition().lat() + "e+8") + "e-8"));
-            TxContacts.updateValue(longitudeField, +(Math.round(TxContacts.marker.getPosition().lng() + "e+8") + "e-8"));
+            TxContacts.updateValue(latitudeField, addressId, +(Math.round(TxContacts.marker.getPosition().lat() + "e+8") + "e-8"));
+            TxContacts.updateValue(longitudeField, addressId, +(Math.round(TxContacts.marker.getPosition().lng() + "e+8") + "e-8"));
 
         } else {
-            alert("Geocode was not successful for the following reason: " + status);
+            console.log("Geocode was not successful for the following reason: " + status);
         }
     });
 };
 
-TxContacts.updateValue = function(fieldName, value) {
-    if (version < 8007000) {
-        document[TBE_EDITOR.formname][fieldName].value = value;
-        $("[data-formengine-input-name='" + fieldName + "']").val(value);
-    } else {
-        var selectorFieldName = "data[" + tableName + "][1][" + fieldName + "]";
-        $("input[data-formengine-input-name='" + selectorFieldName + "']").val(value);
-        $("input[name='" + selectorFieldName + "']").val(value);
-    }
+TxContacts.updateValue = function(fieldName, addressId, value) {
+    var action = $("#EditDocumentController").attr('action');
+
+    var selectorFieldName = "data[" + tableName + "][" + addressId + "][" + fieldName + "]";
+
+    $("input[data-formengine-input-name='" + selectorFieldName + "']").val(value);
+    $("input[name='" + selectorFieldName + "']").val(value);
 };
 
-window.onload = TxContacts.init;
+function initTxContacts() {
+    TxContacts.init();
+}

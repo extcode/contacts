@@ -1,3 +1,14 @@
+page.includeJSFooter.tx_contacts_1 = EXT:contacts/Resources/Public/JavaScripts/map.js
+page.includeJSFooter.tx_contacts_2 = {$plugin.tx_contacts.googleMapsLibrary}&key={$plugin.tx_contacts.googleMapsApiKey}&callback=getMapData
+page.includeJSFooter.tx_contacts_2.external = 1
+
+lib.tx_contacts.contentElementRendering = RECORDS
+lib.tx_contacts.contentElementRendering {
+    tables = tt_content
+    source.current = 1
+    dontCheckPid = 1
+}
+
 plugin.tx_contacts {
     view {
         templateRootPaths {
@@ -18,6 +29,8 @@ plugin.tx_contacts {
     }
 
     settings {
+        zipMapFile = EXT:contacts/Resources/Private/zipMap.php
+
         gmaps {
             apiKey = {$plugin.tx_contacts.googleMapsApiKey}
 
@@ -26,14 +39,20 @@ plugin.tx_contacts {
 
             scrollwheel = true
             draggable = true
+
+            hue = #3A7CAE
+            saturation = -30
+            lightness = 30
+
+            companyMarker = EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_address.png
+            contactMarker = EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_address.png
+        }
+
+        radius {
+            10 = 10 km
+            25 = 25 km
+            50 = 50 km
+            100 = 100 km
         }
     }
-}
-
-# Rendering of content elements in detail view
-lib.tx_contacts.contentElementRendering = RECORDS
-lib.tx_contacts.contentElementRendering {
-    tables = tt_content
-    source.current = 1
-    dontCheckPid = 1
 }

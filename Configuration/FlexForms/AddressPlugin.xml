@@ -9,9 +9,7 @@
                 <el>
                     <settings.address>
                         <TCEforms>
-                            <label>
-                                LLL:EXT:dates/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address
-                            </label>
+                            <label>LLL:EXT:dates/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_address</label>
                             <config>
                                 <type>select</type>
                                 <items type="array">
@@ -25,7 +23,6 @@
                         </TCEforms>
                     </settings.address>
 
-                    <!-- Template Layout -->
                     <settings.templateLayout>
                         <TCEforms>
                             <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:flexforms_template.templateLayout</label>
@@ -38,7 +35,6 @@
                             </config>
                         </TCEforms>
                     </settings.templateLayout>
-
                 </el>
             </ROOT>
         </sDEF>

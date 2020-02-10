@@ -1,0 +1,51 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div id="map-marker-{address.uid}"
+     class="map-marker"
+     data-title="{address.company.name}"
+     data-address="{address.street} {address.street_number}, {address.zip} {address.city}"
+     data-lat="{address.lat}"
+     data-lon="{address.lon}"
+     data-point="{f:uri.image(src: '{f:if(condition: address.company, then: settings.gmaps.companyMarker)}{f:if(condition: address.contact, then: settings.gmaps.contactMarker)}')}">
+    <div>
+        <f:if condition="{address.company}">
+            <h4>{address.company.name}</h4>
+        </f:if>
+        <f:if condition="{address.contact}">
+            <h4>{address.contact.salutation} {address.contact.title} {address.contact.first_name} {address.contact.last_name}</h4>
+        </f:if>
+        <p>
+            {address.street} {address.street_number} <br>
+            {address.zip} {address.city}
+        </p>
+        <f:if condition="{address.company}">
+            <p>
+                <f:for each="{address.company.phone}" as="phoneNumber">
+                    <f:translate key="tx_contacts_domain_model_phone.type.{phoneNumber.type}"/>: {phoneNumber.number}<br>
+                </f:for>
+                <f:if condition="{address.company.email}">
+                    <f:translate key="tx_contacts_domain_model_company.email"/>: <f:link.email email="{address.company.email}">{address.company.email}</f:link.email><br>
+                </f:if>
+                <f:if condition="{address.company.uri}">
+                    <f:translate key="tx_contacts_domain_model_company.uri"/>: <f:link.external uri="{address.company.uri}" target="_blank">{address.company.uri}</f:link.external>
+                </f:if>
+            </p>
+        </f:if>
+        <f:if condition="{address.contact}">
+            <p>
+                <f:for each="{address.contact.phone}" as="phoneNumber">
+                    <f:translate key="tx_contacts_domain_model_phone.type.{phoneNumber.type}"/>: {phoneNumber.number}<br>
+                </f:for>
+                <f:if condition="{address.contact.email}">
+                    <f:translate key="tx_contacts_domain_model_company.email"/>: <f:link.email email="{address.company.email}" /><br>
+                </f:if>
+                <f:if condition="{address.contact.uri}">
+                    <f:translate key="tx_contacts_domain_model_company.uri"/>: <f:link.external uri="{address.company.uri}" target="_blank">{address.company.uri}</f:link.external>
+                </f:if>
+            </p>
+        </f:if>
+    </div>
+</div>
+
+</html>

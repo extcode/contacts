@@ -44,7 +44,7 @@
             </trans-unit>
             <trans-unit id="flexforms_template.templateLayout.address.gmaps">
                 <source>Google Maps</source>
-                <target>Googke Maps</target>
+                <target>Google Maps</target>
             </trans-unit>
             <trans-unit id="flexforms_template.templateLayout.contact_teaser.default">
                 <source>Default</source>
@@ -53,6 +53,22 @@
             <trans-unit id="flexforms_template.templateLayout.company_teaser.default">
                 <source>Default</source>
                 <target>Standard</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.addressSearch.settings.templateLayout">
+                <target>Template Layout</target>
+                <source>Template Layout</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.addressSearch.settings.templateLayout.gmaps">
+                <source>Google Maps</source>
+                <target>Google Maps</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.addressSearch.settings.displayResultList">
+                <source>display result list</source>
+                <target>zeige Ergebnisliste</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.addressSearch.settings.showPid">
+                <source>detail page</source>
+                <target>Detailseite</target>
             </trans-unit>
 
             <trans-unit id="tx_contacts.plugin.contacts.action.contact.list.categories">

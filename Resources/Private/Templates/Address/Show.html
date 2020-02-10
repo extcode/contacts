@@ -8,6 +8,6 @@
         <h5>{address.title}</h5>
     </f:if>
 
-    <f:render partial="Address/Maps/{f:format.case(value: settings.templateLayout, mode: 'capital')}" arguments="{_all}" />
+    <f:render partial="Address/Show/{f:format.case(value: settings.templateLayout, mode: 'capital')}" arguments="{_all}" />
 </f:section>
 </html>

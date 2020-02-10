@@ -7,6 +7,7 @@ call_user_func(function () {
 
     $pluginNames = [
         'Address',
+        'AddressSearch',
         'Companies',
         'CompanyTeaser',
         'Contacts',

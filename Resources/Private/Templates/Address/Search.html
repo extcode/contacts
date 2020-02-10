@@ -1,0 +1,80 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default"/>
+
+<f:section name="main">
+    <div class="row mb-4">
+        <div class="column col-lg-4 col-md-12">
+            <f:form action="search">
+                <f:form.hidden
+                        name="tx_contacts_addresssearch[country]"
+                        value="DE"/>
+                <div class="field">
+                    <f:form.textfield name="tx_contacts_addresssearch[zip]"
+                                      class="form-control"
+                                      value="{zip}"/>
+                </div>
+                <div class="field">
+                    <f:form.select name="tx_contacts_addresssearch[radius]"
+                                   class="form-control"
+                                   options="{settings.radius}"
+                                   value="{radius}"/>
+                </div>
+                <div class="field">
+                    <f:form.submit class="form-control btn btn-default"
+                                   value="{f:translate(key:'tx_contacts.plugin.addressSearch.action.search')}"/>
+                </div>
+            </f:form>
+        </div>
+        <div class="column col-lg-8 col-md-12">
+            <f:render partial="Address/Search/{f:format.case(value: settings.templateLayout, mode: 'capital')}" arguments="{settings: settings, addresses: addresses}" />
+        </div>
+    </div>
+
+    <f:if condition="{settings.displayResultList}">
+        <f:for each="{addresses}" as="address">
+            <div id="address-{address.uid}">
+                <div class="well">
+                    <f:if condition="{address.company}">
+                        <h4>{address.company.name}</h4>
+                    </f:if>
+                    <f:if condition="{address.contact}">
+                        <h4>{address.contact.salutation} {address.contact.title} {address.contact.first_name} {address.contact.last_name}</h4>
+                    </f:if>
+                    <p>
+                        {address.street} {address.street_number} <br>
+                        {address.zip} {address.city}
+                    </p>
+                    <f:if condition="{address.company}">
+                        <p>
+                            <f:for each="{address.company.phone}" as="phoneNumber">
+                                <f:translate key="tx_contacts_domain_model_phone.type.{phoneNumber.type}"/>: {phoneNumber.number}<br>
+                            </f:for>
+                            <f:if condition="{address.company.email}">
+                                <f:translate key="tx_contacts_domain_model_company.email"/>: <f:link.email email="{address.company.email}">{address.company.email}</f:link.email><br>
+                            </f:if>
+                            <f:if condition="{address.company.uri}">
+                                <f:translate key="tx_contacts_domain_model_company.uri"/>: <f:link.external uri="{address.company.uri}" target="_blank">{address.company.uri}</f:link.external>
+                            </f:if>
+                        </p>
+                    </f:if>
+                    <f:if condition="{address.contact}">
+                        <p>
+                            <f:for each="{address.contact.phone}" as="phoneNumber">
+                                <f:translate key="tx_contacts_domain_model_phone.type.{phoneNumber.type}"/>: {phoneNumber.number}<br>
+                            </f:for>
+                            <f:if condition="{address.contact.email}">
+                                <f:translate key="tx_contacts_domain_model_contact.email"/>: <f:link.email email="{address.contact.email}" /><br>
+                            </f:if>
+                            <f:if condition="{address.contact.uri}">
+                                <f:translate key="tx_contacts_domain_model_contact.uri"/>: <f:link.external uri="{address.contact.uri}" target="_blank">{address.contact.uri}</f:link.external>
+                            </f:if>
+                        </p>
+                    </f:if>
+                </div>
+            </div>
+        </f:for>
+    </f:if>
+</f:section>
+</html>

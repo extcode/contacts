@@ -42,7 +42,7 @@ return [
                 --palette--;' . $_LLL_db . ':tx_contacts_domain_model_company.palette.address;address,
                 post_box,
                 tt_content,
-                --palette--;' . $_LLL_db . ':tx_contacts_domain_model_address.lon_lat;lon_lat,
+                --palette--;' . $_LLL_db . ':tx_contacts_domain_model_address.lon_lat;coords,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,
                     --palette--;' . $_LLL_tca . ':palettes.visibility;hiddenonly,
                     --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.palettes.access;access,
@@ -54,7 +54,7 @@ return [
             'showitem' => 'street, street_number, --linebreak--, addition1, addition2, --linebreak--, zip, city, --linebreak--, region, country',
             'canNotCollapse' => 1
         ],
-        'lon_lat' => [
+        'coords' => [
             'showitem' => 'lat, lon', 'canNotCollapse' => 1
         ],
         'hiddenonly' => [

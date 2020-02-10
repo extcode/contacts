@@ -50,6 +50,10 @@
                 <source>Contacts: Address</source>
                 <target>Contacts: Addresse</target>
             </trans-unit>
+            <trans-unit id="tx_contacts.plugin.addressSearch">
+                <source>Contacts: Address Search</source>
+                <target>Contacts: Addresssuche</target>
+            </trans-unit>
 
             <trans-unit id="tx_contacts_domain_model_contact">
                 <source>Person</source>

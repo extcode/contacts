@@ -83,6 +83,11 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $contact = null;
 
     /**
+     * @var \Extcode\Contacts\Domain\Model\Company
+     */
+    protected $company = null;
+
+    /**
      * @param string $title
      */
     public function setTitle(string $title)
@@ -315,6 +320,22 @@ class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getContact()
     {
         return $this->contact;
+    }
+
+    /**
+     * @return Company
+     */
+    public function getCompany()
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param Company $company
+     */
+    public function setCompany($company)
+    {
+        $this->company = $company;
     }
 
     /**

@@ -50,6 +50,17 @@ $_LLL_be = 'LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf';
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'Extcode.contacts',
+    'AddressSearch',
+    [
+        'Address' => 'search',
+    ],
+    [
+        'Address' => 'search',
+    ]
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'Extcode.contacts',
     'Address',
     [
         'Address' => 'show',

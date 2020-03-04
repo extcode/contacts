@@ -40,6 +40,11 @@
                 <target>Filter List</target>
             </trans-unit>
 
+            <trans-unit id="tx_contacts.plugin.addressSearch.action.search">
+                <source>search</source>
+                <target>suchen</target>
+            </trans-unit>
+
             <trans-unit id="tx_contacts_domain_model_contact">
                 <source>Person</source>
                 <target>Person</target>

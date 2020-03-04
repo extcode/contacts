@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2020-01-30T12:30:00Z" product-name="contacts">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2020-03-04T08:14:00Z" product-name="contacts">
         <header/>
         <body>
 
@@ -111,6 +111,18 @@
                 <source>Photo</source>
                 <target>Photo</target>
             </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.teaser">
+                <source>Teaser</source>
+                <target>Kurzbeschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.description">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.meta_description">
+                <source>Meta description</source>
+                <target>Metabeschreibung</target>
+            </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.tt_content">
                 <source>Additional Content</source>
                 <target>zusätzlicher Inhalt</target>
@@ -195,6 +207,18 @@
             <trans-unit id="tx_contacts_domain_model_company.logo">
                 <source>Logo</source>
                 <target>Logo</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.teaser">
+                <source>Teaser</source>
+                <target>Kurzbeschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.description">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.meta_description">
+                <source>Meta description</source>
+                <target>Metabeschreibung</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.tt_content">
                 <source>Additional Content</source>

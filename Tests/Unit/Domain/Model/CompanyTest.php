@@ -275,4 +275,76 @@ class CompanyTest extends UnitTestCase
             $this->fixture->getUri()
         );
     }
+
+    /**
+     * @test
+     */
+    public function getTeaserInitiallyReturnsEmptyString()
+    {
+        $this->assertSame(
+            '',
+            $this->fixture->getTeaser()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setTeaserSetsTeaser()
+    {
+        $this->fixture->setTeaser('Teaser');
+
+        $this->assertSame(
+            'Teaser',
+            $this->fixture->getTeaser()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getDescriptionInitiallyReturnsEmptyString()
+    {
+        $this->assertSame(
+            '',
+            $this->fixture->getDescription()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setDescriptionSetsDescription()
+    {
+        $this->fixture->setDescription('Description');
+
+        $this->assertSame(
+            'Description',
+            $this->fixture->getDescription()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getMetaDescriptionInitiallyReturnsEmptyString()
+    {
+        $this->assertSame(
+            '',
+            $this->fixture->getMetaDescription()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setMetaDescriptionSetsMetaDescription()
+    {
+        $this->fixture->setMetaDescription('MetaDescription');
+
+        $this->assertSame(
+            'MetaDescription',
+            $this->fixture->getMetaDescription()
+        );
+    }
 }

@@ -32,6 +32,10 @@
                 <source>Filter List</source>
             </trans-unit>
 
+            <trans-unit id="tx_contacts.plugin.addressSearch.action.search">
+                <source>search</source>
+            </trans-unit>
+
             <trans-unit id="tx_contacts_domain_model_contact">
                 <source>Contact</source>
             </trans-unit>

@@ -1,9 +1,16 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:contacts="http://typo3.org/ns/Extcode/Contacts/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
 <f:layout name="Default"/>
 
 <f:section name="main">
+    <f:if condition="{contact.metaDescription}">
+        <f:then>
+            <contacts:metaTag property="description" content="{contact.metaDescription -> f:format.crop(maxCharacters: '250')}" />
+        </f:then>
+    </f:if>
+
     <f:if condition="{contact.photo}">
         <div class="right">
             <f:image src="{contact.photo.originalResource.originalFile.uid}"

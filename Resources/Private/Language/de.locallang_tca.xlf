@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="messages" date="2019-05-07T08:00:00Z" product-name="contacts">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-03-04T09:09:00Z" product-name="contacts">
         <header/>
         <body>
 
@@ -9,14 +9,22 @@
                 <target>Sichtbarkeit</target>
             </trans-unit>
 
+            <trans-unit id="tx_contacts_domain_model_company.div.categorization">
+                <source>Categorization</source>
+                <target>Kategorisierung</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.div.descriptions">
+                <source>Description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+
             <trans-unit id="tx_contacts_domain_model_contact.div.categorization">
                 <source>Categorization</source>
                 <target>Kategorisierung</target>
             </trans-unit>
-
-            <trans-unit id="tx_contacts_domain_model_company.div.categorization">
-                <source>Categorization</source>
-                <target>Kategorisierung</target>
+            <trans-unit id="tx_contacts_domain_model_contact.div.descriptions">
+                <source>Description</source>
+                <target>Beschreibung</target>
             </trans-unit>
 
         </body>

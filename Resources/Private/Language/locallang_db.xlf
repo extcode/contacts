@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="messages" date="2020-01-30T12:30:00Z" product-name="contacts">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-03-04T08:14:00Z" product-name="contacts">
         <header/>
         <body>
 
@@ -85,6 +85,15 @@
             <trans-unit id="tx_contacts_domain_model_contact.photo">
                 <source>Photo</source>
             </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.teaser">
+                <source>Teaser</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_contact.meta_description">
+                <source>Meta description</source>
+            </trans-unit>
             <trans-unit id="tx_contacts_domain_model_contact.tt_content">
                 <source>Additional Content</source>
             </trans-unit>
@@ -148,6 +157,15 @@
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.logo">
                 <source>Logo</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.teaser">
+                <source>Teaser</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_company.meta_description">
+                <source>Meta description</source>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_company.tt_content">
                 <source>Additional Content</source>

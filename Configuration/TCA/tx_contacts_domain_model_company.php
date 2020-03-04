@@ -30,7 +30,7 @@ return [
         'iconfile' => 'EXT:contacts/Resources/Public/Icons/tx_contacts_domain_model_company.svg',
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, fe_user, logo, name, email, uri, companies, contacts, addresses, phone_numbers, tt_content, category, categories',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, fe_user, logo, name, email, uri, companies, contacts, addresses, phone_numbers, teaser, description, meta_description, tt_content, category, categories',
     ],
     'types' => [
         '1' => [
@@ -45,7 +45,11 @@ return [
                 contacts,
                 addresses,
                 phone_numbers,
-                tt_content,
+                --div--;' . $_LLL_tca . ':tx_contacts_domain_model_company.div.descriptions,
+                    teaser,
+                    description,
+                    meta_description,
+                    tt_content,
                 --div--;' . $_LLL_tca . ':tx_contacts_domain_model_company.div.categorization,
                     category, categories,
                 --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.tabs.access,
@@ -406,6 +410,35 @@ return [
                 $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),
         ],
+
+        'teaser' => [
+            'exclude' => 1,
+            'label' => $_LLL_db . ':tx_contacts_domain_model_company.teaser',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 5,
+                'eval' => 'trim',
+            ],
+        ],
+        'description' => [
+            'exclude' => 1,
+            'label' => $_LLL_db . ':tx_contacts_domain_model_company.description',
+            'config' => [
+                'type' => 'text',
+                'enableRichtext' => true,
+            ],
+        ],
+        'meta_description' => [
+            'exclude' => 1,
+            'label' => $_LLL_db . ':tx_contacts_domain_model_company.meta_description',
+            'config' => [
+                'type' => 'text',
+                'cols' => 40,
+                'rows' => 5,
+                'eval' => 'trim',
+            ],
+        ],
         'tt_content' => [
             'exclude' => 1,
             'label' => $_LLL_db . ':tx_contacts_domain_model_company.tt_content',
@@ -435,7 +468,7 @@ return [
                 'inline' => [
                     'inlineNewButtonStyle' => 'display: inline-block;',
                 ],
-            ]
+            ],
         ],
     ],
 ];

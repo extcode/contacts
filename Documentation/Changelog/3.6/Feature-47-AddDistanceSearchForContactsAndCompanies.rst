@@ -13,4 +13,4 @@ The plugin allows you to add a search plugin for addresses to a
 page. The customer can enter a (german) zip address and a radius.
 All contacts and companies within the specified radius are displayed.
 
-.. index:: Frontend, Backend
+.. index:: API, Frontend, Backend, Fluid

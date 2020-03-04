@@ -5,7 +5,7 @@ namespace Extcode\Contacts\Domain\Model;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Contact extends AbstractContact
 {
     /**
      * @var string
@@ -40,45 +40,9 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $companies;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Address>
-     */
-    protected $addresses;
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Phone>
-     */
-    protected $phoneNumbers;
-
-    /**
-     * @var string
-     */
-    protected $email = '';
-
-    /**
-     * @var string
-     */
-    protected $uri = '';
-
-    /**
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected $photo;
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Domain\Model\Category
-     */
-    protected $category;
-
-    /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category>
-     */
-    protected $categories;
-
-    /**
-     * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\TtContent>
-     */
-    protected $ttContent;
 
     /**
      * @param string $salutation
@@ -192,7 +156,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $seperator
      * @return string
      */
-    public function getFullName(string $seperator = ' ')
+    public function getFullName(string $seperator)
     {
         return implode($seperator, [$this->getFirstName(), $this->getLastName()]);
     }
@@ -201,7 +165,7 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $seperator
      * @return string
      */
-    public function getTitleFullName(string $seperator = ' ')
+    public function getTitleFullName(string $seperator)
     {
         $titleFullName = [];
         if ($this->getTitle()) {
@@ -265,102 +229,6 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * @param Address $address
-     */
-    public function addAddress(Address $address)
-    {
-        $this->addresses->attach($address);
-    }
-
-    /**
-     * @param Address $address
-     */
-    public function removeAddress(Address $address)
-    {
-        $this->addresses->detach($address);
-    }
-
-    /**
-     * @return ObjectStorage<Address> $addresses
-     */
-    public function getAddresses()
-    {
-        return $this->addresses;
-    }
-
-    /**
-     * @param ObjectStorage<Address> $addresses
-     */
-    public function setAddresses(ObjectStorage $addresses)
-    {
-        $this->addresses = $addresses;
-    }
-
-    /**
-     * @param Phone $phoneNumber
-     */
-    public function addPhoneNumber(Phone $phoneNumber)
-    {
-        $this->phoneNumbers->attach($phoneNumber);
-    }
-
-    /**
-     * @param Phone $phoneNumber
-     */
-    public function removePhoneNumber(Phone $phoneNumber)
-    {
-        $this->phoneNumbers->detach($phoneNumber);
-    }
-
-    /**
-     * @return ObjectStorage<Phone> $phoneNumbers
-     */
-    public function getPhoneNumbers()
-    {
-        return $this->phoneNumbers;
-    }
-
-    /**
-     * @param ObjectStorage<Phone> $phoneNumbers
-     */
-    public function setPhoneNumbers(ObjectStorage $phoneNumbers)
-    {
-        $this->phoneNumbers = $phoneNumbers;
-    }
-
-    /**
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string $email
-     */
-    public function setEmail(string $email)
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return string
-     */
-    public function getUri()
-    {
-        return $this->uri;
-    }
-
-    /**
-     * @param string $uri
-     */
-    public function setUri(string $uri)
-    {
-        $this->uri = $uri;
-    }
-
-    /**
      * @return FileReference
      */
     public function getPhoto()
@@ -374,97 +242,5 @@ class Contact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setPhoto(FileReference $photo)
     {
         $this->photo = $photo;
-    }
-
-    /**
-     * Returns the Main Category
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\Category
-     */
-    public function getCategory()
-    {
-        return $this->category;
-    }
-
-    /**
-     * Sets the Main Category
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
-     */
-    public function setCategory($category)
-    {
-        $this->category = $category;
-    }
-
-    /**
-     * Adds a Product Category
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
-     */
-    public function addCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
-    {
-        $this->categories->attach($category);
-    }
-
-    /**
-     * Removes a Category
-     *
-     * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
-     */
-    public function removeCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
-    {
-        $this->categories->detach($category);
-    }
-
-    /**
-     * Returns the Categories
-     *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
-     */
-    public function getCategories()
-    {
-        return $this->categories;
-    }
-
-    /**
-     * Returns the First Category
-     *
-     * @return \TYPO3\CMS\Extbase\Domain\Model\Category
-     */
-    public function getFirstCategory()
-    {
-        $categories = $this->getCategories();
-        if ($categories !== null) {
-            $categories->rewind();
-            return $categories->current();
-        }
-
-        return null;
-    }
-
-    /**
-     * Sets the Categories
-     *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
-     */
-    public function setCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories)
-    {
-        $this->categories = $categories;
-    }
-
-    /**
-     * @return ObjectStorage
-     */
-    public function getTtContent()
-    {
-        return $this->ttContent;
-    }
-
-    /**
-     * @param ObjectStorage $ttContent
-     */
-    public function setTtContent(ObjectStorage $ttContent)
-    {
-        $this->ttContent = $ttContent;
     }
 }

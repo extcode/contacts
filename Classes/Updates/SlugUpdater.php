@@ -15,8 +15,9 @@ use TYPO3\CMS\Install\Updates\UpgradeWizardInterface;
 class SlugUpdater implements UpgradeWizardInterface, ChattyInterface
 {
     const IDENTIFIER = 'contactsSlugUpdater';
-    const TABLE_NAME_CONTACT = 'tx_contacts_domain_model_contact';
+    const TABLE_NAME_ADDRESS = 'tx_contacts_domain_model_address';
     const TABLE_NAME_COMPANY = 'tx_contacts_domain_model_company';
+    const TABLE_NAME_CONTACT = 'tx_contacts_domain_model_contact';
 
     /**
      * Return the identifier for this wizard
@@ -56,10 +57,19 @@ class SlugUpdater implements UpgradeWizardInterface, ChattyInterface
      */
     public function updateNecessary(): bool
     {
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable(self::TABLE_NAME_CONTACT);
+        $updateAddress = $this->updateNecessaryForTable(self::TABLE_NAME_ADDRESS);
+        $updateCompany = $this->updateNecessaryForTable(self::TABLE_NAME_COMPANY);
+        $updateContact = $this->updateNecessaryForTable(self::TABLE_NAME_CONTACT);
+
+        return $updateAddress || $updateCompany || $updateContact;
+    }
+
+    protected function updateNecessaryForTable(string $tableName): bool
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable($tableName);
         $queryBuilder->getRestrictions()->removeAll();
-        $elementCountContact = $queryBuilder->count('uid')
-            ->from(self::TABLE_NAME_CONTACT)
+        $elementCount = $queryBuilder->count('uid')
+            ->from($tableName)
             ->where(
                 $queryBuilder->expr()->orX(
                     $queryBuilder->expr()->eq('path_segment', $queryBuilder->createNamedParameter('', \PDO::PARAM_STR)),
@@ -68,19 +78,7 @@ class SlugUpdater implements UpgradeWizardInterface, ChattyInterface
             )
             ->execute()->fetchColumn(0);
 
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable(self::TABLE_NAME_COMPANY);
-        $queryBuilder->getRestrictions()->removeAll();
-        $elementCountCompany = $queryBuilder->count('uid')
-            ->from(self::TABLE_NAME_COMPANY)
-            ->where(
-                $queryBuilder->expr()->orX(
-                    $queryBuilder->expr()->eq('path_segment', $queryBuilder->createNamedParameter('', \PDO::PARAM_STR)),
-                    $queryBuilder->expr()->isNull('path_segment')
-                )
-            )
-            ->execute()->fetchColumn(0);
-
-        return (bool)($elementCountContact + $elementCountCompany);
+        return (bool)$elementCount;
     }
 
     /**
@@ -90,8 +88,9 @@ class SlugUpdater implements UpgradeWizardInterface, ChattyInterface
      */
     public function executeUpdate(): bool
     {
-        $this->updatePathSegment(self::TABLE_NAME_CONTACT);
+        $this->updatePathSegment(self::TABLE_NAME_ADDRESS);
         $this->updatePathSegment(self::TABLE_NAME_COMPANY);
+        $this->updatePathSegment(self::TABLE_NAME_CONTACT);
 
         return true;
     }

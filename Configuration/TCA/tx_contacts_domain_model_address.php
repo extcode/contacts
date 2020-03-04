@@ -38,6 +38,7 @@ return [
         '1' => [
             'showitem' => '
                 title,
+                path_segment,
                 type,
                 --palette--;' . $_LLL_db . ':tx_contacts_domain_model_company.palette.address;address,
                 post_box,
@@ -160,6 +161,26 @@ return [
                 'eval' => 'trim'
             ],
         ],
+
+        'path_segment' => [
+            'exclude' => true,
+            'label' => $_LLL_db . ':tx_contacts_domain_model_address.path_segment',
+            'config' => [
+                'type' => 'slug',
+                'size' => 50,
+                'generatorOptions' => [
+                    'fields' => [['title', 'uid']],
+                    'fieldSeparator' => '-',
+                    'replacements' => [
+                        '/' => '',
+                    ],
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'uniqueInSite',
+                'default' => '',
+            ],
+        ],
+
         'type' => [
             'exclude' => 0,
             'label' => $_LLL_db . ':tx_contacts_domain_model_address.type',

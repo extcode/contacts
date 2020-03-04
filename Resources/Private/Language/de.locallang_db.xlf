@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2020-03-04T08:14:00Z" product-name="contacts">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2020-03-04T16:43:00Z" product-name="contacts">
         <header/>
         <body>
 
@@ -240,6 +240,10 @@
             <trans-unit id="tx_contacts_domain_model_address.title">
                 <source>Title</source>
                 <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts_domain_model_address.path_segment">
+                <source>URL Segment</source>
+                <target>URL Segment</target>
             </trans-unit>
             <trans-unit id="tx_contacts_domain_model_address.type">
                 <source>Type</source>

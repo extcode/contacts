@@ -152,6 +152,8 @@ CREATE TABLE tx_contacts_domain_model_address (
     contact int(11) unsigned DEFAULT '0' NOT NULL,
     company int(11) unsigned DEFAULT '0' NOT NULL,
 
+    path_segment varchar(2048),
+
     street varchar(255) DEFAULT '' NOT NULL,
     street_number varchar(255) DEFAULT '' NOT NULL,
     zip varchar(255) DEFAULT '' NOT NULL,

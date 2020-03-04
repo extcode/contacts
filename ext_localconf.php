@@ -74,6 +74,10 @@ $_LLL_be = 'LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf';
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['contacts'][]
     = 'Extcode\\Contacts\\ViewHelpers';
 
+// update wizard for slugs
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['ext/install']['update']['contactsSlugUpdater'] =
+    \Extcode\Contacts\Updates\SlugUpdater::class;
+
 // clearCachePostProc Hook
 
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc']['contacts_clearcache'] =

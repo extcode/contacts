@@ -39,7 +39,7 @@ abstract class AbstractContact extends \TYPO3\CMS\Extbase\DomainObject\AbstractE
     /**
      * @var string
      */
-    protected $meta_description = '';
+    protected $metaDescription = '';
 
     /**
      * @TYPO3\CMS\Extbase\Annotation\ORM\Lazy
@@ -190,15 +190,15 @@ abstract class AbstractContact extends \TYPO3\CMS\Extbase\DomainObject\AbstractE
      */
     public function getMetaDescription(): string
     {
-        return $this->meta_description;
+        return $this->metaDescription;
     }
 
     /**
-     * @param string $meta_description
+     * @param string $metaDescription
      */
-    public function setMetaDescription(string $meta_description)
+    public function setMetaDescription(string $metaDescription)
     {
-        $this->meta_description = $meta_description;
+        $this->metaDescription = $metaDescription;
     }
 
     /**

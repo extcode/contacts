@@ -22,6 +22,7 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         $companyAddresses = $this->findCompanyAddressesByDistance($searchWord);
         $contactAddresses = $this->findContactAddressesByDistance($searchWord);
+        $countries = $this->findCountries();
 
         if ($lat === 0.0 || $lon === 0.0 || $radius === 0) {
             $addressesInDistance = array_merge($companyAddresses, $contactAddresses);
@@ -60,10 +61,12 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         foreach ($addressesInDistance as $distance => $address) {
             if ($addressesInDistance[$distance]['contact']) {
                 $addressesInDistance[$distance]['contact'] = $contacts[$address['contact']];
+                $addressesInDistance[$distance]['country']= $countries[$address['country']];
             }
 
             if ($addressesInDistance[$distance]['company']) {
                 $addressesInDistance[$distance]['company'] = $companies[$address['company']];
+                $addressesInDistance[$distance]['country']= $countries[$address['country']];
             }
         }
 
@@ -265,5 +268,24 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         }
 
         return $queryBuilder->execute()->fetchAll();
+    }
+
+    /**
+     * @return mixed[]
+     */
+    protected function findCountries()
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_contacts_domain_model_country');
+        $queryResult = $queryBuilder
+            ->select('uid', 'pid', 'iso2', 'iso3', 'name', 'tld', 'phone_country_code')
+            ->from('tx_contacts_domain_model_country')
+            ->execute()
+            ->fetchAll();
+
+        $uids = array_column($queryResult, 'uid');
+        $queryResult = array_combine($uids, $queryResult);
+
+        return $queryResult;
     }
 }

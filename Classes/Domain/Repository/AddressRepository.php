@@ -25,8 +25,8 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             ->from('tx_contacts_domain_model_address')
             ->where(
                 $queryBuilder->expr()->andX(
-                    $queryBuilder->expr()->gt('lat', 0.0),
-                    $queryBuilder->expr()->gt('lon', 0.0)
+                    $queryBuilder->expr()->neq('lat', 0.0),
+                    $queryBuilder->expr()->neq('lon', 0.0)
                 )
             )
             ->execute()->fetchAll();
@@ -100,6 +100,7 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     /**
      * @param string $tableName
      * @param array $ids
+     *
      * @return array
      */
     protected function getContacts(string $tableName, array $ids): array

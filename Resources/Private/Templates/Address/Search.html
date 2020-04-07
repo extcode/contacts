@@ -10,6 +10,13 @@
                 <f:form.hidden
                         name="tx_contacts_addresssearch[country]"
                         value="DE"/>
+                <f:if condition="{settings.filter.searchWord} == 'enabled'">
+                    <div class="field">
+                        <f:form.textfield name="tx_contacts_addresssearch[searchWord]"
+                                          class="form-control"
+                                          value="{searchWord}"/>
+                    </div>
+                </f:if>
                 <div class="field">
                     <f:form.textfield name="tx_contacts_addresssearch[zip]"
                                       class="form-control"

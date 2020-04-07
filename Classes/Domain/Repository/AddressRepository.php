@@ -11,30 +11,31 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param float $lat
      * @param float $lon
      * @param int $radius
+     * @param int $pid
+     * @param string $searchWord
      *
      * @return array
      */
-    public function findByDistance(float $lat, float $lon, int $radius): array
+    public function findByDistance(float $lat, float $lon, int $radius, int $pid, string $searchWord): array
     {
         $addressesInDistance = [];
 
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getQueryBuilderForTable('tx_contacts_domain_model_address');
-        $addresses = $queryBuilder
-            ->select('*')
-            ->from('tx_contacts_domain_model_address')
-            ->where(
-                $queryBuilder->expr()->andX(
-                    $queryBuilder->expr()->neq('lat', 0.0),
-                    $queryBuilder->expr()->neq('lon', 0.0)
-                )
-            )
-            ->execute()->fetchAll();
+        $companyAddresses = $this->findCompanyAddressesByDistance($searchWord);
+        $contactAddresses = $this->findContactAddressesByDistance($searchWord);
 
         if ($lat === 0.0 || $lon === 0.0 || $radius === 0) {
-            $addressesInDistance = $addresses;
+            $addressesInDistance = array_merge($companyAddresses, $contactAddresses);
         } else {
-            foreach ($addresses as $address) {
+            foreach ($companyAddresses as $address) {
+                $distance = $this->getDistance($lat, $lon, $address['lat'], $address['lon']);
+
+                if ($distance < $radius) {
+                    $address['distance'] = $distance;
+
+                    $addressesInDistance[(string)$distance] = $address;
+                }
+            }
+            foreach ($contactAddresses as $address) {
                 $distance = $this->getDistance($lat, $lon, $address['lat'], $address['lon']);
 
                 if ($distance < $radius) {
@@ -45,16 +46,16 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
         }
 
-        $contactUids = array_column($addresses, 'uid', 'contact');
-        unset($contactUids[0]);
-        $contactUids = array_flip($contactUids);
-
-        $companyUids = array_column($addresses, 'uid', 'company');
+        $companyUids = array_column($companyAddresses, 'uid', 'company');
         unset($companyUids[0]);
         $companyUids = array_flip($companyUids);
 
-        $contacts = $this->getContacts('tx_contacts_domain_model_contact', $contactUids);
+        $contactUids = array_column($contactAddresses, 'uid', 'contact');
+        unset($contactUids[0]);
+        $contactUids = array_flip($contactUids);
+
         $companies = $this->getContacts('tx_contacts_domain_model_company', $companyUids);
+        $contacts = $this->getContacts('tx_contacts_domain_model_contact', $contactUids);
 
         foreach ($addressesInDistance as $distance => $address) {
             if ($addressesInDistance[$distance]['contact']) {
@@ -109,24 +110,25 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             return [];
         }
 
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getQueryBuilderForTable($tableName);
-        $queryResult = $queryBuilder
-            ->select('*')
-            ->from($tableName)
-            ->where(
-                $queryBuilder->expr()->in('uid', $ids)
-            )
-            ->execute()->fetchAll();
-
-        $uids = array_column($queryResult, 'uid');
-        $queryResult = array_combine($uids, $queryResult);
-
         if ($tableName === 'tx_contacts_domain_model_contact') {
             $type = 'contact';
         } elseif ($tableName === 'tx_contacts_domain_model_company') {
             $type = 'company';
         }
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable($tableName);
+        $queryBuilder
+            ->select('*')
+            ->from($tableName)
+            ->where(
+                $queryBuilder->expr()->in('uid', $ids)
+            );
+
+        $queryResult = $queryBuilder->execute()->fetchAll();
+
+        $uids = array_column($queryResult, 'uid');
+        $queryResult = array_combine($uids, $queryResult);
 
         if ($type) {
             $phones = $this->getPhones($type, $ids);
@@ -167,5 +169,81 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $queryResult = array_combine($uids, $queryResult);
 
         return $queryResult;
+    }
+
+    /**
+     * @param string $searchWord
+     *
+     * @return mixed[]
+     */
+    protected function findCompanyAddressesByDistance(string $searchWord)
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_contacts_domain_model_address');
+        $queryBuilder
+            ->select('tx_contacts_domain_model_address.*')
+            ->from('tx_contacts_domain_model_address')
+            ->where(
+                $queryBuilder->expr()->andX(
+                    $queryBuilder->expr()->neq('lat', 0.0),
+                    $queryBuilder->expr()->neq('lon', 0.0)
+                )
+            )
+            ->leftJoin(
+                'tx_contacts_domain_model_address',
+                'tx_contacts_domain_model_company',
+                'company',
+                $queryBuilder->expr()->eq('tx_contacts_domain_model_address.company', $queryBuilder->quoteIdentifier('company.uid'))
+            );
+
+        if (!empty($searchWord)) {
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->like(
+                    'company.name',
+                    $queryBuilder->createNamedParameter('%' . $queryBuilder->escapeLikeWildcards($searchWord) . '%')
+                )
+            );
+        }
+
+        return $queryBuilder->execute()->fetchAll();
+    }
+
+    /**
+     * @param string $searchWord
+     *
+     * @return mixed[]
+     */
+    protected function findContactAddressesByDistance(string $searchWord)
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('tx_contacts_domain_model_address');
+        $queryBuilder
+            ->select('tx_contacts_domain_model_address.*')
+            ->from('tx_contacts_domain_model_address')
+            ->where(
+                $queryBuilder->expr()->andX(
+                    $queryBuilder->expr()->neq('lat', 0.0),
+                    $queryBuilder->expr()->neq('lon', 0.0)
+                )
+            )
+            ->leftJoin(
+                'tx_contacts_domain_model_address',
+                'tx_contacts_domain_model_contact',
+                'contact',
+                $queryBuilder->expr()->eq('tx_contacts_domain_model_address.contact', $queryBuilder->quoteIdentifier('contact.uid'))
+            );
+
+        if (!empty($searchWord)) {
+            $queryBuilder->andWhere(
+                $queryBuilder->expr()->orX(
+                    $queryBuilder->expr()->like(
+                        'contact.first_name',
+                        $queryBuilder->createNamedParameter('%' . $queryBuilder->escapeLikeWildcards($searchWord) . '%')
+                    )
+                )
+            );
+        }
+
+        return $queryBuilder->execute()->fetchAll();
     }
 }

@@ -56,3 +56,11 @@ plugin.tx_contacts {
         }
     }
 }
+
+plugin.tx_contacts_addresssearch {
+    settings {
+        filter {
+            searchWord = disabled
+        }
+    }
+}

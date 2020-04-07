@@ -181,7 +181,7 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getQueryBuilderForTable('tx_contacts_domain_model_address');
         $queryBuilder
-            ->select('tx_contacts_domain_model_address.*')
+            ->select('tx_contacts_domain_model_address.*', 'sysfileref.uid as sys_file_reference_id')
             ->from('tx_contacts_domain_model_address')
             ->where(
                 $queryBuilder->expr()->andX(
@@ -194,6 +194,16 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 'tx_contacts_domain_model_company',
                 'company',
                 $queryBuilder->expr()->eq('tx_contacts_domain_model_address.company', $queryBuilder->quoteIdentifier('company.uid'))
+            )
+            ->join(
+                'company',
+                'sys_file_reference',
+                'sysfileref',
+                $queryBuilder->expr()->andX(
+                    $queryBuilder->expr()->eq('company.uid', $queryBuilder->quoteIdentifier('sysfileref.uid_foreign')),
+                    $queryBuilder->expr()->eq('sysfileref.tablenames', $queryBuilder->createNamedParameter('tx_contacts_domain_model_company')),
+                    $queryBuilder->expr()->eq('sysfileref.fieldname', $queryBuilder->createNamedParameter('logo'))
+                )
             );
 
         if (!empty($searchWord)) {
@@ -218,7 +228,7 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getQueryBuilderForTable('tx_contacts_domain_model_address');
         $queryBuilder
-            ->select('tx_contacts_domain_model_address.*')
+            ->select('tx_contacts_domain_model_address.*', 'sysfileref.uid as sys_file_reference_id')
             ->from('tx_contacts_domain_model_address')
             ->where(
                 $queryBuilder->expr()->andX(
@@ -231,6 +241,16 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 'tx_contacts_domain_model_contact',
                 'contact',
                 $queryBuilder->expr()->eq('tx_contacts_domain_model_address.contact', $queryBuilder->quoteIdentifier('contact.uid'))
+            )
+            ->join(
+                'contact',
+                'sys_file_reference',
+                'sysfileref',
+                $queryBuilder->expr()->andX(
+                    $queryBuilder->expr()->eq('contact.uid', $queryBuilder->quoteIdentifier('sysfileref.uid_foreign')),
+                    $queryBuilder->expr()->eq('sysfileref.tablenames', $queryBuilder->createNamedParameter('tx_contacts_domain_model_contact')),
+                    $queryBuilder->expr()->eq('sysfileref.fieldname', $queryBuilder->createNamedParameter('photo'))
+                )
             );
 
         if (!empty($searchWord)) {

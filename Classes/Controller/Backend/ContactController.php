@@ -2,6 +2,13 @@
 
 namespace Extcode\Contacts\Controller\Backend;
 
+/*
+ * This file is part of the package extcode/cart.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE file that was distributed with this source code.
+ */
+
 use Extcode\Contacts\Domain\Model\Contact;
 use Extcode\Contacts\Domain\Repository\ContactRepository;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;

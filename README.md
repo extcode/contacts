@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/extcode/contacts.svg?branch=master)](https://travis-ci.org/extcode/contacts)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/0e71b0ff657e475f8b4af581e13ce3b8)](https://www.codacy.com/app/extcode/contacts?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=extcode/contacts&amp;utm_campaign=Badge_Grade)
 
-Contacts is a TYPO3 extension for handling contacts (companies, persons).
+EXT:contacts is a TYPO3 extension for handling contacts (companies, persons).
 
 ## 1. Features
 
@@ -48,8 +48,9 @@ News uses **semantic versioning** which basically means for you, that
 ## 4. Sponsoring
 
 *  Ask for an invoice.
-*  [Patreon](https://patreon.com/ext_cart)
-*  [PayPal.Me](https://paypal.me/extcart)
+* [GitHub Sponsors](https://github.com/sponsors/extcode)
+* [PayPal.Me](https://paypal.me/extcart)
+* [Patreon](https://patreon.com/ext_cart)
 
 [1]: https://docs.typo3.org/typo3cms/extensions/cart/
 [2]: https://getcomposer.org/

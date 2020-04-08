@@ -3,7 +3,7 @@
 .. _start:
 
 ===========================
-EXT: Contacts
+EXT:contacts
 ===========================
 
 .. image:: Images/contacts_logo.png
@@ -23,7 +23,7 @@ EXT: Contacts
       en
 
    :Description:
-      Contacts is a TYPO3 extension for handling contacts (companies, persons).
+      EXT:contacts is a TYPO3 extension for handling contacts (companies, persons).
       Persons and companies can be related to each other.
       Both can have multiple addresses and other contact data.
 

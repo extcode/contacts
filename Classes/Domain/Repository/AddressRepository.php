@@ -32,7 +32,13 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $countries = $this->findCountries();
 
         if ($lat === 0.0 || $lon === 0.0 || $radius === 0) {
-            $addressesInDistance = array_merge($companyAddresses, $contactAddresses);
+            $uids = array_column($companyAddresses, 'uid');
+            $companyAddresses = array_combine($uids, $companyAddresses);
+
+            $uids = array_column($contactAddresses, 'uid');
+            $contactAddresses = array_combine($uids, $contactAddresses);
+
+            $addressesInDistance = $companyAddresses + $contactAddresses;
         } else {
             foreach ($companyAddresses as $address) {
                 $distance = $this->getDistance($lat, $lon, $address['lat'], $address['lon']);
@@ -191,38 +197,40 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getQueryBuilderForTable('tx_contacts_domain_model_address');
         $queryBuilder
-            ->select('tx_contacts_domain_model_address.*', 'sysfileref.uid as sys_file_reference_id')
+            ->select('tx_contacts_domain_model_address.*')
             ->from('tx_contacts_domain_model_address')
             ->where(
                 $queryBuilder->expr()->andX(
                     $queryBuilder->expr()->neq('lat', 0.0),
                     $queryBuilder->expr()->neq('lon', 0.0)
                 )
-            )
-            ->leftJoin(
-                'tx_contacts_domain_model_address',
-                'tx_contacts_domain_model_company',
-                'company',
-                $queryBuilder->expr()->eq('tx_contacts_domain_model_address.company', $queryBuilder->quoteIdentifier('company.uid'))
-            )
-            ->join(
-                'company',
-                'sys_file_reference',
-                'sysfileref',
-                $queryBuilder->expr()->andX(
-                    $queryBuilder->expr()->eq('company.uid', $queryBuilder->quoteIdentifier('sysfileref.uid_foreign')),
-                    $queryBuilder->expr()->eq('sysfileref.tablenames', $queryBuilder->createNamedParameter('tx_contacts_domain_model_company')),
-                    $queryBuilder->expr()->eq('sysfileref.fieldname', $queryBuilder->createNamedParameter('logo'))
-                )
             );
 
         if (!empty($searchWord)) {
-            $queryBuilder->andWhere(
-                $queryBuilder->expr()->like(
-                    'company.name',
-                    $queryBuilder->createNamedParameter('%' . $queryBuilder->escapeLikeWildcards($searchWord) . '%')
+            $queryBuilder
+                ->join(
+                    'tx_contacts_domain_model_address',
+                    'tx_contacts_domain_model_company',
+                    'company',
+                    $queryBuilder->expr()->eq('tx_contacts_domain_model_address.company', $queryBuilder->quoteIdentifier('company.uid'))
                 )
-            );
+                ->join(
+                    'company',
+                    'sys_file_reference',
+                    'sysfileref',
+                    $queryBuilder->expr()->andX(
+                        $queryBuilder->expr()->eq('company.uid', $queryBuilder->quoteIdentifier('sysfileref.uid_foreign')),
+                        $queryBuilder->expr()->eq('sysfileref.tablenames', $queryBuilder->createNamedParameter('tx_contacts_domain_model_company')),
+                        $queryBuilder->expr()->eq('sysfileref.fieldname', $queryBuilder->createNamedParameter('logo'))
+                    )
+                )
+                ->addSelect('sysfileref.uid as sys_file_reference_id')
+                ->andWhere(
+                    $queryBuilder->expr()->like(
+                        'company.name',
+                        $queryBuilder->createNamedParameter('%' . $queryBuilder->escapeLikeWildcards($searchWord) . '%')
+                    )
+                );
         }
 
         return $queryBuilder->execute()->fetchAll();
@@ -238,40 +246,46 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getQueryBuilderForTable('tx_contacts_domain_model_address');
         $queryBuilder
-            ->select('tx_contacts_domain_model_address.*', 'sysfileref.uid as sys_file_reference_id')
+            ->select('tx_contacts_domain_model_address.*')
             ->from('tx_contacts_domain_model_address')
             ->where(
                 $queryBuilder->expr()->andX(
                     $queryBuilder->expr()->neq('lat', 0.0),
                     $queryBuilder->expr()->neq('lon', 0.0)
                 )
-            )
-            ->leftJoin(
-                'tx_contacts_domain_model_address',
-                'tx_contacts_domain_model_contact',
-                'contact',
-                $queryBuilder->expr()->eq('tx_contacts_domain_model_address.contact', $queryBuilder->quoteIdentifier('contact.uid'))
-            )
-            ->join(
-                'contact',
-                'sys_file_reference',
-                'sysfileref',
-                $queryBuilder->expr()->andX(
-                    $queryBuilder->expr()->eq('contact.uid', $queryBuilder->quoteIdentifier('sysfileref.uid_foreign')),
-                    $queryBuilder->expr()->eq('sysfileref.tablenames', $queryBuilder->createNamedParameter('tx_contacts_domain_model_contact')),
-                    $queryBuilder->expr()->eq('sysfileref.fieldname', $queryBuilder->createNamedParameter('photo'))
-                )
             );
 
         if (!empty($searchWord)) {
-            $queryBuilder->andWhere(
-                $queryBuilder->expr()->orX(
-                    $queryBuilder->expr()->like(
-                        'contact.first_name',
-                        $queryBuilder->createNamedParameter('%' . $queryBuilder->escapeLikeWildcards($searchWord) . '%')
+            $queryBuilder
+                ->join(
+                    'tx_contacts_domain_model_address',
+                    'tx_contacts_domain_model_contact',
+                    'contact',
+                    $queryBuilder->expr()->eq('tx_contacts_domain_model_address.contact', $queryBuilder->quoteIdentifier('contact.uid'))
+                )
+                ->join(
+                    'contact',
+                    'sys_file_reference',
+                    'sysfileref',
+                    $queryBuilder->expr()->andX(
+                        $queryBuilder->expr()->eq('contact.uid', $queryBuilder->quoteIdentifier('sysfileref.uid_foreign')),
+                        $queryBuilder->expr()->eq('sysfileref.tablenames', $queryBuilder->createNamedParameter('tx_contacts_domain_model_contact')),
+                        $queryBuilder->expr()->eq('sysfileref.fieldname', $queryBuilder->createNamedParameter('photo'))
                     )
                 )
-            );
+                ->addSelect('sysfileref.uid as sys_file_reference_id')
+                ->andWhere(
+                    $queryBuilder->expr()->orX(
+                        $queryBuilder->expr()->like(
+                            'contact.first_name',
+                            $queryBuilder->createNamedParameter('%' . $queryBuilder->escapeLikeWildcards($searchWord) . '%')
+                        ),
+                        $queryBuilder->expr()->like(
+                            'contact.last_name',
+                            $queryBuilder->createNamedParameter('%' . $queryBuilder->escapeLikeWildcards($searchWord) . '%')
+                        )
+                    )
+                );
         }
 
         return $queryBuilder->execute()->fetchAll();

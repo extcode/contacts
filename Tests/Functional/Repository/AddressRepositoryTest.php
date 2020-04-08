@@ -75,4 +75,85 @@ class NewsRepositoryTest extends FunctionalTestCase
             $addresses->count()
         );
     }
+
+    /**
+     * @test
+     */
+    public function findByDistanceWithoutCoordinates(): void
+    {
+        $addresses = $this->addressRepository->findByDistance(0.0, 0.0, 10, 0, '');
+
+        $this->assertSame(
+            16,
+            count($addresses)
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function findByDistanceWithoutRadius(): void
+    {
+        // Berlin Alexanderplatz
+        $lat = 52.5225068;
+        $lon = 13.4206053;
+
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 0, 0, '');
+
+        $this->assertSame(
+            16,
+            count($addresses)
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function findByDistanceWithinRadius(): void
+    {
+        // Berlin Alexanderplatz
+        $lat = 52.5225068;
+        $lon = 13.4206053;
+
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 1, 0, '');
+        $this->assertCount(
+            0,
+            $addresses
+        );
+
+        // $addresses should contains Berlin
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 10, 0, '');
+        $this->assertCount(
+            1,
+            $addresses
+        );
+
+        // $addresses should contains Berlin
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 20, 0, '');
+        $this->assertCount(
+            1,
+            $addresses
+        );
+
+        // $addresses should contains Berlin, Brandenburg
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 50, 0, '');
+        $this->assertCount(
+            2,
+            $addresses
+        );
+
+        // $addresses should contains Berlin, Brandenburg, Sachsen-Anhalt
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 150, 0, '');
+        $this->assertCount(
+            3,
+            $addresses
+        );
+
+        // $addresses should contains Berlin, Brandenburg, Sachsen-Anhalt, Sachsen, Mecklenburg-Vorpommern, Thüringen
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 200, 0, '');
+        $this->assertCount(
+            5,
+            $addresses
+        );
+    }
 }

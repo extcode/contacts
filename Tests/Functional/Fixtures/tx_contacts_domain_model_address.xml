@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+    <tx_contacts_domain_model_address>
+        <uid>1</uid>
+        <pid>0</pid>
+        <title>Landtag von Baden-Württemberg</title>
+        <type>POSTAL</type>
+        <street>Konrad-Adenauer-Straße</street>
+        <street_number>3</street_number>
+        <zip>70173</zip>
+        <city>Stuttgart</city>
+        <region>Baden-Württemberg</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>2</uid>
+        <pid>0</pid>
+        <title>Bayerischer Landtag</title>
+        <addition1>Maximilianeum</addition1>
+        <type>POSTAL</type>
+        <street>Max-Planck-Straße</street>
+        <street_number>1</street_number>
+        <zip>81675</zip>
+        <city>München</city>
+        <region>Bayern</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>3</uid>
+        <pid>0</pid>
+        <title>Abgeordnetenhaus von Berlin</title>
+        <type>POSTAL</type>
+        <street>Niederkirchnerstraße</street>
+        <street_number>5</street_number>
+        <zip>10117</zip>
+        <city>Berlin</city>
+        <region>Berlin</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>4</uid>
+        <pid>0</pid>
+        <title>Landtag Brandenburg</title>
+        <type>POSTAL</type>
+        <street>Alter Markt</street>
+        <street_number>1</street_number>
+        <zip>14467</zip>
+        <city>Potsdam</city>
+        <region>Brandenburg</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>5</uid>
+        <pid>0</pid>
+        <title>Bremische Bürgerschaft</title>
+        <type>POSTAL</type>
+        <street>Am Markt</street>
+        <street_number>20</street_number>
+        <zip>28195</zip>
+        <city>Bremen</city>
+        <region>Bremen</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>6</uid>
+        <pid>0</pid>
+        <title>Bürgerschaft der Freien und Hansestadt Hamburg</title>
+        <addition1>Bürgerschaftskanzlei</addition1>
+        <type>POSTAL</type>
+        <street>Rathausmarkt</street>
+        <street_number>1</street_number>
+        <zip>20095</zip>
+        <city>Hamburg</city>
+        <region>Hamburg</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>7</uid>
+        <pid>0</pid>
+        <title>Hessischer Landtag</title>
+        <type>POSTAL</type>
+        <street>Schlossplatz</street>
+        <street_number>1–3</street_number>
+        <zip>65183</zip>
+        <city>Wiesbaden</city>
+        <region>Hessen</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>8</uid>
+        <pid>0</pid>
+        <title>Landtag Mecklenburg-Vorpommern</title>
+        <type>POSTAL</type>
+        <street>Lennéstraße</street>
+        <street_number>1</street_number>
+        <zip>19053</zip>
+        <city>Schwerin</city>
+        <region>Mecklenburg-Vorpommern</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>9</uid>
+        <pid>0</pid>
+        <title>Niedersächsischer Landtag</title>
+        <type>POSTAL</type>
+        <street>Hannah-Arendt-Platz</street>
+        <street_number>1</street_number>
+        <zip>30159</zip>
+        <city>Hannover</city>
+        <region>Niedersachsen</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>10</uid>
+        <pid>0</pid>
+        <title>Landtag NRW</title>
+        <type>POSTAL</type>
+        <street>Platz des Landtags</street>
+        <street_number>1</street_number>
+        <zip>40221</zip>
+        <city>Düsseldorf</city>
+        <region>Nordrhein-Westfalen</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>11</uid>
+        <pid>0</pid>
+        <title>Landtag Rheinland-Pfalz</title>
+        <type>POSTAL</type>
+        <street>Platz der Mainzer Republik</street>
+        <street_number>1</street_number>
+        <zip>55116</zip>
+        <city>Mainz</city>
+        <region>Rheinland-Pfalz</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>12</uid>
+        <pid>0</pid>
+        <title>Landtag des Saarlandes</title>
+        <type>POSTAL</type>
+        <street>Franz-Josef-Röder Straße</street>
+        <street_number>7</street_number>
+        <zip>66119</zip>
+        <city>Saarbrücken</city>
+        <region>Saarland</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>13</uid>
+        <pid>0</pid>
+        <title>Sächsischer Landtag</title>
+        <type>POSTAL</type>
+        <street>Bernhard-von-Lindenau-Platz</street>
+        <street_number>1</street_number>
+        <zip>01067</zip>
+        <city>Dresden</city>
+        <region>Sachsen</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>14</uid>
+        <pid>0</pid>
+        <title>Landtag von Sachsen-Anhalt</title>
+        <type>POSTAL</type>
+        <street>Domplatz</street>
+        <street_number>6-9</street_number>
+        <zip>39104</zip>
+        <city>Magdeburg</city>
+        <region>Sachsen-Anhalt</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>15</uid>
+        <pid>0</pid>
+        <title>Schleswig-Holsteinischer Landtag</title>
+        <type>POSTAL</type>
+        <street>Düsternbrooker Weg</street>
+        <street_number>70</street_number>
+        <zip>24171</zip>
+        <city>Kiel</city>
+        <region>Schleswig-Holstein</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>16</uid>
+        <pid>0</pid>
+        <title>Thüringer Landtag </title>
+        <type>POSTAL</type>
+        <street>Jürgen-Fuchs-Straße</street>
+        <street_number>1</street_number>
+        <zip>99096</zip>
+        <city>Erfurt</city>
+        <region>Thüringen</region>
+        <country>1</country>
+    </tx_contacts_domain_model_address>
+</dataset>

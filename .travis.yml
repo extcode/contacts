@@ -51,3 +51,7 @@ script:
     echo;
     echo "Running php-cs-fixer";
     .build/bin/php-cs-fixer fix --config=.build/.php_cs.dist -v --dry-run --using-cache=no --path-mode=intersection ./;
+
+  - >
+    echo;
+    typo3DatabaseDriver=pdo_sqlite .build/bin/phpunit -c Build/FunctionalTests.xml

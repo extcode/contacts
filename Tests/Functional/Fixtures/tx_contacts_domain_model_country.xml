@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dataset>
+    <tx_contacts_domain_model_country>
+        <uid>1</uid>
+        <pid>0</pid>
+        <name>Deutschland</name>
+        <iso2>DE</iso2>
+        <iso3>DEU</iso3>
+        <tld>de</tld>
+        <phone_country_code>+49</phone_country_code>
+    </tx_contacts_domain_model_country>
+</dataset>

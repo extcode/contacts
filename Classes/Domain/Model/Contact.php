@@ -57,8 +57,12 @@ class Contact extends AbstractContact
      * @param string $firstName
      * @param string $lastName
      */
-    public function __construct(string $salutation, string $title, string $firstName, string $lastName)
-    {
+    public function __construct(
+        string $salutation,
+        string $title,
+        string $firstName,
+        string $lastName
+    ) {
         $this->salutation = $salutation;
         $this->title = $title;
         $this->firstName = $firstName;

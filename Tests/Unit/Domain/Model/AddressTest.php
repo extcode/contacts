@@ -9,27 +9,30 @@ namespace Extcode\Contacts\Tests\Domain\Model;
  * LICENSE file that was distributed with this source code.
  */
 
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use Extcode\Contacts\Domain\Model\Address;
+use Extcode\Contacts\Domain\Model\Country;
+use InvalidArgumentException;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class AddressTest extends UnitTestCase
 {
     /**
-     * @var \Extcode\Contacts\Domain\Model\Address
+     * @var Address
      */
-    protected $fixture = null;
+    protected $fixture;
 
     /**
      *
      */
-    public function setUp()
+    public function setUp(): void
     {
-        $this->fixture = new \Extcode\Contacts\Domain\Model\Address();
+        $this->fixture = new Address();
     }
 
     /**
      *
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->fixture);
     }
@@ -37,7 +40,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTypeInitiallyReturnsDefaultTypes()
+    public function getTypeInitiallyReturnsDefaultTypes(): void
     {
         $this->assertSame(
             'INTL,POSTAL,PARCEL,WORK',
@@ -48,7 +51,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function setValidTypeSetsType()
+    public function setValidTypeSetsType(): void
     {
         $this->fixture->setType('DOM');
 
@@ -61,9 +64,9 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function setInvalidTypeThrowsException()
+    public function setInvalidTypeThrowsException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('The type have to be a set of (DOM, INTL, POSTAL, PARCEL, HOME, WORK).');
         $this->expectExceptionCode(1373530255);
 
@@ -73,7 +76,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function getStreetInitiallyReturnsEmptyString()
+    public function getStreetInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -84,7 +87,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function setStreetSetsStreet()
+    public function setStreetSetsStreet(): void
     {
         $this->fixture->setStreet('Street');
 
@@ -97,7 +100,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function getStreetNumberInitiallyReturnsEmptyString()
+    public function getStreetNumberInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -108,7 +111,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function setStreetNumberSetsStreetNumber()
+    public function setStreetNumberSetsStreetNumber(): void
     {
         $this->fixture->setStreetNumber('Street Number');
 
@@ -121,7 +124,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function getAddition1InitiallyReturnsEmptyString()
+    public function getAddition1InitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -132,7 +135,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function setAddition1SetsAddition1()
+    public function setAddition1SetsAddition1(): void
     {
         $this->fixture->setAddition1('Addition1');
 
@@ -145,7 +148,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function getAddition2InitiallyReturnsEmptyString()
+    public function getAddition2InitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -156,7 +159,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function setAddition1SetsAddition2()
+    public function setAddition1SetsAddition2(): void
     {
         $this->fixture->setAddition2('Addition2');
 
@@ -169,7 +172,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function getZipInitiallyReturnsEmptyString()
+    public function getZipInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -180,7 +183,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function setZipSetsZip()
+    public function setZipSetsZip(): void
     {
         $this->fixture->setZip('ZIP');
 
@@ -193,7 +196,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function getCityInitiallyReturnsEmptyString()
+    public function getCityInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -204,7 +207,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function setCitySetsCity()
+    public function setCitySetsCity(): void
     {
         $this->fixture->setCity('City');
 
@@ -217,7 +220,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function getRegionInitiallyReturnsEmptyString()
+    public function getRegionInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -228,7 +231,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function setRegionSetsRegion()
+    public function setRegionSetsRegion(): void
     {
         $this->fixture->setRegion('Region');
 
@@ -241,7 +244,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function getCountryInitiallyReturnsEmptyString()
+    public function getCountryInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -252,9 +255,9 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function setCountrySetsCountry()
+    public function setCountrySetsCountry(): void
     {
-        $country = new \Extcode\Contacts\Domain\Model\Country();
+        $country = new Country();
         $country->setIso2('de');
 
         $this->fixture->setCountry($country);
@@ -268,7 +271,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function getPostBoxInitiallyReturnsEmptyString()
+    public function getPostBoxInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -279,7 +282,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function setPostBoxSetsPostBox()
+    public function setPostBoxSetsPostBox(): void
     {
         $this->fixture->setPostBox('Post Box');
 
@@ -292,7 +295,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function getLatInitiallyReturnsEmptyString()
+    public function getLatInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -303,7 +306,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function setLatSetsLat()
+    public function setLatSetsLat(): void
     {
         $this->fixture->setLat('52° 31′ N');
 
@@ -316,7 +319,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function getLonInitiallyReturnsEmptyString()
+    public function getLonInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -327,7 +330,7 @@ class AddressTest extends UnitTestCase
     /**
      * @test
      */
-    public function setLonSetsLon()
+    public function setLonSetsLon(): void
     {
         $this->fixture->setLon('13° 24′ O');
 

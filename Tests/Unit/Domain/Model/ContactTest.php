@@ -9,52 +9,47 @@ namespace Extcode\Contacts\Tests\Domain\Model;
  * LICENSE file that was distributed with this source code.
  */
 
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use Extcode\Contacts\Domain\Model\Contact;
+use InvalidArgumentException;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class ContactTest extends UnitTestCase
 {
     /**
-     * Salutation
-     *
      * @var string
      */
     protected $salutation;
 
     /**
-     * Title
-     *
      * @var string
      */
     protected $title;
 
     /**
-     * First Name
-     *
      * @var string
      */
     protected $firstName;
+
     /**
-     * Last Name
-     *
      * @var string
      */
     protected $lastName;
 
     /**
-     * @var \Extcode\Contacts\Domain\Model\Contact
+     * @var Contact
      */
-    protected $fixture = null;
+    protected $fixture;
 
     /**
      *
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->salutation = 'Salutation';
         $this->title = 'Title';
         $this->firstName = 'FirstName';
         $this->lastName = 'LastName';
-        $this->fixture = new \Extcode\Contacts\Domain\Model\Contact(
+        $this->fixture = new Contact(
             $this->salutation,
             $this->title,
             $this->firstName,
@@ -65,7 +60,7 @@ class ContactTest extends UnitTestCase
     /**
      *
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->fixture);
     }
@@ -73,7 +68,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function getSalutationInitiallyReturnsSalutation()
+    public function getSalutationInitiallyReturnsSalutation(): void
     {
         $this->assertSame(
             $this->salutation,
@@ -84,7 +79,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function setSalutationSetsSalutation()
+    public function setSalutationSetsSalutation(): void
     {
         $this->fixture->setSalutation('Salutation new');
 
@@ -97,7 +92,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTitleInitiallyReturnsTitle()
+    public function getTitleInitiallyReturnsTitle(): void
     {
         $this->assertSame(
             $this->title,
@@ -108,7 +103,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTitleSetsTitle()
+    public function setTitleSetsTitle(): void
     {
         $this->fixture->setTitle('Title new');
 
@@ -121,7 +116,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function getFirstNameInitiallyReturnsFirstName()
+    public function getFirstNameInitiallyReturnsFirstName(): void
     {
         $this->assertSame(
             $this->firstName,
@@ -132,7 +127,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function setFirstNameSetsFirstName()
+    public function setFirstNameSetsFirstName(): void
     {
         $this->fixture->setFirstName('Firstname new');
 
@@ -145,9 +140,9 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function setFirstNameWithEmptyStringThrowsException()
+    public function setFirstNameWithEmptyStringThrowsException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('The first name can not be blank.');
         $this->expectExceptionCode(1373525114);
 
@@ -157,7 +152,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function getLastNameInitiallyReturnsLastName()
+    public function getLastNameInitiallyReturnsLastName(): void
     {
         $this->assertSame(
             $this->lastName,
@@ -168,7 +163,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function setLastNameSetsLastName()
+    public function setLastNameSetsLastName(): void
     {
         $this->fixture->setLastName('Lastname new');
 
@@ -181,9 +176,9 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function setLastNameWithEmptyStringThrowsException()
+    public function setLastNameWithEmptyStringThrowsException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('The last name can not be blank.');
         $this->expectExceptionCode(1373525586);
 
@@ -193,10 +188,9 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function getBirthdayInitiallyReturnsZero()
+    public function getBirthdayInitiallyReturnsZero(): void
     {
-        $this->assertSame(
-            null,
+        $this->assertNull(
             $this->fixture->getBirthday()
         );
     }
@@ -204,7 +198,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function setBirthdaySetsBirthday()
+    public function setBirthdaySetsBirthday(): void
     {
         $birthdate = new \DateTime('2019-05-05');
 
@@ -219,7 +213,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTeaserInitiallyReturnsEmptyString()
+    public function getTeaserInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -230,7 +224,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTeaserSetsTeaser()
+    public function setTeaserSetsTeaser(): void
     {
         $this->fixture->setTeaser('Teaser');
 
@@ -243,7 +237,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function getDescriptionInitiallyReturnsEmptyString()
+    public function getDescriptionInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -254,7 +248,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function setDescriptionSetsDescription()
+    public function setDescriptionSetsDescription(): void
     {
         $this->fixture->setDescription('Description');
 
@@ -267,7 +261,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function getMetaDescriptionInitiallyReturnsEmptyString()
+    public function getMetaDescriptionInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -278,7 +272,7 @@ class ContactTest extends UnitTestCase
     /**
      * @test
      */
-    public function setMetaDescriptionSetsMetaDescription()
+    public function setMetaDescriptionSetsMetaDescription(): void
     {
         $this->fixture->setMetaDescription('MetaDescription');
 

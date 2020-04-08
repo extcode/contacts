@@ -9,27 +9,28 @@ namespace Extcode\Contacts\Tests\Domain\Model;
  * LICENSE file that was distributed with this source code.
  */
 
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use Extcode\Contacts\Domain\Model\Phone;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class PhoneTest extends UnitTestCase
 {
     /**
-     * @var \Extcode\Contacts\Domain\Model\Phone
+     * @var Phone
      */
-    protected $fixture = null;
+    protected $fixture;
 
     /**
      *
      */
-    public function setUp()
+    public function setUp(): void
     {
-        $this->fixture = new \Extcode\Contacts\Domain\Model\Phone();
+        $this->fixture = new Phone();
     }
 
     /**
      *
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->fixture);
     }
@@ -37,7 +38,7 @@ class PhoneTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTypeInitiallyReturnsDefaultTypes()
+    public function getTypeInitiallyReturnsDefaultTypes(): void
     {
         $this->assertSame(
             'VOICE',
@@ -48,7 +49,7 @@ class PhoneTest extends UnitTestCase
     /**
      * @test
      */
-    public function setValidTypeSetsType()
+    public function setValidTypeSetsType(): void
     {
         $this->fixture->setType('CELL');
 
@@ -61,7 +62,7 @@ class PhoneTest extends UnitTestCase
     /**
      * @test
      */
-    public function setInvalidTypeThrowsException()
+    public function setInvalidTypeThrowsException(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage('The type have to be a set of (PREF, WORK, HOME, VOICE, FAX, MSG, CELL, PAGER, BBS, MODEM, CAR, ISDN, VIDEO).');
@@ -73,7 +74,7 @@ class PhoneTest extends UnitTestCase
     /**
      * @test
      */
-    public function getNumberInitiallyReturnsEmptyString()
+    public function getNumberInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -84,7 +85,7 @@ class PhoneTest extends UnitTestCase
     /**
      * @test
      */
-    public function setNumberSetsNumber()
+    public function setNumberSetsNumber(): void
     {
         $this->fixture->setNumber('foo bar');
 

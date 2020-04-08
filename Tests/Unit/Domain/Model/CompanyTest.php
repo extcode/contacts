@@ -9,7 +9,9 @@ namespace Extcode\Contacts\Tests\Domain\Model;
  * LICENSE file that was distributed with this source code.
  */
 
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use Extcode\Contacts\Domain\Model\Company;
+use InvalidArgumentException;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class CompanyTest extends UnitTestCase
 {
@@ -21,24 +23,24 @@ class CompanyTest extends UnitTestCase
     protected $name;
 
     /**
-     * @var \Extcode\Contacts\Domain\Model\Company
+     * @var Company
      */
-    protected $fixture = null;
+    protected $fixture;
 
     /**
      *
      */
-    public function setUp()
+    public function setUp(): void
     {
         $this->name = 'Name';
 
-        $this->fixture = new \Extcode\Contacts\Domain\Model\Company($this->name);
+        $this->fixture = new Company($this->name);
     }
 
     /**
      *
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->fixture);
     }
@@ -46,7 +48,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function getNameInitiallyReturnsName()
+    public function getNameInitiallyReturnsName(): void
     {
         $this->assertSame(
             $this->name,
@@ -57,7 +59,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function setNameSetsName()
+    public function setNameSetsName(): void
     {
         $this->fixture->setName('Name new');
 
@@ -70,9 +72,9 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function setNameWithEmptyStringThrowsException()
+    public function setNameWithEmptyStringThrowsException(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('The name can not be blank.');
         $this->expectExceptionCode(1373527548);
 
@@ -82,7 +84,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function getLegalNameInitiallyReturnsEmptyString()
+    public function getLegalNameInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -93,7 +95,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function setLegalNameSetsLegalName()
+    public function setLegalNameSetsLegalName(): void
     {
         $this->fixture->setLegalName('LegalName');
 
@@ -106,7 +108,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function getLegalFormInitiallyReturnsEmptyString()
+    public function getLegalFormInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -117,7 +119,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function setLegalFormSetsLegalForm()
+    public function setLegalFormSetsLegalForm(): void
     {
         $this->fixture->setLegalForm('LegalForm');
 
@@ -130,7 +132,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function getRegisteredOfficeInitiallyReturnsEmptyString()
+    public function getRegisteredOfficeInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -141,7 +143,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function setRegisteredOfficeSetsRegisteredOffice()
+    public function setRegisteredOfficeSetsRegisteredOffice(): void
     {
         $this->fixture->setRegisteredOffice('RegisteredOffice');
 
@@ -154,7 +156,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function getRegisterCourtInitiallyReturnsEmptyString()
+    public function getRegisterCourtInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -165,7 +167,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function setRegisterCourtSetsRegisterCourt()
+    public function setRegisterCourtSetsRegisterCourt(): void
     {
         $this->fixture->setRegisterCourt('RegisterCourt');
 
@@ -178,7 +180,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function getRegisterNumberInitiallyReturnsEmptyString()
+    public function getRegisterNumberInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -189,7 +191,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function setRegisterNumberSetsRegisterNumber()
+    public function setRegisterNumberSetsRegisterNumber(): void
     {
         $this->fixture->setRegisterNumber('RegisterNumber');
 
@@ -202,7 +204,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function getVatIdInitiallyReturnsEmptyString()
+    public function getVatIdInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -213,7 +215,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function setVatIdSetsVatId()
+    public function setVatIdSetsVatId(): void
     {
         $this->fixture->setVatId('VatId');
 
@@ -226,7 +228,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function getEmailInitiallyReturnsEmptyString()
+    public function getEmailInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -237,7 +239,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function setEmailSetsEmail()
+    public function setEmailSetsEmail(): void
     {
         $this->fixture->setEmail('Email');
 
@@ -250,7 +252,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function getUriInitiallyReturnsEmptyString()
+    public function getUriInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -261,7 +263,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function setUriSetsUri()
+    public function setUriSetsUri(): void
     {
         $this->fixture->setUri('Uri');
 
@@ -274,7 +276,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function getTeaserInitiallyReturnsEmptyString()
+    public function getTeaserInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -285,7 +287,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function setTeaserSetsTeaser()
+    public function setTeaserSetsTeaser(): void
     {
         $this->fixture->setTeaser('Teaser');
 
@@ -298,7 +300,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function getDescriptionInitiallyReturnsEmptyString()
+    public function getDescriptionInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -309,7 +311,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function setDescriptionSetsDescription()
+    public function setDescriptionSetsDescription(): void
     {
         $this->fixture->setDescription('Description');
 
@@ -322,7 +324,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function getMetaDescriptionInitiallyReturnsEmptyString()
+    public function getMetaDescriptionInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -333,7 +335,7 @@ class CompanyTest extends UnitTestCase
     /**
      * @test
      */
-    public function setMetaDescriptionSetsMetaDescription()
+    public function setMetaDescriptionSetsMetaDescription(): void
     {
         $this->fixture->setMetaDescription('MetaDescription');
 

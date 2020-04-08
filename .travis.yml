@@ -34,20 +34,20 @@ before_install:
 before_script:
   - composer require typo3/cms-core=$TYPO3_VERSION
   - git checkout composer.json
-  - export TYPO3_PATH_WEB="$PWD/.Build/Web"
+  - export TYPO3_PATH_WEB="$PWD/.build/public"
 
 script:
   - >
     echo;
     echo "Running unit tests";
-    .Build/bin/phpunit --colors -c .Build/vendor/nimut/testing-framework/res/Configuration/UnitTests.xml Tests/Unit/
+    .build/bin/phpunit --colors -c Build/UnitTests.xml
 
   - >
     echo;
     echo "Running php lint";
-    find . -name \*.php ! -path "./.Build/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
+    find . -name \*.php ! -path "./.build/*" | parallel --gnu php -d display_errors=stderr -l {} > /dev/null \;
 
   - >
     echo;
     echo "Running php-cs-fixer";
-    .Build/bin/php-cs-fixer fix --config=Build/.php_cs.dist -v --dry-run --using-cache=no --path-mode=intersection ./;
+    .build/bin/php-cs-fixer fix --config=.build/.php_cs.dist -v --dry-run --using-cache=no --path-mode=intersection ./;

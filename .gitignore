@@ -1,9 +1,14 @@
-.Build
+.build
 composer.lock
 
 .php_cs.cache
-
-Documentation/_make
+.phplint.cache
+Build/.phpunit.result.cache
 
 .DS_Store
 .idea
+
+var/
+
+phpunit.coverage.xml
+phpunit.report.xml

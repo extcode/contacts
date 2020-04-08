@@ -9,34 +9,29 @@ namespace Extcode\Contacts\Tests\Domain\Model;
  * LICENSE file that was distributed with this source code.
  */
 
-use Nimut\TestingFramework\TestCase\UnitTestCase;
+use Extcode\Contacts\Domain\Model\Country;
+use TYPO3\CMS\Extbase\Property\Exception;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 class CountryTest extends UnitTestCase
 {
     /**
-     * Name
-     *
-     * @var string
+     * @var Country
      */
-    protected $name;
-
-    /**
-     * @var \Extcode\Contacts\Domain\Model\Country
-     */
-    protected $fixture = null;
+    protected $fixture;
 
     /**
      *
      */
-    public function setUp()
+    public function setUp(): void
     {
-        $this->fixture = new \Extcode\Contacts\Domain\Model\Country($this->name);
+        $this->fixture = new Country();
     }
 
     /**
      *
      */
-    public function tearDown()
+    public function tearDown(): void
     {
         unset($this->fixture);
     }
@@ -44,7 +39,7 @@ class CountryTest extends UnitTestCase
     /**
      * @test
      */
-    public function getIso2InitiallyReturnsEmptyString()
+    public function getIso2InitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -55,7 +50,7 @@ class CountryTest extends UnitTestCase
     /**
      * @test
      */
-    public function setIso2SetsIso2()
+    public function setIso2SetsIso2(): void
     {
         $this->fixture->setIso2('DE');
 
@@ -67,26 +62,32 @@ class CountryTest extends UnitTestCase
 
     /**
      * @test
-     * @expectedException \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException
      */
-    public function setIso2WithLessThanTwoDigitThrowsException()
+    public function setIso2WithLessThanTwoDigitThrowsException(): void
     {
-        $this->fixture->setIso2('DEU');
-    }
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('The iso2 code has to have two chars.');
+        $this->expectExceptionCode(1395925918);
 
-    /**
-     * @test
-     * @expectedException \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException
-     */
-    public function setIso2WithMoreThanTwoDigitThrowsException()
-    {
         $this->fixture->setIso2('DEU');
     }
 
     /**
      * @test
      */
-    public function getIso3InitiallyReturnsEmptyString()
+    public function setIso2WithMoreThanTwoDigitThrowsException(): void
+    {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('The iso2 code has to have two chars.');
+        $this->expectExceptionCode(1395925918);
+
+        $this->fixture->setIso2('DEU');
+    }
+
+    /**
+     * @test
+     */
+    public function getIso3InitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -97,7 +98,7 @@ class CountryTest extends UnitTestCase
     /**
      * @test
      */
-    public function setIso3SetsIso3()
+    public function setIso3SetsIso3(): void
     {
         $this->fixture->setIso3('DEU');
 
@@ -110,7 +111,7 @@ class CountryTest extends UnitTestCase
     /**
      * @test
      */
-    public function setIso3WithEmptyStringSetsIso3ToEmptyString()
+    public function setIso3WithEmptyStringSetsIso3ToEmptyString(): void
     {
         $this->fixture->setIso3('');
 
@@ -122,26 +123,32 @@ class CountryTest extends UnitTestCase
 
     /**
      * @test
-     * @expectedException \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException
      */
-    public function setIso3WithNoEmptyStringAndLessThanThreeDigitThrowsException()
+    public function setIso3WithNoEmptyStringAndLessThanThreeDigitThrowsException(): void
     {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('The iso3 code has to have three chars.');
+        $this->expectExceptionCode(1395925960);
+
         $this->fixture->setIso3('DE');
     }
 
     /**
      * @test
-     * @expectedException \TYPO3\CMS\Extbase\Property\Exception\InvalidPropertyException
      */
-    public function setIso3WithNoEmptyStringAndMoreThanThreeDigitThrowsException()
+    public function setIso3WithNoEmptyStringAndMoreThanThreeDigitThrowsException(): void
     {
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('The iso3 code has to have three chars.');
+        $this->expectExceptionCode(1395925960);
+
         $this->fixture->setIso3('DEUT');
     }
 
     /**
      * @test
      */
-    public function getNameInitiallyReturnsEmptyString()
+    public function getNameInitiallyReturnsEmptyString(): void
     {
         $this->assertSame(
             '',
@@ -152,7 +159,7 @@ class CountryTest extends UnitTestCase
     /**
      * @test
      */
-    public function setNameSetsName()
+    public function setNameSetsName(): void
     {
         $this->fixture->setName('Name new');
 

@@ -41,6 +41,7 @@ class NewsRepositoryTest extends FunctionalTestCase
         $this->addressRepository = $this->objectManager->get(AddressRepository::class);
 
         $this->importDataSet(__DIR__ . '/../Fixtures/tx_contacts_domain_model_country.xml');
+        $this->importDataSet(__DIR__ . '/../Fixtures/tx_contacts_domain_model_company.xml');
         $this->importDataSet(__DIR__ . '/../Fixtures/tx_contacts_domain_model_address.xml');
     }
 
@@ -153,6 +154,48 @@ class NewsRepositoryTest extends FunctionalTestCase
         $addresses = $this->addressRepository->findByDistance($lat, $lon, 200, 0, '');
         $this->assertCount(
             5,
+            $addresses
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function findByDistanceWithSearchWord(): void
+    {
+        // Berlin Alexanderplatz
+        $lat = 52.5225068;
+        $lon = 13.4206053;
+
+        // Bürgerschaft der Freien und Hansestadt Hamburg
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 1, 0, 'Bürgerschaft');
+        $this->assertCount(
+            0,
+            $addresses
+        );
+
+        // Hamburg Hauptbahnhof
+        $lat = 53.5530746;
+        $lon = 10.0043535;
+
+        // Bürgerschaft der Freien und Hansestadt Hamburg
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 1, 0, 'Bürgerschaft');
+        $this->assertCount(
+            1,
+            $addresses
+        );
+
+        // Bürgerschaft der Freien und Hansestadt Hamburg, Bremische Bürgerschaft
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 100, 0, 'Bürgerschaft');
+        $this->assertCount(
+            2,
+            $addresses
+        );
+
+        // Schleswig-Holsteinischer Landtag, Landtag Mecklenburg-Vorpommern, Niedersächsischer Landtag
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 150, 0, 'Landtag');
+        $this->assertCount(
+            3,
             $addresses
         );
     }

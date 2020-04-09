@@ -40,6 +40,7 @@ class NewsRepositoryTest extends FunctionalTestCase
         $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
         $this->addressRepository = $this->objectManager->get(AddressRepository::class);
 
+        $this->importDataSet(__DIR__ . '/../Fixtures/pages.xml');
         $this->importDataSet(__DIR__ . '/../Fixtures/tx_contacts_domain_model_country.xml');
         $this->importDataSet(__DIR__ . '/../Fixtures/tx_contacts_domain_model_company.xml');
         $this->importDataSet(__DIR__ . '/../Fixtures/tx_contacts_domain_model_address.xml');
@@ -57,7 +58,6 @@ class NewsRepositoryTest extends FunctionalTestCase
     public function findRecordsByUid(): void
     {
         $address = $this->addressRepository->findByUid(1);
-
         $this->assertSame(
             'Landtag von Baden-Württemberg',
             $address->getTitle()
@@ -70,9 +70,17 @@ class NewsRepositoryTest extends FunctionalTestCase
     public function findAllRecords(): void
     {
         $addresses = $this->addressRepository->findAll();
-
         $this->assertSame(
-            16,
+            0,
+            $addresses->count()
+        );
+
+        $querySettings = $this->addressRepository->createQuery()->getQuerySettings();
+        $querySettings->setRespectStoragePage(false);
+        $this->addressRepository->setDefaultQuerySettings($querySettings);
+        $addresses = $this->addressRepository->findAll();
+        $this->assertSame(
+            19,
             $addresses->count()
         );
     }
@@ -82,8 +90,7 @@ class NewsRepositoryTest extends FunctionalTestCase
      */
     public function findByDistanceWithoutCoordinates(): void
     {
-        $addresses = $this->addressRepository->findByDistance(0.0, 0.0, 10, 0, '');
-
+        $addresses = $this->addressRepository->findByDistance(0.0, 0.0, 10, '2', '');
         $this->assertSame(
             16,
             count($addresses)
@@ -99,11 +106,38 @@ class NewsRepositoryTest extends FunctionalTestCase
         $lat = 52.5225068;
         $lon = 13.4206053;
 
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 0, 0, '');
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 0, '', '');
+        $this->assertCount(
+            19,
+            $addresses
+        );
+    }
 
-        $this->assertSame(
+    /**
+     * @test
+     */
+    public function findByDistanceWithStoragePidWithoutRadius(): void
+    {
+        // Berlin Alexanderplatz
+        $lat = 52.5225068;
+        $lon = 13.4206053;
+
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 0, '2', '');
+        $this->assertCount(
             16,
-            count($addresses)
+            $addresses
+        );
+
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 0, '3', '');
+        $this->assertCount(
+            3,
+            $addresses
+        );
+
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 0, '2, 3', '');
+        $this->assertCount(
+            19,
+            $addresses
         );
     }
 
@@ -116,44 +150,72 @@ class NewsRepositoryTest extends FunctionalTestCase
         $lat = 52.5225068;
         $lon = 13.4206053;
 
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 1, 0, '');
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 1, '2', '');
         $this->assertCount(
             0,
             $addresses
         );
 
         // $addresses should contains Berlin
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 10, 0, '');
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 10, '2', '');
         $this->assertCount(
             1,
             $addresses
         );
 
         // $addresses should contains Berlin
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 20, 0, '');
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 20, '2', '');
         $this->assertCount(
             1,
             $addresses
         );
 
         // $addresses should contains Berlin, Brandenburg
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 50, 0, '');
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 50, '2', '');
         $this->assertCount(
             2,
             $addresses
         );
 
         // $addresses should contains Berlin, Brandenburg, Sachsen-Anhalt
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 150, 0, '');
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 150, '2', '');
         $this->assertCount(
             3,
             $addresses
         );
 
         // $addresses should contains Berlin, Brandenburg, Sachsen-Anhalt, Sachsen, Mecklenburg-Vorpommern, Thüringen
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 200, 0, '');
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 200, '2', '');
         $this->assertCount(
             5,
+            $addresses
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function findByDistanceWithStoragePidWithinRadius(): void
+    {
+        // Berlin Alexanderplatz
+        $lat = 52.5225068;
+        $lon = 13.4206053;
+
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 10, '2', '');
+        $this->assertCount(
+            1,
+            $addresses
+        );
+
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 10, '3', '');
+        $this->assertCount(
+            3,
+            $addresses
+        );
+
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 10, '2, 3', '');
+        $this->assertCount(
+            4,
             $addresses
         );
     }
@@ -168,7 +230,7 @@ class NewsRepositoryTest extends FunctionalTestCase
         $lon = 13.4206053;
 
         // Bürgerschaft der Freien und Hansestadt Hamburg
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 1, 0, 'Bürgerschaft');
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 1, '2', 'Bürgerschaft');
         $this->assertCount(
             0,
             $addresses
@@ -179,21 +241,21 @@ class NewsRepositoryTest extends FunctionalTestCase
         $lon = 10.0043535;
 
         // Bürgerschaft der Freien und Hansestadt Hamburg
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 1, 0, 'Bürgerschaft');
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 1, '2', 'Bürgerschaft');
         $this->assertCount(
             1,
             $addresses
         );
 
         // Bürgerschaft der Freien und Hansestadt Hamburg, Bremische Bürgerschaft
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 100, 0, 'Bürgerschaft');
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 100, '2', 'Bürgerschaft');
         $this->assertCount(
             2,
             $addresses
         );
 
         // Schleswig-Holsteinischer Landtag, Landtag Mecklenburg-Vorpommern, Niedersächsischer Landtag
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 150, 0, 'Landtag');
+        $addresses = $this->addressRepository->findByDistance($lat, $lon, 150, '2', 'Landtag');
         $this->assertCount(
             3,
             $addresses

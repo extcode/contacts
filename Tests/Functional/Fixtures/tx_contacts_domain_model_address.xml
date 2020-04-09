@@ -2,7 +2,7 @@
 <dataset>
     <tx_contacts_domain_model_address>
         <uid>1</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Landtag von Baden-Württemberg</title>
         <type>POSTAL</type>
         <company>1</company>
@@ -18,7 +18,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>2</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Bayerischer Landtag</title>
         <addition1>Maximilianeum</addition1>
         <type>POSTAL</type>
@@ -35,7 +35,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>3</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Abgeordnetenhaus von Berlin</title>
         <type>POSTAL</type>
         <company>3</company>
@@ -51,7 +51,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>4</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Landtag Brandenburg</title>
         <type>POSTAL</type>
         <company>4</company>
@@ -67,7 +67,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>5</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Bremische Bürgerschaft</title>
         <type>POSTAL</type>
         <company>5</company>
@@ -83,7 +83,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>6</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Bürgerschaft der Freien und Hansestadt Hamburg</title>
         <addition1>Bürgerschaftskanzlei</addition1>
         <type>POSTAL</type>
@@ -100,7 +100,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>7</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Hessischer Landtag</title>
         <type>POSTAL</type>
         <company>7</company>
@@ -116,7 +116,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>8</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Landtag Mecklenburg-Vorpommern</title>
         <type>POSTAL</type>
         <company>8</company>
@@ -132,7 +132,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>9</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Niedersächsischer Landtag</title>
         <type>POSTAL</type>
         <company>9</company>
@@ -148,7 +148,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>10</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Landtag NRW</title>
         <type>POSTAL</type>
         <company>10</company>
@@ -164,7 +164,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>11</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Landtag Rheinland-Pfalz</title>
         <type>POSTAL</type>
         <company>11</company>
@@ -180,7 +180,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>12</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Landtag des Saarlandes</title>
         <type>POSTAL</type>
         <company>12</company>
@@ -196,7 +196,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>13</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Sächsischer Landtag</title>
         <type>POSTAL</type>
         <company>13</company>
@@ -212,7 +212,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>14</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Landtag von Sachsen-Anhalt</title>
         <type>POSTAL</type>
         <company>14</company>
@@ -228,7 +228,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>15</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Schleswig-Holsteinischer Landtag</title>
         <type>POSTAL</type>
         <company>15</company>
@@ -244,7 +244,7 @@
     </tx_contacts_domain_model_address>
     <tx_contacts_domain_model_address>
         <uid>16</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <title>Thüringer Landtag</title>
         <type>POSTAL</type>
         <company>16</company>
@@ -257,5 +257,55 @@
         <country>1</country>
         <lat>50.9657873</lat>
         <lon>11.0319855</lon>
+    </tx_contacts_domain_model_address>
+
+    <tx_contacts_domain_model_address>
+        <uid>17</uid>
+        <pid>3</pid>
+        <title>Bodo-Museum</title>
+        <type>POSTAL</type>
+        <company>NULL</company>
+        <contact>NULL</contact>
+        <street>Am Kupfergraben</street>
+        <street_number>''</street_number>
+        <addition2>Eingang über die Monbijoubrücke</addition2>
+        <zip>10117</zip>
+        <city>Berlin</city>
+        <region>Berlin</region>
+        <country>1</country>
+        <lat>52.5218937</lat>
+        <lon>13.392068</lon>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>18</uid>
+        <pid>3</pid>
+        <title>Pergamonmuseum</title>
+        <type>POSTAL</type>
+        <company>NULL</company>
+        <contact>NULL</contact>
+        <street>Bodestraße</street>
+        <street_number>1-3</street_number>
+        <zip>10178</zip>
+        <city>Berlin</city>
+        <region>Berlin</region>
+        <country>1</country>
+        <lat>52.521183</lat>
+        <lon>13.3947113</lon>
+    </tx_contacts_domain_model_address>
+    <tx_contacts_domain_model_address>
+        <uid>19</uid>
+        <pid>3</pid>
+        <title>Museum für Naturkunde</title>
+        <type>POSTAL</type>
+        <company>NULL</company>
+        <contact>NULL</contact>
+        <street>Invalidenstraße</street>
+        <street_number>43</street_number>
+        <zip>10115</zip>
+        <city>Berlin</city>
+        <region>Berlin</region>
+        <country>1</country>
+        <lat>52.5305726</lat>
+        <lon>13.3769868</lon>
     </tx_contacts_domain_model_address>
 </dataset>

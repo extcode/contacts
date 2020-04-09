@@ -2,7 +2,7 @@
 <dataset>
     <tx_contacts_domain_model_company>
         <uid>1</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Landtag von Baden-Württemberg</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -11,7 +11,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>2</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Bayerischer Landtag</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -20,7 +20,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>3</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Abgeordnetenhaus von Berlin</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -29,7 +29,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>4</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Landtag Brandenburg</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -38,7 +38,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>5</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Bremische Bürgerschaft</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -47,7 +47,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>6</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Bürgerschaft der Freien und Hansestadt Hamburg</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -56,7 +56,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>7</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Hessischer Landtag</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -65,7 +65,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>8</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Landtag Mecklenburg-Vorpommern</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -74,7 +74,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>9</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Niedersächsischer Landtag</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -83,7 +83,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>10</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Landtag NRW</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -92,7 +92,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>11</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Landtag Rheinland-Pfalz</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -101,7 +101,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>12</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Landtag des Saarlandes</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -110,7 +110,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>13</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Sächsischer Landtag</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -119,7 +119,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>14</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Landtag von Sachsen-Anhalt</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -128,7 +128,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>15</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Schleswig-Holsteinischer Landtag</name>
         <addresses>1</addresses>
         <teaser>''</teaser>
@@ -137,7 +137,7 @@
     </tx_contacts_domain_model_company>
     <tx_contacts_domain_model_company>
         <uid>16</uid>
-        <pid>0</pid>
+        <pid>2</pid>
         <name>Thüringer Landtag</name>
         <addresses>1</addresses>
         <teaser>''</teaser>

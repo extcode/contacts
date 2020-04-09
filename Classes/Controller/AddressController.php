@@ -13,6 +13,7 @@ use Extcode\Contacts\Domain\Model\Address;
 use Extcode\Contacts\Domain\Repository\AddressRepository;
 use Extcode\Contacts\Domain\Repository\ZipRepository;
 use Extcode\Contacts\Hooks\AddressSearchAddressesLoadedHookInterface;
+use Extcode\Contacts\Utility\PageUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -64,12 +65,15 @@ class AddressController extends ActionController
             $point = $this->zipRepository->findByCountryAndZip('DE', $zip, $this->settings['zipMapFile']);
         }
 
-        $pid = $this->getRecordStoragePage();
+        $pids = PageUtility::extendPidListByChildren(
+            $this->configurationManager->getContentObject()->data['pages'],
+            $this->configurationManager->getContentObject()->data['recursive']
+        );
 
         if (is_array($point)) {
-            $addresses = $this->addressRepository->findByDistance((float)$point['lat'], (float)$point['lon'], (int)$radius, $pid, (string)$searchWord);
+            $addresses = $this->addressRepository->findByDistance((float)$point['lat'], (float)$point['lon'], (int)$radius, $pids, (string)$searchWord);
         } else {
-            $addresses = $this->addressRepository->findByDistance(0.0, 0.0, 0, $pid, (string)$searchWord);
+            $addresses = $this->addressRepository->findByDistance(0.0, 0.0, 0, $pids, (string)$searchWord);
         }
 
         if ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['contacts']['AddressSearchAddressesLoadedHook']) {
@@ -96,15 +100,5 @@ class AddressController extends ActionController
         }
 
         $this->view->assign('address', $address);
-    }
-
-    /**
-     * @return mixed
-     */
-    protected function getRecordStoragePage()
-    {
-        $frameworkConfiguration = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK);
-        $pid = $frameworkConfiguration['persistence']['storagePid'];
-        return $pid;
     }
 }

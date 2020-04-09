@@ -18,16 +18,16 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param float $lat
      * @param float $lon
      * @param int $radius
-     * @param int $pid
+     * @param string $pids
      * @param string $searchWord
      *
      * @return array
      */
-    public function findByDistance(float $lat, float $lon, int $radius, int $pid, string $searchWord): array
+    public function findByDistance(float $lat, float $lon, int $radius, string $pids, string $searchWord): array
     {
         $addressesInDistance = [];
 
-        $addresses = $this->findAddressesByDistance($searchWord);
+        $addresses = $this->findAddressesByDistance($pids, $searchWord);
         $countries = $this->findCountries();
 
         if ($lat === 0.0 || $lon === 0.0 || $radius === 0) {
@@ -246,7 +246,7 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @return mixed[]
      */
-    protected function findAddressesByDistance(string $searchWord): array
+    protected function findAddressesByDistance(string $pids, string $searchWord): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getQueryBuilderForTable('tx_contacts_domain_model_address');
@@ -259,6 +259,13 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                     $queryBuilder->expr()->neq('lon', 0.0)
                 )
             );
+
+        if (!empty($pids)) {
+            $queryBuilder
+                ->andWhere(
+                    $queryBuilder->expr()->in('pid', explode(',', $pids))
+                );
+        }
 
         if (!empty($searchWord)) {
             $queryBuilder

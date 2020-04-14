@@ -15,7 +15,7 @@
         verbose="false"
 >
     <testsuites>
-        <testsuite name="Cart Extension">
+        <testsuite name="Contacts Extension">
             <directory>../Tests/Unit/</directory>
         </testsuite>
     </testsuites>

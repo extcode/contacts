@@ -14,7 +14,7 @@
         beStrictAboutTestsThatDoNotTestAnything="false"
 >
     <testsuites>
-        <testsuite name="Cart Extension">
+        <testsuite name="Contacts Extension">
             <directory>../Tests/Functional/</directory>
         </testsuite>
     </testsuites>

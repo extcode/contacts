@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="messages" date="2020-01-30T12:30:00Z" product-name="contacts">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-04-14T11:42:00Z" product-name="contacts">
         <header/>
         <body>
 
@@ -8,10 +8,10 @@
                 <source>
                     Category restriction: Restrict the available categories in the person or company records.
                     PageTsConfig:
-                    TCEFORM.tx_contacts_domain_model_contact.category.PAGE_TSCONFIG_ID=120.
-                    TCEFORM.tx_contacts_domain_model_contact.categories.PAGE_TSCONFIG_ID=120.
-                    TCEFORM.tx_contacts_domain_model_contact.category.PAGE_TSCONFIG_ID=130.
-                    TCEFORM.tx_contacts_domain_model_contact.categories.PAGE_TSCONFIG_ID=130.
+                    TCEFORM.tx_contacts_domain_model_company.category.PAGE_TSCONFIG_IDLIST=120.
+                    TCEFORM.tx_contacts_domain_model_company.categories.PAGE_TSCONFIG_IDLIST=120.
+                    TCEFORM.tx_contacts_domain_model_contact.category.PAGE_TSCONFIG_IDLIST=130.
+                    TCEFORM.tx_contacts_domain_model_contact.categories.PAGE_TSCONFIG_IDLIST=130.
                 </source>
             </trans-unit>
             <trans-unit id="extmng.categoryRestriction.current_pid" xml:space="preserve">

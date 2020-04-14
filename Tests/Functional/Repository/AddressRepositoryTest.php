@@ -3,7 +3,7 @@
 namespace Extcode\Contacts\Tests\Functional\Repository;
 
 /*
- * This file is part of the package extcode/cart.
+ * This file is part of the package extcode/contacts.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
@@ -14,10 +14,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\TestingFramework\Core\Functional\FunctionalTestCase;
 
-/**
- * Functional test for the \GeorgRinger\News\Domain\Repository\NewsRepository
- */
-class NewsRepositoryTest extends FunctionalTestCase
+class AddressRepositoryTest extends FunctionalTestCase
 {
 
     /**

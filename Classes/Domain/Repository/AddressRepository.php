@@ -140,6 +140,11 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $queryResult[$logo['uid_foreign']]['sys_file_reference_id'] = $logo['uid'];
         }
 
+        $categories = $this->getCategories('tx_contacts_domain_model_company', 'category', $ids);
+        foreach ($categories as $category) {
+            $queryResult[$category['uid_foreign']]['category'] = $category['uid_local'];
+        }
+
         return $queryResult;
     }
 
@@ -180,6 +185,11 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $photos = $this->getImages('tx_contacts_domain_model_contact', 'photo', $ids);
         foreach ($photos as $photo) {
             $queryResult[$photo['uid_foreign']]['sys_file_reference_id'] = $photo['uid'];
+        }
+
+        $categories = $this->getCategories('tx_contacts_domain_model_contact', 'category', $ids);
+        foreach ($categories as $category) {
+            $queryResult[$category['uid_foreign']]['category'] = $category['uid_local'];
         }
 
         return $queryResult;
@@ -226,6 +236,35 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $queryResult = $queryBuilder
             ->select('uid', 'uid_foreign')
             ->from('sys_file_reference')
+            ->where(
+                $queryBuilder->expr()->andX(
+                    $queryBuilder->expr()->eq('tablenames', $queryBuilder->createNamedParameter($tableName)),
+                    $queryBuilder->expr()->eq('fieldname', $queryBuilder->createNamedParameter($fieldName)),
+                    $queryBuilder->expr()->in('uid_foreign', $ids)
+                )
+            )
+            ->execute()->fetchAll();
+
+        $uids = array_column($queryResult, 'uid_foreign');
+        $queryResult = array_combine($uids, $queryResult);
+
+        return $queryResult;
+    }
+
+    /**
+     * @param string $tableName
+     * @param string $fieldName
+     * @param array $ids
+     *
+     * @return mixed[]
+     */
+    protected function getCategories(string $tableName, string $fieldName, array $ids): array
+    {
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('sys_category_record_mm');
+        $queryResult = $queryBuilder
+            ->select('uid_local', 'uid_foreign')
+            ->from('sys_category_record_mm')
             ->where(
                 $queryBuilder->expr()->andX(
                     $queryBuilder->expr()->eq('tablenames', $queryBuilder->createNamedParameter($tableName)),

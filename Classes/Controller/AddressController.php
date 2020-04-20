@@ -68,7 +68,7 @@ class AddressController extends ActionController
         $this->view->assign('radius', $addressSearch->getRadius());
 
         if ($zip) {
-            $point = $this->zipRepository->findByCountryAndZip('DE', $zip, $this->settings['zipMapFile']);
+            $point = $this->zipRepository->findByCountryAndZip($country, $zip, $this->settings['zipMapFile']);
 
             if (is_array($point)) {
                 $addressSearch->setLat((float)$point['lat']);

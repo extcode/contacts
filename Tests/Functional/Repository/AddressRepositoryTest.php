@@ -9,6 +9,7 @@ namespace Extcode\Contacts\Tests\Functional\Repository;
  * LICENSE file that was distributed with this source code.
  */
 
+use Extcode\Contacts\Domain\Model\Dto\AddressSearch;
 use Extcode\Contacts\Domain\Repository\AddressRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
@@ -87,7 +88,11 @@ class AddressRepositoryTest extends FunctionalTestCase
      */
     public function findByDistanceWithoutCoordinates(): void
     {
-        $addresses = $this->addressRepository->findByDistance(0.0, 0.0, 10, '2', '');
+        $addressSearch = new AddressSearch();
+        $addressSearch->setRadius(10);
+        $addressSearch->setPids('2');
+
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertSame(
             16,
             count($addresses)
@@ -100,10 +105,12 @@ class AddressRepositoryTest extends FunctionalTestCase
     public function findByDistanceWithoutRadius(): void
     {
         // Berlin Alexanderplatz
-        $lat = 52.5225068;
-        $lon = 13.4206053;
+        $addressSearch = new AddressSearch();
+        $addressSearch->setLat(52.5225068);
+        $addressSearch->setLat(13.4206053);
+        $addressSearch->setPids('');
 
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 0, '', '');
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             19,
             $addresses
@@ -116,22 +123,26 @@ class AddressRepositoryTest extends FunctionalTestCase
     public function findByDistanceWithStoragePidWithoutRadius(): void
     {
         // Berlin Alexanderplatz
-        $lat = 52.5225068;
-        $lon = 13.4206053;
+        $addressSearch = new AddressSearch();
+        $addressSearch->setLat(52.5225068);
+        $addressSearch->setLat(13.4206053);
 
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 0, '2', '');
+        $addressSearch->setPids('2');
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             16,
             $addresses
         );
 
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 0, '3', '');
+        $addressSearch->setPids('3');
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             3,
             $addresses
         );
 
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 0, '2, 3', '');
+        $addressSearch->setPids('2, 3');
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             19,
             $addresses
@@ -144,45 +155,53 @@ class AddressRepositoryTest extends FunctionalTestCase
     public function findByDistanceWithinRadius(): void
     {
         // Berlin Alexanderplatz
-        $lat = 52.5225068;
-        $lon = 13.4206053;
+        $addressSearch = new AddressSearch();
+        $addressSearch->setLat(52.5225068);
+        $addressSearch->setLon(13.4206053);
+        $addressSearch->setPids('2');
 
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 1, '2', '');
+        $addressSearch->setRadius(1);
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             0,
             $addresses
         );
 
         // $addresses should contains Berlin
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 10, '2', '');
+        $addressSearch->setRadius(10);
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             1,
             $addresses
         );
 
         // $addresses should contains Berlin
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 20, '2', '');
+        $addressSearch->setRadius(20);
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             1,
             $addresses
         );
 
         // $addresses should contains Berlin, Brandenburg
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 50, '2', '');
+        $addressSearch->setRadius(50);
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             2,
             $addresses
         );
 
         // $addresses should contains Berlin, Brandenburg, Sachsen-Anhalt
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 150, '2', '');
+        $addressSearch->setRadius(150);
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             3,
             $addresses
         );
 
         // $addresses should contains Berlin, Brandenburg, Sachsen-Anhalt, Sachsen, Mecklenburg-Vorpommern, Thüringen
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 200, '2', '');
+        $addressSearch->setRadius(200);
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             5,
             $addresses
@@ -195,22 +214,27 @@ class AddressRepositoryTest extends FunctionalTestCase
     public function findByDistanceWithStoragePidWithinRadius(): void
     {
         // Berlin Alexanderplatz
-        $lat = 52.5225068;
-        $lon = 13.4206053;
+        $addressSearch = new AddressSearch();
+        $addressSearch->setLat(52.5225068);
+        $addressSearch->setLon(13.4206053);
+        $addressSearch->setRadius(10);
 
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 10, '2', '');
+        $addressSearch->setPids('2');
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             1,
             $addresses
         );
 
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 10, '3', '');
+        $addressSearch->setPids('3');
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             3,
             $addresses
         );
 
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 10, '2, 3', '');
+        $addressSearch->setPids('2, 3');
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             4,
             $addresses
@@ -223,36 +247,48 @@ class AddressRepositoryTest extends FunctionalTestCase
     public function findByDistanceWithSearchWord(): void
     {
         // Berlin Alexanderplatz
-        $lat = 52.5225068;
-        $lon = 13.4206053;
+        $addressSearch = new AddressSearch();
+        $addressSearch->setLat(52.5225068);
+        $addressSearch->setLon(13.4206053);
+        $addressSearch->setRadius(1);
+        $addressSearch->setPids('2');
+        $addressSearch->setSearchString('Bürgerschaft');
 
         // Bürgerschaft der Freien und Hansestadt Hamburg
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 1, '2', 'Bürgerschaft');
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             0,
             $addresses
         );
 
         // Hamburg Hauptbahnhof
-        $lat = 53.5530746;
-        $lon = 10.0043535;
+        $addressSearch = new AddressSearch();
+        $addressSearch->setLat(53.5530746);
+        $addressSearch->setLon(10.0043535);
+        $addressSearch->setPids('2');
 
         // Bürgerschaft der Freien und Hansestadt Hamburg
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 1, '2', 'Bürgerschaft');
+        $addressSearch->setRadius(1);
+        $addressSearch->setSearchString('Bürgerschaft');
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             1,
             $addresses
         );
 
         // Bürgerschaft der Freien und Hansestadt Hamburg, Bremische Bürgerschaft
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 100, '2', 'Bürgerschaft');
+        $addressSearch->setRadius(100);
+        $addressSearch->setSearchString('Bürgerschaft');
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             2,
             $addresses
         );
 
         // Schleswig-Holsteinischer Landtag, Landtag Mecklenburg-Vorpommern, Niedersächsischer Landtag
-        $addresses = $this->addressRepository->findByDistance($lat, $lon, 150, '2', 'Landtag');
+        $addressSearch->setRadius(150);
+        $addressSearch->setSearchString('Landtag');
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
         $this->assertCount(
             3,
             $addresses

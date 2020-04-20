@@ -10,6 +10,7 @@ namespace Extcode\Contacts\Controller;
  */
 
 use Extcode\Contacts\Domain\Model\Address;
+use Extcode\Contacts\Domain\Model\Dto\AddressSearch;
 use Extcode\Contacts\Domain\Repository\AddressRepository;
 use Extcode\Contacts\Domain\Repository\ZipRepository;
 use Extcode\Contacts\Hooks\AddressSearchAddressesLoadedHookInterface;
@@ -47,34 +48,42 @@ class AddressController extends ActionController
 
     public function searchAction()
     {
+        /** @var AddressSearch $addressSearch */
+        $addressSearch = $this->objectManager->get(AddressSearch::class);
+
         if ($this->request->hasArgument('tx_contacts_addresssearch')) {
             $addressSearchArgs = $this->request->getArgument('tx_contacts_addresssearch');
+
+            $addressSearch->setSearchString((string)$addressSearchArgs['searchWord']);
+            $addressSearch->setRadius((int)$addressSearchArgs['radius']);
+
             $country = $addressSearchArgs['country'];
-            $searchWord = $addressSearchArgs['searchWord'];
             $zip = $addressSearchArgs['zip'];
-            $radius = $addressSearchArgs['radius'];
         } else {
             $addressSearchArgs = [];
         }
 
-        $this->view->assign('searchWord', $searchWord);
+        $this->view->assign('searchWord', $addressSearch->getSearchString());
         $this->view->assign('zip', $zip);
-        $this->view->assign('radius', $radius);
+        $this->view->assign('radius', $addressSearch->getRadius());
 
         if ($zip) {
             $point = $this->zipRepository->findByCountryAndZip('DE', $zip, $this->settings['zipMapFile']);
+
+            if (is_array($point)) {
+                $addressSearch->setLat((float)$point['lat']);
+                $addressSearch->setLon((float)$point['lon']);
+            }
         }
 
-        $pids = PageUtility::extendPidListByChildren(
-            $this->configurationManager->getContentObject()->data['pages'],
-            $this->configurationManager->getContentObject()->data['recursive']
+        $addressSearch->setPids(
+            PageUtility::extendPidListByChildren(
+                $this->configurationManager->getContentObject()->data['pages'],
+                $this->configurationManager->getContentObject()->data['recursive']
+            )
         );
 
-        if (is_array($point)) {
-            $addresses = $this->addressRepository->findByDistance((float)$point['lat'], (float)$point['lon'], (int)$radius, $pids, (string)$searchWord);
-        } else {
-            $addresses = $this->addressRepository->findByDistance(0.0, 0.0, 0, $pids, (string)$searchWord);
-        }
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
 
         if ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['contacts']['AddressSearchAddressesLoadedHook']) {
             foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['contacts']['AddressSearchAddressesLoadedHook'] as $className) {

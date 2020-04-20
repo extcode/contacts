@@ -9,7 +9,7 @@ namespace Extcode\Contacts\Domain\Model\Dto;
  * LICENSE file that was distributed with this source code.
  */
 
-class Demand extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Demand
 {
 
     /**

@@ -9,34 +9,31 @@ namespace Extcode\Contacts\Domain\Repository;
  * LICENSE file that was distributed with this source code.
  */
 
+use Extcode\Contacts\Domain\Model\Dto\AddressSearch;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     /**
-     * @param float $lat
-     * @param float $lon
-     * @param int $radius
-     * @param string $pids
-     * @param string $searchWord
+     * @param AddressSearch $addressSearch
      *
      * @return array
      */
-    public function findByDistance(float $lat, float $lon, int $radius, string $pids, string $searchWord): array
+    public function findByDistance(AddressSearch $addressSearch): array
     {
         $addressesInDistance = [];
 
-        $addresses = $this->findAddressesByDistance($pids, $searchWord);
+        $addresses = $this->findAddressesByDistance($addressSearch->getPids(), $addressSearch->getSearchString());
         $countries = $this->findCountries();
 
-        if ($lat === 0.0 || $lon === 0.0 || $radius === 0) {
+        if ($addressSearch->getLat() === 0.0 || $addressSearch->getLon() === 0.0 || $addressSearch->getRadius() === 0) {
             $addressesInDistance = $addresses;
         } else {
             foreach ($addresses as $address) {
-                $distance = $this->getDistance($lat, $lon, $address['lat'], $address['lon']);
+                $distance = $this->getDistance($addressSearch->getLat(), $addressSearch->getLon(), $address['lat'], $address['lon']);
 
-                if ($distance < $radius) {
+                if ($distance < $addressSearch->getRadius()) {
                     $address['distance'] = $distance;
 
                     $addressesInDistance[(string)$distance] = $address;

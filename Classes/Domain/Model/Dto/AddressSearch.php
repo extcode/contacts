@@ -38,6 +38,16 @@ class AddressSearch
     protected $searchString = '';
 
     /**
+     * @var string
+     */
+    protected $orderBy = '';
+
+    /**
+     * @var string
+     */
+    protected $fallbackOrderBy = '';
+
+    /**
      * @return float
      */
     public function getLat(): float
@@ -115,5 +125,37 @@ class AddressSearch
     public function setSearchString(string $searchString)
     {
         $this->searchString = $searchString;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrderBy(): string
+    {
+        return $this->orderBy;
+    }
+
+    /**
+     * @param string $orderBy
+     */
+    public function setOrderBy(string $orderBy): void
+    {
+        $this->orderBy = $orderBy;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFallbackOrderBy(): string
+    {
+        return $this->fallbackOrderBy;
+    }
+
+    /**
+     * @param string $fallbackOrderBy
+     */
+    public function setFallbackOrderBy(string $fallbackOrderBy)
+    {
+        $this->fallbackOrderBy = $fallbackOrderBy;
     }
 }

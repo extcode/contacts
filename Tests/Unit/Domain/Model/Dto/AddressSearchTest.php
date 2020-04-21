@@ -162,4 +162,54 @@ class AddressSearchTest extends UnitTestCase
             $this->fixture->getSearchString()
         );
     }
+
+    /**
+     * @test
+     */
+    public function getOrderByInitiallyReturnsEmptyString(): void
+    {
+        $this->assertEmpty(
+            $this->fixture->getOrderBy()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setOrderBySetsOrderBy(): void
+    {
+        $orderBy = 'distance';
+
+        $this->fixture->setOrderBy($orderBy);
+
+        $this->assertSame(
+            $orderBy,
+            $this->fixture->getOrderBy()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function getFallbackOrderByInitiallyReturnsEmptyString(): void
+    {
+        $this->assertEmpty(
+            $this->fixture->getFallbackOrderBy()
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function setFallbackOrderBySetsFallbackOrderBy(): void
+    {
+        $fallbackOrderBy = 'title';
+
+        $this->fixture->setFallbackOrderBy($fallbackOrderBy);
+
+        $this->assertSame(
+            $fallbackOrderBy,
+            $this->fixture->getFallbackOrderBy()
+        );
+    }
 }

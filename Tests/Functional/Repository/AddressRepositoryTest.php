@@ -93,9 +93,9 @@ class AddressRepositoryTest extends FunctionalTestCase
         $addressSearch->setPids('2');
 
         $addresses = $this->addressRepository->findByDistance($addressSearch);
-        $this->assertSame(
+        $this->assertCount(
             16,
-            count($addresses)
+            $addresses
         );
     }
 
@@ -292,6 +292,156 @@ class AddressRepositoryTest extends FunctionalTestCase
         $this->assertCount(
             3,
             $addresses
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function findByDistanceWithoutRadiusAndSortingByTitle(): void
+    {
+        $addressSearch = new AddressSearch();
+        $addressSearch->setPids('2');
+        $addressSearch->setOrderBy('title');
+
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
+        $this->assertSame(
+            'Abgeordnetenhaus von Berlin',
+            $addresses[0]['title']
+        );
+        $this->assertSame(
+            'Bayerischer Landtag',
+            $addresses[1]['title']
+        );
+        $this->assertSame(
+            'Bremische Bürgerschaft',
+            $addresses[2]['title']
+        );
+        $this->assertSame(
+            'Landtag von Baden-Württemberg',
+            $addresses[10]['title']
+        );
+        $this->assertSame(
+            'Thüringer Landtag',
+            $addresses[15]['title']
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function findByDistanceWithoutRadiusAndSortingByDistance(): void
+    {
+        $addressSearch = new AddressSearch();
+        $addressSearch->setPids('2');
+        $addressSearch->setOrderBy('distance');
+
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
+        $this->assertSame(
+            'Landtag von Baden-Württemberg',
+            $addresses[0]['title']
+        );
+        $this->assertSame(
+            'Bayerischer Landtag',
+            $addresses[1]['title']
+        );
+        $this->assertSame(
+            'Abgeordnetenhaus von Berlin',
+            $addresses[2]['title']
+        );
+        $this->assertSame(
+            'Landtag Rheinland-Pfalz',
+            $addresses[10]['title']
+        );
+        $this->assertSame(
+            'Thüringer Landtag',
+            $addresses[15]['title']
+        );
+
+        $addressSearch->setFallbackOrderBy('title');
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
+        $this->assertSame(
+            'Abgeordnetenhaus von Berlin',
+            $addresses[0]['title']
+        );
+        $this->assertSame(
+            'Bayerischer Landtag',
+            $addresses[1]['title']
+        );
+        $this->assertSame(
+            'Bremische Bürgerschaft',
+            $addresses[2]['title']
+        );
+        $this->assertSame(
+            'Landtag von Baden-Württemberg',
+            $addresses[10]['title']
+        );
+        $this->assertSame(
+            'Thüringer Landtag',
+            $addresses[15]['title']
+        );
+    }
+
+    /**
+     * @test
+     */
+    public function findByDistanceWithRadiusAndSortingByDistance(): void
+    {
+        // Berlin Alexanderplatz
+        $addressSearch = new AddressSearch();
+        $addressSearch->setLat(52.5225068);
+        $addressSearch->setLon(13.4206053);
+        $addressSearch->setRadius(200);
+        $addressSearch->setPids('2');
+        $addressSearch->setOrderBy('distance');
+
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
+
+        $this->assertSame(
+            'Abgeordnetenhaus von Berlin',
+            $addresses['3.2643554966074']['title']
+        );
+        $this->assertSame(
+            'Landtag Brandenburg',
+            $addresses['28.651891958674']['title']
+        );
+        $this->assertSame(
+            'Landtag Mecklenburg-Vorpommern',
+            $addresses['181.56386274957']['title']
+        );
+        $this->assertSame(
+            'Sächsischer Landtag',
+            $addresses['164.39912286221']['title']
+        );
+        $this->assertSame(
+            'Landtag von Sachsen-Anhalt',
+            $addresses['129.23779803243']['title']
+        );
+
+        $addressSearch->setOrderBy('distance');
+        $addressSearch->setFallbackOrderBy('title');
+
+        $addresses = $this->addressRepository->findByDistance($addressSearch);
+
+        $this->assertSame(
+            'Abgeordnetenhaus von Berlin',
+            $addresses[0]['title']
+        );
+        $this->assertSame(
+            'Landtag Brandenburg',
+            $addresses[5]['title']
+        );
+        $this->assertSame(
+            'Landtag Mecklenburg-Vorpommern',
+            $addresses[6]['title']
+        );
+        $this->assertSame(
+            'Landtag von Sachsen-Anhalt',
+            $addresses[11]['title']
+        );
+        $this->assertSame(
+            'Sächsischer Landtag',
+            $addresses[14]['title']
         );
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-    <file source-language="en" datatype="plaintext" original="messages" date="2020-04-14T11:42:00Z" product-name="contacts">
+    <file source-language="en" datatype="plaintext" original="messages" date="2020-04-20T12:15:00Z" product-name="contacts">
         <header/>
         <body>
 
@@ -46,10 +46,22 @@
                 <source>Google Maps</source>
             </trans-unit>
             <trans-unit id="tx_contacts.plugin.addressSearch.settings.displayResultList">
-                <source>display result list</source>
+                <source>Display Result List</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.addressSearch.settings.orderBy">
+                <source>Sort Order of Result List</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.addressSearch.settings.fallbackOrderBy">
+                <source>Sort Order of Result List without Radius Search</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.addressSearch.settings.orderBy.distance">
+                <source>Distance</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.addressSearch.settings.orderBy.title">
+                <source>Title</source>
             </trans-unit>
             <trans-unit id="tx_contacts.plugin.addressSearch.settings.showPid">
-                <source>detail page</source>
+                <source>Detail Page</source>
             </trans-unit>
 
             <trans-unit id="tx_contacts.plugin.contacts.action.contact.list.categories">

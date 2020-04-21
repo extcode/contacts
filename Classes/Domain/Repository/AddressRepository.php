@@ -295,6 +295,12 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 );
         }
 
+        if ($addressSearch->getOrderBy() !== 'distance') {
+            $queryBuilder->orderBy($addressSearch->getOrderBy());
+        } elseif ($addressSearch->getOrderBy() === 'distance' && $addressSearch->getFallbackOrderBy()) {
+            $queryBuilder->orderBy($addressSearch->getFallbackOrderBy());
+        }
+
         $addresses = $queryBuilder->execute()->fetchAll();
 
         if ($addressSearch->getLat() !== 0.0 && $addressSearch->getLon() !== 0.0 && $addressSearch->getRadius() !== 0) {
@@ -306,7 +312,13 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 if ($distance < $addressSearch->getRadius()) {
                     $address['distance'] = $distance;
 
-                    $addressesInDistance[(string)$distance] = $address;
+                    if ($addressSearch->getOrderBy() === 'distance' && $addressSearch->getFallbackOrderBy() === '') {
+                        $addressesInDistanceKey = (string)$distance;
+                    } else {
+                        $addressesInDistanceKey = $addressKey;
+                    }
+
+                    $addressesInDistance[$addressesInDistanceKey] = $address;
                 }
             }
 

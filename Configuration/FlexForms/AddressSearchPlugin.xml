@@ -23,11 +23,57 @@
                     <settings.displayResultList>
                         <TCEforms>
                             <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.addressSearch.settings.displayResultList</label>
+                            <onChange>reload</onChange>
                             <config>
                                 <type>check</type>
                             </config>
                         </TCEforms>
                     </settings.displayResultList>
+
+                    <settings.orderBy>
+                        <TCEforms>
+                            <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.addressSearch.settings.orderBy</label>
+                            <onChange>reload</onChange>
+                            <displayCond>FIELD:settings.displayResultList:=:1</displayCond>
+                            <config>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0"></numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.addressSearch.settings.orderBy.distance</numIndex>
+                                        <numIndex index="1">distance</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.addressSearch.settings.orderBy.title</numIndex>
+                                        <numIndex index="1">title</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.orderBy>
+
+                    <settings.fallbackOrderBy>
+                        <TCEforms>
+                            <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.addressSearch.settings.fallbackOrderBy</label>
+                            <displayCond>FIELD:settings.orderBy:=:distance</displayCond>
+                            <config>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0"></numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.addressSearch.settings.orderBy.title</numIndex>
+                                        <numIndex index="1">title</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.fallbackOrderBy>
 
                     <settings.showPid>
                         <TCEforms>

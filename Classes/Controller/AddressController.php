@@ -50,6 +50,12 @@ class AddressController extends ActionController
     {
         /** @var AddressSearch $addressSearch */
         $addressSearch = $this->objectManager->get(AddressSearch::class);
+        if ($this->settings['orderBy']) {
+            $addressSearch->setOrderBy($this->settings['orderBy']);
+            if ($this->settings['fallbackOrderBy']) {
+                $addressSearch->setFallbackOrderBy($this->settings['fallbackOrderBy']);
+            }
+        }
 
         if ($this->request->hasArgument('tx_contacts_addresssearch')) {
             $addressSearchArgs = $this->request->getArgument('tx_contacts_addresssearch');

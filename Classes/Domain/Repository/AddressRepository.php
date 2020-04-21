@@ -22,27 +22,11 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     public function findByDistance(AddressSearch $addressSearch): array
     {
-        $addressesInDistance = [];
-
-        $addresses = $this->findAddressesByDistance($addressSearch->getPids(), $addressSearch->getSearchString());
-        $countries = $this->findCountries();
-
-        if ($addressSearch->getLat() === 0.0 || $addressSearch->getLon() === 0.0 || $addressSearch->getRadius() === 0) {
-            $addressesInDistance = $addresses;
-        } else {
-            foreach ($addresses as $address) {
-                $distance = $this->getDistance($addressSearch->getLat(), $addressSearch->getLon(), $address['lat'], $address['lon']);
-
-                if ($distance < $addressSearch->getRadius()) {
-                    $address['distance'] = $distance;
-
-                    $addressesInDistance[(string)$distance] = $address;
-                }
-            }
-        }
-
         $companyUids = [];
         $contactUids = [];
+
+        $countries = $this->findCountries();
+        $addresses = $this->findAddressesByDistance($addressSearch);
 
         foreach ($addresses as $address) {
             if ((int)$address['company'] > 0) {
@@ -56,21 +40,19 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $companies = $this->getCompanyData($companyUids);
         $contacts = $this->getContactData($contactUids);
 
-        foreach ($addressesInDistance as $distance => $address) {
-            if ($addressesInDistance[$distance]['contact']) {
-                $addressesInDistance[$distance]['contact'] = $contacts[$address['contact']];
-                $addressesInDistance[$distance]['country'] = $countries[$address['country']];
+        foreach ($addresses as $addressKey => $address) {
+            if ($addresses[$addressKey]['contact']) {
+                $addresses[$addressKey]['contact'] = $contacts[$address['contact']];
+                $addresses[$addressKey]['country'] = $countries[$address['country']];
             }
 
-            if ($addressesInDistance[$distance]['company']) {
-                $addressesInDistance[$distance]['company'] = $companies[$address['company']];
-                $addressesInDistance[$distance]['country'] = $countries[$address['country']];
+            if ($addresses[$addressKey]['company']) {
+                $addresses[$addressKey]['company'] = $companies[$address['company']];
+                $addresses[$addressKey]['country'] = $countries[$address['country']];
             }
         }
 
-        ksort($addressesInDistance);
-
-        return $addressesInDistance;
+        return $addresses;
     }
 
     /**
@@ -278,11 +260,11 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     }
 
     /**
-     * @param string $searchWord
+     * @param AddressSearch $addressSearch
      *
      * @return mixed[]
      */
-    protected function findAddressesByDistance(string $pids, string $searchWord): array
+    protected function findAddressesByDistance(AddressSearch $addressSearch): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
             ->getQueryBuilderForTable('tx_contacts_domain_model_address');
@@ -296,24 +278,42 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 )
             );
 
-        if (!empty($pids)) {
+        if (!empty($addressSearch->getPids())) {
             $queryBuilder
                 ->andWhere(
-                    $queryBuilder->expr()->in('pid', explode(',', $pids))
+                    $queryBuilder->expr()->in('pid', explode(',', $addressSearch->getPids()))
                 );
         }
 
-        if (!empty($searchWord)) {
+        if (!empty($addressSearch->getSearchString())) {
             $queryBuilder
                 ->andWhere(
                     $queryBuilder->expr()->like(
                         'title',
-                        $queryBuilder->createNamedParameter('%' . $queryBuilder->escapeLikeWildcards($searchWord) . '%')
+                        $queryBuilder->createNamedParameter('%' . $queryBuilder->escapeLikeWildcards($addressSearch->getSearchString()) . '%')
                     )
                 );
         }
 
-        return $queryBuilder->execute()->fetchAll();
+        $addresses = $queryBuilder->execute()->fetchAll();
+
+        if ($addressSearch->getLat() !== 0.0 && $addressSearch->getLon() !== 0.0 && $addressSearch->getRadius() !== 0) {
+            $addressesInDistance = [];
+
+            foreach ($addresses as $addressKey => $address) {
+                $distance = $this->getDistance($addressSearch->getLat(), $addressSearch->getLon(), $address['lat'], $address['lon']);
+
+                if ($distance < $addressSearch->getRadius()) {
+                    $address['distance'] = $distance;
+
+                    $addressesInDistance[(string)$distance] = $address;
+                }
+            }
+
+            $addresses = $addressesInDistance;
+        }
+
+        return $addresses;
     }
 
     /**

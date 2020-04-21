@@ -305,6 +305,7 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         if ($addressSearch->getLat() !== 0.0 && $addressSearch->getLon() !== 0.0 && $addressSearch->getRadius() !== 0) {
             $addressesInDistance = [];
+            $addressesInDistanceKey = -1;
 
             foreach ($addresses as $addressKey => $address) {
                 $distance = $this->getDistance($addressSearch->getLat(), $addressSearch->getLon(), $address['lat'], $address['lon']);
@@ -312,16 +313,17 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 if ($distance < $addressSearch->getRadius()) {
                     $address['distance'] = $distance;
 
-                    if ($addressSearch->getOrderBy() === 'distance' && $addressSearch->getFallbackOrderBy() === '') {
+                    if ($addressSearch->getOrderBy() === 'distance') {
                         $addressesInDistanceKey = (string)$distance;
                     } else {
-                        $addressesInDistanceKey = $addressKey;
+                        $addressesInDistanceKey++;
                     }
 
                     $addressesInDistance[$addressesInDistanceKey] = $address;
                 }
             }
 
+            ksort($addressesInDistance);
             $addresses = $addressesInDistance;
         }
 

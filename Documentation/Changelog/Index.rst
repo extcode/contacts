@@ -7,6 +7,7 @@ ChangeLog
    :maxdepth: 5
    :titlesonly:
 
+   3.15/Index
    3.9/Index
    3.8/Index
    3.7/Index

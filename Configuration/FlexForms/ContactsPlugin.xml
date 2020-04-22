@@ -31,6 +31,25 @@
                         </TCEforms>
                     </switchableControllerActions>
 
+                    <settings.orderBy>
+                        <TCEforms>
+                            <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.contacts.action.contact.list.orderBy</label>
+                            <config>
+                                <type>select</type>
+                                <items>
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0"></numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.contacts.action.contact.list.orderBy.last_name</numIndex>
+                                        <numIndex index="1">last_name</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.orderBy>
+
                     <settings.contactUids>
                         <TCEforms>
                             <label>LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_contact</label>

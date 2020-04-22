@@ -55,6 +55,14 @@
                 <target>Standard</target>
             </trans-unit>
 
+            <trans-unit id="tx_contacts.plugin.contacts.action.contact.list.orderBy">
+                <source>Sort Order</source>
+                <target>Sortierreihenfolge</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.contacts.action.contact.list.orderBy.last_name">
+                <source>Last Name</source>
+                <target>Nachname</target>
+            </trans-unit>
             <trans-unit id="tx_contacts.plugin.contacts.action.contact.list.categories">
                 <source>Categories</source>
                 <target>Kategorie</target>
@@ -64,6 +72,14 @@
                 <target>mit Unterkategorien</target>
             </trans-unit>
 
+            <trans-unit id="tx_contacts.plugin.companies.action.company.list.orderBy">
+                <source>Sort Order</source>
+                <target>Sortierreihenfolge</target>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.companies.action.company.list.orderBy.name">
+                <source>Name</source>
+                <target>Name</target>
+            </trans-unit>
             <trans-unit id="tx_contacts.plugin.companies.action.company.list.categories">
                 <source>Categories</source>
                 <target>Kategorie</target>

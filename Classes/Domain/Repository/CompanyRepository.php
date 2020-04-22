@@ -57,6 +57,14 @@ class CompanyRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             );
         }
 
+        if (!empty($demand->getOrderBy())) {
+            $query->setOrderings(
+                [
+                    $demand->getOrderBy() => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+                ]
+            );
+        }
+
         return $query->execute();
     }
 

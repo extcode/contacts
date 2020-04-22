@@ -38,10 +38,11 @@ class ActionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
      */
     protected function createDemandObjectFromSettings(array $settings) : Demand
     {
-        $demand = $this->objectManager->get(
-            Demand::class
-        );
+        $demand = new Demand();
         $this->addCategoriesToDemandObjectFromSettings($demand);
+        if ($this->settings['orderBy']) {
+            $demand->setOrderBy($this->settings['orderBy']);
+        }
 
         $arguments = $this->request->getArguments();
 

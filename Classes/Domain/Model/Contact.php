@@ -167,7 +167,7 @@ class Contact extends AbstractContact
      * @param string $seperator
      * @return string
      */
-    public function getFullName(string $seperator)
+    public function getFullName(string $seperator = ' ')
     {
         return implode($seperator, [$this->getFirstName(), $this->getLastName()]);
     }
@@ -176,7 +176,7 @@ class Contact extends AbstractContact
      * @param string $seperator
      * @return string
      */
-    public function getTitleFullName(string $seperator)
+    public function getTitleFullName(string $seperator = ' ')
     {
         $titleFullName = [];
         if ($this->getTitle()) {

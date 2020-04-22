@@ -19,17 +19,11 @@ class AddressSearchTest extends UnitTestCase
      */
     protected $fixture;
 
-    /**
-     *
-     */
     public function setUp(): void
     {
         $this->fixture = new AddressSearch();
     }
 
-    /**
-     *
-     */
     public function tearDown(): void
     {
         unset($this->fixture);
@@ -153,7 +147,7 @@ class AddressSearchTest extends UnitTestCase
      */
     public function setSearchStringSetsSearchString(): void
     {
-        $searchString = '10, 30';
+        $searchString = 'Search String';
 
         $this->fixture->setSearchString($searchString);
 

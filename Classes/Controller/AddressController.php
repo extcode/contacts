@@ -48,8 +48,7 @@ class AddressController extends ActionController
 
     public function searchAction()
     {
-        /** @var AddressSearch $addressSearch */
-        $addressSearch = $this->objectManager->get(AddressSearch::class);
+        $addressSearch = new AddressSearch();
         if ($this->settings['orderBy']) {
             $addressSearch->setOrderBy($this->settings['orderBy']);
             if ($this->settings['fallbackOrderBy']) {

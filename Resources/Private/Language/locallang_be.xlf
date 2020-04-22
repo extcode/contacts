@@ -64,6 +64,12 @@
                 <source>Detail Page</source>
             </trans-unit>
 
+            <trans-unit id="tx_contacts.plugin.contacts.action.contact.list.orderBy">
+                <source>Sort Order</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.contacts.action.contact.list.orderBy.last_name">
+                <source>Last Name</source>
+            </trans-unit>
             <trans-unit id="tx_contacts.plugin.contacts.action.contact.list.categories">
                 <source>Categories</source>
             </trans-unit>
@@ -71,6 +77,12 @@
                 <source>with Subcategories</source>
             </trans-unit>
 
+            <trans-unit id="tx_contacts.plugin.companies.action.company.list.orderBy">
+                <source>Sort Order</source>
+            </trans-unit>
+            <trans-unit id="tx_contacts.plugin.companies.action.company.list.orderBy.name">
+                <source>Name</source>
+            </trans-unit>
             <trans-unit id="tx_contacts.plugin.companies.action.company.list.categories">
                 <source>Categories</source>
             </trans-unit>

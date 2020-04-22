@@ -38,6 +38,11 @@ class Demand
     protected $class = '';
 
     /**
+     * @var string
+     */
+    protected $orderBy = '';
+
+    /**
      * @return string
      */
     public function getSearchString(): string
@@ -125,5 +130,21 @@ class Demand
     {
         $this->action = $action;
         $this->class = $class;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrderBy(): string
+    {
+        return $this->orderBy;
+    }
+
+    /**
+     * @param string $orderBy
+     */
+    public function setOrderBy(string $orderBy): void
+    {
+        $this->orderBy = $orderBy;
     }
 }

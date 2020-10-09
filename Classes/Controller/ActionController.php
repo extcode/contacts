@@ -11,8 +11,7 @@ namespace Extcode\Contacts\Controller;
 
 use Extcode\Contacts\Domain\Model\Dto\Demand;
 use Extcode\Contacts\Domain\Repository\CategoryRepository;
-use TYPO3\CMS\Core\Database\ConnectionPool;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\Page\PageRepository;
 
 class ActionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
@@ -22,11 +21,24 @@ class ActionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     protected $categoryRepository;
 
     /**
+     * @var PageRepository
+     */
+    protected $pageRepository;
+
+    /**
      * @param CategoryRepository $categoryRepository
      */
     public function injectCategoryRepository(CategoryRepository $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
+    }
+
+    /**
+     * @param PageRepository $pageRepository
+     */
+    public function injectPageRepository(PageRepository $pageRepository)
+    {
+        $this->pageRepository = $pageRepository;
     }
 
     /**
@@ -97,23 +109,28 @@ class ActionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     /**
      * @param Demand $demand
      *
-     * @return mixed[]
+     * @return array
      */
-    protected function getSelectedCategories(Demand $demand)
+    protected function getSelectedCategories(Demand $demand): array
     {
-        if (empty($demand->getAvailableCategories())) {
-            return [];
+        $translatedCategories = [];
+
+        $categories = $this->categoryRepository->findFromDemand($demand);
+
+        foreach ($categories as $category) {
+            $category = $this->pageRepository->getLanguageOverlay('sys_category', $category);
+
+            // In case of "strict" language mode
+            if (empty($category)) {
+                continue;
+            }
+
+            $translatedCategories[] = [
+                'uid' => $category['uid'],
+                'title' => $category['title']
+            ];
         }
 
-        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
-            ->getQueryBuilderForTable('sys_category');
-        $queryBuilder
-            ->select('uid', 'title')
-            ->from('sys_category')
-            ->where(
-                $queryBuilder->expr()->in('uid', $demand->getAvailableCategories())
-            );
-
-        return $queryBuilder->execute()->fetchAll();
+        return $translatedCategories;
     }
 }

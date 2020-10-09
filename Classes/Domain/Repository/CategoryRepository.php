@@ -9,6 +9,10 @@ namespace Extcode\Contacts\Domain\Repository;
  * LICENSE file that was distributed with this source code.
  */
 
+use Extcode\Contacts\Domain\Model\Dto\Demand;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
 {
 
@@ -117,5 +121,29 @@ class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRe
             }
         }
         return $categories;
+    }
+
+    /**
+     * @param Demand $demand
+     * @return array $categories
+     */
+    public function findFromDemand(Demand $demand)
+    {
+        $categories = [];
+
+        if (empty($demand->getAvailableCategories())) {
+            return $categories;
+        }
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getQueryBuilderForTable('sys_category');
+        $queryBuilder
+            ->select('*')
+            ->from('sys_category')
+            ->where(
+                $queryBuilder->expr()->in('uid', $demand->getAvailableCategories())
+            );
+
+        return $queryBuilder->execute()->fetchAll();
     }
 }

@@ -1,7 +1,9 @@
 <?php
 
+use Extcode\Contacts\Command\GeocodeCommand;
+
 return [
     'contacts:geocode' => [
-        'class' => \Extcode\Contacts\Command\GeocodeCommand::class
+        'class' => GeocodeCommand::class
     ]
 ];

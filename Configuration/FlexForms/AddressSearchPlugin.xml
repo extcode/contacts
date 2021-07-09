@@ -19,7 +19,7 @@
                             </config>
                         </TCEforms>
                     </settings.templateLayout>
-
+                    
                     <settings.displayResultList>
                         <TCEforms>
                             <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.addressSearch.settings.displayResultList</label>
@@ -29,7 +29,7 @@
                             </config>
                         </TCEforms>
                     </settings.displayResultList>
-
+                    
                     <settings.orderBy>
                         <TCEforms>
                             <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.addressSearch.settings.orderBy</label>
@@ -37,10 +37,13 @@
                             <displayCond>FIELD:settings.displayResultList:=:1</displayCond>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0" type="array">
-                                        <numIndex index="0"></numIndex>
-                                        <numIndex index="1"></numIndex>
+                                        <numIndex index="0">
+                                        </numIndex>
+                                        <numIndex index="1">
+                                        </numIndex>
                                     </numIndex>
                                     <numIndex index="1">
                                         <numIndex index="0">LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.addressSearch.settings.orderBy.distance</numIndex>
@@ -54,17 +57,20 @@
                             </config>
                         </TCEforms>
                     </settings.orderBy>
-
+                    
                     <settings.fallbackOrderBy>
                         <TCEforms>
                             <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.addressSearch.settings.fallbackOrderBy</label>
                             <displayCond>FIELD:settings.orderBy:=:distance</displayCond>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0" type="array">
-                                        <numIndex index="0"></numIndex>
-                                        <numIndex index="1"></numIndex>
+                                        <numIndex index="0">
+                                        </numIndex>
+                                        <numIndex index="1">
+                                        </numIndex>
                                     </numIndex>
                                     <numIndex index="2">
                                         <numIndex index="0">LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.addressSearch.settings.orderBy.title</numIndex>
@@ -74,7 +80,7 @@
                             </config>
                         </TCEforms>
                     </settings.fallbackOrderBy>
-
+                    
                     <settings.showPid>
                         <TCEforms>
                             <exclude>1</exclude>

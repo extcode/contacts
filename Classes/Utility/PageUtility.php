@@ -2,6 +2,7 @@
 
 namespace Extcode\Contacts\Utility;
 
+use TYPO3\CMS\Core\Database\QueryGenerator;
 /*
  * This file is part of the package extcode/contacts.
  *
@@ -28,7 +29,7 @@ class PageUtility
             return $pidList;
         }
 
-        $queryGenerator = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Database\QueryGenerator::class);
+        $queryGenerator = GeneralUtility::makeInstance(QueryGenerator::class);
         $recursiveStoragePids = $pidList;
         $storagePids = GeneralUtility::intExplode(',', $pidList);
         foreach ($storagePids as $startPid) {

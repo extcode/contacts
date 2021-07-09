@@ -2,14 +2,16 @@
 
 namespace Extcode\Contacts\Domain\Model;
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Property\Exception;
+
 /*
  * This file is part of the package extcode/contacts.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
-
-class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Country extends AbstractEntity
 {
     /**
      * @var string
@@ -48,7 +50,7 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setIso2(string $iso2)
     {
         if (strlen($iso2) != 2) {
-            throw new \TYPO3\CMS\Extbase\Property\Exception(
+            throw new Exception(
                 'The iso2 code has to have two chars.',
                 1395925918
             );
@@ -73,7 +75,7 @@ class Country extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setIso3(string $iso3)
     {
         if ((strlen($iso3) != 0) and (strlen($iso3) != 3)) {
-            throw new \TYPO3\CMS\Extbase\Property\Exception(
+            throw new Exception(
                 'The iso3 code has to have three chars.',
                 1395925960
             );

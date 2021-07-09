@@ -1,6 +1,6 @@
 <?php
 
-namespace Extcode\Contacts\Tests\Domain\Model;
+namespace Extcode\Contacts\Tests\Unit\Domain\Model;
 
 /*
  * This file is part of the package extcode/contacts.
@@ -20,17 +20,11 @@ class CountryTest extends UnitTestCase
      */
     protected $fixture;
 
-    /**
-     *
-     */
     public function setUp(): void
     {
         $this->fixture = new Country();
     }
 
-    /**
-     *
-     */
     public function tearDown(): void
     {
         unset($this->fixture);

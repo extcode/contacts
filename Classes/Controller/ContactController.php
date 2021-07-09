@@ -11,6 +11,7 @@ namespace Extcode\Contacts\Controller;
 
 use Extcode\Contacts\Domain\Model\Contact;
 use Extcode\Contacts\Domain\Repository\ContactRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 class ContactController extends ActionController
@@ -18,25 +19,22 @@ class ContactController extends ActionController
     /**
      * @var ContactRepository
      */
-    protected $contactRepository = null;
+    protected $contactRepository;
 
     /**
      * @var int
      */
     protected $pageId;
 
-    /**
-     * @param ContactRepository $contactRepository
-     */
-    public function injectContactRepository(ContactRepository $contactRepository)
+    public function injectContactRepository(ContactRepository $contactRepository): void
     {
         $this->contactRepository = $contactRepository;
     }
 
-    protected function initializeAction()
+    protected function initializeAction(): void
     {
         if ($GLOBALS['TSFE'] === null) {
-            $this->pageId = (int)\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('id');
+            $this->pageId = (int)GeneralUtility::_GP('id');
         } else {
             $this->pageId = $GLOBALS['TSFE']->id;
         }
@@ -63,7 +61,7 @@ class ContactController extends ActionController
         }
     }
 
-    public function listAction()
+    public function listAction(): void
     {
         $demand = $this->createDemandObjectFromSettings($this->settings);
         $demand->setActionAndClass(__METHOD__, __CLASS__);
@@ -75,10 +73,7 @@ class ContactController extends ActionController
         $this->view->assign('categories', $this->getSelectedCategories($demand));
     }
 
-    /**
-     * @param Contact $contact
-     */
-    public function showAction(Contact $contact = null)
+    public function showAction(Contact $contact = null): void
     {
         if (!$contact && (int)$this->settings['contact']) {
             $contact = $this->contactRepository->findByUid((int)$this->settings['contact']);
@@ -89,7 +84,7 @@ class ContactController extends ActionController
         $this->addCacheTags([$contact]);
     }
 
-    public function teaserAction()
+    public function teaserAction(): void
     {
         $contacts = $this->contactRepository->findByUids($this->settings['contactUids']);
         $this->view->assign('contacts', $contacts);
@@ -97,10 +92,7 @@ class ContactController extends ActionController
         $this->addCacheTags($contacts);
     }
 
-    /**
-     * @param array $contacts
-     */
-    protected function addCacheTags($contacts)
+    protected function addCacheTags(array $contacts): void
     {
         $cacheTags = [];
 

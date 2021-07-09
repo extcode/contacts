@@ -11,7 +11,8 @@ namespace Extcode\Contacts\Controller;
 
 use Extcode\Contacts\Domain\Model\Dto\Demand;
 use Extcode\Contacts\Domain\Repository\CategoryRepository;
-use TYPO3\CMS\Frontend\Page\PageRepository;
+use TYPO3\CMS\Core\Domain\Repository\PageRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class ActionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
@@ -21,7 +22,7 @@ class ActionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     protected $categoryRepository;
 
     /**
-     * @var PageRepository
+     * @var \TYPO3\CMS\Core\Domain\Repository\PageRepository
      */
     protected $pageRepository;
 
@@ -34,7 +35,7 @@ class ActionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     }
 
     /**
-     * @param PageRepository $pageRepository
+     * @param \TYPO3\CMS\Core\Domain\Repository\PageRepository $pageRepository
      */
     public function injectPageRepository(PageRepository $pageRepository)
     {
@@ -82,7 +83,7 @@ class ActionController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControlle
     protected function addCategoriesToDemandObjectFromSettings(&$demand)
     {
         if ($this->settings['categoriesList']) {
-            $selectedCategories = \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(
+            $selectedCategories = GeneralUtility::intExplode(
                 ',',
                 $this->settings['categoriesList'],
                 true

@@ -18,10 +18,7 @@ class ZipRepository
      */
     protected $zipMap = [];
 
-    /**
-     * @param string $zipMapFile
-     */
-    protected function includeZipMap(string $zipMapFile)
+    protected function includeZipMap(string $zipMapFile): void
     {
         $zipMapFile = GeneralUtility::getFileAbsFileName($zipMapFile);
 
@@ -33,11 +30,6 @@ class ZipRepository
         }
     }
 
-    /**
-     * @param string $country
-     * @param string $zip
-     * @return array
-     */
     public function findByCountryAndZip(string $country, string $zip, string $zipMapFile): array
     {
         $this->includeZipMap($zipMapFile);

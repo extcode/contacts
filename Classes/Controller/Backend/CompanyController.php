@@ -10,38 +10,34 @@ namespace Extcode\Contacts\Controller\Backend;
  */
 
 use Extcode\Contacts\Domain\Model\Company;
+use Extcode\Contacts\Domain\Model\Dto\Demand;
 use Extcode\Contacts\Domain\Repository\CompanyRepository;
+use TYPO3\CMS\Core\Pagination\SimplePagination;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 
 class CompanyController extends ActionController
 {
     /**
      * @var CompanyRepository
      */
-    protected $companyRepository = null;
+    protected $companyRepository;
 
     /**
      * @var int
      */
     protected $pageId;
 
-    /**
-     * @var array
-     */
-    protected $piVars = [];
-
-    /**
-     * @param CompanyRepository $companyRepository
-     */
-    public function injectCompanyRepository(CompanyRepository $companyRepository)
+    public function injectCompanyRepository(CompanyRepository $companyRepository): void
     {
         $this->companyRepository = $companyRepository;
     }
 
-    protected function initializeAction()
+    protected function initializeAction(): void
     {
-        $this->pageId = (int)\TYPO3\CMS\Core\Utility\GeneralUtility::_GP('id');
+        $this->pageId = (int)GeneralUtility::_GP('id');
 
         $frameworkConfiguration = $this->configurationManager->getConfiguration(
             ConfigurationManagerInterface::CONFIGURATION_TYPE_FRAMEWORK
@@ -52,16 +48,30 @@ class CompanyController extends ActionController
             ],
         ];
         $this->configurationManager->setConfiguration(array_merge($frameworkConfiguration, $persistenceConfiguration));
-
-        $this->piVars = $this->request->getArguments();
     }
 
-    public function listAction()
+    public function listAction(int $currentPage = 1): void
     {
-        $companies = $this->companyRepository->findAll($this->piVars);
+        $demand = $this->createDemandObject();
 
-        $this->view->assign('piVars', $this->piVars);
-        $this->view->assign('companies', $companies);
+        $companies = $this->companyRepository->findDemanded($demand);
+
+        $itemsPerPage = $this->settings['itemsPerPage'] ?? 25;
+        $arrayPaginator = new QueryResultPaginator(
+            $companies,
+            $currentPage,
+            $itemsPerPage
+        );
+        $pagination = new SimplePagination($arrayPaginator);
+        $this->view->assignMultiple(
+            [
+                'demand' => $demand,
+                'companies' => $companies,
+                'paginator' => $arrayPaginator,
+                'pagination' => $pagination,
+                'pages' => range(1, $pagination->getLastPageNumber()),
+            ]
+        );
     }
 
     /**
@@ -69,8 +79,22 @@ class CompanyController extends ActionController
      *
      * @TYPO3\CMS\Extbase\Annotation\IgnoreValidation("company")
      */
-    public function showAction(Company $company)
+    public function showAction(Company $company): void
     {
         $this->view->assign('company', $company);
+    }
+
+    protected function createDemandObject(): Demand
+    {
+        $demand = GeneralUtility::makeInstance(Demand::class);
+
+        if ($this->request->hasArgument('filter')) {
+            $filter = $this->request->getArgument('filter');
+            if (!empty($filter['searchString'])) {
+                $demand->setSearchString($filter['searchString']);
+            }
+        }
+
+        return $demand;
     }
 }

@@ -42,107 +42,67 @@ class Demand
      */
     protected $orderBy = '';
 
-    /**
-     * @return string
-     */
     public function getSearchString(): string
     {
         return $this->searchString;
     }
 
-    /**
-     * @param string $searchString
-     */
     public function setSearchString(string $searchString): void
     {
         $this->searchString = $searchString;
     }
 
-    /**
-     * @return array
-     */
     public function getAvailableCategories(): array
     {
         return $this->availableCategories;
     }
 
-    /**
-     * @param array $availableCategories
-     */
     public function setAvailableCategories(array $availableCategories): void
     {
         $this->availableCategories = $availableCategories;
     }
 
-    /**
-     * @return int
-     */
     public function getSelectedCategory(): int
     {
         return $this->selectedCategory;
     }
 
-    /**
-     * @param int $selectedCategory
-     */
     public function setSelectedCategory(int $selectedCategory): void
     {
         $this->selectedCategory = $selectedCategory;
     }
 
-    /**
-     * @return string
-     */
     public function getAction(): string
     {
         return $this->action;
     }
 
-    /**
-     * @param string $action
-     */
-    public function setAction($action): void
+    public function setAction(string $action): void
     {
         $this->action = $action;
     }
 
-    /**
-     * @return string
-     */
     public function getClass(): string
     {
         return $this->class;
     }
 
-    /**
-     * @param string $class
-     */
-    public function setClass($class):void
+    public function setClass(string $class):void
     {
         $this->class = $class;
     }
 
-    /**
-     * @param string $action
-     * @param string $class
-     */
-    public function setActionAndClass($action, $class): void
+    public function setActionAndClass(string $action, string $class): void
     {
         $this->action = $action;
         $this->class = $class;
     }
 
-    /**
-     * @return string
-     */
     public function getOrderBy(): string
     {
         return $this->orderBy;
     }
 
-    /**
-     * @param string $orderBy
-     */
     public function setOrderBy(string $orderBy): void
     {
         $this->orderBy = $orderBy;

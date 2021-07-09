@@ -2,6 +2,9 @@
 
 namespace Extcode\Contacts\Hooks;
 
+use Extcode\Contacts\Domain\Repository\CountryRepository;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use TYPO3\CMS\Core\Information\Typo3Version;
 /*
  * This file is part of the package extcode/contacts.
  *
@@ -9,9 +12,9 @@ namespace Extcode\Contacts\Hooks;
  * LICENSE file that was distributed with this source code.
  */
 
-use Extcode\Contacts\Domain\Repository\CountryRepository;
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Utility\VersionNumberUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 class GoogleMapHook
 {
@@ -70,7 +73,7 @@ class GoogleMapHook
      */
     protected function init(array $params)
     {
-        $this->objectManager = new \TYPO3\CMS\Extbase\Object\ObjectManager();
+        $this->objectManager = new ObjectManager();
 
         $this->countryRepository = $this->objectManager->get(
             CountryRepository::class
@@ -174,7 +177,7 @@ class GoogleMapHook
      */
     protected function getJavaScript(string $googleMapsLibrary): string
     {
-        $version = \TYPO3\CMS\Core\Utility\VersionNumberUtility::convertVersionNumberToInteger(TYPO3_version);
+        $version = VersionNumberUtility::convertVersionNumberToInteger(GeneralUtility::makeInstance(Typo3Version::class)->getVersion());
 
         $out = '';
 

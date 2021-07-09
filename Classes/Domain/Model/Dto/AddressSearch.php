@@ -47,114 +47,72 @@ class AddressSearch
      */
     protected $fallbackOrderBy = '';
 
-    /**
-     * @return float
-     */
     public function getLat(): float
     {
         return $this->lat;
     }
 
-    /**
-     * @param float $lat
-     */
-    public function setLat(float $lat)
+    public function setLat(float $lat): void
     {
         $this->lat = $lat;
     }
 
-    /**
-     * @return float
-     */
     public function getLon(): float
     {
         return $this->lon;
     }
 
-    /**
-     * @param float $lon
-     */
-    public function setLon(float $lon)
+    public function setLon(float $lon): void
     {
         $this->lon = $lon;
     }
 
-    /**
-     * @return int
-     */
     public function getRadius(): int
     {
         return $this->radius;
     }
 
-    /**
-     * @param int $radius
-     */
-    public function setRadius(int $radius)
+    public function setRadius(int $radius): void
     {
         $this->radius = $radius;
     }
 
-    /**
-     * @return string
-     */
     public function getPids(): string
     {
         return $this->pids;
     }
 
-    /**
-     * @param string $pids
-     */
-    public function setPids(string $pids)
+    public function setPids(string $pids): void
     {
         $this->pids = $pids;
     }
 
-    /**
-     * @return string
-     */
     public function getSearchString(): string
     {
         return $this->searchString;
     }
 
-    /**
-     * @param string $searchString
-     */
-    public function setSearchString(string $searchString)
+    public function setSearchString(string $searchString): void
     {
         $this->searchString = $searchString;
     }
 
-    /**
-     * @return string
-     */
     public function getOrderBy(): string
     {
         return $this->orderBy;
     }
 
-    /**
-     * @param string $orderBy
-     */
     public function setOrderBy(string $orderBy): void
     {
         $this->orderBy = $orderBy;
     }
 
-    /**
-     * @return string
-     */
     public function getFallbackOrderBy(): string
     {
         return $this->fallbackOrderBy;
     }
 
-    /**
-     * @param string $fallbackOrderBy
-     */
-    public function setFallbackOrderBy(string $fallbackOrderBy)
+    public function setFallbackOrderBy(string $fallbackOrderBy): void
     {
         $this->fallbackOrderBy = $fallbackOrderBy;
     }

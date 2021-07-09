@@ -12,14 +12,10 @@ namespace Extcode\Contacts\Domain\Repository;
 use Extcode\Contacts\Domain\Model\Dto\AddressSearch;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
-class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class AddressRepository extends Repository
 {
-    /**
-     * @param AddressSearch $addressSearch
-     *
-     * @return array
-     */
     public function findByDistance(AddressSearch $addressSearch): array
     {
         $companyUids = [];
@@ -55,14 +51,6 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $addresses;
     }
 
-    /**
-     * @param float $lat1
-     * @param float $lon1
-     * @param float $lat2
-     * @param float $lon2
-     *
-     * @return float $distance
-     */
     public function getDistance(float $lat1, float $lon1, float $lat2, float $lon2): float
     {
         $l1 = deg2rad($lat1);
@@ -81,11 +69,6 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $distance;
     }
 
-    /**
-     * @param array $ids
-     *
-     * @return array
-     */
     protected function getCompanyData(array $ids): array
     {
         if (empty($ids)) {
@@ -127,12 +110,6 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $queryResult;
     }
 
-    /**
-     * @param string $tableName
-     * @param array $ids
-     *
-     * @return array
-     */
     protected function getContactData(array $ids): array
     {
         if (empty($ids)) {
@@ -174,11 +151,6 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $queryResult;
     }
 
-    /**
-     * @param string $type
-     * @param array $ids
-     * @return mixed[]
-     */
     protected function getPhones(string $type, array $ids): array
     {
         if (empty($ids)) {
@@ -201,13 +173,6 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $queryResult;
     }
 
-    /**
-     * @param string $tableName
-     * @param string $fieldName
-     * @param array $ids
-     *
-     * @return mixed[]
-     */
     protected function getImages(string $tableName, string $fieldName, array $ids): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
@@ -230,13 +195,6 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $queryResult;
     }
 
-    /**
-     * @param string $tableName
-     * @param string $fieldName
-     * @param array $ids
-     *
-     * @return mixed[]
-     */
     protected function getCategories(string $tableName, string $fieldName, array $ids): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
@@ -259,11 +217,6 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $queryResult;
     }
 
-    /**
-     * @param AddressSearch $addressSearch
-     *
-     * @return mixed[]
-     */
     protected function findAddressesByDistance(AddressSearch $addressSearch): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
@@ -330,9 +283,6 @@ class AddressRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $addresses;
     }
 
-    /**
-     * @return mixed[]
-     */
     protected function findCountries(): array
     {
         $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)

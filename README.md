@@ -1,7 +1,6 @@
 # Contacts
 
-[![Build Status](https://travis-ci.org/extcode/contacts.svg?branch=master)](https://travis-ci.org/extcode/contacts)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0e71b0ff657e475f8b4af581e13ce3b8)](https://www.codacy.com/app/extcode/contacts?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=extcode/contacts&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/extcode/contacts.svg?branch=4.x)](https://travis-ci.org/extcode/contacts)
 
 EXT:contacts is a TYPO3 extension for handling contacts (companies, persons).
 
@@ -28,16 +27,17 @@ Download and install the extension with the extension manager module.
 
 ## 3.1 Compatibility and supported Versions
 
-| Contacts      | TYPO3      | PHP       | Support/Development                     |
-| ------------- | ---------- | ----------|---------------------------------------- |
-| 3.x.x         | 9.x        | 7.2       | Features, Bugfixes, Security Updates    |
-| 2.x.x         | 8.7        | 7.0 - 7.2 | Features _(in certain circumstances with feature toogle)_, Bugfixes, Security Updates    |
-| 1.x.x         | 7.6        | 5.6 - 7.1 | Bugfixes, Security Updates              |
-| 0.x.x         |            |           |                                         |
+| Contacts      | TYPO3      | PHP       | Support/Development                  |
+| ------------- | ---------- | ----------|--------------------------------------|
+| 4.x.x         | 10.4, 11.5 | 7.2+      | Features, Bugfixes, Security Updates |
+| 3.x.x         | 9.5        | 7.2 - 7.4 | Bugfixes, Security Updates           |
+| 2.x.x         | 8.7        | 7.0 - 7.2 | Security Updates                     |
+| 1.x.x         | 7.6        | 5.6 - 7.1 |                                      |
+| 0.x.x         |            |           |                                      |
 
 ### 3.2. Changelog
 
-Please have a look into the [official extension documentation in changelog chapter](https://docs.typo3.org/typo3cms/extensions/cart/Misc/Changelog/Index.html)
+Please have a look into the [official extension documentation in changelog chapter](https://docs.typo3.org/p/extcode/contacts/main/en-us/Changelog/Index.html)
 
 ### 3.3. Release Management
 
@@ -48,7 +48,7 @@ News uses **semantic versioning** which basically means for you, that
 
 ## 4. Sponsoring
 
-*  Ask for an invoice.
+* Ask for an invoice.
 * [GitHub Sponsors](https://github.com/sponsors/extcode)
 * [PayPal.Me](https://paypal.me/extcart)
 * [Patreon](https://patreon.com/ext_cart)

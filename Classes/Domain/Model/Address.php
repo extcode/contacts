@@ -2,6 +2,7 @@
 
 namespace Extcode\Contacts\Domain\Model;
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 /*
  * This file is part of the package extcode/contacts.
  *
@@ -11,7 +12,7 @@ namespace Extcode\Contacts\Domain\Model;
 
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-class Address extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Address extends AbstractEntity
 {
     /**
      * @var string

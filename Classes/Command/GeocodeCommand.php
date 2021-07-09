@@ -13,12 +13,12 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class GeocodeCommand extends Command
 {
-
     /**
      * @var string
      */
@@ -29,31 +29,23 @@ class GeocodeCommand extends Command
      */
     protected $googleMapsApiKey = '';
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setDescription('Geocode addresses of contact extension');
         $this->setHelp('Try to geocode all addresses of contact extension, where latitude and longitude are not set. It uses the google maps API. A valid API key is required!');
     }
 
-    /**
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     */
-    protected function initialize(InputInterface $input, OutputInterface $output)
+    protected function initialize(InputInterface $input, OutputInterface $output): void
     {
         parent::initialize($input, $output);
 
-        $extensionConfiguration = new \TYPO3\CMS\Core\Configuration\ExtensionConfiguration();
+        $extensionConfiguration = new ExtensionConfiguration();
         $contactsConfiguration = $extensionConfiguration->get('contacts');
 
         $this->googleMapsApiKey = $contactsConfiguration['googleMapsApiKey'];
     }
 
-    /**
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): void
     {
         $output->writeln('');
 
@@ -140,11 +132,6 @@ class GeocodeCommand extends Command
         $progress->finish();
     }
 
-    /**
-     * @param string $address
-     *
-     * @return array
-     */
     protected function geocode(string $address): array
     {
         $address = urlencode($address);

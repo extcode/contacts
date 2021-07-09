@@ -1,6 +1,6 @@
 <?php
 
-namespace Extcode\Contacts\Tests\Domain\Model;
+namespace Extcode\Contacts\Tests\Unit\Domain\Model;
 
 /*
  * This file is part of the package extcode/contacts.
@@ -27,9 +27,6 @@ class CompanyTest extends UnitTestCase
      */
     protected $fixture;
 
-    /**
-     *
-     */
     public function setUp(): void
     {
         $this->name = 'Name';
@@ -37,9 +34,6 @@ class CompanyTest extends UnitTestCase
         $this->fixture = new Company($this->name);
     }
 
-    /**
-     *
-     */
     public function tearDown(): void
     {
         unset($this->fixture);

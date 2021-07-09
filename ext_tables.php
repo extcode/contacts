@@ -6,13 +6,13 @@ $_LLL_db = 'LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:';
 
 if (TYPO3_MODE === 'BE') {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-        'Extcode.contacts',
+        'Contacts',
         'web',
         'contacts',
         '',
         [
-            'Backend\Company' => 'list, show',
-            'Backend\Contact' => 'list, show',
+            \Extcode\Contacts\Controller\Backend\CompanyController::class => 'list, show',
+            \Extcode\Contacts\Controller\Backend\ContactController::class => 'list, show',
         ],
         [
             'access' => 'admin',

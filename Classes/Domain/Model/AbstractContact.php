@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Extcode\Contacts\Domain\Model;
 
+use TYPO3\CMS\Extbase\Domain\Model\Category;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 /*
  * This file is part of the package extcode/contacts.
  *
@@ -12,7 +14,7 @@ namespace Extcode\Contacts\Domain\Model;
 
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-abstract class AbstractContact extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+abstract class AbstractContact extends AbstractEntity
 {
     /**
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\Contacts\Domain\Model\Address>
@@ -250,7 +252,7 @@ abstract class AbstractContact extends \TYPO3\CMS\Extbase\DomainObject\AbstractE
      *
      * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
      */
-    public function addCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
+    public function addCategory(Category $category)
     {
         $this->categories->attach($category);
     }
@@ -260,7 +262,7 @@ abstract class AbstractContact extends \TYPO3\CMS\Extbase\DomainObject\AbstractE
      *
      * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
      */
-    public function removeCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
+    public function removeCategory(Category $category)
     {
         $this->categories->detach($category);
     }
@@ -296,7 +298,7 @@ abstract class AbstractContact extends \TYPO3\CMS\Extbase\DomainObject\AbstractE
      *
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\Category> $categories
      */
-    public function setCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories)
+    public function setCategories(ObjectStorage $categories)
     {
         $this->categories = $categories;
     }

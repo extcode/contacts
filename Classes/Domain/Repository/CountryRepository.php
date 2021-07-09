@@ -9,6 +9,8 @@ namespace Extcode\Contacts\Domain\Repository;
  * LICENSE file that was distributed with this source code.
  */
 
-class CountryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+use TYPO3\CMS\Extbase\Persistence\Repository;
+
+class CountryRepository extends Repository
 {
 }

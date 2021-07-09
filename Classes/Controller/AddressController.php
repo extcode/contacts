@@ -23,30 +23,24 @@ class AddressController extends ActionController
     /**
      * @var AddressRepository
      */
-    protected $addressRepository = null;
+    protected $addressRepository;
 
     /**
      * @var ZipRepository
      */
-    protected $zipRepository = null;
+    protected $zipRepository;
 
-    /**
-     * @param AddressRepository $addressRepository
-     */
-    public function injectAddressRepository(AddressRepository $addressRepository)
+    public function injectAddressRepository(AddressRepository $addressRepository): void
     {
         $this->addressRepository = $addressRepository;
     }
 
-    /**
-     * @param ZipRepository $zipRepository
-     */
-    public function injectZipRepository(ZipRepository $zipRepository)
+    public function injectZipRepository(ZipRepository $zipRepository): void
     {
         $this->zipRepository = $zipRepository;
     }
 
-    public function searchAction()
+    public function searchAction(): void
     {
         $addressSearch = new AddressSearch();
         if ($this->settings['orderBy']) {
@@ -104,10 +98,7 @@ class AddressController extends ActionController
         $this->view->assign('addresses', $addresses);
     }
 
-    /**
-     * @param Address|null $address
-     */
-    public function showAction(Address $address = null)
+    public function showAction(Address $address = null): void
     {
         if (!$address) {
             $address = $this->addressRepository->findByUid($this->settings['address']);

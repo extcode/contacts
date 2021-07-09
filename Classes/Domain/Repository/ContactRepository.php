@@ -10,17 +10,13 @@ namespace Extcode\Contacts\Domain\Repository;
  */
 
 use Extcode\Contacts\Domain\Model\Dto\Demand;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
-class ContactRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class ContactRepository extends Repository
 {
-
-    /**
-     * @param Demand $demand
-     *
-     * @return QueryResultInterface|array
-     */
-    public function findDemanded(Demand $demand)
+    public function findDemanded(Demand $demand): QueryResultInterface
     {
         // settings
         $query = $this->createQuery();
@@ -61,7 +57,7 @@ class ContactRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (!empty($demand->getOrderBy())) {
             $query->setOrderings(
                 [
-                    $demand->getOrderBy() => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+                    $demand->getOrderBy() => QueryInterface::ORDER_ASCENDING
                 ]
             );
         }
@@ -69,14 +65,7 @@ class ContactRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $query->execute();
     }
 
-    /**
-     * Finds objects based on selected uids
-     *
-     * @param string $uids
-     *
-     * @return array
-     */
-    public function findByUids($uids)
+    public function findByUids(string $uids): array
     {
         $uids = explode(',', $uids);
 
@@ -90,13 +79,7 @@ class ContactRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         return $this->orderByField($query->execute(), $uids);
     }
 
-    /**
-     * @param QueryResultInterface $contacts
-     * @param array $uids
-     *
-     * @return array
-     */
-    protected function orderByField(QueryResultInterface $contacts, $uids)
+    protected function orderByField(QueryResultInterface $contacts, array $uids): array
     {
         $indexedContacts = [];
         $orderedContacts = [];

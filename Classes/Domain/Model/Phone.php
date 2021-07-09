@@ -2,14 +2,15 @@
 
 namespace Extcode\Contacts\Domain\Model;
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
 /*
  * This file is part of the package extcode/contacts.
  *
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
-
-class Phone extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Phone extends AbstractEntity
 {
     /**
      * @var string

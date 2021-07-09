@@ -35,26 +35,44 @@
         }
     },
     "scripts": {
-        "extcode:cgl": [
-            ".build/bin/php-cs-fixer fix --config=Build/.php_cs.dist -v --using-cache=no --path-mode=intersection ./"
+        "test:cgl": [
+            ".build/bin/php-cs-fixer fix --config=Build/.php-cs-fixer.dist.php -v --using-cache=no --path-mode=intersection ./"
         ],
-        "extcode:test:php:lint": [
+        "test:cgl:dry-run": [
+            ".build/bin/php-cs-fixer fix --config=Build/.php-cs-fixer.dist.php -v --dry-run --using-cache=no --path-mode=intersection ./"
+        ],
+        "test:php:lint": [
             ".build/bin/phplint -c Build/phplint.yaml"
         ],
-        "extcode:test:php:unit": [
+        "test:php:unit": [
             ".build/bin/phpunit -c Build/UnitTests.xml"
         ],
-        "extcode:test:php:functional": [
+        "test:php:functional": [
             "typo3DatabaseDriver=\"pdo_sqlite\" .build/bin/phpunit -c Build/FunctionalTests.xml"
         ],
-        "extcode:test:typoscript:lint": [
+        "test:phpstan:analyse": [
+            ".build/bin/phpstan analyse -c Build/phpstan.neon"
+        ],
+        "test:rector:process": [
+            ".build/bin/rector process *"
+        ],
+        "test:rector:process:dry-run": [
+            ".build/bin/rector process * --dry-run"
+        ],
+        "test:typoscript:lint": [
             ".build/bin/typoscript-lint -c Build/typoscriptlint.yaml Configuration"
         ],
-        "extcode:test": [
-            "@extcode:test:typoscript:lint",
-            "@extcode:test:php:lint",
-            "@extcode:test:php:unit",
-            "@extcode:test:php:functional"
+        "test:php": [
+            "@test:php:lint",
+            "@test:php:unit",
+            "@test:php:functional"
+        ],
+        "test:all": [
+            "@test:phpstan:analyse",
+            "@test:rector:process",
+            "@test:cgl",
+            "@test:typoscript:lint",
+            "@test:php"
         ],
         "post-autoload-dump": [
             "mkdir -p .build/public/typo3conf/ext/",
@@ -62,14 +80,16 @@
         ]
     },
     "require": {
-        "php": ">=7.2.0 <7.5",
-        "typo3/cms-core": "^9.5"
+        "php": "^7.2 || ^8.0",
+        "typo3/cms-core": "^10.4 || ^11.5"
     },
     "require-dev": {
-        "typo3/testing-framework": "^4.0",
+        "typo3/testing-framework": "^6.0",
         "friendsofphp/php-cs-fixer": "^2.14",
         "helmich/typo3-typoscript-lint": "^2.0",
-        "overtrue/phplint": "^1.1"
+        "overtrue/phplint": "^1.1",
+        "rector/rector": "^0.11",
+        "phpstan/phpstan": "^0.12.99"
     },
     "autoload": {
         "psr-4": {

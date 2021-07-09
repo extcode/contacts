@@ -13,6 +13,7 @@
                             <onChange>reload</onChange>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0">
                                         <numIndex index="0">
@@ -30,16 +31,19 @@
                             </config>
                         </TCEforms>
                     </switchableControllerActions>
-
+                    
                     <settings.orderBy>
                         <TCEforms>
                             <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.contacts.action.contact.list.orderBy</label>
                             <config>
                                 <type>select</type>
+                                <renderType>selectSingle</renderType>
                                 <items>
                                     <numIndex index="0" type="array">
-                                        <numIndex index="0"></numIndex>
-                                        <numIndex index="1"></numIndex>
+                                        <numIndex index="0">
+                                        </numIndex>
+                                        <numIndex index="1">
+                                        </numIndex>
                                     </numIndex>
                                     <numIndex index="2">
                                         <numIndex index="0">LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.contacts.action.contact.list.orderBy.last_name</numIndex>
@@ -49,13 +53,14 @@
                             </config>
                         </TCEforms>
                     </settings.orderBy>
-
+                    
                     <settings.contactUids>
                         <TCEforms>
                             <label>LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_contact</label>
                             <displayCond>FIELD:switchableControllerActions:=:Contact->teaser</displayCond>
                             <config>
                                 <type>select</type>
+                                <renderType>selectMultipleSideBySide</renderType>
                                 <foreign_table>tx_contacts_domain_model_contact</foreign_table>
                                 <foreign_table_where>AND (tx_contacts_domain_model_contact.sys_language_uid=CAST('###REC_FIELD_sys_language_uid###' AS UNSIGNED) OR tx_contacts_domain_model_contact.sys_language_uid = '-1') AND tx_contacts_domain_model_contact.deleted = 0 AND tx_contacts_domain_model_contact.hidden = 0</foreign_table_where>
                                 <size>3</size>
@@ -64,7 +69,7 @@
                             </config>
                         </TCEforms>
                     </settings.contactUids>
-
+                    
                     <settings.categoriesList>
                         <TCEforms>
                             <exclude>1</exclude>
@@ -75,32 +80,33 @@
                                 <autoSizeMax>50</autoSizeMax>
                                 <foreign_table>sys_category</foreign_table>
                                 <foreign_table_where>AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC
-                                </foreign_table_where>
-                                <maxitems>99</maxitems>
-                                <renderMode>tree</renderMode>
-                                <size>10</size>
-                                <treeConfig>
-                                    <appearance>
-                                        <expandAll>1</expandAll>
-                                        <showHeader>1</showHeader>
-                                    </appearance>
-                                    <parentField>parent</parentField>
-                                </treeConfig>
-                            </config>
-                        </TCEforms>
-                    </settings.categoriesList>
-
-                    <settings.listSubcategories>
-                        <TCEforms>
-                            <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.contacts.action.contact.list.subcategories</label>
-                            <displayCond>FIELD:switchableControllerActions:=:Contact->list;Contact->show</displayCond>
-                            <config>
-                                <type>check</type>
-                            </config>
-                        </TCEforms>
-                    </settings.listSubcategories>
-                </el>
-            </ROOT>
-        </sDEF>
-    </sheets>
+                            </foreign_table_where>
+                            <maxitems>99</maxitems>
+                            <renderMode>tree</renderMode>
+                            <renderType>selectTree</renderType>
+                            <size>10</size>
+                            <treeConfig>
+                                <appearance>
+                                    <expandAll>1</expandAll>
+                                    <showHeader>1</showHeader>
+                                </appearance>
+                                <parentField>parent</parentField>
+                            </treeConfig>
+                        </config>
+                    </TCEforms>
+                </settings.categoriesList>
+                
+                <settings.listSubcategories>
+                    <TCEforms>
+                        <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:tx_contacts.plugin.contacts.action.contact.list.subcategories</label>
+                        <displayCond>FIELD:switchableControllerActions:=:Contact->list;Contact->show</displayCond>
+                        <config>
+                            <type>check</type>
+                        </config>
+                    </TCEforms>
+                </settings.listSubcategories>
+            </el>
+        </ROOT>
+    </sDEF>
+</sheets>
 </T3DataStructure>

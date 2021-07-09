@@ -1,5 +1,7 @@
 <?php
 
+use Extcode\Contacts\Hooks\GoogleMapHook;
+
 defined('TYPO3_MODE') or die();
 
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
@@ -15,7 +17,7 @@ if (!empty($googleMapsLibrary) && !empty($googleMapsApiKey)) {
             'exclude' => 1,
             'config' => [
                 'type' => 'user',
-                'userFunc' => \Extcode\Contacts\Hooks\GoogleMapHook::class . '->render',
+                'userFunc' => GoogleMapHook::class . '->render',
                 'parameters' => [],
             ],
         ],

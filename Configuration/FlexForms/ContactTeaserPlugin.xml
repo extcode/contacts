@@ -12,6 +12,7 @@
                             <label>LLL:EXT:contacts/Resources/Private/Language/locallang_db.xlf:tx_contacts_domain_model_contact</label>
                             <config>
                                 <type>select</type>
+                                <renderType>selectMultipleSideBySide</renderType>
                                 <foreign_table>tx_contacts_domain_model_contact</foreign_table>
                                 <foreign_table_where>AND (tx_contacts_domain_model_contact.sys_language_uid=CAST('###REC_FIELD_sys_language_uid###' AS UNSIGNED) OR tx_contacts_domain_model_contact.sys_language_uid = '-1') AND tx_contacts_domain_model_contact.deleted = 0 AND tx_contacts_domain_model_contact.hidden = 0</foreign_table_where>
                                 <size>3</size>
@@ -20,7 +21,7 @@
                             </config>
                         </TCEforms>
                     </settings.contactUids>
-
+                    
                     <settings.templateLayout>
                         <TCEforms>
                             <label>LLL:EXT:contacts/Resources/Private/Language/locallang_be.xlf:flexforms_template.templateLayout</label>

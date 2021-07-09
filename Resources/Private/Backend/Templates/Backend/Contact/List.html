@@ -10,12 +10,18 @@
 </f:section>
 
 <f:section name="content">
-    <f:render partial="Contact/List/Filter" arguments="{piVars: piVars, action: 'list'}"/>
+    <f:if condition="{paginator.paginatedItems}">
+        <f:then>
+            <f:render partial="Contact/List/Filter" arguments="{demand: demand, action: 'list'}"/>
 
-    <div class="clear"></div>
+            <div class="clear"></div>
 
-    <f:be.widget.paginate objects="{contacts}" as="paginatedContacts" configuration="{itemsPerPage: 25}">
-        <f:render partial="Contact/List/Table" arguments="{contacts: paginatedContacts}"/>
-    </f:be.widget.paginate>
+            <f:render partial="Contact/List/Table" arguments="{contacts: paginator.paginatedItems}"/>
+            <f:render partial="Utility/Paginator" arguments="{pagination: pagination, pages: pages, paginator: paginator}" />
+        </f:then>
+        <f:else>
+            Select a Page where Contacts Dataset are saved.
+        </f:else>
+    </f:if>
 </f:section>
 </html>

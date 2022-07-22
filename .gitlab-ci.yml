@@ -100,8 +100,9 @@ lint:php81:
     - php -r "if (hash_file('SHA384', 'composer-setup.php') === trim(file_get_contents('installer.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
     - php composer-setup.php --no-ansi --install-dir=/usr/bin --filename=composer
     - php -r "unlink('composer-setup.php'); unlink('installer.sig');"
+    - composer config --no-plugins allow-plugins.typo3/cms-composer-installers true
+    - composer config --no-plugins allow-plugins.typo3/class-alias-loader true
     - composer require typo3/cms-core="${TYPO3_VERSION}"
-    - composer require typo3/cms-install="${TYPO3_VERSION}"
   script:
     - >
       if [[ "$COVERAGE" == "0" ]]; then
@@ -109,6 +110,7 @@ lint:php81:
       fi
     - >
       if [[ "$COVERAGE" == "1" ]]; then
+        composer require typo3/cms-install="${TYPO3_VERSION}"
         XDEBUG_MODE=coverage .build/bin/phpunit --coverage-clover=phpunit.coverage.xml --log-junit=phpunit.report.xml -c Build/UnitTests.xml
       fi
     - typo3DatabaseDriver=pdo_sqlite .build/bin/phpunit -c Build/FunctionalTests.xml

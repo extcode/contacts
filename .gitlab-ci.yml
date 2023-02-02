@@ -80,6 +80,12 @@ lint:php81:
   script:
     - find . -name \*.php -exec php -l "{}" \;
 
+lint:php82:
+  stage: lint
+  image: php:8.2-alpine
+  script:
+    - find . -name \*.php -exec php -l "{}" \;
+
 .test: &test_php
   stage: test
   services:
@@ -145,6 +151,7 @@ test:php74:typo3_10:
     TYPO3_VERSION: ^10.4
     COVERAGE: 0
 
+# Build in PHP 7.4 and TYPO3 11.5
 test:php74:typo3_11:
   <<: *test_php
   variables:
@@ -152,6 +159,7 @@ test:php74:typo3_11:
     TYPO3_VERSION: ^11.5
     COVERAGE: 0
 
+# Build in PHP 8.0 and TYPO3 11.5
 test:php80:typo3_11:
   <<: *test_php
   variables:
@@ -159,10 +167,19 @@ test:php80:typo3_11:
     TYPO3_VERSION: ^11.5
     COVERAGE: 0
 
+# Build in PHP 8.1 and TYPO3 11.5
 test:php81:typo3_11:
   <<: *test_php
   variables:
     DOCKER_TAG: 8.1-alpine
+    TYPO3_VERSION: ^11.5
+    COVERAGE: 0
+
+# Build in PHP 8.2 and TYPO3 11.5
+test:php82:typo3_11:
+  <<: *test_php
+  variables:
+    DOCKER_TAG: 8.2-alpine
     TYPO3_VERSION: ^11.5
     COVERAGE: 1
 
